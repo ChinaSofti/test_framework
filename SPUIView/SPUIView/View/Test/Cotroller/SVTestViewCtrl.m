@@ -58,7 +58,7 @@
     _tableView.dataSource = self;
     // 6.定义数组展示图片
     _selectedMA = [NSMutableArray array];
-    NSString* title = [CTI18N valueForKey:@"VideoTest"];
+    NSString* title = [StringForKey:@"VideoTest"];
     NSLog(@"%@", title);
     NSArray* sourceA
         = @[
