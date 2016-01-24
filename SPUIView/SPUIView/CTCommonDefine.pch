@@ -35,7 +35,7 @@
 #import "CTViewTools.h"
 #import "YYLToolView.h"
 #import "UIView+Exten.h"
-#import <CTCommon/CTCommon.h>
+#import <Common/CTCommon.h>
 
 //#import "CTI18N.h"
 

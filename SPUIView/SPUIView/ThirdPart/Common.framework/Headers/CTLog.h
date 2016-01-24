@@ -14,6 +14,8 @@
  */
 @interface CTLog : NSObject
 
+
+
 /**
  *  <#Description#>
  *
@@ -23,6 +25,7 @@
  *  @param line     <#line description#>
  *  @param format   <#format description#>
  */
+
 + (void)log:(unsigned int)level
        file:(const char*)file
    function:(const char*)function
@@ -64,5 +67,12 @@
  *  @param format 消息
  */
 + (void)CTDebug:(NSString*)format, ...;
+
+
+/**
+ *
+ *  @param format    保存信息
+ */
++(void) saveInformation:(NSString *) information,... NS_REQUIRES_NIL_TERMINATION;
 
 @end

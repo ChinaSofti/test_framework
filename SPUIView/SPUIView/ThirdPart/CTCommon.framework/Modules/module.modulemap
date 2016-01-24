@@ -1,6 +1,0 @@
-framework module CTCommon {
-  umbrella header "CTCommon.h"
-
-  export *
-  module * { export * }
-}
