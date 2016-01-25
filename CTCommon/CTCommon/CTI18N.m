@@ -8,99 +8,106 @@
 
 #import "CTI18N.h"
 
+#define ENGLISH @"en"
+#define CHINESE @"zh-Hans"
+#define SYSTEM @"system"
+
 @implementation CTI18N
 
 //创建静态变量bundle，以及获取方法bundle
-static NSBundle* bundle = nil;
+static NSBundle *bundle = nil;
 
 //初始化语言文件
-+ (void)initUserLanguage
-{
-    NSUserDefaults* def = [NSUserDefaults standardUserDefaults];
++ (void)initUserLanguage {
 
-    NSString* string = [def valueForKey:@"userLanguage"];
-    if (string.length == 0) {
-        //获取系统当前语言版本(中文zh-Hans,英文en)
-        NSArray* languages = [def objectForKey:@"AppleLanguages"];
+  NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
 
-        NSString* current = [languages objectAtIndex:0];
+  NSString *string = [def valueForKey:@"userLanguage"];
+  if (string.length == 0) {
+    //获取系统当前语言版本(中文zh-Hans,英文en)
+    NSArray *languages = [def objectForKey:@"AppleLanguages"];
 
-        string = current;
+    NSString *current = [languages objectAtIndex:0];
 
-        [def setValue:current forKey:@"userLanguage"];
-        //持久化，不加的话不会保存
-        [def synchronize];
-    }
-    //    //获取文件路径
-    NSString* path = [[NSBundle mainBundle] pathForResource:string ofType:@"lproj"];
-    //生成bundle
-    bundle = [NSBundle bundleWithPath:path];
+    string = current;
+
+    [def setValue:current forKey:@"userLanguage"];
+    //持久化，不加的话不会保存
+    [def synchronize];
+  }
+  //    //获取文件路径
+  NSString *path =
+      [[NSBundle mainBundle] pathForResource:string ofType:@"lproj"];
+  //生成bundle
+  bundle = [NSBundle bundleWithPath:path];
 }
 
 //获取系统当前语言
-+ (NSString*)systemLanguage;
++ (NSString *)systemLanguage;
 {
-    NSArray* languages = [NSLocale preferredLanguages];
-    NSString* currentLanguage = [languages objectAtIndex:0];
+  NSArray *languages = [NSLocale preferredLanguages];
+  NSString *currentLanguage = [languages objectAtIndex:0];
 
-    return currentLanguage;
+  return currentLanguage;
 }
 
 //获取用户当前所设置的语言
-+ (NSString*)userLanguage
-{
-    NSUserDefaults* user = [NSUserDefaults standardUserDefaults];
-    return [user valueForKey:@"userLanguage"];
++ (NSString *)userLanguage {
+  NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+  return [user valueForKey:@"userLanguage"];
 }
 
 //设置当前语言
-+ (void)setUserlanguage:(NSString*)language
-{
-    NSUserDefaults* user = [NSUserDefaults standardUserDefaults];
++ (void)setUserlanguage:(Language)language {
+  NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+  NSString *lan;
+  switch (language) {
+  case English:
+    lan = ENGLISH;
+    break;
+  case Chinese:
+    lan = CHINESE;
+    break;
+  case System:
+    lan = SYSTEM;
+    break;
 
-    //1.第一步改变bundle的值
-    NSString* path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
+  default:
+    break;
+  }
+  // 1.第一步改变bundle的值
 
-    if (![language isEqualToString:@"system"]) {
-        bundle = [NSBundle bundleWithPath:path];
-    }
+  NSString *path = [[NSBundle mainBundle] pathForResource:lan ofType:@"lproj"];
 
-    //2.持久化
-    [user setValue:language forKey:@"userLanguage"];
+  if (language != System) {
+    bundle = [NSBundle bundleWithPath:path];
+  }
 
-    [user synchronize];
+  // 2.持久化
+  [user setValue:lan forKey:@"userLanguage"];
+
+  [user synchronize];
 }
 
-+ (NSString*)valueForKey:(NSString*)key
-{
-    if (bundle == nil) {
-        [self initUserLanguage];
-    }
-    //    NSLog(@"用户设置语言%@",[self userLanguage] );
-    //    NSLog(@"当前系统语言%@",[self systemLanguage] );
-    if (![[self userLanguage] isEqualToString:@"en"] && ![[self userLanguage] isEqualToString:@"ch"]) {
-        NSString* path;
++ (NSString *)valueForKey:(NSString *)key {
+  if (bundle == nil) {
+    [self initUserLanguage];
+  }
+  //    NSLog(@"用户设置语言%@",[self userLanguage] );
+  //    NSLog(@"当前系统语言%@",[self systemLanguage] );
 
-        if ([[self systemLanguage] isEqualToString:@"zh-Hans-US"]) {
-            path = [[NSBundle mainBundle] pathForResource:@"zh-Hans" ofType:@"lproj"];
-        }
-        else {
-            path = [[NSBundle mainBundle] pathForResource:@"en" ofType:@"lproj"];
-        }
-        NSLog(@"bundle path:%@", path);
-        bundle = [NSBundle bundleWithPath:path];
-    }
+  NSString *path;
+  if (![[self userLanguage] isEqualToString:ENGLISH] &&
+      ![[self userLanguage] isEqualToString:CHINESE]) {
 
-    NSString* value = [bundle localizedStringForKey:key value:nil table:@"i18n"];
-    NSLog(@"bundle get value :%@  key:%@", value, key);
-    if (value) {
-        return value;
+    if ([[self systemLanguage] isEqualToString:@"zh-Hans-US"]) {
+      path = [[NSBundle mainBundle] pathForResource:CHINESE ofType:@"lproj"];
+    } else {
+      path = [[NSBundle mainBundle] pathForResource:ENGLISH ofType:@"lproj"];
     }
-    else {
-        return key;
-    }
-
-    //  return [bundle localizedStringForKey:key value:nil table:@"i18n"];
+    bundle = [NSBundle bundleWithPath:path];
+  }
+  return [bundle localizedStringForKey:key value:nil table:@"i18n"];
 }
 
 @end
