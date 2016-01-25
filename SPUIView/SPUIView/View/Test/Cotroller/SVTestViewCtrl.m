@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"123");
     [super viewDidLoad];
     NSLog(@"          SVTestView页面");
 
