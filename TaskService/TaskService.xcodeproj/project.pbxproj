@@ -20,11 +20,13 @@
 		B7257DDE1C50B24F00EC0A1D /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7257DDD1C50B24F00EC0A1D /* libiconv.2.dylib */; };
 		B7257DE01C50B26C00EC0A1D /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7257DDF1C50B26C00EC0A1D /* libstdc++.6.0.9.dylib */; };
 		B7257DE21C50B28300EC0A1D /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7257DE11C50B28300EC0A1D /* libz.1.dylib */; };
+		B760F0BE1C58906300A3A7A3 /* CTI18N.h in Headers */ = {isa = PBXBuildFile; fileRef = B760F0BA1C58906300A3A7A3 /* CTI18N.h */; };
+		B760F0BF1C58906300A3A7A3 /* CTI18N.m in Sources */ = {isa = PBXBuildFile; fileRef = B760F0BB1C58906300A3A7A3 /* CTI18N.m */; };
+		B760F0C01C58906300A3A7A3 /* CTLog.h in Headers */ = {isa = PBXBuildFile; fileRef = B760F0BC1C58906300A3A7A3 /* CTLog.h */; };
+		B760F0C11C58906300A3A7A3 /* CTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B760F0BD1C58906300A3A7A3 /* CTLog.m */; };
 		B78C67721C50707B005B221A /* TaskService.h in Headers */ = {isa = PBXBuildFile; fileRef = B78C67711C50707B005B221A /* TaskService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B78C67791C50707B005B221A /* TaskService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B78C676E1C50707B005B221A /* TaskService.framework */; };
 		B78C677E1C50707B005B221A /* TaskServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B78C677D1C50707B005B221A /* TaskServiceTests.m */; };
-		B78C67A71C50785B005B221A /* MyUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B78C67A51C50785B005B221A /* MyUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B78C67A81C50785B005B221A /* MyUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B78C67A61C50785B005B221A /* MyUtils.m */; };
 		B78C67D31C5080ED005B221A /* VDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B78C67C61C5080ED005B221A /* VDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B78C67D41C5080ED005B221A /* Vitamio.h in Headers */ = {isa = PBXBuildFile; fileRef = B78C67C71C5080ED005B221A /* Vitamio.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B78C67D51C5080ED005B221A /* VMediaExtracter.h in Headers */ = {isa = PBXBuildFile; fileRef = B78C67C81C5080ED005B221A /* VMediaExtracter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -63,14 +65,16 @@
 		B7257DDD1C50B24F00EC0A1D /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = /usr/lib/libiconv.2.dylib; sourceTree = "<absolute>"; };
 		B7257DDF1C50B26C00EC0A1D /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "/usr/lib/libstdc++.6.0.9.dylib"; sourceTree = "<absolute>"; };
 		B7257DE11C50B28300EC0A1D /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = /usr/lib/libz.1.dylib; sourceTree = "<absolute>"; };
+		B760F0BA1C58906300A3A7A3 /* CTI18N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTI18N.h; sourceTree = "<group>"; };
+		B760F0BB1C58906300A3A7A3 /* CTI18N.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTI18N.m; sourceTree = "<group>"; };
+		B760F0BC1C58906300A3A7A3 /* CTLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLog.h; sourceTree = "<group>"; };
+		B760F0BD1C58906300A3A7A3 /* CTLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLog.m; sourceTree = "<group>"; };
 		B78C676E1C50707B005B221A /* TaskService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TaskService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B78C67711C50707B005B221A /* TaskService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskService.h; sourceTree = "<group>"; };
 		B78C67731C50707B005B221A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B78C67781C50707B005B221A /* TaskServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B78C677D1C50707B005B221A /* TaskServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskServiceTests.m; sourceTree = "<group>"; };
 		B78C677F1C50707B005B221A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B78C67A51C50785B005B221A /* MyUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUtils.h; sourceTree = "<group>"; };
-		B78C67A61C50785B005B221A /* MyUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUtils.m; sourceTree = "<group>"; };
 		B78C67C61C5080ED005B221A /* VDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDefines.h; sourceTree = "<group>"; };
 		B78C67C71C5080ED005B221A /* Vitamio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vitamio.h; sourceTree = "<group>"; };
 		B78C67C81C5080ED005B221A /* VMediaExtracter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaExtracter.h; sourceTree = "<group>"; };
@@ -136,9 +140,21 @@
 			name = LinkedBinary;
 			sourceTree = "<group>";
 		};
+		B760F0B91C58906300A3A7A3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B760F0BA1C58906300A3A7A3 /* CTI18N.h */,
+				B760F0BB1C58906300A3A7A3 /* CTI18N.m */,
+				B760F0BC1C58906300A3A7A3 /* CTLog.h */,
+				B760F0BD1C58906300A3A7A3 /* CTLog.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		B78C67641C50707B005B221A = {
 			isa = PBXGroup;
 			children = (
+				B760F0B91C58906300A3A7A3 /* Common */,
 				B7257DE31C50B34500EC0A1D /* LinkedBinary */,
 				B78C67C21C5080ED005B221A /* Vitamio */,
 				B78C67701C50707B005B221A /* TaskService */,
@@ -161,8 +177,6 @@
 			children = (
 				B78C67711C50707B005B221A /* TaskService.h */,
 				B78C67731C50707B005B221A /* Info.plist */,
-				B78C67A51C50785B005B221A /* MyUtils.h */,
-				B78C67A61C50785B005B221A /* MyUtils.m */,
 				B7257DC91C50AD1600EC0A1D /* TSVideoPlayer.h */,
 				B7257DCA1C50AD1600EC0A1D /* TSVideoPlayer.m */,
 			);
@@ -221,14 +235,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B78C67721C50707B005B221A /* TaskService.h in Headers */,
+				B760F0C01C58906300A3A7A3 /* CTLog.h in Headers */,
 				B7257DCB1C50AD1600EC0A1D /* TSVideoPlayer.h in Headers */,
 				B78C67D41C5080ED005B221A /* Vitamio.h in Headers */,
 				B78C67D81C5080ED005B221A /* VMediaPlayerDelegate.h in Headers */,
-				B78C67A71C50785B005B221A /* MyUtils.h in Headers */,
 				B78C67D61C5080ED005B221A /* VMediaExtracterDef.h in Headers */,
 				B78C67D71C5080ED005B221A /* VMediaPlayer.h in Headers */,
 				B78C67D51C5080ED005B221A /* VMediaExtracter.h in Headers */,
 				B78C67D31C5080ED005B221A /* VDefines.h in Headers */,
+				B760F0BE1C58906300A3A7A3 /* CTI18N.h in Headers */,
 				B78C67D91C5080ED005B221A /* VPlayerManageDef.h in Headers */,
 				B78C67DA1C5080ED005B221A /* VSingleton.h in Headers */,
 			);
@@ -332,8 +347,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B78C67A81C50785B005B221A /* MyUtils.m in Sources */,
+				B760F0BF1C58906300A3A7A3 /* CTI18N.m in Sources */,
 				B7257DCC1C50AD1600EC0A1D /* TSVideoPlayer.m in Sources */,
+				B760F0C11C58906300A3A7A3 /* CTLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,10 +11,10 @@
 		4DD1246F1C55B1D700170E91 /* CTI18N.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1246D1C55B1D700170E91 /* CTI18N.m */; };
 		B72EEDCC1C5226D400D94F1B /* CTCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72EEDC11C5226D400D94F1B /* CTCommon.framework */; };
 		B72EEDD11C5226D400D94F1B /* CTCommonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EEDD01C5226D400D94F1B /* CTCommonTests.m */; };
-		B72EEDE41C5226FE00D94F1B /* CTLegacyMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EEDDE1C5226FE00D94F1B /* CTLegacyMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72EEDE51C5226FE00D94F1B /* CTLog.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EEDDF1C5226FE00D94F1B /* CTLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72EEDE61C5226FE00D94F1B /* CTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EEDE01C5226FE00D94F1B /* CTLog.m */; };
 		B72EEDE81C52277000D94F1B /* CTCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EEDE71C52277000D94F1B /* CTCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B760F0B71C58850000A3A7A3 /* CTLogTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B760F0B61C58850000A3A7A3 /* CTLogTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +35,10 @@
 		B72EEDCB1C5226D400D94F1B /* CTCommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CTCommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72EEDD01C5226D400D94F1B /* CTCommonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTCommonTests.m; sourceTree = "<group>"; };
 		B72EEDD21C5226D400D94F1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B72EEDDE1C5226FE00D94F1B /* CTLegacyMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLegacyMacros.h; sourceTree = "<group>"; };
 		B72EEDDF1C5226FE00D94F1B /* CTLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLog.h; sourceTree = "<group>"; };
 		B72EEDE01C5226FE00D94F1B /* CTLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLog.m; sourceTree = "<group>"; };
 		B72EEDE71C52277000D94F1B /* CTCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCommon.h; sourceTree = "<group>"; };
+		B760F0B61C58850000A3A7A3 /* CTLogTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLogTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,6 @@
 				4DD1246C1C55B1D700170E91 /* CTI18N.h */,
 				4DD1246D1C55B1D700170E91 /* CTI18N.m */,
 				B72EEDE71C52277000D94F1B /* CTCommon.h */,
-				B72EEDDE1C5226FE00D94F1B /* CTLegacyMacros.h */,
 				B72EEDDF1C5226FE00D94F1B /* CTLog.h */,
 				B72EEDE01C5226FE00D94F1B /* CTLog.m */,
 				B72EEDC61C5226D400D94F1B /* Info.plist */,
@@ -97,6 +96,7 @@
 			children = (
 				B72EEDD01C5226D400D94F1B /* CTCommonTests.m */,
 				B72EEDD21C5226D400D94F1B /* Info.plist */,
+				B760F0B61C58850000A3A7A3 /* CTLogTest.m */,
 			);
 			path = CTCommonTests;
 			sourceTree = "<group>";
@@ -111,7 +111,6 @@
 				B72EEDE51C5226FE00D94F1B /* CTLog.h in Headers */,
 				B72EEDE81C52277000D94F1B /* CTCommon.h in Headers */,
 				4DD1246E1C55B1D700170E91 /* CTI18N.h in Headers */,
-				B72EEDE41C5226FE00D94F1B /* CTLegacyMacros.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B72EEDD11C5226D400D94F1B /* CTCommonTests.m in Sources */,
+				B760F0B71C58850000A3A7A3 /* CTLogTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
