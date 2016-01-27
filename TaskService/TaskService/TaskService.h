@@ -6,6 +6,10 @@
 //  Copyright © 2016 Huawei. All rights reserved.
 //
 
+#ifndef TaskService_h
+#define TaskService_h
+
+
 #import "TSI18N.h"
 #import "TSLog.h"
 #import "TSVideoPlayer.h"
@@ -19,3 +23,6 @@ FOUNDATION_EXPORT const unsigned char TaskServiceVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like
 // #import <TaskService/PublicHeader.h>
+
+
+#endif /* TaskService_h */

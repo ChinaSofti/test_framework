@@ -18,11 +18,11 @@
  *
  *  @return 视频播放器对象
  */
-- (id)initWithURL:(UIView*)showOnView videoPath:(NSURL*)videoPath
+- (id)initWithURL:(UIView *)showOnView videoPath:(NSURL *)videoPath
 {
     _showOnView = showOnView;
     _videoPath = videoPath;
-    NSLog(@"init player");
+    NSLog (@"init player");
     [self initPlayer];
     return self;
 }
@@ -32,21 +32,27 @@
  */
 - (void)play
 {
-    if (_videoPath) {
+
+    if (_videoPath)
+    {
         BOOL isPlaying = [_VMpalyer isPlaying];
-        if (isPlaying) {
+        if (isPlaying)
+        {
             // 如果视频正在播放，不做任何处理
-            NSLog(@"have been playing");
+            NSLog (@"have been playing");
             return;
         }
-        else {
-            if (_didPrepared) {
+        else
+        {
+            if (_didPrepared)
+            {
                 // 开始播放视频
-                NSLog(@"start play");
+                NSLog (@"start play");
                 [_VMpalyer start];
             }
-            else {
-                NSLog(@"paly prepareVideo");
+            else
+            {
+                NSLog (@"paly prepareVideo");
                 [self prepareVideo];
             }
         }
@@ -60,15 +66,17 @@
 {
     BOOL isPlaying = [_VMpalyer isPlaying];
     // 视频正在播放，则停止视频
-    if (_VMpalyer && isPlaying) {
-        NSLog(@"have been pause");
+    if (_VMpalyer && isPlaying)
+    {
+        NSLog (@"have been pause");
         [_VMpalyer pause];
     }
 }
 
 - (void)initPlayer
 {
-    if (!_VMpalyer) {
+    if (!_VMpalyer)
+    {
         _VMpalyer = [VMediaPlayer sharedInstance];
         [_VMpalyer setupPlayerWithCarrierView:_showOnView withDelegate:self];
     }
@@ -76,8 +84,9 @@
 
 - (void)prepareVideo
 {
-    if (_videoPath) {
-        NSLog(@"prepareVideo");
+    if (_videoPath)
+    {
+        NSLog (@"prepareVideo");
         //播放时不要锁屏
         [UIApplication sharedApplication].idleTimerDisabled = YES;
         [_VMpalyer setDataSource:_videoPath];
@@ -91,11 +100,11 @@
  * @param player The shared media player instance.
  * @param arg Not use.
  */
-- (void)mediaPlayer:(VMediaPlayer*)player didPrepared:(id)arg
+- (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
 {
     _didPrepared = YES;
     [player start];
-    NSLog(@"palying");
+    NSLog (@"palying");
 }
 
 /**
@@ -104,7 +113,7 @@
  * @param player The shared media player instance.
  * @param arg Not use.
  */
-- (void)mediaPlayer:(VMediaPlayer*)player playbackComplete:(id)arg
+- (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
 {
     [player reset];
     _didPrepared = NO;
@@ -116,9 +125,9 @@
  * @param player The shared media player instance.
  * @param arg Contain the detail error information.
  */
-- (void)mediaPlayer:(VMediaPlayer*)player error:(id)arg
+- (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
 {
-    NSLog(@"VMediaPlayer Error: %@", arg);
+    NSLog (@"VMediaPlayer Error: %@", arg);
 }
 
 @end
