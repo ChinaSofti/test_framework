@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4DBF95BC1C55C0C900E2E840 /* CTCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBF95BB1C55C0C900E2E840 /* CTCommon.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		4DBF95C11C55C71B00E2E840 /* CTCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBF95BB1C55C0C900E2E840 /* CTCommon.framework */; };
-		4DBF95C21C55C71B00E2E840 /* CTCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBF95BB1C55C0C900E2E840 /* CTCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5644354C1C5215AB009B7024 /* i18n.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5644354E1C5215AB009B7024 /* i18n.strings */; };
 		5644356E1C52169C009B7024 /* SVResultViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 564435531C52169C009B7024 /* SVResultViewCtrl.m */; };
 		5644356F1C52169C009B7024 /* SVSettingsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 564435591C52169C009B7024 /* SVSettingsViewCtrl.m */; };
@@ -48,16 +45,18 @@
 		56EC8C971C4F467000EBDA6C /* tabbar_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC8C901C4F467000EBDA6C /* tabbar_test.png */; };
 		56EC8C981C4F467000EBDA6C /* tabbar_test_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC8C911C4F467000EBDA6C /* tabbar_test_selected.png */; };
 		56F523E41C4DCF7F00E6472B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F523E31C4DCF7F00E6472B /* main.m */; };
+		B7F7BE3C1C58BDA60019D879 /* TaskService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7F7BE371C58BC640019D879 /* TaskService.framework */; };
+		B7F7BE3D1C58BDA60019D879 /* TaskService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7F7BE371C58BC640019D879 /* TaskService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B72EEDAA1C5223AB00D94F1B /* Embed Frameworks */ = {
+		B7F7BE3E1C58BDA60019D879 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4DBF95C21C55C71B00E2E840 /* CTCommon.framework in Embed Frameworks */,
+				B7F7BE3D1C58BDA60019D879 /* TaskService.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,7 +64,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4DBF95BB1C55C0C900E2E840 /* CTCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CTCommon.framework; sourceTree = "<group>"; };
 		5644354D1C5215AB009B7024 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/i18n.strings; sourceTree = "<group>"; };
 		564435521C52169C009B7024 /* SVResultViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVResultViewCtrl.h; sourceTree = "<group>"; };
 		564435531C52169C009B7024 /* SVResultViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVResultViewCtrl.m; sourceTree = "<group>"; };
@@ -120,6 +118,7 @@
 		56EC8C911C4F467000EBDA6C /* tabbar_test_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_test_selected.png; sourceTree = "<group>"; };
 		56F523DF1C4DCF7F00E6472B /* SPUIView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPUIView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F523E31C4DCF7F00E6472B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B7F7BE371C58BC640019D879 /* TaskService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TaskService.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,8 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DBF95C11C55C71B00E2E840 /* CTCommon.framework in Frameworks */,
-				4DBF95BC1C55C0C900E2E840 /* CTCommon.framework in Frameworks */,
+				B7F7BE3C1C58BDA60019D879 /* TaskService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +358,7 @@
 		56EC8C771C4F45A500EBDA6C /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
-				4DBF95BB1C55C0C900E2E840 /* CTCommon.framework */,
+				B7F7BE371C58BC640019D879 /* TaskService.framework */,
 			);
 			path = ThirdPart;
 			sourceTree = "<group>";
@@ -439,7 +437,7 @@
 				56F523DB1C4DCF7F00E6472B /* Sources */,
 				56F523DC1C4DCF7F00E6472B /* Frameworks */,
 				56F523DD1C4DCF7F00E6472B /* Resources */,
-				B72EEDAA1C5223AB00D94F1B /* Embed Frameworks */,
+				B7F7BE3E1C58BDA60019D879 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

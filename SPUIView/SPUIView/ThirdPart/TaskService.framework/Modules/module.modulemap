@@ -1,0 +1,6 @@
+framework module TaskService {
+  umbrella header "TaskService.h"
+
+  export *
+  module * { export * }
+}
