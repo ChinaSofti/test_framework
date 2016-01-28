@@ -15,19 +15,20 @@
  * 视频播放器对象
  *
  */
-@interface TSVideoPlayer : NSObject <VMediaPlayerDelegate> {
+@interface TSVideoPlayer : NSObject <VMediaPlayerDelegate>
+{
 
     // 视频显示依赖的UIView
-    UIView* _showOnView;
+    UIView *_showOnView;
 
     // 视频地址
-    NSURL* _videoPath;
+    NSURL *_videoPath;
 
     // 视频是否准备好，可以进行播放
     BOOL _didPrepared;
 
     // 第三方视频播放对象
-    VMediaPlayer* _VMpalyer;
+    VMediaPlayer *_VMpalyer;
 }
 
 /**
@@ -38,7 +39,7 @@
  *
  *  @return 视频播放器对象
  */
-- (id)initWithURL:(UIView*)showOnView videoPath:(NSURL*)videoPath;
+- (id)initWithURL:(UIView *)showOnView videoPath:(NSURL *)videoPath;
 
 /**
  *  播放视频

@@ -9,8 +9,11 @@
 #ifndef TaskService_h
 #define TaskService_h
 
-
+#import "TSHttpGetter.h"
+#import "TSHttpsGetter.h"
 #import "TSI18N.h"
+#import "TSIPAndISP.h"
+#import "TSIPAndISPGetter.h"
 #import "TSLog.h"
 #import "TSVideoPlayer.h"
 #import <UIKit/UIKit.h>
