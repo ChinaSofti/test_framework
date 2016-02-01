@@ -14,11 +14,11 @@
 @protocol AlertViewDelegate <NSObject>
 
 //声明代理方法
-- (void)alertView:(AlertView*)alertView didClickBtn:(NSInteger)index;
+- (void)alertView:(AlertView *)alertView didClickBtn:(NSInteger)index;
 
-- (void)alertView:(AlertView*)alertView overLookBtnClick:(UIButton*)Btn;
+- (void)alertView:(AlertView *)alertView overLookBtnClick:(UIButton *)Btn;
 
-- (void)alertView:(AlertView*)alertView saveBtnClick:(UIButton*)Btn;
+- (void)alertView:(AlertView *)alertView saveBtnClick:(UIButton *)Btn;
 
 @end
 
@@ -27,9 +27,9 @@
 //设置代理属性
 @property (nonatomic, weak) id<AlertViewDelegate> delegate;
 
-- (instancetype)initWithFrame:(CGRect)frame bgColor:(UIColor*)color;
+- (instancetype)initWithFrame:(CGRect)frame bgColor:(UIColor *)color;
 
-@property (nonatomic, copy) UITextField* mealTextField;
-@property (nonatomic, copy) UILabel* contentLabel;
+@property (nonatomic, copy) UITextField *mealTextField;
+@property (nonatomic, copy) UILabel *contentLabel;
 
 @end

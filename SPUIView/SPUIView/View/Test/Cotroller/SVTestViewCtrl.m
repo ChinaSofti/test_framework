@@ -9,6 +9,7 @@
 #import "SVTestViewCtrl.h"
 #import "SVTestingCtrl.h"
 #import "SVToolCell.h"
+
 #define kFirstHederH 40
 #define kLastFooterH 140
 
@@ -26,9 +27,9 @@
 
 - (void)viewDidLoad
 {
-    NSLog (@"123");
+
     [super viewDidLoad];
-    NSLog (@"          SVTestView页面");
+    NSLog (@"SVTestViewController");
 
     // 1.自定义navigationItem.titleView
     //设置图片大小
@@ -57,8 +58,7 @@
     _tableView.dataSource = self;
     // 6.定义数组展示图片
     _selectedMA = [NSMutableArray array];
-    NSString *title = I18N (@"VideoTest");
-    NSLog (@"%@", title);
+    NSString *title = I18N(@"VideoTest");
     NSArray *sourceA = @[
         @{
             @"img_normal": @"ic_video_label",
@@ -77,7 +77,7 @@
         @{
             @"img_normal": @"ic_speed_label",
             @"img_selected": @"ic_speed_label",
-            @"title": @"宽带测试",
+            @"title": @"带宽测试",
             @"rightImg_normal": @"1",
             @"rightImg_selected": @"ic_speed_check"
         }
@@ -207,7 +207,7 @@
         _testBtn.layer.cornerRadius = kCornerRadius;
         //按钮文字颜色和类型
         [_testBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        //
+        //设置居中
         _testBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         //按钮点击事件
         [_testBtn addTarget:self
@@ -288,12 +288,14 @@
 
 #pragma mark - 在这里对 数组 排序
 
+
     //按钮点击后alloc一个界面
     SVTestingCtrl *testingCtrl = [[SVTestingCtrl alloc] init];
     //
     testingCtrl.selectedA = _selectedMA;
     // push界面
     [self.navigationController pushViewController:testingCtrl animated:YES];
+    NSLog (@"testBtnClick...");
 }
 
 - (void)didReceiveMemoryWarning
