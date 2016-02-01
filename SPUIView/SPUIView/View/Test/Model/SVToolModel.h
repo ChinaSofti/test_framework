@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface SVToolModel : NSObject
-@property (nonatomic, copy) NSString* img_normal;
-@property (nonatomic, copy) NSString* img_selected;
-@property (nonatomic, copy) NSString* title;
-@property (nonatomic, copy) NSString* rightImg_normal;
-@property (nonatomic, copy) NSString* rightImg_selected;
+@property (nonatomic, copy) NSString *img_normal;
+@property (nonatomic, copy) NSString *img_selected;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *rightImg_normal;
+@property (nonatomic, copy) NSString *rightImg_selected;
 
-+ (instancetype)modelWithDict:(NSDictionary*)dict;
++ (instancetype)modelWithDict:(NSDictionary *)dict;
 
 @end

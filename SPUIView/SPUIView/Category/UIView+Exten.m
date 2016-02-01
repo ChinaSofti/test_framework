@@ -69,7 +69,7 @@
 
 - (void)setCenterX:(CGFloat)centerX
 {
-    self.center = CGPointMake(centerX, self.center.y);
+    self.center = CGPointMake (centerX, self.center.y);
     return;
 }
 
@@ -80,7 +80,7 @@
 
 - (void)setCenterY:(CGFloat)centerY
 {
-    self.center = CGPointMake(self.center.x, centerY);
+    self.center = CGPointMake (self.center.x, centerY);
     return;
 }
 

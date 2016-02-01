@@ -10,9 +10,10 @@
 
 @implementation SVToolModel
 
-- (instancetype)initWithDict:(NSDictionary*)dict
+- (instancetype)initWithDict:(NSDictionary *)dict
 {
-    if ([super init]) {
+    if ([super init])
+    {
         _img_normal = dict[@"img_normal"];
         _img_selected = dict[@"img_selected"];
         _title = dict[@"title"];
@@ -22,7 +23,7 @@
     return self;
 }
 
-+ (instancetype)modelWithDict:(NSDictionary*)dict
++ (instancetype)modelWithDict:(NSDictionary *)dict
 {
     return [[self alloc] initWithDict:dict];
 }

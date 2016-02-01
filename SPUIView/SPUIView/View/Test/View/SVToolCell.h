@@ -7,7 +7,7 @@
 //
 
 /**
- *****cell设置界面***
+ **cell设置界面
  **/
 #import <UIKit/UIKit.h>
 
@@ -23,14 +23,14 @@
 /**
  *  cell点击事件
  */
-- (void)toolCellClick:(SVToolCell*)cell;
+- (void)toolCellClick:(SVToolCell *)cell;
 @end
 
 @interface SVToolCell : UITableViewCell
 
-@property (nonatomic, retain) UIButton* bgdBtn;
+@property (nonatomic, retain) UIButton *bgdBtn;
 @property (nonatomic, assign) id<SVToolCellDelegate> delegate;
 
-- (void)cellViewModel:(SVToolModel*)model section:(NSInteger)section;
+- (void)cellViewModel:(SVToolModel *)model section:(NSInteger)section;
 
 @end
