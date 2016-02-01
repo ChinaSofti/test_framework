@@ -8,14 +8,32 @@
 
 #ifndef TaskService_h
 #define TaskService_h
-
+#import "TSBandwidthContext.h"
+#import "TSContext.h"
+#import "TSContextGetter.h"
 #import "TSHttpGetter.h"
 #import "TSHttpsGetter.h"
 #import "TSI18N.h"
 #import "TSIPAndISP.h"
 #import "TSIPAndISPGetter.h"
 #import "TSLog.h"
+#import "TSUvMOSCalculator.h"
+#import "TSVideoAnalyser.h"
+#import "TSVideoAnalyserFactory.h"
+#import "TSVideoAnalyser_youku.h"
+#import "TSVideoContext.h"
+#import "TSVideoFragment.h"
+#import "TSVideoInfo.h"
 #import "TSVideoPlayer.h"
+#import "TSVideoTest.h"
+#import "TSVideoTestSectionResult.h"
+#import "TSVideoTestSummaryResult.h"
+#import "TSWebBrowser.h"
+#import "TSWebContext.h"
+#import "GTMBase64.h"
+#import "GTMDefines.h"
+#import "TSTimeUtil.h"
+
 #import <UIKit/UIKit.h>
 
 //! Project version number for TaskService.

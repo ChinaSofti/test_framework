@@ -22,7 +22,6 @@
 {
     NSData *data = [TSHttpGetter requestDataWithoutParameter:urlString];
     NSString *responseData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    TSDebug (@"response Data:%@", responseData);
     return responseData;
 }
 
@@ -39,7 +38,7 @@
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url
                                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                              timeoutInterval:10];
+                                              timeoutInterval:30];
     //    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     //    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSError *error = nil;
@@ -51,6 +50,7 @@
         return nil;
     }
 
+    TSDebug (@"request URL:%@  response data length:%lu", urlString, data.length);
     return data;
 }
 

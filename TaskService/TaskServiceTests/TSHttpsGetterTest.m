@@ -20,7 +20,7 @@
 
     TSHttpsGetter *gettter = [[TSHttpsGetter alloc]
     initWithURLNSString:@"https://58.60.106.188:12210/speedpro/configapi?lang=CN"];
-    NSLog (@"Heeloe");
+    NSLog (@"Https Getter: %@", gettter);
 }
 
 @end

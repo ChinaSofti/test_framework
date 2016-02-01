@@ -11,10 +11,11 @@
 #import "TSLog.h"
 
 @implementation TSIPAndISPGetter
+{
+    //    TSIPAndISP *ipAndISP;
+}
 
-NSString *defaultURL = @"http://ip-api.com/json";
-
-TSIPAndISP *ipAndISP;
+static NSString *defaultURL = @"http://ip-api.com/json";
 
 + (TSIPAndISP *)getIPAndISP
 {
@@ -32,7 +33,11 @@ TSIPAndISP *ipAndISP;
         return nil;
     }
 
-    ipAndISP = [[TSIPAndISP alloc] init];
+    //    if (!ipAndISP)
+    //    {
+    //
+    //    }
+    TSIPAndISP *ipAndISP = [[TSIPAndISP alloc] init];
     [ipAndISP setAs:[json valueForKey:@"as"]];
     [ipAndISP setZip:[json valueForKey:@"zip"]];
     [ipAndISP setQuery:[json valueForKey:@"query"]];

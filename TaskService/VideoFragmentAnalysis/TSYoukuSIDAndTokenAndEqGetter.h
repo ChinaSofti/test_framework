@@ -1,0 +1,27 @@
+//
+//  TSYoukuSIDAndTokenAndEqGetter.h
+//  TaskService
+//
+//  Created by Rain on 1/31/16.
+//  Copyright © 2016 Huawei. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface TSYoukuSIDAndTokenAndEqGetter : NSObject
+{
+    NSString *_sid;
+    NSString *_token;
+    NSString *_ep;
+}
+
+
+- (id)initWithEncrpytString:(NSString *)encryptString vid:(NSString *)vid;
+
+- (NSString *)getSID;
+
+- (NSString *)getToken;
+
+- (NSString *)getEq;
+
+@end

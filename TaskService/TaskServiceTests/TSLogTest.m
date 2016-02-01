@@ -6,7 +6,7 @@
 //  Copyright © 2016 Huawei. All rights reserved.
 //
 
-#import "TaskService.h"
+#import "TSLog.h"
 #import <XCTest/XCTest.h>
 
 @interface CTLogTest : XCTestCase

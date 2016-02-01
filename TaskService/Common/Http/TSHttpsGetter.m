@@ -11,12 +11,14 @@
 
 
 @implementation TSHttpsGetter
+{
+    NSData *_data;
 
-NSData *_data;
+    NSString *_urlString;
 
-NSString *_urlString;
+    BOOL finished;
+}
 
-BOOL finished = false;
 
 /**
  *  使用指定URL字符串进行对象初始化
@@ -45,7 +47,7 @@ BOOL finished = false;
     TSInfo (@"request URL:%@", url);
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url
                                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                              timeoutInterval:10];
+                                              timeoutInterval:30];
     // NSURLRequest *request = [NSURLRequest requestWithURL:url];    NSURLConnection *conn =
     NSURLConnection *conn =
     [[NSURLConnection alloc] initWithRequest:request delegate:(id)self startImmediately:NO];
@@ -102,7 +104,8 @@ BOOL finished = false;
         _data = data;
         TSInfo (@"request URL:%@ success", _urlString);
         NSString *dataString = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-        TSDebug (@"response data:%@", dataString);
+        TSInfo (@"request URL:%@  reponse data length:%lu", _urlString, dataString.length);
+        //        TSDebug (@"response data:%@", dataString);
         finished = true;
     }
 }

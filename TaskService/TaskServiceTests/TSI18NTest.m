@@ -6,7 +6,7 @@
 //  Copyright © 2016 Huawei. All rights reserved.
 //
 
-#import "TaskService.h"
+#import "TSI18N.h"
 #import <XCTest/XCTest.h>
 
 @interface TSI18NTest : XCTestCase

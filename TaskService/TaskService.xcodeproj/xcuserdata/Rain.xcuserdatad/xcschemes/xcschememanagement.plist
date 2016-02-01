@@ -6,12 +6,34 @@
 	<dict>
 		<key>TaskService.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>B76C073C1C5B18AB00B41859</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B76C074B1C5B193A00B41859</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B78AF7091C5B19DB00415ECA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B78AF71A1C5B298400415ECA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B78C676D1C50707B005B221A</key>
 		<dict>
 			<key>primary</key>
