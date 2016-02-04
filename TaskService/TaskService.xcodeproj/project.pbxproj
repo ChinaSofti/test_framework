@@ -43,6 +43,8 @@
 		B7257DDE1C50B24F00EC0A1D /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7257DDD1C50B24F00EC0A1D /* libiconv.2.dylib */; };
 		B7257DE01C50B26C00EC0A1D /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7257DDF1C50B26C00EC0A1D /* libstdc++.6.0.9.dylib */; };
 		B7257DE21C50B28300EC0A1D /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7257DE11C50B28300EC0A1D /* libz.1.dylib */; };
+		B72CA3E51C6300A600A8D5D8 /* UvMOS_C_for_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B72CA3E31C6300A600A8D5D8 /* UvMOS_C_for_iOS.a */; };
+		B72CA3E61C6300A600A8D5D8 /* UvMOS_Outer_Api.h in Headers */ = {isa = PBXBuildFile; fileRef = B72CA3E41C6300A600A8D5D8 /* UvMOS_Outer_Api.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B735CB871C5A0FC8005B4A3F /* TSIPAndISP.m in Sources */ = {isa = PBXBuildFile; fileRef = B735CB861C5A0FC8005B4A3F /* TSIPAndISP.m */; };
 		B76C06F31C5B028E00B41859 /* TSVideoContextTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C06F21C5B028E00B41859 /* TSVideoContextTest.m */; };
 		B76C06F51C5B03D400B41859 /* TSContextGetterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C06F41C5B03D400B41859 /* TSContextGetterTest.m */; };
@@ -143,6 +145,8 @@
 		B7257DDD1C50B24F00EC0A1D /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = /usr/lib/libiconv.2.dylib; sourceTree = "<absolute>"; };
 		B7257DDF1C50B26C00EC0A1D /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "/usr/lib/libstdc++.6.0.9.dylib"; sourceTree = "<absolute>"; };
 		B7257DE11C50B28300EC0A1D /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = /usr/lib/libz.1.dylib; sourceTree = "<absolute>"; };
+		B72CA3E31C6300A600A8D5D8 /* UvMOS_C_for_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = UvMOS_C_for_iOS.a; sourceTree = "<group>"; };
+		B72CA3E41C6300A600A8D5D8 /* UvMOS_Outer_Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UvMOS_Outer_Api.h; sourceTree = "<group>"; };
 		B735CB861C5A0FC8005B4A3F /* TSIPAndISP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSIPAndISP.m; sourceTree = "<group>"; };
 		B76C06F21C5B028E00B41859 /* TSVideoContextTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSVideoContextTest.m; sourceTree = "<group>"; };
 		B76C06F41C5B03D400B41859 /* TSContextGetterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSContextGetterTest.m; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 				B7257DE21C50B28300EC0A1D /* libz.1.dylib in Frameworks */,
 				B7257DE01C50B26C00EC0A1D /* libstdc++.6.0.9.dylib in Frameworks */,
 				B7257DDE1C50B24F00EC0A1D /* libiconv.2.dylib in Frameworks */,
+				B72CA3E51C6300A600A8D5D8 /* UvMOS_C_for_iOS.a in Frameworks */,
 				B7257DDC1C50B23500EC0A1D /* libbz2.1.0.dylib in Frameworks */,
 				B7257DDA1C50B20E00EC0A1D /* QuartzCore.framework in Frameworks */,
 				B7257DD81C50B20200EC0A1D /* OpenGLES.framework in Frameworks */,
@@ -275,6 +280,15 @@
 				B7082EA21C5F29AF001C1215 /* TSYoukuSIDAndTokenAndEqGetterTest.m */,
 			);
 			name = VideoFragmentAnalysis;
+			sourceTree = "<group>";
+		};
+		B72CA3E21C6300A600A8D5D8 /* U-vMOS_SDK_for_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				B72CA3E31C6300A600A8D5D8 /* UvMOS_C_for_iOS.a */,
+				B72CA3E41C6300A600A8D5D8 /* UvMOS_Outer_Api.h */,
+			);
+			path = "U-vMOS_SDK_for_iOS";
 			sourceTree = "<group>";
 		};
 		B760F0B91C58906300A3A7A3 /* Common */ = {
@@ -550,6 +564,7 @@
 		B7F7BE5D1C58DE630019D879 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				B72CA3E21C6300A600A8D5D8 /* U-vMOS_SDK_for_iOS */,
 				B7F7BE5E1C58DE9D0019D879 /* Vitamio */,
 				B7257DE11C50B28300EC0A1D /* libz.1.dylib */,
 				B7257DDF1C50B26C00EC0A1D /* libstdc++.6.0.9.dylib */,
@@ -643,6 +658,7 @@
 				B7F7BE541C58CAC30019D879 /* TSIPAndISP.h in Headers */,
 				B7F7BE501C58CAB20019D879 /* TSIPAndISPGetter.h in Headers */,
 				B7B9730A1C5E01F400CD8CC2 /* TSTimeUtil.h in Headers */,
+				B72CA3E61C6300A600A8D5D8 /* UvMOS_Outer_Api.h in Headers */,
 				B774CEC01C5DF24E00F014C7 /* TSYoukuSIDAndTokenAndEqGetter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -912,6 +928,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdPart/Vitamio",
+					"$(PROJECT_DIR)/ThirdPart/U-vMOS_SDK_for_iOS",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.TaskService;
@@ -936,6 +953,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdPart/Vitamio",
+					"$(PROJECT_DIR)/ThirdPart/U-vMOS_SDK_for_iOS",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.TaskService;

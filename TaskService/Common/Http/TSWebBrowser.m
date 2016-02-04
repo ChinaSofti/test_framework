@@ -170,6 +170,17 @@
       [mutableRequest addValue:obj forHTTPHeaderField:key];
     }];
 
+    // 设置Cookie
+    if (_cookies)
+    {
+        NSMutableString *cookiesStr = [[NSMutableString alloc] init];
+        [_cookies enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL *_Nonnull stop) {
+          //
+          [cookiesStr appendFormat:@"%@=%@;", key, obj];
+        }];
+
+        [mutableRequest addValue:cookiesStr forHTTPHeaderField:@"Cookie"];
+    }
     request = [mutableRequest copy];
     return request;
 }
