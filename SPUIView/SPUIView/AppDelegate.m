@@ -32,6 +32,20 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     self.window.rootViewController = [SVTabBarController new];
     // 3.让显示并成为主窗口
     [self.window makeKeyAndVisible];
+    
+    
+//添加闪屏页
+            self.window.rootViewController.view.alpha = 0;
+            UIImageView *splashImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"1.0"]];
+            splashImageView.frame = self.window.bounds;
+            [self.window addSubview:splashImageView];
+            [UIView animateWithDuration:5 animations:^{
+                self.window.rootViewController.view.alpha = 1.0;
+            } completion:^(BOOL finished) {
+                [splashImageView removeFromSuperview];
+            }];
+    
+
     return YES;
     
     
