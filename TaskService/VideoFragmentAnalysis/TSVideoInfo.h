@@ -16,11 +16,19 @@
 
 // 视频URL
 @property NSString *_videoURL;
+
+// vid
+@property NSString *_vid;
+
 // 视频title
 @property NSString *_title;
 
+
 // 视频分片信息
-@property NSArray *_fragments;
+//@property NSArray *_fragments;
+
+// 视频分片真实地址
+@property NSString *_videoRealURL;
 
 /**
  *  使用视频URL进行初始化

@@ -47,7 +47,7 @@
     TSInfo (@"request URL:%@", url);
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url
                                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                              timeoutInterval:30];
+                                              timeoutInterval:60];
     // NSURLRequest *request = [NSURLRequest requestWithURL:url];    NSURLConnection *conn =
     NSURLConnection *conn =
     [[NSURLConnection alloc] initWithRequest:request delegate:(id)self startImmediately:NO];

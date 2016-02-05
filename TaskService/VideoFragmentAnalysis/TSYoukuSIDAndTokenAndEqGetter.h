@@ -16,7 +16,7 @@
 }
 
 
-- (id)initWithEncrpytString:(NSString *)encryptString vid:(NSString *)vid;
+- (id)initWithEncrpytString:(NSString *)encryptString streamFileid:(NSString *)streamFileid;
 
 - (NSString *)getSID;
 

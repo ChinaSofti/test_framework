@@ -17,16 +17,17 @@
 @implementation TSVideoAnalyser_youku
 
 // 获取密文 ip等信息
-NSString *_toGetSourceCode = @"http://play.youku.com/play/get.json?vid=%@&ct=12";
+static NSString *_toGetSourceCode = @"http://play.youku.com/play/get.json?vid=%@&ct=12";
 
 // 正则用于提取vid
-NSString *_VID_REG = @"^http://v.youku.com/v_show/id_([0-9a-zA-Z=]+)([_a-z0-9]+)?\\.html";
+static NSString *_VID_REG = @"^http://v.youku.com/v_show/id_([0-9a-zA-Z=]+)([_a-z0-9]+)?\\.html";
 
 // 获取视频分片信息
-NSString *_getVideoFragmentInfoURL = @"http://pl.youku.com/playlist/"
-                                     @"m3u8?vid=%@&type=%@&ts=%@&keyframe=1&ep=%@&sid=%@&token=%@&"
-                                     @"ctype=12&ev=1&oip=%@";
-NSString *_getVideoFragmentInfoURL2 = @"http://pl.youku.com/playlist/m3u8?ts=%@&keyframe=0&vid=%@&type=hd2&ypremium=1&oip=%@&token=%@&sid=%@&did=%@&ev=1&ctype=20&ep=%@";
+static NSString *_getVideoFragmentInfoURL =
+@"http://k.youku.com/player/getFlvPath/sid/%@_00/st/"
+@"flv/fileid/"
+@"%@?K=%@&ctype=12&ev=1&ts=%d&oip=%@&token=%@&ep=%@&yxon=1&special=true&hd=0&myp=0&ymovie=1&ypp=2";
+
 
 /**
  *  根据视频URL查询和分析视频信息
@@ -76,28 +77,67 @@ NSString *_getVideoFragmentInfoURL2 = @"http://pl.youku.com/playlist/m3u8?ts=%@&
     NSString *oip = [[dataOfVideoSourceCodeJson valueForKey:@"security"] valueForKey:@"ip"];
     NSString *encryptString =
     [[dataOfVideoSourceCodeJson valueForKey:@"security"] valueForKey:@"encrypt_string"];
-    TSYoukuSIDAndTokenAndEqGetter *sidAndTokenAndEqGetter =
-    [[TSYoukuSIDAndTokenAndEqGetter alloc] initWithEncrpytString:encryptString vid:vid];
-    NSLog (@"encryptString:%@", encryptString);
-    NSLog (@"oip:%@", oip);
-    NSString *sid = [sidAndTokenAndEqGetter getSID];
-    NSString *token = [sidAndTokenAndEqGetter getToken];
-    NSString *ep = [sidAndTokenAndEqGetter getEq];
-    NSString *ts = [TSTimeUtil getCurTimeStamp];
+
+    NSString *segUrl = nil;
+    NSArray *streamArray = [dataOfVideoSourceCodeJson valueForKey:@"stream"];
+    for (NSDictionary *streamObj in streamArray)
+    {
+        //
+        NSString *streamType = [streamObj valueForKey:@"stream_type"];
+        // 4K 目前手机APP只测试hd3的视频源
+        if ([streamType isEqualToString:@"mp4hd3"])
+        {
+            NSString *streamFileid = [streamObj valueForKey:@"stream_fileid"];
 
 
-    NSString *framgentDetailQueryURL =
-    [NSString stringWithFormat:_getVideoFragmentInfoURL2, ts, vid, oip, token, sid, ts, ep];
+            TSYoukuSIDAndTokenAndEqGetter *sidAndTokenAndEqGetter =
+            [[TSYoukuSIDAndTokenAndEqGetter alloc] initWithEncrpytString:encryptString
+                                                            streamFileid:streamFileid];
+            NSString *sid = [sidAndTokenAndEqGetter getSID];
+            NSString *token = [sidAndTokenAndEqGetter getToken];
+            NSString *ep = [sidAndTokenAndEqGetter getEq];
+            //            NSString *ts = [TSTimeUtil getCurTimeStamp];
 
+
+            NSArray *segsArray = [streamObj valueForKey:@"segs"];
+            NSString *segsKey = [segsArray[0] valueForKey:@"key"];
+            long millisecondVideo = [[segsArray[0] valueForKey:@"total_milliseconds_video"] longLongValue];
+            //            int size = [[segsArray[0] valueForKey:@"size"] intValue];
+            // player/getFlvPath/sid/%s_00/st/flv/fileid/%s?K=%s&ctype=12&ev=1&ts=%s&oip=%s&token=%s&ep=%s"
+            segUrl = [NSString stringWithFormat:_getVideoFragmentInfoURL, sid, streamFileid,
+                                                segsKey, (millisecondVideo / 1000), oip, token, ep];
+        }
+    }
+
+    if (!segUrl)
+    {
+        return nil;
+    }
+
+    NSLog (@"segURL %@", segUrl);
     TSWebBrowser *browser3 = [[TSWebBrowser alloc] init];
     [browser3 addHeader:@"Referer" value:_videoURL];
-    [browser3 addCookies:@"r" value:@"rasdadsasdasdadsad"];
-     [browser3 addCookies:@"__ysuid" value:[TSYouKu__ysuid getYsuid:1]];
-    [browser3 browser:framgentDetailQueryURL requestType:GET];
-    NSString *reponseReuslt =
-    [[NSString alloc] initWithData:[browser3 getResponseData] encoding:NSUTF8StringEncoding];
-    NSLog (@"%@", reponseReuslt);
-    return nil;
+    [browser3 browser:segUrl requestType:GET];
+    NSData *jsonData3 = [browser3 getResponseData];
+    NSLog (@"data : %@", [[NSString alloc] initWithData:jsonData3 encoding:NSUTF8StringEncoding]);
+
+    NSError *error3;
+    id videoRealURLJson =
+    [NSJSONSerialization JSONObjectWithData:jsonData3 options:0 error:&error3];
+    if (error)
+    {
+        TSError (@"%@", error);
+        return _videoInfo;
+    }
+
+    NSString *videoRealURL = [videoRealURLJson[0] valueForKey:@"server"];
+    NSLog (@"videoRealURL: %@", videoRealURL);
+
+    NSString *videoTitle = [[dataOfVideoSourceCodeJson valueForKey:@"video"] valueForKey:@"title"];
+    _videoInfo._vid = vid;
+    _videoInfo._title = videoTitle;
+    _videoInfo._videoRealURL = videoRealURL;
+    return _videoInfo;
 }
 
 

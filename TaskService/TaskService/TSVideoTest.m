@@ -35,7 +35,10 @@ const static int executeTotalTimes = 5;
     _showVideoView = showVideoView;
     if (!_videoPlayer)
     {
-        NSString *videoPath = [self findVideoInDocuments];
+        //        NSString *videoPath = [self findVideoInDocuments];
+        NSString *videoPath = @"http://103.224.233.16/youku/65744604BAD3582EEFF01F6702/"
+                              @"030002020052E2D9CB62AF06257BB6BF9A162C-FB9B-73B8-CC14-"
+                              @"97393590DE7F.flv";
         NSLog (@"videoPath:%@", videoPath);
         _videoURL = [NSURL fileURLWithPath:videoPath];
         //初始化播放器

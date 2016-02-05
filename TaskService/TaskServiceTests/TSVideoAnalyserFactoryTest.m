@@ -19,7 +19,8 @@
 {
     TSVideoAnalyser *analyser =
     [TSVideoAnalyserFactory createAnalyser:@"http://v.youku.com/v_show/id_XODMxMzYyMjgw.html"];
-    [analyser analyse];
+    TSVideoInfo *videoInfo = [analyser analyse];
+    NSLog (@"%@", videoInfo._videoRealURL);
 }
 
 @end

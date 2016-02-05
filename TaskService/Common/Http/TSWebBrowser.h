@@ -35,7 +35,7 @@ typedef enum {
     NSMutableDictionary *_parameters;
     NSMutableDictionary *_returnHeader;
     NSMutableDictionary *_returnCookies;
-    NSData *_returnData;
+    NSMutableData *_returnData;
     NSString *_targetURL;
     TSRequestType _requestType;
     // 请求是否结束

@@ -6,17 +6,17 @@
 //  Copyright © 2016 Huawei. All rights reserved.
 //
 
+
 #import "TSDecode64.h"
 #import "TSLog.h"
 #import "TSRc4.h"
 #import "TSYoukuSIDAndTokenAndEqGetter.h"
-
 @implementation TSYoukuSIDAndTokenAndEqGetter
 
 
-- (id)initWithEncrpytString:(NSString *)encryptString vid:(NSString *)vid
+- (id)initWithEncrpytString:(NSString *)encryptString streamFileid:(NSString *)streamFileid
 {
-    TSDebug (@"vid = %@   encryptString = %@", vid, encryptString);
+    TSDebug (@"encryptString = %@,  streamFileid = %@ ", encryptString, streamFileid);
     // 计算 sid 和 token
     NSString *keyA = @"becaf9be";
     NSMutableArray *array = [TSDecode64 decode64:encryptString];
@@ -27,7 +27,7 @@
 
     // 计算 eq 的值
     NSString *keyB = @"bf7e5f01";
-    NSString *whole = [NSString stringWithFormat:@"%@_%@_%@", _sid, vid, _token];
+    NSString *whole = [NSString stringWithFormat:@"%@_%@_%@", _sid, streamFileid, _token];
     TSDebug (@"sid_vid_token = %@", whole);
 
     NSMutableArray *array2 = [[NSMutableArray alloc] init];
@@ -37,9 +37,10 @@
         [array2 addObject:myB0];
     }
     NSString *eq = [TSRc4 Rc4:keyB byteArray:array2 isToBase64:true];
-    _ep = [eq stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-    TSDebug (@"eq = %@", _ep);
-
+    _ep = (NSString *)CFBridgingRelease (
+    CFURLCreateStringByAddingPercentEscapes (nil, (CFStringRef)eq, nil,
+                                             (CFStringRef) @"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
+    TSDebug (@"ep before:%@  convert to:%@", eq, _ep);
     return self;
 }
 

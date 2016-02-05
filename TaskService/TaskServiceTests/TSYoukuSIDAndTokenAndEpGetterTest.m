@@ -9,18 +9,18 @@
 #import "TSYoukuSIDAndTokenAndEqGetter.h"
 #import <XCTest/XCTest.h>
 
-@interface TSYoukuSIDAndTokenAndEqGetterTest : XCTestCase
+@interface TSYoukuSIDAndTokenAndEpGetterTest : XCTestCase
 
 @end
 
-@implementation TSYoukuSIDAndTokenAndEqGetterTest
+@implementation TSYoukuSIDAndTokenAndEpGetterTest
 
 - (void)testExample
 {
     TSYoukuSIDAndTokenAndEqGetter *getter = [[TSYoukuSIDAndTokenAndEqGetter alloc]
     initWithEncrpytString:@"NQXVSgwdL77f0/DB9eJxU4b8vxtu1wXKXR0="
-             streamFileid:@"XODMxMzYyMjgw"];
-    NSLog (@"sid:%@  token:%@  eq:%@", getter.getSID, getter.getToken, getter.getEq);
+                      vid:@"XODMxMzYyMjgw"];
+    // NSLog (@"sid:%@  token:%@  ep:%@", getter.getSID, getter.getToken, getter.getEp);
 }
 
 @end

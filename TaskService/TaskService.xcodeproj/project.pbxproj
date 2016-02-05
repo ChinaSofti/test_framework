@@ -373,15 +373,15 @@
 		B76C070B1C5B108F00B41859 /* VideoFragmentAnalysis */ = {
 			isa = PBXGroup;
 			children = (
-				B76C07191C5B10C900B41859 /* TSVideoAnalyser.h */,
-				B76C071D1C5B10C900B41859 /* TSVideoAnalyserFactory.h */,
-				B76C071B1C5B10C900B41859 /* TSVideoFragment.h */,
-				B774CE521C5C4E8500F014C7 /* TSVideoInfo.h */,
-				B76C071A1C5B10C900B41859 /* TSVideoAnalyser.m */,
-				B76C071E1C5B10C900B41859 /* TSVideoAnalyserFactory.m */,
-				B76C071C1C5B10C900B41859 /* TSVideoFragment.m */,
-				B774CE531C5C4E8500F014C7 /* TSVideoInfo.m */,
 				B76C07251C5B12B200B41859 /* Analyser */,
+				B76C07191C5B10C900B41859 /* TSVideoAnalyser.h */,
+				B76C071A1C5B10C900B41859 /* TSVideoAnalyser.m */,
+				B76C071D1C5B10C900B41859 /* TSVideoAnalyserFactory.h */,
+				B76C071E1C5B10C900B41859 /* TSVideoAnalyserFactory.m */,
+				B76C071B1C5B10C900B41859 /* TSVideoFragment.h */,
+				B76C071C1C5B10C900B41859 /* TSVideoFragment.m */,
+				B774CE521C5C4E8500F014C7 /* TSVideoInfo.h */,
+				B774CE531C5C4E8500F014C7 /* TSVideoInfo.m */,
 			);
 			name = VideoFragmentAnalysis;
 			sourceTree = "<group>";
@@ -915,6 +915,7 @@
 		B78C67831C50707B005B221A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

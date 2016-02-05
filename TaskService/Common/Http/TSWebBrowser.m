@@ -14,6 +14,10 @@
  */
 @implementation TSWebBrowser
 
+static NSString *useragent = @"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_1 like Mac OS X) "
+                             @"AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Mobile/9B206 "
+                             @"Safari/601.3.9";
+
 
 /**
  *  添加http请求头
@@ -140,7 +144,7 @@
     NSURL *url = [[NSURL alloc] initWithString:_targetURL];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url
                                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                              timeoutInterval:30];
+                                              timeoutInterval:60];
 
     NSURLConnection *conn =
     [[NSURLConnection alloc] initWithRequest:request delegate:(id)self startImmediately:NO];
@@ -164,11 +168,16 @@
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     // 设置请求类型
     //    [mutableRequest setHTTPMethod:(TSRequestTypeValue[_requestType])];
+    if (_header)
+    {
+        [mutableRequest addValue:useragent forHTTPHeaderField:@"User-Agent"];
 
-    [_header enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL *_Nonnull stop) {
-      // 拷贝用户新设置的属性到NSURLRequest中
-      [mutableRequest addValue:obj forHTTPHeaderField:key];
-    }];
+        [_header enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL *_Nonnull stop) {
+          // 拷贝用户新设置的属性到NSURLRequest中
+          [mutableRequest addValue:obj forHTTPHeaderField:key];
+        }];
+    }
+
 
     // 设置Cookie
     if (_cookies)
@@ -202,13 +211,16 @@
 
     // 注意这里将NSURLResponse对象转换成NSHTTPURLResponse对象才能去
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    NSInteger statusCode = [httpResponse statusCode];
+    if (statusCode != 200)
+    {
+        TSWarn (@"reponse status code:%ld", statusCode);
+    }
+
     if ([response respondsToSelector:@selector (allHeaderFields)])
     {
         NSDictionary *dictionary = [httpResponse allHeaderFields];
         [dictionary enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL *_Nonnull stop) {
-
-
-          NSLog (@"%@:%@", key, obj);
 
           [_returnHeader setObject:obj forKey:key];
 
@@ -235,13 +247,22 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    _returnData = data;
-    finished = true;
+    if (!_returnData)
+    {
+        _returnData = [[NSMutableData alloc] init];
+    }
+
+    [_returnData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     TSError (@"request URL:%@  Error:%@", _targetURL, error);
+    finished = true;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
     finished = true;
 }
 

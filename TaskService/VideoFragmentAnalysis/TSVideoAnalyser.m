@@ -26,6 +26,7 @@
 - (id)initWithURL:(NSString *)videoURL
 {
     _videoURL = videoURL;
+    _videoInfo = [[TSVideoInfo alloc] initWithURL:videoURL];
     return self;
 }
 
