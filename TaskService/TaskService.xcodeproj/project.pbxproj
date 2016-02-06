@@ -50,8 +50,8 @@
 		B76C06F51C5B03D400B41859 /* TSContextGetterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C06F41C5B03D400B41859 /* TSContextGetterTest.m */; };
 		B76C071F1C5B10C900B41859 /* TSVideoAnalyser.h in Headers */ = {isa = PBXBuildFile; fileRef = B76C07191C5B10C900B41859 /* TSVideoAnalyser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B76C07201C5B10C900B41859 /* TSVideoAnalyser.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C071A1C5B10C900B41859 /* TSVideoAnalyser.m */; };
-		B76C07211C5B10C900B41859 /* TSVideoFragment.h in Headers */ = {isa = PBXBuildFile; fileRef = B76C071B1C5B10C900B41859 /* TSVideoFragment.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B76C07221C5B10C900B41859 /* TSVideoFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C071C1C5B10C900B41859 /* TSVideoFragment.m */; };
+		B76C07211C5B10C900B41859 /* TSVideoSegement.h in Headers */ = {isa = PBXBuildFile; fileRef = B76C071B1C5B10C900B41859 /* TSVideoSegement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B76C07221C5B10C900B41859 /* TSVideoSegement.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C071C1C5B10C900B41859 /* TSVideoSegement.m */; };
 		B76C07231C5B10C900B41859 /* TSVideoAnalyserFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = B76C071D1C5B10C900B41859 /* TSVideoAnalyserFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B76C07241C5B10C900B41859 /* TSVideoAnalyserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C071E1C5B10C900B41859 /* TSVideoAnalyserFactory.m */; };
 		B76C07291C5B12F200B41859 /* TSVideoAnalyser_youku.h in Headers */ = {isa = PBXBuildFile; fileRef = B76C07271C5B12F200B41859 /* TSVideoAnalyser_youku.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -152,8 +152,8 @@
 		B76C06F41C5B03D400B41859 /* TSContextGetterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSContextGetterTest.m; sourceTree = "<group>"; };
 		B76C07191C5B10C900B41859 /* TSVideoAnalyser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSVideoAnalyser.h; path = VideoFragmentAnalysis/TSVideoAnalyser.h; sourceTree = "<group>"; };
 		B76C071A1C5B10C900B41859 /* TSVideoAnalyser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSVideoAnalyser.m; path = VideoFragmentAnalysis/TSVideoAnalyser.m; sourceTree = "<group>"; };
-		B76C071B1C5B10C900B41859 /* TSVideoFragment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSVideoFragment.h; path = VideoFragmentAnalysis/TSVideoFragment.h; sourceTree = "<group>"; };
-		B76C071C1C5B10C900B41859 /* TSVideoFragment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSVideoFragment.m; path = VideoFragmentAnalysis/TSVideoFragment.m; sourceTree = "<group>"; };
+		B76C071B1C5B10C900B41859 /* TSVideoSegement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSVideoSegement.h; path = VideoFragmentAnalysis/TSVideoSegement.h; sourceTree = "<group>"; };
+		B76C071C1C5B10C900B41859 /* TSVideoSegement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSVideoSegement.m; path = VideoFragmentAnalysis/TSVideoSegement.m; sourceTree = "<group>"; };
 		B76C071D1C5B10C900B41859 /* TSVideoAnalyserFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSVideoAnalyserFactory.h; path = VideoFragmentAnalysis/TSVideoAnalyserFactory.h; sourceTree = "<group>"; };
 		B76C071E1C5B10C900B41859 /* TSVideoAnalyserFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSVideoAnalyserFactory.m; path = VideoFragmentAnalysis/TSVideoAnalyserFactory.m; sourceTree = "<group>"; };
 		B76C07271C5B12F200B41859 /* TSVideoAnalyser_youku.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSVideoAnalyser_youku.h; path = VideoFragmentAnalysis/TSVideoAnalyser_youku.h; sourceTree = "<group>"; };
@@ -378,8 +378,8 @@
 				B76C071A1C5B10C900B41859 /* TSVideoAnalyser.m */,
 				B76C071D1C5B10C900B41859 /* TSVideoAnalyserFactory.h */,
 				B76C071E1C5B10C900B41859 /* TSVideoAnalyserFactory.m */,
-				B76C071B1C5B10C900B41859 /* TSVideoFragment.h */,
-				B76C071C1C5B10C900B41859 /* TSVideoFragment.m */,
+				B76C071B1C5B10C900B41859 /* TSVideoSegement.h */,
+				B76C071C1C5B10C900B41859 /* TSVideoSegement.m */,
 				B774CE521C5C4E8500F014C7 /* TSVideoInfo.h */,
 				B774CE531C5C4E8500F014C7 /* TSVideoInfo.m */,
 			);
@@ -636,7 +636,7 @@
 				B774CE641C5C579A00F014C7 /* TSLog.h in Headers */,
 				B7A0A3C21C5A6F860099CF8B /* TSContext.h in Headers */,
 				B76C07331C5B15B300B41859 /* TSVideoAnalyser_youtube.h in Headers */,
-				B76C07211C5B10C900B41859 /* TSVideoFragment.h in Headers */,
+				B76C07211C5B10C900B41859 /* TSVideoSegement.h in Headers */,
 				B7082E921C5F06E4001C1215 /* TSVideoTestSectionResult.h in Headers */,
 				B7082E9B1C5F076C001C1215 /* TSVideoContext.h in Headers */,
 				B7082E901C5F06E4001C1215 /* TSVideoTest.h in Headers */,
@@ -764,7 +764,7 @@
 				B783296A1C5F2B39005E19B4 /* TSYouKu__ysuid.m in Sources */,
 				B7B973021C5DFBC100CD8CC2 /* TSDecode64.m in Sources */,
 				B7B973011C5DFBB300CD8CC2 /* TSRc4.m in Sources */,
-				B76C07221C5B10C900B41859 /* TSVideoFragment.m in Sources */,
+				B76C07221C5B10C900B41859 /* TSVideoSegement.m in Sources */,
 				B774CE6B1C5C57A300F014C7 /* GTMBase64.m in Sources */,
 				B76C07201C5B10C900B41859 /* TSVideoAnalyser.m in Sources */,
 				B76C07341C5B15B300B41859 /* TSVideoAnalyser_youtube.m in Sources */,

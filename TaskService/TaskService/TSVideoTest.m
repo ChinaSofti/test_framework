@@ -7,6 +7,8 @@
 //
 
 #import "TSLog.h"
+#import "TSVideoAnalyser.h"
+#import "TSVideoAnalyserFactory.h"
 #import "TSVideoPlayer.h"
 #import "TSVideoTest.h"
 #import "TSVideoTestSummaryResult.h"
@@ -35,11 +37,12 @@ const static int executeTotalTimes = 5;
     _showVideoView = showVideoView;
     if (!_videoPlayer)
     {
-        //        NSString *videoPath = [self findVideoInDocuments];
-        NSString *videoPath = @"http://103.224.233.16/youku/65744604BAD3582EEFF01F6702/"
-                              @"030002020052E2D9CB62AF06257BB6BF9A162C-FB9B-73B8-CC14-"
-                              @"97393590DE7F.flv";
-        NSLog (@"videoPath:%@", videoPath);
+        TSVideoAnalyser *analyser =
+        [TSVideoAnalyserFactory createAnalyser:@"http://v.youku.com/v_show/id_XODMxMzYyMjgw.html"];
+        TSVideoInfo *videoInfo = [analyser analyse];
+        TSVideoSegement *segement = [videoInfo getAllSegement][0];
+        NSString *videoPath = [segement videoSegementURL];
+        TSInfo (@"videoPath:%@", videoPath);
         _videoURL = [NSURL fileURLWithPath:videoPath];
         //初始化播放器
         _videoPlayer = [[TSVideoPlayer alloc] initWithURL:_showVideoView videoPath:_videoURL];
@@ -105,49 +108,5 @@ const static int executeTotalTimes = 5;
         }
     }
 }
-
-
-- (NSString *)findVideoInDocuments
-{
-    // 123.mkv
-    NSString *documentsDirectory = [NSString stringWithFormat:@"%@/Documents", NSHomeDirectory ()];
-    NSLog (documentsDirectory, nil);
-    NSFileManager *fileManager = [[NSFileManager alloc] init];
-
-    NSArray *subPaths = [fileManager contentsOfDirectoryAtPath:documentsDirectory error:nil];
-    if (subPaths)
-    {
-        for (NSString *subPath in subPaths)
-        {
-            //
-            if ([self isMediaFile:[subPath pathExtension]])
-            {
-                NSString *path = [documentsDirectory stringByAppendingPathComponent:subPath];
-                return path;
-            }
-        }
-    }
-    return nil;
-}
-
-- (BOOL)isMediaFile:(NSString *)pathExtension
-{
-    //可用格式
-    /*
-     ".M1V", ".MP2", ".MPE", ".MPG", ".WMAA",
-     ".MPEG", ".MP4", ".M4V", ".3GP", ".3GPP", ".3G2", ".3GPP2", ".MKV",
-     ".WEBM", ".MTS", ".TS", ".TP", ".WMV", ".ASF", ".ASX", ".FLV",
-     ".MOV", ".QT", ".RM", ".RMVB", ".VOB", ".DAT", ".AVI", ".OGV",
-     ".OGG", ".VIV", ".VIVO", ".WTV", ".AVS", ".SWF", ".YUV"
-     */
-    //    NSString *ext = [pathExtension uppercaseString];
-    //    if ([ext isEqualToString:@"FLV"])
-    //    {
-    //        return YES;
-    //    }
-
-    return YES;
-}
-
 
 @end

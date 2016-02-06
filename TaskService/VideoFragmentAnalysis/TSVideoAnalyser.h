@@ -6,8 +6,8 @@
 //  Copyright © 2016 Huawei. All rights reserved.
 //
 
-#import "TSVideoFragment.h"
 #import "TSVideoInfo.h"
+#import "TSVideoSegement.h"
 #import <Foundation/Foundation.h>
 
 /**

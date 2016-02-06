@@ -14,7 +14,7 @@
 /**
  *  对视频URL进行分析
  */
-- (TSVideoFragment *)analyse
+- (TSVideoSegement *)analyse
 {
     return nil;
 }

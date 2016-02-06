@@ -78,6 +78,7 @@ static NSString *_getVideoFragmentInfoURL =
     NSString *encryptString =
     [[dataOfVideoSourceCodeJson valueForKey:@"security"] valueForKey:@"encrypt_string"];
 
+
     NSString *segUrl = nil;
     NSArray *streamArray = [dataOfVideoSourceCodeJson valueForKey:@"stream"];
     for (NSDictionary *streamObj in streamArray)
@@ -96,47 +97,57 @@ static NSString *_getVideoFragmentInfoURL =
             NSString *sid = [sidAndTokenAndEqGetter getSID];
             NSString *token = [sidAndTokenAndEqGetter getToken];
             NSString *ep = [sidAndTokenAndEqGetter getEq];
-            //            NSString *ts = [TSTimeUtil getCurTimeStamp];
-
 
             NSArray *segsArray = [streamObj valueForKey:@"segs"];
-            NSString *segsKey = [segsArray[0] valueForKey:@"key"];
-            long millisecondVideo = [[segsArray[0] valueForKey:@"total_milliseconds_video"] longLongValue];
-            //            int size = [[segsArray[0] valueForKey:@"size"] intValue];
-            // player/getFlvPath/sid/%s_00/st/flv/fileid/%s?K=%s&ctype=12&ev=1&ts=%s&oip=%s&token=%s&ep=%s"
-            segUrl = [NSString stringWithFormat:_getVideoFragmentInfoURL, sid, streamFileid,
-                                                segsKey, (millisecondVideo / 1000), oip, token, ep];
+            for (int i = 0; i < [segsArray count]; i++)
+            {
+                NSDictionary *segementJson = segsArray[0];
+                NSString *segsKey = [segementJson valueForKey:@"key"];
+                long millisecondVideo = [[segementJson valueForKey:@"total_milliseconds_video"] longLongValue];
+                segUrl = [NSString stringWithFormat:_getVideoFragmentInfoURL, sid, streamFileid,
+                                                    segsKey, (millisecondVideo / 1000), oip, token, ep];
+
+                int size = [[segsArray[0] valueForKey:@"size"] intValue];
+
+
+                if (!segUrl)
+                {
+                    return nil;
+                }
+
+                //                NSLog (@"segURL %@", segUrl);
+                TSWebBrowser *browser3 = [[TSWebBrowser alloc] init];
+                [browser3 addHeader:@"Referer" value:_videoURL];
+                [browser3 browser:segUrl requestType:GET];
+                NSData *jsonData3 = [browser3 getResponseData];
+                TSDebug (@"data : %@",
+                         [[NSString alloc] initWithData:jsonData3 encoding:NSUTF8StringEncoding]);
+
+                NSError *error3;
+                id videoRealURLJson =
+                [NSJSONSerialization JSONObjectWithData:jsonData3 options:0 error:&error3];
+                if (error)
+                {
+                    TSError (@"%@", error);
+                    return _videoInfo;
+                }
+
+                NSString *videoRealURL = [videoRealURLJson[0] valueForKey:@"server"];
+
+                TSVideoSegement *segement = [[TSVideoSegement alloc] init];
+                [segement setSegementID:i];
+                [segement setSize:size];
+                [segement setDuration:(millisecondVideo / 1000)];
+                [segement setVideoSegementURL:videoRealURL];
+                [_videoInfo addSegement:segement];
+            }
         }
     }
 
-    if (!segUrl)
-    {
-        return nil;
-    }
-
-    NSLog (@"segURL %@", segUrl);
-    TSWebBrowser *browser3 = [[TSWebBrowser alloc] init];
-    [browser3 addHeader:@"Referer" value:_videoURL];
-    [browser3 browser:segUrl requestType:GET];
-    NSData *jsonData3 = [browser3 getResponseData];
-    NSLog (@"data : %@", [[NSString alloc] initWithData:jsonData3 encoding:NSUTF8StringEncoding]);
-
-    NSError *error3;
-    id videoRealURLJson =
-    [NSJSONSerialization JSONObjectWithData:jsonData3 options:0 error:&error3];
-    if (error)
-    {
-        TSError (@"%@", error);
-        return _videoInfo;
-    }
-
-    NSString *videoRealURL = [videoRealURLJson[0] valueForKey:@"server"];
-    NSLog (@"videoRealURL: %@", videoRealURL);
-
     NSString *videoTitle = [[dataOfVideoSourceCodeJson valueForKey:@"video"] valueForKey:@"title"];
-    _videoInfo._vid = vid;
-    _videoInfo._title = videoTitle;
-    _videoInfo._videoRealURL = videoRealURL;
+    [_videoInfo setVid:vid];
+    [_videoInfo setTitle:videoTitle];
+    [_videoInfo setVideoDataJson:jsonData];
     return _videoInfo;
 }
 

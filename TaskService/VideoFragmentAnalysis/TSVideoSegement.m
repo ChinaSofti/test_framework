@@ -6,13 +6,10 @@
 //  Copyright © 2016 Huawei. All rights reserved.
 //
 
-#import "TSVideoFragment.h"
+#import "TSVideoSegement.h"
 
-@implementation TSVideoFragment
+@implementation TSVideoSegement
 
-- (id)initWithURL:(NSString *)videoURL
-{
-    return self;
-}
+@synthesize videoSegementURL, size, duration, segementID;
 
 @end

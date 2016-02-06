@@ -10,6 +10,7 @@
 
 @implementation TSVideoInfo
 
+@synthesize vid, videoURL, videoDataJson, title;
 
 /**
  *  使用视频URL进行初始化
@@ -18,11 +19,35 @@
  *
  *  @return 视频信息对象
  */
-- (id)initWithURL:(NSString *)videoURL
+- (id)initWithURL:(NSString *)_videoURL
 {
-    self._videoURL = videoURL;
+    self.videoURL = _videoURL;
     return self;
 }
 
+/**
+ *  添加视频分片
+ *
+ *  @param segement 分片
+ */
+- (void)addSegement:(TSVideoSegement *)segement
+{
+    if (!_segements)
+    {
+        _segements = [[NSMutableArray alloc] init];
+    }
+
+    [_segements addObject:segement];
+}
+
+/**
+ *  获取所有分片
+ *
+ *  @return 分片
+ */
+- (NSArray *)getAllSegement
+{
+    return _segements;
+}
 
 @end

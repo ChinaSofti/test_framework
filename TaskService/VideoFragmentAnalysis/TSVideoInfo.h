@@ -6,29 +6,31 @@
 //  Copyright © 2016 Huawei. All rights reserved.
 //
 
-#import "TSVideoFragment.h"
+#import "TSVideoSegement.h"
 #import <Foundation/Foundation.h>
 
 /**
  *  视频信息
  */
 @interface TSVideoInfo : NSObject
+{
+    @private
+    // 视频分片信息
+    NSMutableArray *_segements;
+}
+
 
 // 视频URL
-@property NSString *_videoURL;
+@property NSString *videoURL;
 
 // vid
-@property NSString *_vid;
+@property NSString *vid;
 
 // 视频title
-@property NSString *_title;
+@property NSString *title;
 
-
-// 视频分片信息
-//@property NSArray *_fragments;
-
-// 视频分片真实地址
-@property NSString *_videoRealURL;
+// 视频服务器返回的视频Json对象
+@property NSData *videoDataJson;
 
 /**
  *  使用视频URL进行初始化
@@ -38,5 +40,19 @@
  *  @return 视频信息对象
  */
 - (id)initWithURL:(NSString *)videoURL;
+
+/**
+ *  添加视频分片
+ *
+ *  @param segement 分片
+ */
+- (void)addSegement:(TSVideoSegement *)segement;
+
+/**
+ *  获取所有分片
+ *
+ *  @return 分片
+ */
+- (NSArray *)getAllSegement;
 
 @end
