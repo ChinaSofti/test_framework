@@ -6,10 +6,10 @@
 //  Copyright © 2016年 chinasofti. All rights reserved.
 //
 
+#import "SVI18N.h"
 #import "SVTestViewCtrl.h"
 #import "SVTestingCtrl.h"
 #import "SVToolCell.h"
-
 #define kFirstHederH 40
 #define kLastFooterH 140
 
@@ -58,7 +58,8 @@
     _tableView.dataSource = self;
     // 6.定义数组展示图片
     _selectedMA = [NSMutableArray array];
-    NSString *title = I18N(@"VideoTest");
+    NSString *title = I18N (@"VideoTest");
+    //    NSString *title = @"视频测试";
     NSArray *sourceA = @[
         @{
             @"img_normal": @"ic_video_label",

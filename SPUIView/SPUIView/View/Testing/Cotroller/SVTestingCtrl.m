@@ -10,7 +10,8 @@
 #import "SVBackView.h"
 #import "SVPointView.h"
 #import "SVTestingCtrl.h"
-
+#import "SVTimeUtil.h"
+#import "SVVideoTest.h"
 
 @interface SVTestingCtrl ()
 {
@@ -46,6 +47,12 @@
     UILabel *_placeNumLabel;
     UILabel *_resolutionNumLabel;
     UILabel *_bitNumLabel;
+    UILabel *placeLabel;
+    UILabel *resolutionLabel;
+    UILabel *bitLabel;
+    UILabel *bufferLabel;
+    UILabel *speedLabel;
+    UILabel *uvMosLabel;
 }
 
 @property (nonatomic, strong) SVBackView *backView;
@@ -118,19 +125,19 @@
     initWithFrame:CGRectMake (FITWIDTH (5), FITWIDTH (70), FITWIDTH (310), FITHEIGHT (100))];
 
     //设置Label
-    UILabel *uvMosLabel = [CTWBViewTools
+    uvMosLabel = [CTWBViewTools
     createLabelWithFrame:CGRectMake (FITWIDTH (10), FITWIDTH (30), FITWIDTH (80), FITWIDTH (20))
                 withFont:16
           withTitleColor:RGBACOLOR (250, 180, 86, 1)
-               withTitle:@"柱状图"];
+               withTitle:@"0"];
 
-    UILabel *speedLabel = [CTWBViewTools
-    createLabelWithFrame:CGRectMake (uvMosLabel.rightX + FITWIDTH (35), FITWIDTH (30), FITWIDTH (80), FITWIDTH (20))
-                withFont:16
-          withTitleColor:RGBACOLOR (250, 180, 86, 1)
-               withTitle:@"55ms"];
+    speedLabel = [CTWBViewTools createLabelWithFrame:CGRectMake (uvMosLabel.rightX + FITWIDTH (35),
+                                                                 FITWIDTH (30), FITWIDTH (80), FITWIDTH (20))
+                                            withFont:16
+                                      withTitleColor:RGBACOLOR (250, 180, 86, 1)
+                                           withTitle:@"0ms"];
 
-    UILabel *bufferLabel = [CTWBViewTools
+    bufferLabel = [CTWBViewTools
     createLabelWithFrame:CGRectMake (speedLabel.rightX + FITWIDTH (35), FITWIDTH (30), FITWIDTH (50), FITWIDTH (20))
                 withFont:16
           withTitleColor:RGBACOLOR (250, 180, 86, 1)
@@ -199,7 +206,7 @@
     [self.view addSubview:_testingView.middleView];
 
     // 5.添加clock_middle上的label
-    
+
     [self.view addSubview:_testingView.label1];
 
     // 6.传值把指针指向的值显示出来label
@@ -207,7 +214,6 @@
     [self.view addSubview:_testingView.label2];
     _testingView.label2SuperView = _testingView.label2.superview;
     _testingView.label2IndexInSuperView = [self.view.subviews indexOfObject:_testingView.label2];
-    
 }
 
 
@@ -219,13 +225,21 @@
     _videoView = [[UIView alloc]
     initWithFrame:CGRectMake (FITWIDTH (10), FITWIDTH (420), FITWIDTH (150), FITWIDTH (92))];
     //设置颜色
-    _videoView.backgroundColor = [UIColor blueColor];
+    _videoView.backgroundColor = [UIColor blackColor];
 
     //    设置背景图片
-    _videoView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"111"]];
-
+    //    _videoView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"111"]];
     //把panlView添加到中整个视图上
     [self.view addSubview:_videoView];
+
+    long testId = [SVTimeUtil currentMilliSecondStamp];
+    SVVideoTest *videoTest =
+    [[SVVideoTest alloc] initWithView:testId showVideoView:_videoView testDelegate:self];
+    dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      [videoTest test];
+      // TODO liuchengyu 完成测试。跳转到结果页面
+
+    });
 }
 
 #pragma mark - 创建尾footerView
@@ -236,23 +250,23 @@
     _footerView = [[UIView alloc]
     initWithFrame:CGRectMake (FITWIDTH (165), FITWIDTH (420), FITWIDTH (150), FITHEIGHT (92))];
     //设置Label
-    UILabel *placeLabel = [CTWBViewTools
+    placeLabel = [CTWBViewTools
     createLabelWithFrame:CGRectMake (FITWIDTH (0), FITWIDTH (0), FITWIDTH (150), FITWIDTH (20))
                 withFont:16
           withTitleColor:[UIColor blackColor]
-               withTitle:@"北京市"];
+               withTitle:@""];
 
-    UILabel *resolutionLabel = [CTWBViewTools
+    resolutionLabel = [CTWBViewTools
     createLabelWithFrame:CGRectMake (FITWIDTH (80), FITWIDTH (45), FITWIDTH (80), FITWIDTH (20))
                 withFont:10
           withTitleColor:[UIColor blackColor]
-               withTitle:@"378×672"];
+               withTitle:@""];
 
-    UILabel *bitLabel = [CTWBViewTools
+    bitLabel = [CTWBViewTools
     createLabelWithFrame:CGRectMake (FITWIDTH (80), FITWIDTH (70), FITWIDTH (80), FITWIDTH (20))
                 withFont:10
           withTitleColor:[UIColor blackColor]
-               withTitle:@"547.0 kbps"];
+               withTitle:@""];
 
     _placeNumLabel = [CTWBViewTools
     createLabelWithFrame:CGRectMake (FITWIDTH (0), FITWIDTH (20), FITWIDTH (150), FITWIDTH (20))
@@ -362,5 +376,43 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)updateTestResultDelegate:(SVVideoTestContext *)testContext
+                      testResult:(SVVideoTestResult *)testResult
+{
+
+    // UvMOS 综合得分
+    NSArray *testSamples = testResult.videoTestSamples;
+    SVVideoTestSample *testSample = testSamples[testSamples.count - 1];
+    float uvMOSSession = testSample.UvMOSSession;
+
+    //首次缓冲时长
+    long firstBufferTime = testResult.firstBufferTime;
+
+    // 卡顿次数
+    int cuttonTimes = testResult.videoCuttonTimes;
+
+    // 视频服务器位置
+    NSString *location = testContext.videoSegemnetLocation;
+
+    // 视频码率
+    float bitrate = testResult.bitrate;
+
+    // 分辨率
+    NSString *videoResolution = testResult.videoResolution;
+    NSLog (@"uvMOSSession: %f  firstBufferTime:%ld  cuttonTimes:%d  location:%@  bitrate:%f  "
+           @"videoResolution:%@",
+           uvMOSSession, firstBufferTime, cuttonTimes, location, bitrate, videoResolution);
+    dispatch_async (dispatch_get_main_queue (), ^{
+      [placeLabel setText:location];
+      [resolutionLabel setText:videoResolution];
+      [bitLabel setText:[NSString stringWithFormat:@"%.2fkpbs", bitrate]];
+      [bufferLabel setText:[NSString stringWithFormat:@"%d", cuttonTimes]];
+      [speedLabel setText:[NSString stringWithFormat:@"%ldms", firstBufferTime]];
+      [uvMosLabel setText:[NSString stringWithFormat:@"%.2f", uvMOSSession]];
+      [_testingView updateUvMOS:uvMOSSession];
+    });
+}
+
 
 @end

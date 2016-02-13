@@ -8,18 +8,15 @@
 
 #define Button_Tag 10
 
-#import "SVResultViewCtrl.h"
-
 #import "SVDBManager.h"
+#import "SVResultCell.h"
+#import "SVResultViewCtrl.h"
 #import "SVSortTools.h"
 #import "SVSummaryResultModel.h"
-
-#import "SVResultCell.h"
 
 @interface SVResultViewCtrl () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 {
     NSInteger currentBtn;
-    SVSummaryResultModel * _summary;
 }
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -34,6 +31,7 @@
 @implementation SVResultViewCtrl
 {
     UIView *_toolView;
+    SVDBManager *_db;
 }
 
 - (UIImageView *)bottomImageView
@@ -81,6 +79,8 @@
 }
 - (void)viewDidLoad
 {
+    // 初始化数据库和表
+    _db = [SVDBManager sharedInstance];
     [super viewDidLoad];
     //   NSLog(@"SVResultView页面");
 
@@ -91,15 +91,6 @@
 
     //创建数据源
     [self initDataSouce];
-
-   
-    _summary = [[SVSummaryResultModel alloc]init];
-    
-/**
-*   向数据库中添加假数据、运行一次之后请注掉
-*/
-   [self setDic];
-  
 
     //从数据库中读取数据
     [self readDataFromDB];
@@ -120,133 +111,14 @@
     // 1、添加数据之前 先清空数据源
     [_dataSource removeAllObjects];
     // 2、添加数据
-    SVDBManager *manager = [SVDBManager defaultDBManager];
-    [_dataSource addObjectsFromArray:[manager searchAllSVSummaryResultModels]];
+    NSArray *array =
+    [_db executeQuery:[SVSummaryResultModel class]
+                  SQL:@"select * from SVSummaryResultModel order by id desc limit 100 offset 0;"];
+    [_dataSource addObjectsFromArray:array];
 
     // 3、刷新列表
-  [_tableView reloadData];
+    [_tableView reloadData];
 }
-- (void)setDic
-{
-    [self setDic1];
-    [self setDic2];
-    [self setDic3];
-    [self setDic4];
-    [self setDic5];
-    [self setDic6];
-}
-- (void)setDic1
-{
-
-    [_summary setTestId:@"1"];
-    [_summary setType:@"WIFI"];
-    [_summary setDate:@"02/01"];
-    [_summary setTime:@"15:20:30"];
-    
-    [_summary setTestTime:@"1234"];
-    [_summary setUvMOS:@"3.6"];
-    [_summary setLoadTime:@"— —"];
-    [_summary setBandwidth:@"— —"];
-    
-    
-    //保存到数据库
-    SVDBManager *manager = [SVDBManager defaultDBManager];
-    [manager addSVSummaryResultModel:_summary];
-}
-- (void)setDic2
-{
-
-    [_summary setTestId:@"2"];
-    [_summary setType:@"Mobile"];
-    [_summary setDate:@"02/01"];
-    [_summary setTime:@"16:30:56"];
-    
-    [_summary setTestTime:@"2345"];
-    [_summary setUvMOS:@"5.8"];
-    [_summary setLoadTime:@"— —"];
-    [_summary setBandwidth:@"— —"];
-    
-    
-    //保存到数据库
-    SVDBManager *manager = [SVDBManager defaultDBManager];
-    [manager addSVSummaryResultModel:_summary];
-}
-- (void)setDic3
-{
-    
-    [_summary setTestId:@"3"];
-    [_summary setType:@"Mobile"];
-    [_summary setDate:@"02/01"];
-    [_summary setTime:@"17:40:50"];
-    
-    [_summary setTestTime:@"3345"];
-    [_summary setUvMOS:@"— —"];
-    [_summary setLoadTime:@"3.8"];
-    [_summary setBandwidth:@"— —"];
-    
-    
-    //保存到数据库
-    SVDBManager *manager = [SVDBManager defaultDBManager];
-    [manager addSVSummaryResultModel:_summary];
-}
-
-- (void)setDic4
-{
-    
-    [_summary setTestId:@"4"];
-    [_summary setType:@"WIFI"];
-    [_summary setDate:@"02/01"];
-    [_summary setTime:@"18:10:20"];
-    
-    [_summary setTestTime:@"4345"];
-    [_summary setUvMOS:@"— —"];
-    [_summary setLoadTime:@"7.2"];
-    [_summary setBandwidth:@"— —"];
-    
-    
-    //保存到数据库
-    SVDBManager *manager = [SVDBManager defaultDBManager];
-    [manager addSVSummaryResultModel:_summary];
-}
-
-- (void)setDic5
-{
-    
-    [_summary setTestId:@"5"];
-    [_summary setType:@"Mobile"];
-    [_summary setDate:@"02/01"];
-    [_summary setTime:@"19:30:50"];
-    
-    [_summary setTestTime:@"5345"];
-    [_summary setUvMOS:@"— —"];
-    [_summary setLoadTime:@"— —"];
-    [_summary setBandwidth:@"26.6"];
-    
-    
-    //保存到数据库
-    SVDBManager *manager = [SVDBManager defaultDBManager];
-    [manager addSVSummaryResultModel:_summary];
-}
-
-- (void)setDic6
-{
-    
-    [_summary setTestId:@"6"];
-    [_summary setType:@"WIFI"];
-    [_summary setDate:@"02/01"];
-    [_summary setTime:@"20:30:36"];
-    
-    [_summary setTestTime:@"6345"];
-    [_summary setUvMOS:@"— —"];
-    [_summary setLoadTime:@"— —"];
-    [_summary setBandwidth:@"18.8"];
-    
-    
-    //保存到数据库
-    SVDBManager *manager = [SVDBManager defaultDBManager];
-    [manager addSVSummaryResultModel:_summary];
-}
-
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -278,7 +150,11 @@
 
 - (void)removeButtonClicked:(UIButton *)button
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"清空所有测试结果" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                    message:@"清空所有测试结果"
+                                                   delegate:self
+                                          cancelButtonTitle:@"否"
+                                          otherButtonTitles:@"是", nil];
     [alert show];
 }
 /**
@@ -290,12 +166,10 @@
     if (buttonIndex == 1)
     {
         NSLog (@"确定删除所有数据");
-      
+
         //从数据库中删除
-        SVDBManager * manager = [SVDBManager defaultDBManager];
-        
-        [manager deleteSVSummaryResultModel:_summary];
-        
+        [_db executeUpdate:@"delete from SVJunitTestTable;"];
+
         //从UI上删除
         [_dataSource removeAllObjects];
 
@@ -431,36 +305,36 @@
                 image.size.width, image.size.height);
 
     static int a = 0;
-//    if (currentBtn != button.tag - Button_Tag)
-    
+    //    if (currentBtn != button.tag - Button_Tag)
+
     if (a % 2 == 0)
     {
         //显示向上箭头
         UIImage *image = [UIImage imageNamed:@"ic_sort_asc"];
         self.imageView.image = image;
- //       UInt64 recordTime = [[NSDate date] timeIntervalSince1970] * 1000;
+        //       UInt64 recordTime = [[NSDate date] timeIntervalSince1970] * 1000;
         switch (button.tag - Button_Tag)
         {
         case 0:
             //类型
             NSLog (@"类型--箭头向上");
             [SVSortTools sortByType:_dataSource];
-                [SVSortTools reverse:_dataSource];
+            [SVSortTools reverse:_dataSource];
             [_tableView reloadData];
-        
+
             break;
         case 1:
             //时间
             NSLog (@"时间--箭头向上");
             [SVSortTools sortByTime:_dataSource];
-                 [SVSortTools reverse:_dataSource];
+            [SVSortTools reverse:_dataSource];
             [_tableView reloadData];
-                
+
             break;
         case 2:
             // U-vMOS
             [SVSortTools sortByScore:_dataSource];
-                [SVSortTools reverse:_dataSource];
+            [SVSortTools reverse:_dataSource];
             [_tableView reloadData];
             NSLog (@"U-vMOS--箭头向上");
             break;
@@ -468,16 +342,16 @@
             //加载时间
             NSLog (@"加载时间--箭头向上");
             [SVSortTools sortByLoadTime:_dataSource];
-                [SVSortTools reverse:_dataSource];
+            [SVSortTools reverse:_dataSource];
             [_tableView reloadData];
             break;
         case 4:
             //带宽
             NSLog (@"带宽--箭头向上");
             [SVSortTools sortByBandWitdh:_dataSource];
-                 [SVSortTools reverse:_dataSource];
+            [SVSortTools reverse:_dataSource];
             [_tableView reloadData];
-            
+
             break;
 
         default:
@@ -486,53 +360,52 @@
         currentBtn = button.tag - Button_Tag;
     }
     else
-    {//显示向下箭头
+    { //显示向下箭头
         self.imageView.image = [UIImage imageNamed:@"ic_sort"];
-        
+
         switch (button.tag - Button_Tag)
         {
         case 0:
             //类型
             NSLog (@"类型--箭头向下");
-                [SVSortTools sortByType:_dataSource];
-                
-                [_tableView reloadData];
+            [SVSortTools sortByType:_dataSource];
+
+            [_tableView reloadData];
             break;
         case 1:
             //时间
             NSLog (@"时间--箭头向下");
-                [SVSortTools sortByTime:_dataSource];
-               
-                [_tableView reloadData];
+            [SVSortTools sortByTime:_dataSource];
+
+            [_tableView reloadData];
             break;
         case 2:
             // U-vMOS
             NSLog (@"U-vMOS--箭头向下");
-                [SVSortTools sortByScore:_dataSource];
-                
-                [_tableView reloadData];
+            [SVSortTools sortByScore:_dataSource];
+
+            [_tableView reloadData];
             break;
         case 3:
             //加载时间
             NSLog (@"加载时间--箭头向下");
-                [SVSortTools sortByLoadTime:_dataSource];
-                
-                [_tableView reloadData];
+            [SVSortTools sortByLoadTime:_dataSource];
+
+            [_tableView reloadData];
             break;
         case 4:
             //带宽
             NSLog (@"带宽--箭头向下");
-                [SVSortTools sortByBandWitdh:_dataSource];
-               
-                [_tableView reloadData];
+            [SVSortTools sortByBandWitdh:_dataSource];
+
+            [_tableView reloadData];
             break;
 
         default:
             break;
         }
-//        [SVSortTools reverse:_dataSource];
-//        [_tableView reloadData];
-        
+        //        [SVSortTools reverse:_dataSource];
+        //        [_tableView reloadData];
     }
     a++;
     [self.imageView removeFromSuperview];

@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>SPCommon.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>SPService.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>SPUIView.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +23,41 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>56F523DE1C4DCF7F00E6472B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B70FF3D21C6582AA002D571B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B70FF4161C65FB53002D571B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B70FF41F1C65FB53002D571B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B70FF4381C662FBE002D571B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B70FF4411C662FBE002D571B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B70FF45B1C66301D002D571B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B70FF4641C66301D002D571B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

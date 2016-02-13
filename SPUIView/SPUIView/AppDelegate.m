@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SVTabBarController.h"
+#import "SVTestContextGetter.h"
 
 @interface AppDelegate ()
 
@@ -22,35 +23,45 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     //    NSLog(@"%f", [UIScreen mainScreen].scale);
     //    NSLog(@"%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
     //统一设置navigationController.navigationBar.barTintColor为黑色
-//    [[UINavigationBar appearance]
-//     setBarTintColor:[UIColor colorWithRed:53/255 green:65/255 blue:74/255 alpha:1]];
-    [[UINavigationBar appearance]setBarTintColor:RGBACOLOR(37, 55, 64, 1)];
-//    [UIColor colorWithRed:229 / 255.0 green:2 / 255.0 blue:229 / 255.0 alpha:1.0];
+    //    [[UINavigationBar appearance]
+    //     setBarTintColor:[UIColor colorWithRed:53/255 green:65/255 blue:74/255 alpha:1]];
+    [[UINavigationBar appearance] setBarTintColor:RGBACOLOR (37, 55, 64, 1)];
+    //    [UIColor colorWithRed:229 / 255.0 green:2 / 255.0 blue:229 / 255.0 alpha:1.0];
     // 1.初始化一个window
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     // 2.设置根控制器
     self.window.rootViewController = [SVTabBarController new];
     // 3.让显示并成为主窗口
     [self.window makeKeyAndVisible];
-    
-    
-//添加闪屏页
-            self.window.rootViewController.view.alpha = 0;
-            UIImageView *splashImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"1.0"]];
-            splashImageView.frame = self.window.bounds;
-            [self.window addSubview:splashImageView];
-            [UIView animateWithDuration:5 animations:^{
-                self.window.rootViewController.view.alpha = 1.0;
-            } completion:^(BOOL finished) {
-                [splashImageView removeFromSuperview];
-            }];
-    
+
+    NSLog (@"welcome page");
+    dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      // 初始化Test Context
+      SVTestContextGetter *contextGetter = [SVTestContextGetter sharedInstance];
+      // 初始化本机IP和运营商等信息
+      [contextGetter initIPAndISP];
+      //从服务器请求Test Context Data相关信息
+      [contextGetter requestContextDataFromServer];
+      // 解析服务器返回的Test Context Data
+      [contextGetter parseContextData];
+
+    });
+
+    //添加闪屏页
+    self.window.rootViewController.view.alpha = 0;
+    UIImageView *splashImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1.0"]];
+    splashImageView.frame = self.window.bounds;
+    [self.window addSubview:splashImageView];
+    [UIView animateWithDuration:5
+    animations:^{
+      self.window.rootViewController.view.alpha = 1.0;
+    }
+    completion:^(BOOL finished) {
+      [splashImageView removeFromSuperview];
+    }];
+
 
     return YES;
-    
-    
-    
-    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[SVVideoTest parseVideoSegement]:SVVideoTest.m">
+         <PersistentStrings>
+            <PersistentString
+               value = " [[videoInfo getAllSegement] count]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SVVideoPlayer play]:SVVideoPlayer.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "testContext">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

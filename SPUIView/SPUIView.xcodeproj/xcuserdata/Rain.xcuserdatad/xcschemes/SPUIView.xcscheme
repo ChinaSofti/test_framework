@@ -28,6 +28,46 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B70FF3D21C6582AA002D571B"
+               BuildableName = "SPUIViewTests.xctest"
+               BlueprintName = "SPUIViewTests"
+               ReferencedContainer = "container:SPUIView.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B70FF41F1C65FB53002D571B"
+               BuildableName = "Testtest2Tests.xctest"
+               BlueprintName = "Testtest2Tests"
+               ReferencedContainer = "container:SPUIView.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B70FF4411C662FBE002D571B"
+               BuildableName = "SPServiceTests.xctest"
+               BlueprintName = "SPServiceTests"
+               ReferencedContainer = "container:SPUIView.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B70FF4641C66301D002D571B"
+               BuildableName = "SPCommonTests.xctest"
+               BlueprintName = "SPCommonTests"
+               ReferencedContainer = "container:SPUIView.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

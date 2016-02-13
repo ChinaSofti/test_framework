@@ -9,9 +9,10 @@
 /**
  *测试中界面
  **/
+#import "SVVideoTestDelegate.h"
 #import <UIKit/UIKit.h>
 
-@interface SVTestingCtrl : UIViewController
+@interface SVTestingCtrl : UIViewController <SVVideoTestDelegate>
 
 @property (nonatomic, retain) NSArray *selectedA;
 
