@@ -16,4 +16,6 @@
 
 @property (nonatomic, retain) NSArray *selectedA;
 
+@property (nonatomic, retain) UINavigationController *navigationController;
+
 @end

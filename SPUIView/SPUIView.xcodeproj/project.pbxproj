@@ -11,7 +11,6 @@
 		4DABA3681C5F50C10018EF57 /* clock_pointer_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DABA3641C5F50C10018EF57 /* clock_pointer_blue.png */; };
 		4DABA3691C5F50C10018EF57 /* clock_pointer_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DABA3651C5F50C10018EF57 /* clock_pointer_gray.png */; };
 		4DABA36A1C5F50C10018EF57 /* clock_video_panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DABA3661C5F50C10018EF57 /* clock_video_panel.png */; };
-		4DD005F81C609EDB007D4D2F /* 1.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD005E71C609EDB007D4D2F /* 1.0.png */; };
 		4DD005F91C609EDB007D4D2F /* homeindicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD005E81C609EDB007D4D2F /* homeindicator.png */; };
 		4DD005FA1C609EDB007D4D2F /* ic_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD005E91C609EDB007D4D2F /* ic_clear.png */; };
 		4DD005FB1C609EDB007D4D2F /* ic_network_type.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD005EA1C609EDB007D4D2F /* ic_network_type.png */; };
@@ -33,7 +32,6 @@
 		4DD0061A1C609F7A007D4D2F /* SVSortTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD006161C609F7A007D4D2F /* SVSortTools.m */; };
 		561447C11C59BCE900003B9A /* SVPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 561447C01C59BCE900003B9A /* SVPointView.m */; };
 		561E46721C56433600CA58E8 /* SVSettingsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 561E46711C56433600CA58E8 /* SVSettingsViewCtrl.m */; };
-		564368CF1C5E6EB400350A8A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 564368CE1C5E6EB400350A8A /* Default-568h@2x.png */; };
 		5644354C1C5215AB009B7024 /* i18n.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5644354E1C5215AB009B7024 /* i18n.strings */; };
 		564435771C5216AD009B7024 /* CTViewTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 564435761C5216AD009B7024 /* CTViewTools.m */; };
 		565DFAE71C515BB10024FF45 /* speed_pro.png in Resources */ = {isa = PBXBuildFile; fileRef = 565DFAD91C515BB10024FF45 /* speed_pro.png */; };
@@ -147,6 +145,7 @@
 		B72EAF1F1C6E29F5000C96C1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B72EAF1E1C6E29F5000C96C1 /* libsqlite3.dylib */; };
 		B72EAF221C6E32E0000C96C1 /* SVJunitTestTable.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF201C6E32E0000C96C1 /* SVJunitTestTable.h */; };
 		B72EAF231C6E32E0000C96C1 /* SVJunitTestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF211C6E32E0000C96C1 /* SVJunitTestTable.m */; };
+		B73215881C70450300772092 /* SVResultDetailViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B73215871C70450300772092 /* SVResultDetailViewCtrl.m */; };
 		B732E61D1C6EBC1A000353B9 /* SVSummaryResultModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B732E61B1C6EBC1A000353B9 /* SVSummaryResultModel.h */; };
 		B732E61E1C6EBC1A000353B9 /* SVSummaryResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B732E61C1C6EBC1A000353B9 /* SVSummaryResultModel.m */; };
 		B732E6281C6EC365000353B9 /* SVResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B732E6271C6EC365000353B9 /* SVResultCell.m */; };
@@ -209,6 +208,8 @@
 		B75995541C6B8D71001C1D89 /* SVTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995481C6B8D71001C1D89 /* SVTestResult.m */; };
 		B75995571C6B8DBA001C1D89 /* SVVideoTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */; };
 		B75995581C6B8DBA001C1D89 /* SVVideoTestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */; };
+		B7CD574A1C705C8D00668E88 /* SVCurrentResultViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */; };
+		B7CD574F1C7083CB00668E88 /* starting_window.png in Resources */ = {isa = PBXBuildFile; fileRef = B7CD574E1C7083CB00668E88 /* starting_window.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,7 +284,6 @@
 		4DABA3641C5F50C10018EF57 /* clock_pointer_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_pointer_blue.png; sourceTree = "<group>"; };
 		4DABA3651C5F50C10018EF57 /* clock_pointer_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_pointer_gray.png; sourceTree = "<group>"; };
 		4DABA3661C5F50C10018EF57 /* clock_video_panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_video_panel.png; sourceTree = "<group>"; };
-		4DD005E71C609EDB007D4D2F /* 1.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.0.png; sourceTree = "<group>"; };
 		4DD005E81C609EDB007D4D2F /* homeindicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeindicator.png; sourceTree = "<group>"; };
 		4DD005E91C609EDB007D4D2F /* ic_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_clear.png; sourceTree = "<group>"; };
 		4DD005EA1C609EDB007D4D2F /* ic_network_type.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_network_type.png; sourceTree = "<group>"; };
@@ -309,7 +309,6 @@
 		561447C01C59BCE900003B9A /* SVPointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPointView.m; sourceTree = "<group>"; };
 		561E46701C56433600CA58E8 /* SVSettingsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVSettingsViewCtrl.h; path = SPUIView/View/Settings/Cotroller/SVSettingsViewCtrl.h; sourceTree = SOURCE_ROOT; };
 		561E46711C56433600CA58E8 /* SVSettingsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVSettingsViewCtrl.m; path = SPUIView/View/Settings/Cotroller/SVSettingsViewCtrl.m; sourceTree = SOURCE_ROOT; };
-		564368CE1C5E6EB400350A8A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5644354D1C5215AB009B7024 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/i18n.strings; sourceTree = "<group>"; };
 		564435751C5216AD009B7024 /* CTViewTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTViewTools.h; sourceTree = "<group>"; };
 		564435761C5216AD009B7024 /* CTViewTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTViewTools.m; sourceTree = "<group>"; };
@@ -443,6 +442,9 @@
 		B72EAF1E1C6E29F5000C96C1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = /usr/lib/libsqlite3.dylib; sourceTree = "<absolute>"; };
 		B72EAF201C6E32E0000C96C1 /* SVJunitTestTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVJunitTestTable.h; sourceTree = "<group>"; };
 		B72EAF211C6E32E0000C96C1 /* SVJunitTestTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVJunitTestTable.m; sourceTree = "<group>"; };
+		B73215861C70450300772092 /* SVResultDetailViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVResultDetailViewCtrl.h; sourceTree = "<group>"; };
+		B73215871C70450300772092 /* SVResultDetailViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVResultDetailViewCtrl.m; sourceTree = "<group>"; };
+		B732158E1C70522600772092 /* SVNetworkConnectionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVNetworkConnectionDelegate.h; sourceTree = "<group>"; };
 		B732E61B1C6EBC1A000353B9 /* SVSummaryResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSummaryResultModel.h; sourceTree = "<group>"; };
 		B732E61C1C6EBC1A000353B9 /* SVSummaryResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSummaryResultModel.m; sourceTree = "<group>"; };
 		B732E6261C6EC365000353B9 /* SVResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVResultCell.h; sourceTree = "<group>"; };
@@ -507,6 +509,9 @@
 		B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVVideoTestContext.h; sourceTree = "<group>"; };
 		B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVVideoTestContext.m; sourceTree = "<group>"; };
 		B77999801C6CD02700C1E511 /* SVVideoTestDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVVideoTestDelegate.h; sourceTree = "<group>"; };
+		B7CD57481C705C8D00668E88 /* SVCurrentResultViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCurrentResultViewCtrl.h; sourceTree = "<group>"; };
+		B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCurrentResultViewCtrl.m; sourceTree = "<group>"; };
+		B7CD574E1C7083CB00668E88 /* starting_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starting_window.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -595,8 +600,8 @@
 		4DD005E61C609EDB007D4D2F /* Result */ = {
 			isa = PBXGroup;
 			children = (
+				B7CD574E1C7083CB00668E88 /* starting_window.png */,
 				4DD0060A1C609EE2007D4D2F /* icon.png */,
-				4DD005E71C609EDB007D4D2F /* 1.0.png */,
 				4DD005E81C609EDB007D4D2F /* homeindicator.png */,
 				4DD005E91C609EDB007D4D2F /* ic_clear.png */,
 				4DD005EA1C609EDB007D4D2F /* ic_network_type.png */,
@@ -654,7 +659,6 @@
 		565DFAD61C515BB10024FF45 /* LaunchImage */ = {
 			isa = PBXGroup;
 			children = (
-				564368CE1C5E6EB400350A8A /* Default-568h@2x.png */,
 				565DFAD91C515BB10024FF45 /* speed_pro.png */,
 			);
 			path = LaunchImage;
@@ -722,6 +726,10 @@
 			children = (
 				4DD006131C609F7A007D4D2F /* SVResultViewCtrl.h */,
 				4DD006141C609F7A007D4D2F /* SVResultViewCtrl.m */,
+				B73215861C70450300772092 /* SVResultDetailViewCtrl.h */,
+				B73215871C70450300772092 /* SVResultDetailViewCtrl.m */,
+				B7CD57481C705C8D00668E88 /* SVCurrentResultViewCtrl.h */,
+				B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */,
 			);
 			path = Cotroller;
 			sourceTree = "<group>";
@@ -1197,6 +1205,7 @@
 				B75995001C6B8B11001C1D89 /* SVSystemUtil.m */,
 				B75995011C6B8B11001C1D89 /* SVTimeUtil.h */,
 				B75995021C6B8B11001C1D89 /* SVTimeUtil.m */,
+				B732158E1C70522600772092 /* SVNetworkConnectionDelegate.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1561,7 +1570,7 @@
 				56A9191E1C4F4C2500E8BB72 /* LaunchScreen.storyboard in Resources */,
 				4DD005FB1C609EDB007D4D2F /* ic_network_type.png in Resources */,
 				4DD006041C609EDB007D4D2F /* ic_start_time_normal.png in Resources */,
-				4DD005F81C609EDB007D4D2F /* 1.0.png in Resources */,
+				B7CD574F1C7083CB00668E88 /* starting_window.png in Resources */,
 				4DD005FA1C609EDB007D4D2F /* ic_clear.png in Resources */,
 				566118761C57265500F64161 /* back.png in Resources */,
 				4DD005FC1C609EDB007D4D2F /* ic_network_type_mobile.png in Resources */,
@@ -1579,7 +1588,6 @@
 				565DFAE81C515BB10024FF45 /* ic_speed_check.png in Resources */,
 				56EC8C981C4F467000EBDA6C /* tabbar_test_selected.png in Resources */,
 				56AA273B1C57122500FA5D0F /* Assets.xcassets in Resources */,
-				564368CF1C5E6EB400350A8A /* Default-568h@2x.png in Resources */,
 				4DABA3681C5F50C10018EF57 /* clock_pointer_blue.png in Resources */,
 				4DD005FD1C609EDB007D4D2F /* ic_network_type_normal.png in Resources */,
 			);
@@ -1630,7 +1638,9 @@
 			files = (
 				56B518101C51271100AA76F1 /* CTYYLToolView.m in Sources */,
 				56BA8FDB1C561E9100886CAE /* AlertView.m in Sources */,
+				B73215881C70450300772092 /* SVResultDetailViewCtrl.m in Sources */,
 				56A919181C4F4BAB00E8BB72 /* ViewController.m in Sources */,
+				B7CD574A1C705C8D00668E88 /* SVCurrentResultViewCtrl.m in Sources */,
 				5661187C1C574BB500F64161 /* SVBackView.m in Sources */,
 				B732E6281C6EC365000353B9 /* SVResultCell.m in Sources */,
 				56BA8FDD1C561E9100886CAE /* SVTestingCtrl.m in Sources */,

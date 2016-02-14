@@ -199,7 +199,7 @@
     self.testDate.text = [dataFormater stringFromDate:date];
     self.testTime.text = [timeFormater stringFromDate:date];
 
-    self.videoMOS.text = resultModel.UvMOS;
+    self.videoMOS.text = [NSString stringWithFormat:@"%.2fms", [resultModel.UvMOS floatValue]];
     self.loadTime.text = [NSString stringWithFormat:@"%@ms", resultModel.loadTime];
     self.bandWidth.text = [NSString stringWithFormat:@"%@kbps", resultModel.bandwidth];
 }

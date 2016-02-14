@@ -7,6 +7,8 @@
 //
 
 #import "SVI18N.h"
+#import "SVSystemUtil.h"
+#import "SVTestContextGetter.h"
 #import "SVTestViewCtrl.h"
 #import "SVTestingCtrl.h"
 #import "SVToolCell.h"
@@ -24,6 +26,29 @@
 @end
 
 @implementation SVTestViewCtrl
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    //按钮文字和类型
+    BOOL isConnectionAvailable = [SVSystemUtil isConnectionAvailable];
+    if (isConnectionAvailable)
+    {
+        [_testBtn setTitle:@"开始测试" forState:UIControlStateNormal];
+        //按钮点击事件
+        [_testBtn addTarget:self
+                     action:@selector (testBtnClick)
+           forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        [_testBtn setTitle:@"网络设置" forState:UIControlStateNormal];
+        //按钮点击事件
+        [_testBtn addTarget:self
+                     action:@selector (goNetworkSetting)
+           forControlEvents:UIControlEventTouchUpInside];
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -93,6 +118,28 @@
     _soucreMA = sourceMA;
     // 7.把tableView添加到 view
     [self.view addSubview:_tableView];
+
+    BOOL isConnectionAvailable = [SVSystemUtil isConnectionAvailable];
+    if (isConnectionAvailable)
+    {
+        [self loadResouceFromServer];
+    }
+}
+
+
+- (void)loadResouceFromServer
+{
+    dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      // 初始化Test Context
+      SVTestContextGetter *contextGetter = [SVTestContextGetter sharedInstance];
+      // 初始化本机IP和运营商等信息
+      [contextGetter initIPAndISP];
+      //从服务器请求Test Context Data相关信息
+      [contextGetter requestContextDataFromServer];
+      // 解析服务器返回的Test Context Data
+      [contextGetter parseContextData];
+
+    });
 }
 
 /**
@@ -203,22 +250,36 @@
         _testBtn.backgroundColor =
         [UIColor colorWithRed:229 / 255.0 green:229 / 255.0 blue:229 / 255.0 alpha:1.0];
         //按钮文字和类型
-        [_testBtn setTitle:@"开始测试" forState:UIControlStateNormal];
+        BOOL isConnectionAvailable = [SVSystemUtil isConnectionAvailable];
+        if (isConnectionAvailable)
+        {
+            [_testBtn setTitle:@"开始测试" forState:UIControlStateNormal];
+            //按钮点击事件
+            [_testBtn addTarget:self
+                         action:@selector (testBtnClick)
+               forControlEvents:UIControlEventTouchUpInside];
+        }
+        else
+        {
+            [_testBtn setTitle:@"网络设置" forState:UIControlStateNormal];
+            //按钮点击事件
+            [_testBtn addTarget:self
+                         action:@selector (goNetworkSetting)
+               forControlEvents:UIControlEventTouchUpInside];
+        }
+
         //按钮圆角
         _testBtn.layer.cornerRadius = kCornerRadius;
-        //按钮文字颜色和类型
-        [_testBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         //设置居中
         _testBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        //按钮点击事件
-        [_testBtn addTarget:self
-                     action:@selector (testBtnClick)
-           forControlEvents:UIControlEventTouchUpInside];
+        //按钮文字颜色和类型
+        [_testBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+
         //按钮交互
         //设置按钮默认情况下不可交互
         _testBtn.userInteractionEnabled = NO;
         //设置默认情况下按钮不可点击方法2
-        //_testBtn.enabled = NO;
+        // _testBtn.enabled = NO;
     }
     return _testBtn;
 }
@@ -283,15 +344,22 @@
     }
 }
 
+- (void)goNetworkSetting
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=WIFI"]];
+}
+
 //按钮的点击事件
 - (void)testBtnClick
 {
 
 #pragma mark - 在这里对 数组 排序
 
-
+    UINavigationController *navigationController = self.navigationController;
     //按钮点击后alloc一个界面
     SVTestingCtrl *testingCtrl = [[SVTestingCtrl alloc] init];
+    [testingCtrl setNavigationController:navigationController];
+
     //
     testingCtrl.selectedA = _selectedMA;
     // push界面

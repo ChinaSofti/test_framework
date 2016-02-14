@@ -6,8 +6,8 @@
 //  Copyright © 2016年 chinasofti. All rights reserved.
 //
 
-
 #import "SVBackView.h"
+#import "SVCurrentResultViewCtrl.h"
 #import "SVPointView.h"
 #import "SVTestingCtrl.h"
 #import "SVTimeUtil.h"
@@ -33,6 +33,8 @@
 @end
 
 @implementation SVTestingCtrl
+
+@synthesize navigationController;
 
 - (void)viewDidLoad
 {
@@ -138,7 +140,7 @@
 {
     //初始化
     _videoView = [[SVPointView alloc]
-                                    initWithFrame:CGRectMake (FITWIDTH (10), FITWIDTH (420), FITWIDTH (150), FITWIDTH (92))];
+    initWithFrame:CGRectMake (FITWIDTH (10), FITWIDTH (420), FITWIDTH (150), FITWIDTH (92))];
 
     //把panlView添加到中整个视图上
     [self.view addSubview:_videoView];
@@ -293,6 +295,13 @@
       [_headerView.speedLabel setText:[NSString stringWithFormat:@"%ldms", firstBufferTime]];
       [_headerView.uvMosLabel setText:[NSString stringWithFormat:@"%.2f", uvMOSSession]];
       [_testingView updateUvMOS:uvMOSSession];
+      if (testContext.testStatus == TEST_FINISHED)
+      {
+          SVCurrentResultViewCtrl *currentResultView = [[SVCurrentResultViewCtrl alloc] init];
+          currentResultView.navigationController = navigationController;
+          //          [self presentViewController:currentResultView animated:YES completion:nil];
+          [navigationController pushViewController:currentResultView animated:YES];
+      }
     });
 }
 
