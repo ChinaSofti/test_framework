@@ -17,42 +17,16 @@
 {
 
     // 定义headerView
-    UIView *_headerView;
-    // headerView参数
-    // 定义U-vMos参数
-    // 定义speed实时速度参数
-    // 定义buffer缓冲次数参数
-    UILabel *_uvMosLabel;
-    UILabel *_speedLabel;
-    UILabel *_bufferLabel;
-    UILabel *_uvMosNumLabel;
-    UILabel *_speedNumLabel;
-    UILabel *_bufferNumLabel;
+    SVPointView *_headerView;
 
     //定义testingView
     SVPointView *_testingView;
 
     //定义视频播放View
-    UIView *_videoView;
+    SVPointView *_videoView;
 
     // 定义footerView
-    UIView *_footerView;
-    // footerView参数
-    // 定义视频服务位置place
-    // 定义分辨率resolution
-    // 定义码率(比特率bit)
-    UILabel *_placeLabel;
-    UILabel *_resolutionLabel;
-    UILabel *_bitLabel;
-    UILabel *_placeNumLabel;
-    UILabel *_resolutionNumLabel;
-    UILabel *_bitNumLabel;
-    UILabel *placeLabel;
-    UILabel *resolutionLabel;
-    UILabel *bitLabel;
-    UILabel *bufferLabel;
-    UILabel *speedLabel;
-    UILabel *uvMosLabel;
+    SVPointView *_footerView;
 }
 
 @property (nonatomic, strong) SVBackView *backView;
@@ -120,62 +94,17 @@
 
 - (void)creatHeaderView
 {
+
     //初始化headerView
-    _headerView = [[UIView alloc]
-    initWithFrame:CGRectMake (FITWIDTH (5), FITWIDTH (70), FITWIDTH (310), FITHEIGHT (100))];
+    _headerView = [[SVPointView alloc] init];
 
-    //设置Label
-    uvMosLabel = [CTWBViewTools
-    createLabelWithFrame:CGRectMake (FITWIDTH (10), FITWIDTH (30), FITWIDTH (80), FITWIDTH (20))
-                withFont:16
-          withTitleColor:RGBACOLOR (250, 180, 86, 1)
-               withTitle:@"0"];
-
-    speedLabel = [CTWBViewTools createLabelWithFrame:CGRectMake (uvMosLabel.rightX + FITWIDTH (35),
-                                                                 FITWIDTH (30), FITWIDTH (80), FITWIDTH (20))
-                                            withFont:16
-                                      withTitleColor:RGBACOLOR (250, 180, 86, 1)
-                                           withTitle:@"0ms"];
-
-    bufferLabel = [CTWBViewTools
-    createLabelWithFrame:CGRectMake (speedLabel.rightX + FITWIDTH (35), FITWIDTH (30), FITWIDTH (50), FITWIDTH (20))
-                withFont:16
-          withTitleColor:RGBACOLOR (250, 180, 86, 1)
-               withTitle:@"0"];
-
-    _uvMosNumLabel = [CTWBViewTools
-    createLabelWithFrame:CGRectMake (FITWIDTH (10), uvMosLabel.bottomY + FITWIDTH (10), FITWIDTH (80), FITWIDTH (10))
-                withFont:13
-          withTitleColor:RGBACOLOR (81, 81, 81, 1)
-               withTitle:@"U-vMOS"];
-
-    _speedNumLabel = [CTWBViewTools
-    createLabelWithFrame:CGRectMake (_uvMosNumLabel.rightX + FITWIDTH (35),
-                                     uvMosLabel.bottomY + FITWIDTH (10), FITWIDTH (80), FITWIDTH (10))
-                withFont:13
-          withTitleColor:RGBACOLOR (81, 81, 81, 1)
-               withTitle:@"首次缓冲时间"];
-
-    _bufferNumLabel = [CTWBViewTools
-    createLabelWithFrame:CGRectMake (_speedNumLabel.rightX + FITWIDTH (35),
-                                     uvMosLabel.bottomY + FITWIDTH (10), FITWIDTH (80), FITWIDTH (10))
-                withFont:13
-          withTitleColor:RGBACOLOR (81, 81, 81, 1)
-               withTitle:@"卡顿次数"];
-    //所有Label居中对齐
-    uvMosLabel.textAlignment = NSTextAlignmentCenter;
-    bufferLabel.textAlignment = NSTextAlignmentCenter;
-    speedLabel.textAlignment = NSTextAlignmentCenter;
-    _uvMosNumLabel.textAlignment = NSTextAlignmentCenter;
-    _speedNumLabel.textAlignment = NSTextAlignmentCenter;
-    _bufferNumLabel.textAlignment = NSTextAlignmentCenter;
-    //把所有Label添加到headerView中
-    [_headerView addSubview:uvMosLabel];
-    [_headerView addSubview:speedLabel];
-    [_headerView addSubview:bufferLabel];
-    [_headerView addSubview:_uvMosNumLabel];
-    [_headerView addSubview:_speedNumLabel];
-    [_headerView addSubview:_bufferNumLabel];
+    //把所有Label添加到View中
+    [self.view addSubview:_headerView.uvMosLabel];
+    [self.view addSubview:_headerView.speedLabel];
+    [self.view addSubview:_headerView.bufferLabel];
+    [self.view addSubview:_headerView.uvMosNumLabel];
+    [self.view addSubview:_headerView.speedNumLabel];
+    [self.view addSubview:_headerView.bufferNumLabel];
     //把headerView添加到中整个视图上
     [self.view addSubview:_headerView];
 }
@@ -185,32 +114,17 @@
 - (void)creatTestingView
 {
 
-    //初始化
+    //初始化整个testingView
     _testingView = [[SVPointView alloc] init];
-
-    //设置背景图片,图片层叠
-    // 1.先加载指针 pointView(再最下面)
+    //添加到View中
     [self.view addSubview:_testingView.pointView];
     [_testingView start];
-
-    // 2.添加覆盖指针View
-
     [self.view addSubview:_testingView.grayView];
     _testingView.grayViewSuperView = _testingView.grayView.superview;
     _testingView.grayViewIndexInSuperView = [self.view.subviews indexOfObject:_testingView.grayView];
-
-    // 3.再加载表盘View
     [self.view addSubview:_testingView.panelView];
-
-    // 4.加载clock_middle(最上面)
     [self.view addSubview:_testingView.middleView];
-
-    // 5.添加clock_middle上的label
-
     [self.view addSubview:_testingView.label1];
-
-    // 6.传值把指针指向的值显示出来label
-
     [self.view addSubview:_testingView.label2];
     _testingView.label2SuperView = _testingView.label2.superview;
     _testingView.label2IndexInSuperView = [self.view.subviews indexOfObject:_testingView.label2];
@@ -219,19 +133,17 @@
 
 #pragma mark - 创建视频播放View
 
+
 - (void)creatVideoView
 {
     //初始化
-    _videoView = [[UIView alloc]
-    initWithFrame:CGRectMake (FITWIDTH (10), FITWIDTH (420), FITWIDTH (150), FITWIDTH (92))];
-    //设置颜色
-    _videoView.backgroundColor = [UIColor blackColor];
+    _videoView = [[SVPointView alloc]
+                                    initWithFrame:CGRectMake (FITWIDTH (10), FITWIDTH (420), FITWIDTH (150), FITWIDTH (92))];
 
-    //    设置背景图片
-    //    _videoView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"111"]];
     //把panlView添加到中整个视图上
     [self.view addSubview:_videoView];
 
+    //把视频播放放到线程中
     long testId = [SVTimeUtil currentMilliSecondStamp];
     SVVideoTest *videoTest =
     [[SVVideoTest alloc] initWithView:testId showVideoView:_videoView testDelegate:self];
@@ -240,6 +152,19 @@
       // TODO liuchengyu 完成测试。跳转到结果页面
 
     });
+
+    //添加视频点击事件
+    UIButton *bgBtn = [[UIButton alloc]
+    initWithFrame:CGRectMake (FITWIDTH (10), FITWIDTH (420), FITWIDTH (150), FITWIDTH (92))];
+    [bgBtn addTarget:self
+              action:@selector (bgButtonClick:)
+    forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:bgBtn];
+}
+//点击事件
+- (void)bgButtonClick:(UIButton *)btn
+{
+    NSLog (@"点击了视频");
 }
 
 #pragma mark - 创建尾footerView
@@ -247,58 +172,15 @@
 - (void)creatFooterView
 {
     //初始化headerView
-    _footerView = [[UIView alloc]
-    initWithFrame:CGRectMake (FITWIDTH (165), FITWIDTH (420), FITWIDTH (150), FITHEIGHT (92))];
-    //设置Label
-    placeLabel = [CTWBViewTools
-    createLabelWithFrame:CGRectMake (FITWIDTH (0), FITWIDTH (0), FITWIDTH (150), FITWIDTH (20))
-                withFont:16
-          withTitleColor:[UIColor blackColor]
-               withTitle:@""];
+    _footerView = [[SVPointView alloc] init];
 
-    resolutionLabel = [CTWBViewTools
-    createLabelWithFrame:CGRectMake (FITWIDTH (80), FITWIDTH (45), FITWIDTH (80), FITWIDTH (20))
-                withFont:10
-          withTitleColor:[UIColor blackColor]
-               withTitle:@""];
-
-    bitLabel = [CTWBViewTools
-    createLabelWithFrame:CGRectMake (FITWIDTH (80), FITWIDTH (70), FITWIDTH (80), FITWIDTH (20))
-                withFont:10
-          withTitleColor:[UIColor blackColor]
-               withTitle:@""];
-
-    _placeNumLabel = [CTWBViewTools
-    createLabelWithFrame:CGRectMake (FITWIDTH (0), FITWIDTH (20), FITWIDTH (150), FITWIDTH (20))
-                withFont:12
-          withTitleColor:[UIColor lightGrayColor]
-               withTitle:@"视频服务器位置"];
-
-    _resolutionNumLabel = [CTWBViewTools
-    createLabelWithFrame:CGRectMake (FITWIDTH (0), FITWIDTH (45), FITWIDTH (50), FITWIDTH (20))
-                withFont:10
-          withTitleColor:[UIColor lightGrayColor]
-               withTitle:@"分辨率"];
-
-    _bitNumLabel = [CTWBViewTools
-    createLabelWithFrame:CGRectMake (FITWIDTH (0), FITWIDTH (70), FITWIDTH (50), FITWIDTH (20))
-                withFont:10
-          withTitleColor:[UIColor lightGrayColor]
-               withTitle:@"码率"];
-    //所有Label居中对齐
-    placeLabel.textAlignment = NSTextAlignmentLeft;
-    bitLabel.textAlignment = NSTextAlignmentCenter;
-    resolutionLabel.textAlignment = NSTextAlignmentCenter;
-    _placeNumLabel.textAlignment = NSTextAlignmentLeft;
-    _resolutionNumLabel.textAlignment = NSTextAlignmentLeft;
-    _bitNumLabel.textAlignment = NSTextAlignmentLeft;
     //把所有Label添加到headerView中
-    [_footerView addSubview:placeLabel];
-    [_footerView addSubview:resolutionLabel];
-    [_footerView addSubview:bitLabel];
-    [_footerView addSubview:_placeNumLabel];
-    [_footerView addSubview:_resolutionNumLabel];
-    [_footerView addSubview:_bitNumLabel];
+    [self.view addSubview:_footerView.placeLabel];
+    [_footerView addSubview:_footerView.resolutionLabel];
+    [_footerView addSubview:_footerView.bitLabel];
+    [_footerView addSubview:_footerView.placeNumLabel];
+    [_footerView addSubview:_footerView.resolutionNumLabel];
+    [_footerView addSubview:_footerView.bitNumLabel];
     //把headerView添加到中整个视图上
     [self.view addSubview:_footerView];
 }
@@ -404,12 +286,12 @@
            @"videoResolution:%@",
            uvMOSSession, firstBufferTime, cuttonTimes, location, bitrate, videoResolution);
     dispatch_async (dispatch_get_main_queue (), ^{
-      [placeLabel setText:location];
-      [resolutionLabel setText:videoResolution];
-      [bitLabel setText:[NSString stringWithFormat:@"%.2fkpbs", bitrate]];
-      [bufferLabel setText:[NSString stringWithFormat:@"%d", cuttonTimes]];
-      [speedLabel setText:[NSString stringWithFormat:@"%ldms", firstBufferTime]];
-      [uvMosLabel setText:[NSString stringWithFormat:@"%.2f", uvMOSSession]];
+      [_footerView.placeLabel setText:location];
+      [_footerView.resolutionLabel setText:videoResolution];
+      [_footerView.bitLabel setText:[NSString stringWithFormat:@"%.2fkpbs", bitrate]];
+      [_headerView.bufferLabel setText:[NSString stringWithFormat:@"%d", cuttonTimes]];
+      [_headerView.speedLabel setText:[NSString stringWithFormat:@"%ldms", firstBufferTime]];
+      [_headerView.uvMosLabel setText:[NSString stringWithFormat:@"%.2f", uvMOSSession]];
       [_testingView updateUvMOS:uvMOSSession];
     });
 }
