@@ -227,8 +227,8 @@
 - (void)rotate
 {
     //设置图片旋转速度
-    self.pointView.transform = CGAffineTransformMakeRotation (self.num);
-    NSLog(@"%f______________",self.num);
+    self.pointView.transform = CGAffineTransformMakeRotation (self.num/1.2);
+
 }
 
 /**
