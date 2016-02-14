@@ -136,10 +136,10 @@ static NSString *_getVideoFragmentInfoURL =
 
                 SVVideoSegement *segement = [[SVVideoSegement alloc] init];
                 [segement setSegementID:i];
+                // 视频大小 单位为byte
                 [segement setSize:size];
                 [segement setDuration:(millisecondVideo / 1000)];
                 [segement setVideoSegementURL:videoRealURL];
-                // 视频大小 单位为byte
                 [segement setBitrate:((size * 8 / 1000) / (millisecondVideo / 1000))];
                 [_videoInfo addSegement:segement];
             }

@@ -201,7 +201,7 @@
 
     self.videoMOS.text = resultModel.UvMOS;
     self.loadTime.text = [NSString stringWithFormat:@"%@ms", resultModel.loadTime];
-    self.bandWidth.text = [NSString stringWithFormat:@"%@Mbps", resultModel.bandwidth];
+    self.bandWidth.text = [NSString stringWithFormat:@"%@kbps", resultModel.bandwidth];
 }
 
 @end

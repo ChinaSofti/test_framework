@@ -54,4 +54,11 @@
  */
 - (void)stop;
 
+/**
+ *  是否完成播放
+ *
+ *  @return TRUE 完成
+ */
+- (BOOL)isFinished;
+
 @end

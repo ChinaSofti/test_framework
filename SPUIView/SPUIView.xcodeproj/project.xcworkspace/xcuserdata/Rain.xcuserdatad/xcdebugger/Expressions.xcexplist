@@ -3,18 +3,29 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "-[SVVideoTest parseVideoSegement]:SVVideoTest.m">
-         <PersistentStrings>
-            <PersistentString
-               value = " [[videoInfo getAllSegement] count]">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "-[SVVideoPlayer play]:SVVideoPlayer.m">
          <PersistentStrings>
             <PersistentString
                value = "testContext">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SVVideoTest persistSVSummaryResultModel]:SVVideoTest.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[SVVideoPlayer mediaPlayer:bufferingEnd:]:SVVideoPlayer.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[SVVideoUtil getScreenSize]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SVVideoTest parseVideoSegement]:SVVideoTest.m">
+         <PersistentStrings>
+            <PersistentString
+               value = " [[videoInfo getAllSegement] count]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

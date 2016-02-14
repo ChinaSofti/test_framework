@@ -48,7 +48,9 @@
     stMediaInfo.iAvgBitrate = _testContext.videoSegementBitrate;
     stMediaInfo.eVideoCodec = VIDEO_CODEC_H264;
     // 屏幕尺寸，单位英寸，输入为0时，屏幕映射默认为42寸TV
-    stMediaInfo.fScreenSize = [SVVideoUtil getScreenScale];
+    //    stMediaInfo.fScreenSize = [SVVideoUtil getScreenScale];
+    // 孙海龙 2016/02/13  屏幕尺寸 固定为42寸
+    stMediaInfo.fScreenSize = 42;
     // 视频分辨率
     stMediaInfo.eVideoResolution =
     [SVUvMOSVideoResolutionGetter getUvMOSVideoResolution:_testResult.videoWidth
@@ -60,58 +62,6 @@
     /* 第一步：申请U-vMOS服务号 (携带视频静态参数 )  */
     _iServiceId = registerUvMOSService (&stMediaInfo);
     SVInfo (@"registe UvMOS calculate service. iServiceID:%d", _iServiceId);
-}
-
-
-/**
- *  计算UvMOS
- *
- *  @param periodLength
- * 采样周期时长，单位秒(s)，建议按照观看时间反馈，近似可以按照内容的实际时间反馈
- *  @param initBufferLatency 初始缓冲时长，单位毫秒(ms)，采样周期内没有初始缓冲事件时，输入0
- *  @param initBufferLatencyavgVideoBitrate
- * 支持VBR特性时，采样周期内视频文件平均码率，单位kbps，无法获得时输入0
- *  @param avgKeyFrameSize 支持VBR特性时，采样周期内I帧平均大小，单位字节，无法获得时输入0
- *  @param stallingFrequency                采样周期内，卡顿次数
- *  @param stallingDuration                 采样周期内，平均卡顿时长，单位毫秒(ms)
- */
-- (void)calculate:(int)periodLength
-initBufferLatency:(int)initBufferLatency
-  avgVideoBitrate:(int)avgVideoBitrate
-  avgKeyFrameSize:(int)avgKeyFrameSize
-stallingFrequency:(int)stallingFrequency
- stallingDuration:(int)stallingDuration;
-{
-    /* 赋值周期性采样参数 */
-    UvMOSVODPeriodInfo stVODInfo = { 0 };
-    UvMOSResult stResult = { 0 };
-    stVODInfo.iPeriodLength = periodLength;
-    stVODInfo.iInitBufferLatency = initBufferLatency;
-    stVODInfo.iAvgVideoBitrate = avgVideoBitrate;
-    stVODInfo.iAvgKeyFrameSize = avgKeyFrameSize;
-    stVODInfo.iStallingFrequency = stallingFrequency;
-    stVODInfo.iStallingDuration = stallingDuration;
-
-    /* 第二步：每个周期调用计算(携带周期性参数) */
-    int iErrorCode = calculateUvMOSVODPeriod (_iServiceId, &stVODInfo, &stResult);
-    if (SUCCESS != iErrorCode)
-    {
-        SVError (@"calculate UvMOS fail. iErrorCode:%d", iErrorCode);
-        return;
-    }
-
-    /* U-vMOS结果输出 */
-    printf ("U-vMOS VOD Period calculate result :\n");
-    printf ("UvMOSResult.sQualityPeriod => %f \n", stResult.sQualityPeriod);
-    printf ("UvMOSResult.sInteractionPeriod => %f \n", stResult.sInteractionPeriod);
-    printf ("UvMOSResult.sViewPeriod => %f \n", stResult.sViewPeriod);
-    printf ("UvMOSResult.sViewPeriod => %f \n", stResult.uvmosPeriod);
-    printf ("\n");
-    printf ("UvMOSResult.sQualitySession => %f \n", stResult.sQualitySession);
-    printf ("UvMOSResult.sInteractionSession => %f \n", stResult.sInteractionSession);
-    printf ("UvMOSResult.sViewSession => %f \n", stResult.sViewSession);
-    printf ("UvMOSResult.sViewSession => %f \n", stResult.uvmosSession);
-    printf ("\n");
 }
 
 /**

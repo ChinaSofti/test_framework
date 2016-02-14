@@ -9,6 +9,7 @@
 #import "SVLog.h"
 #import "SVTimeUtil.h"
 #import "SVVideoPlayer.h"
+#import "SVVideoUtil.h"
 
 #define FITWIDTH(W) W / 320.0 * ([UIScreen mainScreen].bounds.size.width)
 #define FITHEIGHT(H) H / 568.0 * ([UIScreen mainScreen].bounds.size.height)
@@ -32,12 +33,19 @@
     // 总下载时长
     int downloadTime;
 
+    // 每5秒周期卡顿次数
+    int videoCuttonTimes;
+    // 每5秒周期卡顿总时长
+    int videoCuttonTotalTime;
+
+    // 总卡顿次数
+    int videoTotalCuttonTimes;
+    // 总卡顿总时长
+    int videoTotalCuttonTotalTime;
+
+
     // 缓冲时间集合
     NSMutableArray *bufferedTimeArray;
-
-    BOOL isFirstCalculateUvMOS;
-
-    SVVideoTestSample *sample;
 
     // 加载图标
     UIActivityIndicatorView *activityView;
@@ -47,12 +55,22 @@
 
     // 定时器
     NSTimer *timer;
+
+    // 计算UvMOS次数
+    int execute_times;
+
+    BOOL isFinished;
+
+    long startPlayTime;
 }
 
 @synthesize showOnView, testResult, testContext, uvMOSCalculator;
 
 // 样本时长5秒
 static const int test_period = 5;
+
+// 计算UvMOS总次数
+static const int execute_total_times = 4;
 
 /**
  *  初始化视频播放器对象
@@ -71,7 +89,6 @@ static const int test_period = 5;
     {
         _VMpalyer = [VMediaPlayer sharedInstance];
         [_VMpalyer setupPlayerWithCarrierView:showOnView withDelegate:self];
-        isFirstCalculateUvMOS = true;
     }
 
     return self;
@@ -162,20 +179,35 @@ static const int test_period = 5;
     }
 
     [testResult setDownloadSize:downloadSize];
-    if (downloadTime == 0)
-    {
-        [testResult setDownloadSpeed:0];
-    }
-    else
-    {
-        [testResult setDownloadSpeed:(downloadSize / downloadTime)];
-    }
+    //    if (downloadTime == 0)
+    //    {
+    //        [testResult setDownloadSpeed:0];
+    //    }
+    //    else
+    //    {
+    //        [testResult setDownloadSpeed:(downloadSize / downloadTime)];
+    //    }
 
     [testResult setVideoEndPlayTime:[SVTimeUtil currentMilliSecondStamp]];
+    [testResult setVideoCuttonTimes:videoTotalCuttonTimes];
+    [testResult setVideoCuttonTotalTime:videoTotalCuttonTotalTime];
 
     // 取消 UvMOS 注册服务
     [uvMOSCalculator unRegisteService];
+
+    isFinished = TRUE;
 }
+
+/**
+ *  是否完成播放
+ *
+ *  @return TRUE 完成
+ */
+- (BOOL)isFinished
+{
+    return isFinished;
+}
+
 
 - (void)prepareVideo
 {
@@ -203,6 +235,7 @@ static const int test_period = 5;
     _didPrepared = YES;
     testContext.testStatus = TEST_TESTING;
     [player start];
+    startPlayTime = [SVTimeUtil currentMilliSecondStamp];
 }
 
 /**
@@ -246,6 +279,12 @@ static const int test_period = 5;
     NSLog (@"downloadRate: %@", arg);
     downloadSize += (int)arg;
     downloadTime += 1;
+    [testResult setDownloadSpeed:(int)arg];
+    if ((int)arg >= testContext.videoSegementBitrate)
+    {
+        long bufferedTime = [SVTimeUtil currentMilliSecondStamp] - startPlayTime;
+        [self startCalculateUvMOS:player bufferedTime:bufferedTime];
+    }
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player bufferingStart:(id)arg
@@ -258,69 +297,31 @@ static const int test_period = 5;
 }
 
 
-- (void)mediaPlayer:(VMediaPlayer *)player bufferingUpdate:(id)arg
-{
-    NSLog (@"Buffering... %d%%", [((NSNumber *)arg)intValue]);
-    //    NSDictionary *metaData = [player getMetadata];
-    //    float bitRate1 = [[metaData valueForKey:@"bit_rate"] floatValue];
-    //    NSLog (@"Buffering...  %@%%    %f", arg, bitRate1);
-}
+//- (void)mediaPlayer:(VMediaPlayer *)player bufferingUpdate:(id)arg
+//{
+//    NSLog (@"Buffering... %d%%", [((NSNumber *)arg)intValue]);
+//    //    NSDictionary *metaData = [player getMetadata];
+//    //    float bitRate1 = [[metaData valueForKey:@"bit_rate"] floatValue];
+//    //    NSLog (@"Buffering...  %@%%    %f", arg, bitRate1);
+//}
 
+/**
+ *  缓冲结束开始播放视频
+ *
+ *  @param player 播放器
+ *  @param arg    arg
+ */
 - (void)mediaPlayer:(VMediaPlayer *)player bufferingEnd:(id)arg
 {
     long bufferedTime = [SVTimeUtil currentMilliSecondStamp] - bufferStartTime;
-    // 视频帧率
-    NSDictionary *metaData = [player getMetadata];
-    float frame_rate = [[metaData valueForKey:@"video_frame_rate"] floatValue];
-    //  码率单位转换为kbps
-    int bit_rate = [[metaData valueForKey:@"bit_rate"] floatValue] / 1000;
+    [self startCalculateUvMOS:player bufferedTime:bufferedTime];
 
-    if (!firstBufferTime)
-    {
-        SVInfo (@"first buffer time(ms):%ld", bufferedTime);
-        firstBufferTime = bufferedTime;
-        // 设置首次缓冲时间
-        [testResult setFirstBufferTime:bufferedTime];
+    // 卡顿次数加一
+    videoCuttonTimes += 1;
+    videoCuttonTotalTime += bufferedTime;
+    videoTotalCuttonTimes += 1;
+    videoTotalCuttonTotalTime += bufferedTime;
 
-        // 视频宽度
-        int videoWidth = [player getVideoWidth];
-        // 视频高度
-        int videoHeight = [player getVideoHeight];
-        [testResult setVideoWidth:videoWidth];
-        [testResult setVideoHeight:videoHeight];
-        [testResult setVideoResolution:[NSString stringWithFormat:@"%d*%d", videoWidth, videoHeight]];
-        [testResult setBitrate:testContext.videoSegementBitrate];
-        [testResult setFrameRate:frame_rate];
-
-        // 注册UvMOS计算服务
-        [uvMOSCalculator registeService];
-
-        sample = [[SVVideoTestSample alloc] init];
-        [sample setStallingFrequency:0];
-        [sample setStallingDuration:1];
-        [sample setInitBufferLatency:(int)bufferedTime];
-
-        [self pushTestSample];
-        timer = [NSTimer scheduledTimerWithTimeInterval:test_period
-                                                 target:self
-                                               selector:@selector (pushTestSample)
-                                               userInfo:nil
-                                                repeats:YES];
-    }
-
-    // 当缓冲时间大于100ms时才计算卡顿
-    if (bufferedTime > 100)
-    {
-        // 卡顿次数加一
-        [sample setStallingFrequency:(sample.stallingFrequency + 1)];
-        [testResult setVideoCuttonTimes:(testResult.videoCuttonTimes + 1)];
-
-        // 卡顿总时长
-        [sample setStallingTotalTime:(int)(sample.stallingTotalTime + bufferedTime)];
-        [testResult setVideoCuttonTotalTime:(int)(testResult.videoCuttonTotalTime + bufferedTime)];
-    }
-
-    NSLog (@"%@", sample);
 
     // 隐藏加载图标
     [activityView stopAnimating];
@@ -328,46 +329,104 @@ static const int test_period = 5;
     NSLog (@"NAL 3HBT &&&&&&&&&&&&&&&&.......&&&&&&&&&&&&&&&&&  bufferingEnd");
 }
 
-- (void)pushTestSample
+- (void)startCalculateUvMOS:(VMediaPlayer *)player bufferedTime:(long)bufferedTime
 {
-    @try
+    // 注意：
+    // 首次缓冲时长不计入卡顿时长，且第一次缓冲不算卡顿。首次缓冲时长只是首次缓冲时长
+    if (!firstBufferTime)
     {
-        [sample setPeriodLength:test_period];
-        [sample setAvgKeyFrameSize:testResult.frameRate];
+        firstBufferTime = bufferedTime;
+        SVInfo (@"first buffer time(ms):%ld", bufferedTime);
+        // 设置首次缓冲时间
+        [testResult setFirstBufferTime:bufferedTime];
+
+        // 视频宽度
+        int videoWidth = [player getVideoWidth];
+        // 视频高度
+        int videoHeight = [player getVideoHeight];
+
+        // 视频帧率
+        NSDictionary *metaData = [player getMetadata];
+        float frame_rate = [[metaData valueForKey:@"video_frame_rate"] floatValue];
+
+        [testResult setVideoWidth:videoWidth];
+        [testResult setVideoHeight:videoHeight];
+        [testResult setVideoResolution:[NSString stringWithFormat:@"%d*%d", videoWidth, videoHeight]];
+        [testResult setBitrate:(testContext.videoSegementBitrate)];
+        [testResult setFrameRate:frame_rate];
+        //        NSLog (@"%@", [SVVideoUtil getScreenSize]);
+        //        [testResult setScreenSize:[SVVideoUtil getScreenSize]];
+
+        // 注册UvMOS计算服务
+        [uvMOSCalculator registeService];
+
+        SVVideoTestSample *sample = [[SVVideoTestSample alloc] init];
+        [sample setPeriodLength:0];
+        [sample setInitBufferLatency:(int)bufferedTime];
         [sample setAvgVideoBitrate:testResult.bitrate];
-        // 如果未设置初始缓冲时长，则将值设置为卡顿总时长
-        if (!sample.initBufferLatency)
-        {
-            [sample setInitBufferLatency:sample.stallingTotalTime];
-        }
-
-        // 如果不存在卡顿，设置平均卡顿时长为0
-        if (!sample.stallingFrequency)
-        {
-            [sample setStallingDuration:0];
-        }
-        else
-        {
-            [sample setStallingDuration:(sample.stallingTotalTime / sample.stallingFrequency)];
-        }
-
+        // 孙海龙 2016/02/14 帧率字节目前暂不支持,设置默认值0
+        [sample setAvgKeyFrameSize:0];
+        [sample setStallingFrequency:20];
+        [sample setStallingDuration:0];
         [uvMOSCalculator calculateTestSample:sample];
-        // 当前周期内测试样本指标计算完成，将测试样本存入结果中
         if (!testResult.videoTestSamples)
         {
             testResult.videoTestSamples = [[NSMutableArray alloc] init];
         }
+        [testResult.videoTestSamples addObject:sample];
+        [_testDelegate updateTestResultDelegate:testContext testResult:testResult];
+        timer = [NSTimer scheduledTimerWithTimeInterval:test_period
+                                                 target:self
+                                               selector:@selector (pushTestSample)
+                                               userInfo:nil
+                                                repeats:YES];
+    }
+}
 
+- (void)pushTestSample
+{
+    @try
+    {
+        SVVideoTestSample *sample = [[SVVideoTestSample alloc] init];
+        [sample setPeriodLength:5];
+        [sample setInitBufferLatency:0];
+        [sample setAvgVideoBitrate:testResult.bitrate];
+        // 孙海龙 2016/02/14 帧率字节目前暂不支持,设置默认值0
+        [sample setAvgKeyFrameSize:0];
+        if (videoCuttonTimes <= 0)
+        {
+            [sample setStallingFrequency:0];
+            [sample setStallingDuration:0];
+        }
+        else
+        {
+            [sample setStallingFrequency:videoCuttonTimes];
+            [sample setStallingDuration:(videoCuttonTotalTime / videoCuttonTimes)];
+        }
+
+        [uvMOSCalculator calculateTestSample:sample];
         [testResult.videoTestSamples addObject:sample];
         [_testDelegate updateTestResultDelegate:testContext testResult:testResult];
 
-        // 上一个样本测试完成，初始化一个新的测试样本
-        sample = [[SVVideoTestSample alloc] init];
+        videoCuttonTimes = 0;
+        videoCuttonTotalTime = 0;
+
+        execute_times += 1;
+        if (execute_times >= execute_total_times)
+        {
+            [testResult setSViewSession:sample.sViewSession];
+            [testResult setSInteractionSession:sample.sInteractionSession];
+            [testResult setSQualitySession:sample.sQualitySession];
+            [testResult setUvMOSSession:sample.UvMOSSession];
+            testContext.testStatus = TEST_FINISHED;
+            [self stop];
+        }
     }
     @catch (NSException *exception)
     {
         SVError (@"%@", exception);
     }
 }
+
 
 @end

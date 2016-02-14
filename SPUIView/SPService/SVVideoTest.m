@@ -70,19 +70,24 @@
         [_videoPlayer setTestContext:testContext];
         [_videoPlayer setTestResult:testResult];
         [_videoPlayer play];
-        [NSThread sleepForTimeInterval:20];
-        testContext.testStatus = TEST_FINISHED;
-        [self stopTest];
-        SVInfo (@"test[%ld] finished", _testId);
+        //        [NSThread sleepForTimeInterval:20];
+        //        testContext.testStatus = TEST_FINISHED;
+        //        [self stopTest];
+        while (!_videoPlayer.isFinished)
+        {
+            [NSThread sleepForTimeInterval:1];
+        }
 
-        // 持久化结果和明细
+        SVInfo (@"test[%ld] finished", _testId);
+        //
+        //        // 持久化结果和明细
         [self persistSVSummaryResultModel];
         [self persistSVDetailResultModel];
     }
     @catch (NSException *exception)
     {
         SVError (@"exception:%@", exception);
-        testContext.testStatus = TEST_ERROR;
+        //        testContext.testStatus = TEST_ERROR;
     }
 }
 
@@ -98,11 +103,12 @@
                       @"AUTOINCREMENT, testId integer, type integer, testTime integer, UvMOS"
                       @"real, loadTime integer, bandwidth real);"];
 
-    NSString *insertSVSummaryResultModelSQL = [NSString
-    stringWithFormat:@"INSERT INTO "
-                     @"SVSummaryResultModel(testId,type,testTime,UvMOS,loadTime,"
-                     @"bandwidth)VALUES(%ld, 0, %ld, %lf, %ld, 89);",
-                     _testId, testResult.testTime, testResult.UvMOSPeriod, testResult.firstBufferTime];
+    NSString *insertSVSummaryResultModelSQL =
+    [NSString stringWithFormat:@"INSERT INTO "
+                               @"SVSummaryResultModel(testId,type,testTime,UvMOS,loadTime,"
+                               @"bandwidth)VALUES(%ld, 0, %ld, %lf, %ld, %lf);",
+                               _testId, testResult.testTime, testResult.UvMOSSession,
+                               testResult.firstBufferTime, testResult.downloadSpeed];
     // 插入汇总结果
     [db executeUpdate:insertSVSummaryResultModelSQL];
 }

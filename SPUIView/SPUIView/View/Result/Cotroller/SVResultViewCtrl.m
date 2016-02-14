@@ -113,7 +113,7 @@
     // 2、添加数据
     NSArray *array =
     [_db executeQuery:[SVSummaryResultModel class]
-                  SQL:@"select * from SVSummaryResultModel order by id desc limit 100 offset 0;"];
+                  SQL:@"select * from SVSummaryResultModel order by id asc limit 100 offset 0;"];
     [_dataSource addObjectsFromArray:array];
 
     // 3、刷新列表
@@ -130,7 +130,7 @@
 //创建数据源
 - (void)initDataSouce
 {
-    NSArray *array = @[@"日期", @"时间", @"na", @"加载时间", @"带宽"];
+    NSArray *array = @[@"日期", @"时间", @"na", @"首次缓冲时间", @"速率"];
 
     [self.dataSource addObject:array];
 }
@@ -183,7 +183,7 @@
  */
 - (void)addHeadView
 {
-    NSArray *titles = @[@"类型", @"时间", @"U-vMOS", @"加载时间", @"带宽"];
+    NSArray *titles = @[@"类型", @"时间", @"U-vMOS", @"首次缓冲时间", @"速率"];
     NSArray *images = @[
         @"ic_network_type_normal",
         @"ic_start_time_normal",
