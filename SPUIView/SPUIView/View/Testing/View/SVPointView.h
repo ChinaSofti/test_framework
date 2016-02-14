@@ -39,6 +39,8 @@
 @property (nonatomic, assign) NSInteger grayViewIndexInSuperView;
 //定义仪表盘panelView
 @property (nonatomic, strong) UIView * panelView;
+
+
 //定义中间半圆middleView
 @property (nonatomic, strong) UIView * middleView;
 //定义label1

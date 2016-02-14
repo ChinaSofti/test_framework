@@ -78,18 +78,32 @@
         // 2.TestingView中的初始化
         _panelView = [[UIView alloc]
                       initWithFrame:CGRectMake (FITWIDTH (20), FITWIDTH (160), FITWIDTH (280), FITWIDTH (280))];
-        _panelView.backgroundColor =
-        [UIColor colorWithPatternImage:[UIImage imageNamed:@"clock_video_panel"]];
+        UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        imageView.size =CGSizeMake(280, 280);
+        imageView.image = [UIImage imageNamed:@"clock_video_panel"];
+        imageView.center = CGPointMake(_panelView.frame.size.width/2, _panelView.frame.size.height/2);
+        [_panelView addSubview:imageView];
+        //        NSLog(@"_panelView.center%f_%f",_panelView.center.x,_panelView.center.y);
+        //        NSLog(@"imageView.center%f_%f",imageView.center.x,imageView.center.y);
+    
+        
         
         _middleView = [[UIView alloc]
                        initWithFrame:CGRectMake (FITWIDTH (20), FITWIDTH (160), FITWIDTH (280), FITWIDTH (280))];
-        _middleView.backgroundColor =
-        [UIColor colorWithPatternImage:[UIImage imageNamed:@"clock_middle"]];
+        UIImageView* imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
+        imageView2.size =CGSizeMake(280, 280);
+        imageView2.image = [UIImage imageNamed:@"clock_middle"];
+        imageView2.center = CGPointMake(_panelView.frame.size.width/2, _panelView.frame.size.height/2);
+        [_middleView addSubview:imageView2];
+        
         
         _grayView = [[SVPointView alloc]
                      initWithFrame:CGRectMake (FITWIDTH (20), FITWIDTH (160), FITWIDTH (280), FITWIDTH (280))];
-        _grayView.backgroundColor =
-        [UIColor colorWithPatternImage:[UIImage imageNamed:@"clock_pointer_gray"]];
+        UIImageView* imageView3 = [[UIImageView alloc] initWithFrame:CGRectZero];
+        imageView3.size =CGSizeMake(280, 280);
+        imageView3.image = [UIImage imageNamed:@"clock_pointer_gray"];
+        imageView3.center = CGPointMake(_panelView.frame.size.width/2, _panelView.frame.size.height/2);
+        [_grayView addSubview:imageView3];
         
         
         _label1 = [[UILabel alloc]
@@ -97,6 +111,7 @@
         _label1.text = @"U-vMos";
         _label1.font = [UIFont systemFontOfSize:13.0f];
         _label1.textAlignment = NSTextAlignmentCenter;
+        
         
         _label2 = [[UILabel alloc]
                    initWithFrame:CGRectMake (FITWIDTH (110), FITWIDTH (350), FITWIDTH (100), FITWIDTH (50))];
@@ -108,7 +123,7 @@
         
         _pointView = [[[NSBundle mainBundle] loadNibNamed:@"SVPointView" owner:nil options:nil] lastObject];
         _pointView.center = _panelView.center;
-        
+//        _pointView.center = CGPointMake(_panelView.frame.size.width/2, _panelView.frame.size.height/2);
         
         // 3.videoView中的初始化
 
@@ -213,6 +228,7 @@
 {
     //设置图片旋转速度
     self.pointView.transform = CGAffineTransformMakeRotation (self.num);
+    NSLog(@"%f______________",self.num);
 }
 
 /**
