@@ -27,7 +27,6 @@
 		4DD006061C609EDB007D4D2F /* ic_video_testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD005F51C609EDB007D4D2F /* ic_video_testing.png */; };
 		4DD006071C609EDB007D4D2F /* ic_web_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD005F61C609EDB007D4D2F /* ic_web_normal.png */; };
 		4DD006081C609EDB007D4D2F /* ic_web_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD005F71C609EDB007D4D2F /* ic_web_test.png */; };
-		4DD0060B1C609EE2007D4D2F /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD0060A1C609EE2007D4D2F /* icon.png */; };
 		4DD006191C609F7A007D4D2F /* SVResultViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD006141C609F7A007D4D2F /* SVResultViewCtrl.m */; };
 		4DD0061A1C609F7A007D4D2F /* SVSortTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD006161C609F7A007D4D2F /* SVSortTools.m */; };
 		561447C11C59BCE900003B9A /* SVPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 561447C01C59BCE900003B9A /* SVPointView.m */; };
@@ -44,7 +43,6 @@
 		565DFAEF1C515BB10024FF45 /* ic_video_testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 565DFAE21C515BB10024FF45 /* ic_video_testing.png */; };
 		565DFAF01C515BB10024FF45 /* ic_web_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 565DFAE31C515BB10024FF45 /* ic_web_check.png */; };
 		565DFAF11C515BB10024FF45 /* ic_web_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 565DFAE41C515BB10024FF45 /* ic_web_label.png */; };
-		566118761C57265500F64161 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 566118751C57265500F64161 /* back.png */; };
 		5661187C1C574BB500F64161 /* SVBackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5661187B1C574BB500F64161 /* SVBackView.m */; };
 		56A919151C4F4BAA00E8BB72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A919101C4F4BAA00E8BB72 /* AppDelegate.m */; };
 		56A919181C4F4BAB00E8BB72 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A919141C4F4BAA00E8BB72 /* ViewController.m */; };
@@ -121,6 +119,8 @@
 		B70FF4FA1C6643A5002D571B /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4F91C6643A5002D571B /* libstdc++.6.0.9.dylib */; };
 		B70FF4FC1C6643BF002D571B /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4FB1C6643BF002D571B /* libiconv.2.dylib */; };
 		B72A1D0E1C7192B600C3141A /* speed_pro.png in Resources */ = {isa = PBXBuildFile; fileRef = B72A1D0D1C7192B600C3141A /* speed_pro.png */; };
+		B72A1D161C71A1E300C3141A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B72A1D141C71A1E300C3141A /* icon.png */; };
+		B72A1D171C71A1E300C3141A /* starting_window.png in Resources */ = {isa = PBXBuildFile; fileRef = B72A1D151C71A1E300C3141A /* starting_window.png */; };
 		B72DC85A1C6C0BF00046F174 /* SVProbeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */; };
 		B72DC85B1C6C0BF00046F174 /* SVProbeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */; };
 		B72DC85D1C6C0F4E0046F174 /* SVSystemUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */; };
@@ -207,7 +207,6 @@
 		B75995571C6B8DBA001C1D89 /* SVVideoTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */; };
 		B75995581C6B8DBA001C1D89 /* SVVideoTestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */; };
 		B7CD574A1C705C8D00668E88 /* SVCurrentResultViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */; };
-		B7CD574F1C7083CB00668E88 /* starting_window.png in Resources */ = {isa = PBXBuildFile; fileRef = B7CD574E1C7083CB00668E88 /* starting_window.png */; };
 		B7CD57521C70C7FB00668E88 /* SVCurrentResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CD57511C70C7FB00668E88 /* SVCurrentResultModel.m */; };
 /* End PBXBuildFile section */
 
@@ -299,7 +298,6 @@
 		4DD005F51C609EDB007D4D2F /* ic_video_testing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_video_testing.png; sourceTree = "<group>"; };
 		4DD005F61C609EDB007D4D2F /* ic_web_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_web_normal.png; sourceTree = "<group>"; };
 		4DD005F71C609EDB007D4D2F /* ic_web_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_web_test.png; sourceTree = "<group>"; };
-		4DD0060A1C609EE2007D4D2F /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = icon/icon.png; sourceTree = "<group>"; };
 		4DD006131C609F7A007D4D2F /* SVResultViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVResultViewCtrl.h; sourceTree = "<group>"; };
 		4DD006141C609F7A007D4D2F /* SVResultViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVResultViewCtrl.m; sourceTree = "<group>"; };
 		4DD006151C609F7A007D4D2F /* SVSortTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVSortTools.h; path = ../Cotroller/SVSortTools.h; sourceTree = "<group>"; };
@@ -322,7 +320,6 @@
 		565DFAE21C515BB10024FF45 /* ic_video_testing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_video_testing.png; sourceTree = "<group>"; };
 		565DFAE31C515BB10024FF45 /* ic_web_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_web_check.png; sourceTree = "<group>"; };
 		565DFAE41C515BB10024FF45 /* ic_web_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_web_label.png; sourceTree = "<group>"; };
-		566118751C57265500F64161 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		5661187A1C574BB500F64161 /* SVBackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVBackView.h; sourceTree = "<group>"; };
 		5661187B1C574BB500F64161 /* SVBackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVBackView.m; sourceTree = "<group>"; };
 		56622C4D1C4F320A00B4A50B /* CTCommonDefine.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCommonDefine.pch; sourceTree = "<group>"; };
@@ -417,6 +414,8 @@
 		B70FF4F91C6643A5002D571B /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "/usr/lib/libstdc++.6.0.9.dylib"; sourceTree = "<absolute>"; };
 		B70FF4FB1C6643BF002D571B /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = /usr/lib/libiconv.2.dylib; sourceTree = "<absolute>"; };
 		B72A1D0D1C7192B600C3141A /* speed_pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speed_pro.png; sourceTree = "<group>"; };
+		B72A1D141C71A1E300C3141A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		B72A1D151C71A1E300C3141A /* starting_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starting_window.png; sourceTree = "<group>"; };
 		B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProbeInfo.h; sourceTree = "<group>"; };
 		B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProbeInfo.m; sourceTree = "<group>"; };
 		B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSystemUtilTest.m; sourceTree = "<group>"; };
@@ -508,7 +507,6 @@
 		B77999801C6CD02700C1E511 /* SVVideoTestDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVVideoTestDelegate.h; sourceTree = "<group>"; };
 		B7CD57481C705C8D00668E88 /* SVCurrentResultViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCurrentResultViewCtrl.h; sourceTree = "<group>"; };
 		B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCurrentResultViewCtrl.m; sourceTree = "<group>"; };
-		B7CD574E1C7083CB00668E88 /* starting_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starting_window.png; sourceTree = "<group>"; };
 		B7CD57501C70C7FB00668E88 /* SVCurrentResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCurrentResultModel.h; sourceTree = "<group>"; };
 		B7CD57511C70C7FB00668E88 /* SVCurrentResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCurrentResultModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -598,8 +596,6 @@
 		4DD005E61C609EDB007D4D2F /* Result */ = {
 			isa = PBXGroup;
 			children = (
-				B7CD574E1C7083CB00668E88 /* starting_window.png */,
-				4DD0060A1C609EE2007D4D2F /* icon.png */,
 				4DD005E81C609EDB007D4D2F /* homeindicator.png */,
 				4DD005E91C609EDB007D4D2F /* ic_clear.png */,
 				4DD005EA1C609EDB007D4D2F /* ic_network_type.png */,
@@ -840,8 +836,9 @@
 		56EC8C631C4F45A500EBDA6C /* Resoruces */ = {
 			isa = PBXGroup;
 			children = (
+				B72A1D141C71A1E300C3141A /* icon.png */,
+				B72A1D151C71A1E300C3141A /* starting_window.png */,
 				4DABA3621C5F50C10018EF57 /* Testing */,
-				566118751C57265500F64161 /* back.png */,
 				4DD005E61C609EDB007D4D2F /* Result */,
 				565DFAD61C515BB10024FF45 /* LaunchImage */,
 				565DFADA1C515BB10024FF45 /* test */,
@@ -1544,7 +1541,6 @@
 			files = (
 				4DD006081C609EDB007D4D2F /* ic_web_test.png in Resources */,
 				4DD006021C609EDB007D4D2F /* ic_speed_testing.png in Resources */,
-				4DD0060B1C609EE2007D4D2F /* icon.png in Resources */,
 				565DFAEB1C515BB10024FF45 /* ic_speed_testing.png in Resources */,
 				565DFAEA1C515BB10024FF45 /* ic_speed_normal.png in Resources */,
 				4DD006011C609EDB007D4D2F /* ic_speed_normal.png in Resources */,
@@ -1566,18 +1562,18 @@
 				56A9191E1C4F4C2500E8BB72 /* LaunchScreen.storyboard in Resources */,
 				4DD005FB1C609EDB007D4D2F /* ic_network_type.png in Resources */,
 				4DD006041C609EDB007D4D2F /* ic_start_time_normal.png in Resources */,
-				B7CD574F1C7083CB00668E88 /* starting_window.png in Resources */,
 				4DD005FA1C609EDB007D4D2F /* ic_clear.png in Resources */,
-				566118761C57265500F64161 /* back.png in Resources */,
 				4DD005FC1C609EDB007D4D2F /* ic_network_type_mobile.png in Resources */,
 				565DFAE91C515BB10024FF45 /* ic_speed_label.png in Resources */,
 				565DFAEC1C515BB10024FF45 /* ic_video_check.png in Resources */,
+				B72A1D161C71A1E300C3141A /* icon.png in Resources */,
 				56EC8C961C4F467000EBDA6C /* tabbar_settings_selected.png in Resources */,
 				B72A1D0E1C7192B600C3141A /* speed_pro.png in Resources */,
 				4DD005FF1C609EDB007D4D2F /* ic_sort.png in Resources */,
 				56A9191F1C4F4C2500E8BB72 /* Main.storyboard in Resources */,
 				56EC8C971C4F467000EBDA6C /* tabbar_test.png in Resources */,
 				4DD006001C609EDB007D4D2F /* ic_sort_asc.png in Resources */,
+				B72A1D171C71A1E300C3141A /* starting_window.png in Resources */,
 				565DFAED1C515BB10024FF45 /* ic_video_label.png in Resources */,
 				4DD005FE1C609EDB007D4D2F /* ic_network_type_wifi.png in Resources */,
 				565DFAEF1C515BB10024FF45 /* ic_video_testing.png in Resources */,
