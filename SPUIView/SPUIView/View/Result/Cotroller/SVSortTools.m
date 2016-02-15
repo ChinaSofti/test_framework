@@ -43,12 +43,13 @@
         int a = i;
         for (int j = i; j < array.count; j++)
         {
-            if (((SVSummaryResultModel *)[array objectAtIndex:j]).testTime > ((SVSummaryResultModel *)[array objectAtIndex:a]).testTime)
+            if (((SVSummaryResultModel *)[array objectAtIndex:j]).testTime >
+                ((SVSummaryResultModel *)[array objectAtIndex:a]).testTime)
             {
                 a = j;
             }
         }
-      [array exchangeObjectAtIndex:i withObjectAtIndex:a];
+        [array exchangeObjectAtIndex:i withObjectAtIndex:a];
     }
 }
 /**
@@ -62,7 +63,8 @@
         int a = i;
         for (int j = i; j < array.count; j++)
         {
-            if (((SVSummaryResultModel *)[array objectAtIndex:j]).UvMOS > ((SVSummaryResultModel *)[array objectAtIndex:a]).UvMOS)
+            if (((SVSummaryResultModel *)[array objectAtIndex:j]).UvMOS >
+                ((SVSummaryResultModel *)[array objectAtIndex:a]).UvMOS)
             {
                 a = j;
             }
@@ -81,14 +83,14 @@
         int a = i;
         for (int j = i; j < array.count; j++)
         {
-            if (((SVSummaryResultModel *)[array objectAtIndex:j]).loadTime > ((SVSummaryResultModel *)[array objectAtIndex:a]).loadTime)
+            if (((SVSummaryResultModel *)[array objectAtIndex:j]).loadTime >
+                ((SVSummaryResultModel *)[array objectAtIndex:a]).loadTime)
             {
                 a = j;
             }
         }
         [array exchangeObjectAtIndex:i withObjectAtIndex:a];
     }
-
 }
 /**
  *  根据带宽排序
@@ -101,14 +103,14 @@
         int a = i;
         for (int j = i; j < array.count; j++)
         {
-            if (((SVSummaryResultModel *)[array objectAtIndex:j]).bandwidth > ((SVSummaryResultModel *)[array objectAtIndex:a]).bandwidth)
+            if (((SVSummaryResultModel *)[array objectAtIndex:j]).bandwidth >
+                ((SVSummaryResultModel *)[array objectAtIndex:a]).bandwidth)
             {
                 a = j;
             }
         }
         [array exchangeObjectAtIndex:i withObjectAtIndex:a];
     }
-
 }
 /**
  *  逆序

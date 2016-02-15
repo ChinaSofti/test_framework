@@ -13,13 +13,12 @@
 @interface SVResultCell : UITableViewCell
 
 
-@property (nonatomic,strong) SVSummaryResultModel * resultModel;
+@property (nonatomic, strong) SVSummaryResultModel *resultModel;
 
 
+@property (nonatomic, retain) UIButton *bgdBtn;
 
-@property (nonatomic, retain) UIButton * bgdBtn;
 
-
-@property (nonatomic,copy)void (^cellBlock)();
+@property (nonatomic, copy) void (^cellBlock) ();
 
 @end

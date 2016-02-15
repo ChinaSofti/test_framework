@@ -64,8 +64,10 @@ static NSInteger BtnTag = 10086;
     [overLookBtn setBackgroundImage:[CTYYLToolView imageWithColor:RGBACOLOR (35, 144, 222, 1)
                                                              size:CGSizeMake (FITWIDTH (114), FITWIDTH (40))]
                            forState:UIControlStateHighlighted];
-    [overLookBtn setBackgroundImage:[CTYYLToolView imageWithColor:[UIColor colorWithWhite:0.925 alpha:1.000]                                                             size:CGSizeMake (FITWIDTH (114), FITWIDTH (40))]
-                           forState:UIControlStateNormal];
+    [overLookBtn
+    setBackgroundImage:[CTYYLToolView imageWithColor:[UIColor colorWithWhite:0.925 alpha:1.000]
+                                                size:CGSizeMake (FITWIDTH (114), FITWIDTH (40))]
+              forState:UIControlStateNormal];
     overLookBtn.layer.cornerRadius = 5;
     overLookBtn.layer.masksToBounds = YES;
 

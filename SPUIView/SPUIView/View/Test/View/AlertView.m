@@ -7,8 +7,8 @@
 //
 
 #import "AlertView.h"
-#import "UIView+Exten.h"
 #import "CTYYLToolView.h"
+#import "UIView+Exten.h"
 
 static NSInteger BtnTag = 10086;
 @interface AlertView ()
@@ -38,12 +38,12 @@ static NSInteger BtnTag = 10086;
         [[UIImageView alloc] initWithFrame:CGRectMake (FITWIDTH (80), _bgView.bottomY + FITWIDTH (50),
                                                        FITWIDTH (20), FITWIDTH (20))];
         imageView.image = [UIImage imageNamed:@"a"];
-        UILabel *signLabel =
-        [CTYYLToolView createLabelWithFrame:CGRectMake (FITWIDTH (105), _bgView.bottomY + FITWIDTH (50),
-                                                      FITWIDTH (100), FITWIDTH (20))
-                                 withFont:14
-                           withTitleColor:[UIColor whiteColor]
-                                withTitle:@"您正在使用WiFi"];
+        UILabel *signLabel = [CTYYLToolView
+        createLabelWithFrame:CGRectMake (FITWIDTH (105), _bgView.bottomY + FITWIDTH (50),
+                                         FITWIDTH (100), FITWIDTH (20))
+                    withFont:14
+              withTitleColor:[UIColor whiteColor]
+                   withTitle:@"您正在使用WiFi"];
 
         [self addSubview:imageView];
         [self addSubview:signLabel];
@@ -60,12 +60,11 @@ static NSInteger BtnTag = 10086;
                withTitle:@"设置带宽信息"];
     titleLabel.textAlignment = NSTextAlignmentCenter;
 
-    UILabel *internetTypeLabel =
-    [CTYYLToolView createLabelWithFrame:CGRectMake (FITWIDTH (15), titleLabel.bottomY + FITWIDTH (15),
-                                                  FITWIDTH (60), FITWIDTH (20))
-                             withFont:15
-                       withTitleColor:RGBACOLOR (88, 88, 88, 1)
-                            withTitle:@"带宽类型"];
+    UILabel *internetTypeLabel = [CTYYLToolView
+    createLabelWithFrame:CGRectMake (FITWIDTH (15), titleLabel.bottomY + FITWIDTH (15), FITWIDTH (60), FITWIDTH (20))
+                withFont:15
+          withTitleColor:RGBACOLOR (88, 88, 88, 1)
+               withTitle:@"带宽类型"];
 
     for (int i = 0; i < 3; i++)
     {
@@ -138,7 +137,7 @@ static NSInteger BtnTag = 10086;
     [overLookBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [overLookBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [overLookBtn setBackgroundImage:[CTYYLToolView imageWithColor:RGBACOLOR (35, 144, 222, 1)
-                                                           size:CGSizeMake (FITWIDTH (114), FITWIDTH (40))]
+                                                             size:CGSizeMake (FITWIDTH (114), FITWIDTH (40))]
                            forState:UIControlStateHighlighted];
     overLookBtn.layer.cornerRadius = 5;
     overLookBtn.layer.masksToBounds = YES;
@@ -154,7 +153,7 @@ static NSInteger BtnTag = 10086;
     [saveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [saveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [saveBtn setBackgroundImage:[CTYYLToolView imageWithColor:RGBACOLOR (35, 144, 222, 1)
-                                                       size:CGSizeMake (FITWIDTH (114), FITWIDTH (40))]
+                                                         size:CGSizeMake (FITWIDTH (114), FITWIDTH (40))]
                        forState:UIControlStateHighlighted];
     saveBtn.layer.cornerRadius = 5;
     saveBtn.layer.masksToBounds = YES;
@@ -184,7 +183,7 @@ static NSInteger BtnTag = 10086;
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button setTitleColor:RGBACOLOR (37, 146, 224, 1) forState:UIControlStateSelected];
     [button setBackgroundImage:[CTYYLToolView imageWithColor:[UIColor yellowColor]
-                                                      size:CGSizeMake (FITWIDTH (35), FITWIDTH (20))]
+                                                        size:CGSizeMake (FITWIDTH (35), FITWIDTH (20))]
                       forState:UIControlStateSelected];
 
     button.titleLabel.font = [UIFont systemFontOfSize:15];

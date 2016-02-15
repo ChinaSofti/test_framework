@@ -9,6 +9,7 @@
 #define Button_Tag 10
 
 #import "SVDBManager.h"
+#import "SVDetailViewCtrl.h"
 #import "SVResultCell.h"
 #import "SVResultViewCtrl.h"
 #import "SVSortTools.h"
@@ -63,7 +64,7 @@
     if (_tableView == nil)
     {
         // 1.创建一个 tableView
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake (0, 64 + 10, kScreenW, kScreenH - 64)
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake (0, 130, kScreenW, kScreenH - 64)
                                                   style:UITableViewStylePlain];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
@@ -82,7 +83,7 @@
     // 初始化数据库和表
     _db = [SVDBManager sharedInstance];
     [super viewDidLoad];
-    //   NSLog(@"SVResultView页面");
+    NSLog (@"SVResultView页面");
 
     self.view.backgroundColor = [UIColor whiteColor];
 
@@ -246,12 +247,14 @@
         }
     }
 
-    [self.navigationController.view addSubview:_toolView];
+    [self.view addSubview:_toolView];
 }
 
 
 - (void)buttonClick:(UIButton *)button
 {
+
+    NSLog (@"SVResultView页面");
 
     if (button != self.button)
     {
@@ -454,10 +457,38 @@
     cell.cellBlock = ^() {
       NSLog (@"第%ld个cell 被点击", indexPath.row);
     };
+    // cell按钮点击事件
+    // cellbutton
+    UIButton *cellButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    cellButton.frame = CGRectMake (10, 0, 340, 80);
+    //      cellButton.backgroundColor = [UIColor redColor];
+    [cellButton setImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
+    [cellButton addTarget:self
+                   action:@selector (CellDetailClick:)
+         forControlEvents:UIControlEventTouchUpInside];
+    cellButton.tag = indexPath.row;
+    [cell.contentView addSubview:cellButton];
 
     return cell;
 }
+/**
+ *cell的点击事件进入详情界面
+ **/
 
+- (void)CellDetailClick:(UIButton *)sender
+{
+    // cell被点击
+    NSLog (@"cell-------dianjile");
+    //按钮点击后alloc一个界面
+    SVDetailViewCtrl *detailViewCtrl = [[SVDetailViewCtrl alloc] init];
+
+    //隐藏hidesBottomBarWhenPushed
+    self.hidesBottomBarWhenPushed = YES;
+    // push界面
+    [self.navigationController pushViewController:detailViewCtrl animated:YES];
+    //返回时显示hidesBottomBarWhenPushed
+    self.hidesBottomBarWhenPushed = NO;
+}
 
 - (void)didReceiveMemoryWarning
 {

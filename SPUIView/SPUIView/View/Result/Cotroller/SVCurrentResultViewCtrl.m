@@ -230,7 +230,7 @@
     //电池显示不了,设置样式让电池显示
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
 
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake (0, 0, 45, 30)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake (0, 0, 45, 23)];
     //    button.backgroundColor = [UIColor redColor];
     [button setImage:[UIImage imageNamed:@"homeindicator"] forState:UIControlStateNormal];
     [button addTarget:self
