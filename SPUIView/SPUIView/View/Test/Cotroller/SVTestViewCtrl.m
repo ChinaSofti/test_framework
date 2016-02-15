@@ -6,6 +6,8 @@
 //  Copyright © 2016年 chinasofti. All rights reserved.
 //
 
+#import "SVCurrentResultModel.h"
+#import "SVCurrentResultViewCtrl.h"
 #import "SVI18N.h"
 #import "SVSystemUtil.h"
 #import "SVTestContextGetter.h"
@@ -120,26 +122,10 @@
     [self.view addSubview:_tableView];
 
     BOOL isConnectionAvailable = [SVSystemUtil isConnectionAvailable];
-    if (isConnectionAvailable)
+    if (!isConnectionAvailable)
     {
-        [self loadResouceFromServer];
+        // TODO liuchengyu 提示用户无网络
     }
-}
-
-
-- (void)loadResouceFromServer
-{
-    dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-      // 初始化Test Context
-      SVTestContextGetter *contextGetter = [SVTestContextGetter sharedInstance];
-      // 初始化本机IP和运营商等信息
-      [contextGetter initIPAndISP];
-      //从服务器请求Test Context Data相关信息
-      [contextGetter requestContextDataFromServer];
-      // 解析服务器返回的Test Context Data
-      [contextGetter parseContextData];
-
-    });
 }
 
 /**
@@ -354,16 +340,28 @@
 {
 
 #pragma mark - 在这里对 数组 排序
-
+    SVCurrentResultModel *currentResultModel = [[SVCurrentResultModel alloc] init];
     UINavigationController *navigationController = self.navigationController;
     //按钮点击后alloc一个界面
     SVTestingCtrl *testingCtrl = [[SVTestingCtrl alloc] init];
     [testingCtrl setNavigationController:navigationController];
-
-    //
+    [testingCtrl setCurrentResultModel:currentResultModel];
     testingCtrl.selectedA = _selectedMA;
+
     // push界面
     [self.navigationController pushViewController:testingCtrl animated:YES];
+
+
+    //    SVCurrentResultViewCtrl *currentResultView = [[SVCurrentResultViewCtrl alloc] init];
+    //    currentResultModel.testId = 123;
+    //    currentResultModel.uvMOS = 2.4;
+    //    currentResultModel.firstBufferTime = 2342;
+    //    currentResultModel.cuttonTimes = 2;
+    //    currentResultView.currentResultModel = currentResultModel;
+    //    currentResultView.navigationController = navigationController;
+    //    //          [self presentViewController:currentResultView animated:YES completion:nil];
+    //    [navigationController pushViewController:currentResultView animated:YES];
+
     NSLog (@"testBtnClick...");
 }
 

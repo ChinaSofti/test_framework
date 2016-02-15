@@ -27,6 +27,8 @@
 
     // 定义footerView
     SVPointView *_footerView;
+
+    SVVideoTest *_videoTest;
 }
 
 @property (nonatomic, strong) SVBackView *backView;
@@ -34,7 +36,7 @@
 
 @implementation SVTestingCtrl
 
-@synthesize navigationController;
+@synthesize navigationController, currentResultModel;
 
 - (void)viewDidLoad
 {
@@ -92,6 +94,49 @@
 }
 
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [_footerView.placeLabel setText:@""];
+    [_footerView.resolutionLabel setText:@""];
+    [_footerView.bitLabel setText:@""];
+    [_headerView.bufferLabel setText:@""];
+    [_headerView.speedLabel setText:@""];
+    [_headerView.uvMosLabel setText:@""];
+    [_testingView updateUvMOS:0];
+
+    // 当用户离开进入页面时，开始测试
+    long testId = [SVTimeUtil currentMilliSecondStamp];
+    _videoTest =
+    [[SVVideoTest alloc] initWithView:testId showVideoView:_videoView testDelegate:self];
+    dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      BOOL isOK = [_videoTest initTestContext];
+      if (!isOK)
+      {
+          // TODO liuchengyu 初始化TestContext失败，提示用户
+      }
+      else
+      {
+          isOK = [_videoTest startTest];
+          if (!isOK)
+          {
+              // TODO liuchengyu 启动测试失败，提示用户
+          }
+      }
+    });
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      // 当用户离开当前页面时，停止测试
+      if (_videoTest)
+      {
+          [_videoTest stopTest];
+      }
+    });
+}
+
 #pragma mark - 创建头headerView
 
 - (void)creatHeaderView
@@ -144,16 +189,6 @@
 
     //把panlView添加到中整个视图上
     [self.view addSubview:_videoView];
-
-    //把视频播放放到线程中
-    long testId = [SVTimeUtil currentMilliSecondStamp];
-    SVVideoTest *videoTest =
-    [[SVVideoTest alloc] initWithView:testId showVideoView:_videoView testDelegate:self];
-    dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-      [videoTest test];
-      // TODO liuchengyu 完成测试。跳转到结果页面
-
-    });
 
     //添加视频点击事件
     UIButton *bgBtn = [[UIButton alloc]
@@ -297,7 +332,9 @@
       [_testingView updateUvMOS:uvMOSSession];
       if (testContext.testStatus == TEST_FINISHED)
       {
+          [self initCurrentResultModel:testResult];
           SVCurrentResultViewCtrl *currentResultView = [[SVCurrentResultViewCtrl alloc] init];
+          currentResultView.currentResultModel = currentResultModel;
           currentResultView.navigationController = navigationController;
           //          [self presentViewController:currentResultView animated:YES completion:nil];
           [navigationController pushViewController:currentResultView animated:YES];
@@ -305,5 +342,16 @@
     });
 }
 
+- (void)initCurrentResultModel:(SVVideoTestResult *)testResult
+{
+    if (!currentResultModel)
+    {
+        currentResultModel = [[SVCurrentResultModel alloc] init];
+    }
 
+    [currentResultModel setTestId:testResult.testId];
+    [currentResultModel setUvMOS:testResult.UvMOSSession];
+    [currentResultModel setFirstBufferTime:testResult.firstBufferTime];
+    [currentResultModel setCuttonTimes:testResult.videoCuttonTimes];
+}
 @end

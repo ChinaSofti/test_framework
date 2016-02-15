@@ -39,6 +39,7 @@ static NSString *DEFAULT_EN_US_LANG = @"en";
  */
 + (SVIPAndISP *)queryIPDetail:(NSString *)ip
 {
+
     NSString *lang = [SVI18N currentLanguage];
 
     if ([lang containsString:@"en"])
@@ -51,16 +52,31 @@ static NSString *DEFAULT_EN_US_LANG = @"en";
     }
 
     NSData *jsonData = nil;
-    if (!ip)
+
+    @try
     {
-        SVInfo (@"query ip and isp of this iphone, and return value with %@ language", lang);
-        jsonData = [SVHttpGetter requestDataWithoutParameter:[NSString stringWithFormat:defaultURL, lang]];
+        if (!ip)
+        {
+            SVInfo (@"query ip and isp of this iphone, and return value with %@ language", lang);
+            jsonData =
+            [SVHttpGetter requestDataWithoutParameter:[NSString stringWithFormat:defaultURL, lang]];
+        }
+        else
+        {
+            SVInfo (@"query ip[%@] location, and return value with %@ language", ip, lang);
+            jsonData = [SVHttpGetter
+            requestDataWithoutParameter:[NSString stringWithFormat:queryIPLocationURL, ip, lang]];
+        }
     }
-    else
+    @catch (NSException *exception)
     {
-        SVInfo (@"query ip[%@] location, and return value with %@ language", ip, lang);
-        jsonData = [SVHttpGetter
-        requestDataWithoutParameter:[NSString stringWithFormat:queryIPLocationURL, ip, lang]];
+        SVError (@"query ip and isp information fail. exception:%@", exception);
+        return nil;
+    }
+
+    if (!jsonData)
+    {
+        return nil;
     }
 
     NSError *error;

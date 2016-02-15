@@ -30,6 +30,18 @@
      showVideoView:(UIView *)showVideoView
       testDelegate:(id<SVVideoTestDelegate>)testDelegate;
 
-- (void)test;
+/**
+ *  初始化TestContext
+ */
+- (BOOL)initTestContext;
 
+/**
+ *  开始测试
+ */
+- (BOOL)startTest;
+
+/**
+ *  停止测试
+ */
+- (BOOL)stopTest;
 @end

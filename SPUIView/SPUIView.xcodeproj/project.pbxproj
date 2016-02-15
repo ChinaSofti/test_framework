@@ -34,7 +34,6 @@
 		561E46721C56433600CA58E8 /* SVSettingsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 561E46711C56433600CA58E8 /* SVSettingsViewCtrl.m */; };
 		5644354C1C5215AB009B7024 /* i18n.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5644354E1C5215AB009B7024 /* i18n.strings */; };
 		564435771C5216AD009B7024 /* CTViewTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 564435761C5216AD009B7024 /* CTViewTools.m */; };
-		565DFAE71C515BB10024FF45 /* speed_pro.png in Resources */ = {isa = PBXBuildFile; fileRef = 565DFAD91C515BB10024FF45 /* speed_pro.png */; };
 		565DFAE81C515BB10024FF45 /* ic_speed_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 565DFADB1C515BB10024FF45 /* ic_speed_check.png */; };
 		565DFAE91C515BB10024FF45 /* ic_speed_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 565DFADC1C515BB10024FF45 /* ic_speed_label.png */; };
 		565DFAEA1C515BB10024FF45 /* ic_speed_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 565DFADD1C515BB10024FF45 /* ic_speed_normal.png */; };
@@ -60,7 +59,6 @@
 		56BA8FDB1C561E9100886CAE /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BA8FCD1C561E9100886CAE /* AlertView.m */; };
 		56BA8FDC1C561E9100886CAE /* SVToolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BA8FCF1C561E9100886CAE /* SVToolCell.m */; };
 		56BA8FDD1C561E9100886CAE /* SVTestingCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BA8FD31C561E9100886CAE /* SVTestingCtrl.m */; };
-		56D04EEC1C5E7159004C08FB /* 111.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D04EEB1C5E7159004C08FB /* 111.png */; };
 		56D40F851C5CFFEC00455C7E /* SVPointView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D40F841C5CFFEC00455C7E /* SVPointView.xib */; };
 		56EC8C811C4F45A500EBDA6C /* SVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC8C601C4F45A500EBDA6C /* SVTabBarController.m */; };
 		56EC8C931C4F467000EBDA6C /* tabbar_result.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC8C8C1C4F467000EBDA6C /* tabbar_result.png */; };
@@ -122,7 +120,7 @@
 		B70FF4F81C66437D002D571B /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4F71C66437D002D571B /* libz.1.dylib */; };
 		B70FF4FA1C6643A5002D571B /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4F91C6643A5002D571B /* libstdc++.6.0.9.dylib */; };
 		B70FF4FC1C6643BF002D571B /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4FB1C6643BF002D571B /* libiconv.2.dylib */; };
-		B70FF5581C66CDD2002D571B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF5561C66CD9A002D571B /* libsqlite3.tbd */; };
+		B72A1D0E1C7192B600C3141A /* speed_pro.png in Resources */ = {isa = PBXBuildFile; fileRef = B72A1D0D1C7192B600C3141A /* speed_pro.png */; };
 		B72DC85A1C6C0BF00046F174 /* SVProbeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */; };
 		B72DC85B1C6C0BF00046F174 /* SVProbeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */; };
 		B72DC85D1C6C0F4E0046F174 /* SVSystemUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */; };
@@ -210,6 +208,7 @@
 		B75995581C6B8DBA001C1D89 /* SVVideoTestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */; };
 		B7CD574A1C705C8D00668E88 /* SVCurrentResultViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */; };
 		B7CD574F1C7083CB00668E88 /* starting_window.png in Resources */ = {isa = PBXBuildFile; fileRef = B7CD574E1C7083CB00668E88 /* starting_window.png */; };
+		B7CD57521C70C7FB00668E88 /* SVCurrentResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CD57511C70C7FB00668E88 /* SVCurrentResultModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -313,7 +312,6 @@
 		564435751C5216AD009B7024 /* CTViewTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTViewTools.h; sourceTree = "<group>"; };
 		564435761C5216AD009B7024 /* CTViewTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTViewTools.m; sourceTree = "<group>"; };
 		564435781C52172B009B7024 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/i18n.strings"; sourceTree = "<group>"; };
-		565DFAD91C515BB10024FF45 /* speed_pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speed_pro.png; sourceTree = "<group>"; };
 		565DFADB1C515BB10024FF45 /* ic_speed_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_speed_check.png; sourceTree = "<group>"; };
 		565DFADC1C515BB10024FF45 /* ic_speed_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_speed_label.png; sourceTree = "<group>"; };
 		565DFADD1C515BB10024FF45 /* ic_speed_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_speed_normal.png; sourceTree = "<group>"; };
@@ -352,7 +350,6 @@
 		56BA8FCF1C561E9100886CAE /* SVToolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVToolCell.m; sourceTree = "<group>"; };
 		56BA8FD21C561E9100886CAE /* SVTestingCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVTestingCtrl.h; sourceTree = "<group>"; };
 		56BA8FD31C561E9100886CAE /* SVTestingCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVTestingCtrl.m; sourceTree = "<group>"; };
-		56D04EEB1C5E7159004C08FB /* 111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 111.png; sourceTree = "<group>"; };
 		56D40F841C5CFFEC00455C7E /* SVPointView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SVPointView.xib; sourceTree = "<group>"; };
 		56EC8C5F1C4F45A500EBDA6C /* SVTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVTabBarController.h; sourceTree = "<group>"; };
 		56EC8C601C4F45A500EBDA6C /* SVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVTabBarController.m; sourceTree = "<group>"; };
@@ -419,7 +416,7 @@
 		B70FF4F71C66437D002D571B /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = /usr/lib/libz.1.dylib; sourceTree = "<absolute>"; };
 		B70FF4F91C6643A5002D571B /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "/usr/lib/libstdc++.6.0.9.dylib"; sourceTree = "<absolute>"; };
 		B70FF4FB1C6643BF002D571B /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = /usr/lib/libiconv.2.dylib; sourceTree = "<absolute>"; };
-		B70FF5561C66CD9A002D571B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		B72A1D0D1C7192B600C3141A /* speed_pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speed_pro.png; sourceTree = "<group>"; };
 		B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProbeInfo.h; sourceTree = "<group>"; };
 		B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProbeInfo.m; sourceTree = "<group>"; };
 		B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSystemUtilTest.m; sourceTree = "<group>"; };
@@ -512,6 +509,8 @@
 		B7CD57481C705C8D00668E88 /* SVCurrentResultViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCurrentResultViewCtrl.h; sourceTree = "<group>"; };
 		B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCurrentResultViewCtrl.m; sourceTree = "<group>"; };
 		B7CD574E1C7083CB00668E88 /* starting_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starting_window.png; sourceTree = "<group>"; };
+		B7CD57501C70C7FB00668E88 /* SVCurrentResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCurrentResultModel.h; sourceTree = "<group>"; };
+		B7CD57511C70C7FB00668E88 /* SVCurrentResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCurrentResultModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -519,7 +518,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B70FF5581C66CDD2002D571B /* libsqlite3.tbd in Frameworks */,
 				B70FF44E1C662FBE002D571B /* SPService.framework in Frameworks */,
 				B70FF4711C66301D002D571B /* SPCommon.framework in Frameworks */,
 			);
@@ -659,7 +657,7 @@
 		565DFAD61C515BB10024FF45 /* LaunchImage */ = {
 			isa = PBXGroup;
 			children = (
-				565DFAD91C515BB10024FF45 /* speed_pro.png */,
+				B72A1D0D1C7192B600C3141A /* speed_pro.png */,
 			);
 			path = LaunchImage;
 			sourceTree = "<group>";
@@ -739,6 +737,8 @@
 			children = (
 				4DD006151C609F7A007D4D2F /* SVSortTools.h */,
 				4DD006161C609F7A007D4D2F /* SVSortTools.m */,
+				B7CD57501C70C7FB00668E88 /* SVCurrentResultModel.h */,
+				B7CD57511C70C7FB00668E88 /* SVCurrentResultModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -765,8 +765,8 @@
 		56BA8FC81C561E9100886CAE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				56BA8FC91C561E9100886CAE /* SVToolModel.h */,
 				56BA8FCA1C561E9100886CAE /* SVToolModel.m */,
+				56BA8FC91C561E9100886CAE /* SVToolModel.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -841,7 +841,6 @@
 			isa = PBXGroup;
 			children = (
 				4DABA3621C5F50C10018EF57 /* Testing */,
-				56D04EEB1C5E7159004C08FB /* 111.png */,
 				566118751C57265500F64161 /* back.png */,
 				4DD005E61C609EDB007D4D2F /* Result */,
 				565DFAD61C515BB10024FF45 /* LaunchImage */,
@@ -854,7 +853,6 @@
 		56EC8C771C4F45A500EBDA6C /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
-				B70FF5561C66CD9A002D571B /* libsqlite3.tbd */,
 			);
 			path = ThirdPart;
 			sourceTree = "<group>";
@@ -1548,14 +1546,12 @@
 				4DD006021C609EDB007D4D2F /* ic_speed_testing.png in Resources */,
 				4DD0060B1C609EE2007D4D2F /* icon.png in Resources */,
 				565DFAEB1C515BB10024FF45 /* ic_speed_testing.png in Resources */,
-				56D04EEC1C5E7159004C08FB /* 111.png in Resources */,
 				565DFAEA1C515BB10024FF45 /* ic_speed_normal.png in Resources */,
 				4DD006011C609EDB007D4D2F /* ic_speed_normal.png in Resources */,
 				4DABA3691C5F50C10018EF57 /* clock_pointer_gray.png in Resources */,
 				56EC8C931C4F467000EBDA6C /* tabbar_result.png in Resources */,
 				5644354C1C5215AB009B7024 /* i18n.strings in Resources */,
 				4DD005F91C609EDB007D4D2F /* homeindicator.png in Resources */,
-				565DFAE71C515BB10024FF45 /* speed_pro.png in Resources */,
 				4DD006061C609EDB007D4D2F /* ic_video_testing.png in Resources */,
 				56EC8C951C4F467000EBDA6C /* tabbar_settings.png in Resources */,
 				4DD006051C609EDB007D4D2F /* ic_video_normal.png in Resources */,
@@ -1577,6 +1573,7 @@
 				565DFAE91C515BB10024FF45 /* ic_speed_label.png in Resources */,
 				565DFAEC1C515BB10024FF45 /* ic_video_check.png in Resources */,
 				56EC8C961C4F467000EBDA6C /* tabbar_settings_selected.png in Resources */,
+				B72A1D0E1C7192B600C3141A /* speed_pro.png in Resources */,
 				4DD005FF1C609EDB007D4D2F /* ic_sort.png in Resources */,
 				56A9191F1C4F4C2500E8BB72 /* Main.storyboard in Resources */,
 				56EC8C971C4F467000EBDA6C /* tabbar_test.png in Resources */,
@@ -1657,6 +1654,7 @@
 				56A919151C4F4BAA00E8BB72 /* AppDelegate.m in Sources */,
 				56F523E41C4DCF7F00E6472B /* main.m in Sources */,
 				561447C11C59BCE900003B9A /* SVPointView.m in Sources */,
+				B7CD57521C70C7FB00668E88 /* SVCurrentResultModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

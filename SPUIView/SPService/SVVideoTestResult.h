@@ -28,7 +28,7 @@
 
 
 // 首次缓冲时间
-@property long firstBufferTime;
+@property int firstBufferTime;
 
 // 开始视频播放
 @property long videoStartPlayTime;

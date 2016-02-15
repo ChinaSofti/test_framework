@@ -44,10 +44,16 @@
  */
 - (id)initWithURL:(NSURL *)url
 {
+    self = [super init];
+    if (!self)
+    {
+        return nil;
+    }
+
     SVInfo (@"request URL:%@", url);
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url
                                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                              timeoutInterval:60];
+                                              timeoutInterval:10];
     // NSURLRequest *request = [NSURLRequest requestWithURL:url];    NSURLConnection *conn =
     NSURLConnection *conn =
     [[NSURLConnection alloc] initWithRequest:request delegate:(id)self startImmediately:NO];

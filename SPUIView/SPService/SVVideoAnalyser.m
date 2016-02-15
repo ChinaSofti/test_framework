@@ -25,6 +25,12 @@
  */
 - (id)initWithURL:(NSString *)videoURL
 {
+    self = [super init];
+    if (!self)
+    {
+        return nil;
+    }
+
     _videoURL = videoURL;
     _videoInfo = [[SVVideoInfo alloc] initWithURL:videoURL];
     return self;

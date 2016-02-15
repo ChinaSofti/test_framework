@@ -11,90 +11,38 @@
 #import "SVSystemUtil.h"
 #import "SVTestContextGetter.h"
 #import "SVTestViewCtrl.h"
-#import "SVToolCell.h"
 
 #define kFirstHederH 40
 #define kLastFooterH 140
 #define kCellH (kScreenW - 20) * 0.22
 #define kMargin 10
 #define kCornerRadius 5
+#define valueFontSize 18
+#define valueLableFontSize 12
 
 @interface SVCurrentResultViewCtrl () <UITableViewDelegate, UITableViewDataSource>
-
-{
-    // 重新测试按钮
-    UIButton *_reTestButton;
-}
-
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, retain) NSMutableArray *soucreMA;
-@property (nonatomic, retain) NSMutableArray *selectedMA;
-@property (nonatomic, retain) UIButton *testBtn;
-@property (nonatomic, retain) UIView *footerView;
-
 
 @end
 
 @implementation SVCurrentResultViewCtrl
 
-@synthesize navigationController;
+@synthesize navigationController, currentResultModel;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog (@"---------------------go to result view---------------------");
 
-    [super viewDidLoad];
-    NSLog (@"SVTestViewController");
+    [self initBarButton];
 
-    // 1.自定义navigationItem.titleView
-    //设置图片大小
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake (0, 0, 100, 30)];
-    //设置图片名称
-    imageView.image = [UIImage imageNamed:@"speed_pro"];
-    //让图片适应
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    //把图片添加到navigationItem.titleView
-    self.navigationItem.titleView = imageView;
-    //电池显示不了,设置样式让电池显示
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-
-    // 2.编辑界面
-    //创建一个 tableView
-    // 1.style:Grouped化合的,分组的
-    _tableView =
-    [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    // 2.设置背景颜色
-    _tableView.backgroundColor = [UIColor whiteColor];
-    // 3.设置 table 的行高
-    //*4.设置代理
-    _tableView.delegate = self;
-    //*5.设置数据源
-    _tableView.dataSource = self;
-    // 6.定义数组展示图片
-    _selectedMA = [NSMutableArray array];
-    NSString *title = I18N (@"VideoTest");
-    //    NSString *title = @"视频测试";
-    NSArray *sourceA = @[
-        @{
-            @"img_normal": @"ic_video_label",
-            @"img_selected": @"ic_video_label",
-            @"title": title,
-            @"rightImg_normal": @"1",
-            @"rightImg_selected": @"ic_video_check"
-        }
-    ];
-    NSMutableArray *sourceMA = [NSMutableArray array];
-    for (int i = 0; i < sourceA.count; i++)
-    {
-        SVToolModel *toolModel = [SVToolModel modelWithDict:sourceA[i]];
-        [sourceMA addObject:toolModel];
-    }
-
-    _soucreMA = sourceMA;
+    UIView *uiview = [[UIView alloc] initWithFrame:CGRectMake (0, 0, kScreenW, kScreenH)];
+    uiview.backgroundColor = [UIColor whiteColor];
     // 7.把tableView添加到 view
-    [self.view addSubview:_tableView];
+    [uiview addSubview:self.buildTableView];
+
+    // 7.把button添加到 view
+    [uiview addSubview:self.buildTestBtn];
+
+    self.view = uiview;
 }
 
 //方法:
@@ -102,7 +50,7 @@
 //设置 tableView 的 numberOfSectionsInTableView(设置几个 section)
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return _soucreMA.count;
+    return 1;
 }
 //设置 tableView的 numberOfRowsInSection(设置每个section中有几个cell)
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -113,13 +61,81 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellId = @"cell";
+    NSLog (@"indexPath %@", indexPath);
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"aCell"];
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:@"aCell"];
 
-    SVToolCell *cell =
-    [[SVToolCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        //取消cell 被点中的效果
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor clearColor];
+    }
 
-    cell.delegate = self;
-    [cell cellViewModel:_soucreMA[indexPath.section] section:indexPath.section];
+    UIButton *_bgdBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _bgdBtn.frame = CGRectMake (kMargin, 0, kScreenW - 2 * kMargin, kCellH);
+    _bgdBtn.layer.cornerRadius = kCornerRadius * 2;
+    _bgdBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _bgdBtn.layer.borderWidth = 1;
+    [cell addSubview:_bgdBtn];
+
+    CGFloat imgViewWAndH = kViewH (_bgdBtn) - 3 * kViewX (_bgdBtn);
+    UIImageView *_imgView = [[UIImageView alloc]
+    initWithFrame:CGRectMake (kMargin * 2, (kCellH - imgViewWAndH) * 0.5, imgViewWAndH, imgViewWAndH)];
+    _imgView.image = [UIImage imageNamed:@"ic_video_label"];
+    [_bgdBtn addSubview:_imgView];
+
+    UIImageView *_rightImgView =
+    [[UIImageView alloc] initWithFrame:CGRectMake (kViewW (_bgdBtn) - imgViewWAndH - kMargin,
+                                                   kViewY (_imgView), imgViewWAndH, imgViewWAndH)];
+    [_bgdBtn addSubview:_rightImgView];
+
+    // U-vMOS 值
+    UILabel *uvMosLabelValue = [[UILabel alloc]
+    initWithFrame:CGRectMake (kViewR (_imgView) + 20, kViewY (_imgView) - 10, 70, imgViewWAndH)];
+    [uvMosLabelValue setText:[NSString stringWithFormat:@"%.2f", currentResultModel.uvMOS]];
+    [uvMosLabelValue setFont:[UIFont boldSystemFontOfSize:valueFontSize]];
+    [uvMosLabelValue setTextAlignment:NSTextAlignmentCenter];
+    [uvMosLabelValue setTextColor:[UIColor orangeColor]];
+    UILabel *uvMosLabel = [[UILabel alloc]
+    initWithFrame:CGRectMake (kViewR (_imgView) + 20, kViewY (_imgView) + 10, 70, imgViewWAndH)];
+    [uvMosLabel setText:@"U-vMOS"];
+    [uvMosLabel setFont:[UIFont systemFontOfSize:valueLableFontSize]];
+    [uvMosLabel setTextAlignment:NSTextAlignmentCenter];
+    [_bgdBtn addSubview:uvMosLabelValue];
+    [_bgdBtn addSubview:uvMosLabel];
+
+    // 首次缓冲时间
+    UILabel *firstBufferTimeLabelValue = [[UILabel alloc]
+    initWithFrame:CGRectMake (kViewR (_imgView) + 100, kViewY (_imgView) - 10, 80, imgViewWAndH)];
+    [firstBufferTimeLabelValue setText:[NSString stringWithFormat:@"%dms", currentResultModel.firstBufferTime]];
+    [firstBufferTimeLabelValue setFont:[UIFont boldSystemFontOfSize:valueFontSize]];
+    [firstBufferTimeLabelValue setTextAlignment:NSTextAlignmentCenter];
+    [firstBufferTimeLabelValue setTextColor:[UIColor orangeColor]];
+    UILabel *firstBufferTimeLabel = [[UILabel alloc]
+    initWithFrame:CGRectMake (kViewR (_imgView) + 100, kViewY (_imgView) + 10, 80, imgViewWAndH)];
+    [firstBufferTimeLabel setText:@"首次缓冲时间"];
+    [firstBufferTimeLabel setFont:[UIFont systemFontOfSize:valueLableFontSize]];
+    [firstBufferTimeLabel setTextAlignment:NSTextAlignmentCenter];
+    [_bgdBtn addSubview:firstBufferTimeLabelValue];
+    [_bgdBtn addSubview:firstBufferTimeLabel];
+
+    // 卡顿次数
+    UILabel *cuttonTimesLabelValue = [[UILabel alloc]
+    initWithFrame:CGRectMake (kViewR (_imgView) + 200, kViewY (_imgView) - 10, 60, imgViewWAndH)];
+    [cuttonTimesLabelValue setText:[NSString stringWithFormat:@"%d", currentResultModel.cuttonTimes]];
+    [cuttonTimesLabelValue setFont:[UIFont boldSystemFontOfSize:valueFontSize]];
+    [cuttonTimesLabelValue setTextAlignment:NSTextAlignmentCenter];
+    [cuttonTimesLabelValue setTextColor:[UIColor orangeColor]];
+    UILabel *cuttonTimesLabel = [[UILabel alloc]
+    initWithFrame:CGRectMake (kViewR (_imgView) + 200, kViewY (_imgView) + 10, 60, imgViewWAndH)];
+    [cuttonTimesLabel setText:@"卡顿次数"];
+    [cuttonTimesLabel setFont:[UIFont systemFontOfSize:valueLableFontSize]];
+    [cuttonTimesLabel setTextAlignment:NSTextAlignmentCenter];
+    [_bgdBtn addSubview:cuttonTimesLabelValue];
+    [_bgdBtn addSubview:cuttonTimesLabel];
+
     return cell;
 }
 
@@ -131,12 +147,6 @@
 //设置tableView的 sectionFooter黑色 的Footer的有无
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    if (section == _soucreMA.count - 1)
-    {
-
-        [self.footerView addSubview:self.testBtn];
-        return self.footerView;
-    }
     return nil;
 }
 
@@ -157,68 +167,95 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (UITableView *)buildTableView
+{
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake (0, 0, kScreenW, 500)
+                                                          style:UITableViewStyleGrouped];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    // 2.设置背景颜色
+    tableView.backgroundColor = [UIColor whiteColor];
+    //*4.设置代理
+    tableView.delegate = self;
+    //*5.设置数据源
+    tableView.dataSource = self;
+    return tableView;
+}
 
 /**
  *开始测试按钮初始化(按钮未被选中时的状态)
  **/
 
-- (UIButton *)testBtn
+- (UIButton *)buildTestBtn
 {
-    if (_testBtn == nil)
-    {
-        //按钮高度
-        CGFloat testBtnH = 40;
-        //按钮类型
-        _testBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        //按钮尺寸
-        _testBtn.frame = CGRectMake (kMargin * 4, kLastFooterH - testBtnH, kScreenW - kMargin * 8, testBtnH);
-        //按钮背景颜色
-        _testBtn.backgroundColor =
-        [UIColor colorWithRed:229 / 255.0 green:229 / 255.0 blue:229 / 255.0 alpha:1.0];
-        //按钮文字和类型
-        [_testBtn setTitle:@"再测一次" forState:UIControlStateNormal];
-        //按钮点击事件
-        [_testBtn addTarget:self
-                     action:@selector (testBtnClick)
-           forControlEvents:UIControlEventTouchUpInside];
-        //按钮圆角
-        _testBtn.layer.cornerRadius = kCornerRadius;
-        //设置居中
-        _testBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        //按钮文字颜色和类型
-        [_testBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        //按钮交互
-        //设置按钮默认情况下不可交互
-        _testBtn.userInteractionEnabled = YES;
-    }
-    return _testBtn;
-}
+    //按钮高度
+    CGFloat testBtnH = 50;
+    //按钮类型
+    UIButton *_reTestButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    //按钮尺寸
+    _reTestButton.frame = CGRectMake (kMargin * 4, kScreenH - 200, kScreenW - kMargin * 8, testBtnH);
+    //按钮圆角
+    _reTestButton.layer.cornerRadius = kCornerRadius;
+    //设置按钮的背景色
+    _reTestButton.backgroundColor =
+    [UIColor colorWithRed:51 / 255.0 green:166 / 255.0 blue:226 / 255.0 alpha:1.0];
+    //按钮文字颜色和类型
+    [_reTestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    //设置居中
+    _reTestButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    //按钮文字和类型
+    [_reTestButton setTitle:@"再测一次" forState:UIControlStateNormal];
+    //按钮点击事件
+    [_reTestButton addTarget:self
+                      action:@selector (testBtnClick)
+            forControlEvents:UIControlEventTouchUpInside];
 
-//初始化footerView
-- (UIView *)footerView
-{
-    if (_footerView == nil)
-    {
-        _footerView = [[UIView alloc] init];
-    }
-    return _footerView;
+    return _reTestButton;
 }
 
 /**
- *section中的cell的点击事件(按钮选中后的状态设置)
- **/
-
-- (void)toolCellClick:(SVToolCell *)cell
+ *  初始化barbutton
+ */
+- (void)initBarButton
 {
-    NSLog (@"cell is clicked. %@", cell);
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake (0, -60)
+                                                         forBarMetrics:UIBarMetricsDefault];
+    //设置图片大小
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake (0, 0, 100, 30)];
+    //设置图片名称
+    imageView.image = [UIImage imageNamed:@"speed_pro"];
+    //让图片适应
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    //把图片添加到navigationItem.titleView
+    self.navigationItem.titleView = imageView;
+    //电池显示不了,设置样式让电池显示
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake (0, 0, 45, 30)];
+    //    button.backgroundColor = [UIColor redColor];
+    [button setImage:[UIImage imageNamed:@"homeindicator"] forState:UIControlStateNormal];
+    [button addTarget:self
+               action:@selector (backBtnClik)
+     forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = backButton;
 }
 
-
-//按钮的点击事件
+/**
+ *  返回重新测试页面
+ */
 - (void)testBtnClick
 {
     NSLog (@"back to testting view");
     [navigationController popViewControllerAnimated:NO];
+}
+
+/**
+ *  回退到测试页面
+ */
+- (void)backBtnClik
+{
+    NSLog (@"back to test view");
+    [navigationController popToRootViewControllerAnimated:NO];
 }
 
 @end

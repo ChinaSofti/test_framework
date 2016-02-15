@@ -121,10 +121,10 @@ static const int execute_total_times = 4;
         return;
     }
 
-    uvMOSCalculator =
-    [[SVUvMOSCalculator alloc] initWithTestContextAndResult:testContext testResult:testResult];
+    // 初始化UvMOS组件
+    [self initUvMOSCompent];
 
-    NSLog (@"avgrate %lf: ", self.testContext.videoSegementBitrate);
+    testContext.testStatus = TEST_TESTING;
     if (testContext.videoSegementURL)
     {
         BOOL isPlaying = [_VMpalyer isPlaying];
@@ -153,6 +153,15 @@ static const int execute_total_times = 4;
 }
 
 /**
+ *  初始化UvMOS组件
+ */
+- (void)initUvMOSCompent
+{
+    uvMOSCalculator =
+    [[SVUvMOSCalculator alloc] initWithTestContextAndResult:testContext testResult:testResult];
+}
+
+/**
  *  停止视频播放
  */
 - (void)stop
@@ -176,24 +185,20 @@ static const int execute_total_times = 4;
 
         NSLog (@"vmplayer reset");
         [_VMpalyer reset];
+        [_VMpalyer unSetupPlayer];
     }
 
     [testResult setDownloadSize:downloadSize];
-    //    if (downloadTime == 0)
-    //    {
-    //        [testResult setDownloadSpeed:0];
-    //    }
-    //    else
-    //    {
-    //        [testResult setDownloadSpeed:(downloadSize / downloadTime)];
-    //    }
-
     [testResult setVideoEndPlayTime:[SVTimeUtil currentMilliSecondStamp]];
     [testResult setVideoCuttonTimes:videoTotalCuttonTimes];
     [testResult setVideoCuttonTotalTime:videoTotalCuttonTotalTime];
 
     // 取消 UvMOS 注册服务
     [uvMOSCalculator unRegisteService];
+    if (testContext.testStatus == TEST_TESTING)
+    {
+        testContext.testStatus = TEST_FINISHED;
+    }
 
     isFinished = TRUE;
 }
@@ -233,7 +238,6 @@ static const int execute_total_times = 4;
 {
     NSLog (@"didPrepared.......");
     _didPrepared = YES;
-    testContext.testStatus = TEST_TESTING;
     [player start];
     startPlayTime = [SVTimeUtil currentMilliSecondStamp];
 }
@@ -262,7 +266,8 @@ static const int execute_total_times = 4;
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
 {
     NSLog (@"VMediaPlayer Error: %@", arg);
-    // [self stop];
+    testContext.testStatus = TEST_ERROR;
+    [self stop];
 }
 
 
@@ -295,15 +300,6 @@ static const int execute_total_times = 4;
     bufferStartTime = [SVTimeUtil currentMilliSecondStamp];
     [player pause];
 }
-
-
-//- (void)mediaPlayer:(VMediaPlayer *)player bufferingUpdate:(id)arg
-//{
-//    NSLog (@"Buffering... %d%%", [((NSNumber *)arg)intValue]);
-//    //    NSDictionary *metaData = [player getMetadata];
-//    //    float bitRate1 = [[metaData valueForKey:@"bit_rate"] floatValue];
-//    //    NSLog (@"Buffering...  %@%%    %f", arg, bitRate1);
-//}
 
 /**
  *  缓冲结束开始播放视频
@@ -338,7 +334,7 @@ static const int execute_total_times = 4;
         firstBufferTime = bufferedTime;
         SVInfo (@"first buffer time(ms):%ld", bufferedTime);
         // 设置首次缓冲时间
-        [testResult setFirstBufferTime:bufferedTime];
+        [testResult setFirstBufferTime:(int)bufferedTime];
 
         // 视频宽度
         int videoWidth = [player getVideoWidth];
@@ -354,8 +350,6 @@ static const int execute_total_times = 4;
         [testResult setVideoResolution:[NSString stringWithFormat:@"%d*%d", videoWidth, videoHeight]];
         [testResult setBitrate:(testContext.videoSegementBitrate)];
         [testResult setFrameRate:frame_rate];
-        //        NSLog (@"%@", [SVVideoUtil getScreenSize]);
-        //        [testResult setScreenSize:[SVVideoUtil getScreenSize]];
 
         // 注册UvMOS计算服务
         [uvMOSCalculator registeService];
@@ -406,8 +400,6 @@ static const int execute_total_times = 4;
 
         [uvMOSCalculator calculateTestSample:sample];
         [testResult.videoTestSamples addObject:sample];
-        [_testDelegate updateTestResultDelegate:testContext testResult:testResult];
-
         videoCuttonTimes = 0;
         videoCuttonTotalTime = 0;
 
@@ -418,9 +410,10 @@ static const int execute_total_times = 4;
             [testResult setSInteractionSession:sample.sInteractionSession];
             [testResult setSQualitySession:sample.sQualitySession];
             [testResult setUvMOSSession:sample.UvMOSSession];
-            testContext.testStatus = TEST_FINISHED;
             [self stop];
         }
+
+        [_testDelegate updateTestResultDelegate:testContext testResult:testResult];
     }
     @catch (NSException *exception)
     {

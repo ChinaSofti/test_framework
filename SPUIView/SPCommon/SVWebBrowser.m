@@ -144,7 +144,7 @@ static NSString *useragent = @"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_1 like Mac
     NSURL *url = [[NSURL alloc] initWithString:_targetURL];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url
                                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                              timeoutInterval:60];
+                                              timeoutInterval:10];
 
     NSURLConnection *conn =
     [[NSURLConnection alloc] initWithRequest:request delegate:(id)self startImmediately:NO];

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SVSystemUtil.h"
 #import "SVTabBarController.h"
 #import "SVTestContextGetter.h"
 
@@ -29,6 +30,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     // 3.让显示并成为主窗口
     [self.window makeKeyAndVisible];
 
+    BOOL isConnectionAvailable = [SVSystemUtil isConnectionAvailable];
+    if (isConnectionAvailable)
+    {
+        [self loadResouceFromServer];
+    }
+
     NSLog (@"welcome page");
     //添加闪屏页
     self.window.rootViewController.view.alpha = 0;
@@ -47,6 +54,23 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
     return YES;
 }
+
+
+- (void)loadResouceFromServer
+{
+    dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      // 初始化Test Context
+      SVTestContextGetter *contextGetter = [SVTestContextGetter sharedInstance];
+      // 初始化本机IP和运营商等信息
+      [contextGetter initIPAndISP];
+      //从服务器请求Test Context Data相关信息
+      [contextGetter requestContextDataFromServer];
+      // 解析服务器返回的Test Context Data
+      [contextGetter parseContextData];
+
+    });
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

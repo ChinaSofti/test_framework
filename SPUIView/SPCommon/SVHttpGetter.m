@@ -38,7 +38,7 @@
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url
                                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                              timeoutInterval:60];
+                                              timeoutInterval:10];
     //    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     //    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSError *error = nil;

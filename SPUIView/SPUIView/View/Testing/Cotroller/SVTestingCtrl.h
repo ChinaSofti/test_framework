@@ -9,6 +9,7 @@
 /**
  *测试中界面
  **/
+#import "SVCurrentResultModel.h"
 #import "SVVideoTestDelegate.h"
 #import <UIKit/UIKit.h>
 
@@ -17,5 +18,7 @@
 @property (nonatomic, retain) NSArray *selectedA;
 
 @property (nonatomic, retain) UINavigationController *navigationController;
+
+@property SVCurrentResultModel *currentResultModel;
 
 @end

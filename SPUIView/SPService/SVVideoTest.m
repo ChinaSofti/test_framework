@@ -29,6 +29,9 @@
 
     // 视频播放器
     SVVideoPlayer *_videoPlayer;
+
+    // 测试状态
+    TestStatus testStatus;
 }
 
 @synthesize testResult, testContext;
@@ -45,8 +48,16 @@
      showVideoView:(UIView *)showVideoView
       testDelegate:(id<SVVideoTestDelegate>)testDelegate
 {
+    self = [super init];
+    if (!self)
+    {
+        return nil;
+    }
+
     _testId = testId;
     _showVideoView = showVideoView;
+    testStatus = TEST_TESTING;
+
     if (!_videoPlayer)
     {
         //初始化播放器
@@ -57,39 +68,110 @@
     return self;
 }
 
-- (void)test
+/**
+ *  初始化TestContext
+ */
+- (BOOL)initTestContext
 {
-    SVTestContextGetter *contextGetter = [SVTestContextGetter sharedInstance];
-    testContext = [contextGetter getVideoContext];
-    testResult = [[SVVideoTestResult alloc] init];
-    [testResult setTestId:_testId];
-    [testResult setTestTime:_testId];
     @try
     {
-        // 开始播放视频
-        [_videoPlayer setTestContext:testContext];
-        [_videoPlayer setTestResult:testResult];
-        [_videoPlayer play];
-        //        [NSThread sleepForTimeInterval:20];
-        //        testContext.testStatus = TEST_FINISHED;
-        //        [self stopTest];
+        // 初始化TestContext
+        SVTestContextGetter *contextGetter = [SVTestContextGetter sharedInstance];
+        testContext = [contextGetter getVideoContext];
+        if (!testContext)
+        {
+            SVError (@"test[testId=%ld] fail. there is no test context", _testId);
+            return false;
+        }
+        return true;
+    }
+    @catch (NSException *exception)
+    {
+        SVError (@"init test context fail:%@", exception);
+        testStatus = TEST_ERROR;
+        return false;
+    }
+}
+
+/**
+ *  开始测试
+ */
+- (BOOL)startTest
+{
+    @try
+    {
+        @synchronized (_videoPlayer)
+        {
+            if (testStatus == TEST_TESTING)
+            {
+                // 初始化TestResult
+                if (!testResult)
+                {
+                    testResult = [[SVVideoTestResult alloc] init];
+                    [testResult setTestId:_testId];
+                    [testResult setTestTime:_testId];
+                }
+
+
+                // 开始播放视频
+                [_videoPlayer setTestContext:testContext];
+                [_videoPlayer setTestResult:testResult];
+                [_videoPlayer play];
+            }
+        }
+
         while (!_videoPlayer.isFinished)
         {
             [NSThread sleepForTimeInterval:1];
         }
 
         SVInfo (@"test[%ld] finished", _testId);
-        //
+
         //        // 持久化结果和明细
         [self persistSVSummaryResultModel];
         [self persistSVDetailResultModel];
+        SVInfo (@"persist test[testId=%ld] result success", _testId);
+        return true;
     }
     @catch (NSException *exception)
     {
-        SVError (@"exception:%@", exception);
-        //        testContext.testStatus = TEST_ERROR;
+        SVError (@"start test video fail:%@", exception);
+        testStatus = TEST_ERROR;
+        return false;
     }
 }
+
+/**
+ *   停止测试
+ */
+- (BOOL)stopTest
+{
+    @synchronized (_videoPlayer)
+    {
+        if (testStatus == TEST_TESTING)
+        {
+            testStatus = TEST_FINISHED;
+        }
+
+        if (_videoPlayer)
+        {
+            @try
+            {
+                //初始化播放器
+                [_videoPlayer stop];
+                SVInfo (@"stop test [testId=%ld]", _testId);
+            }
+            @catch (NSException *exception)
+            {
+                SVError (@"stop play video fail. %@", exception);
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
 
 /**
  *  持久化汇总结果
@@ -106,7 +188,7 @@
     NSString *insertSVSummaryResultModelSQL =
     [NSString stringWithFormat:@"INSERT INTO "
                                @"SVSummaryResultModel(testId,type,testTime,UvMOS,loadTime,"
-                               @"bandwidth)VALUES(%ld, 0, %ld, %lf, %ld, %lf);",
+                               @"bandwidth)VALUES(%ld, 0, %ld, %lf, %d, %lf);",
                                _testId, testResult.testTime, testResult.UvMOSSession,
                                testResult.firstBufferTime, testResult.downloadSpeed];
     // 插入汇总结果
@@ -138,27 +220,6 @@
                      _testId, VIDEO, resultJson];
     // 插入结果明细
     [db executeUpdate:insertSVDetailResultModelSQL];
-}
-
-/**
- *   停止测试
- */
-- (void)stopTest
-{
-    if (_videoPlayer)
-    {
-        @try
-        {
-            //初始化播放器
-            [_videoPlayer stop];
-            testContext.testStatus = TEST_FINISHED;
-            SVInfo (@"stop play video");
-        }
-        @catch (NSException *exception)
-        {
-            SVError (@"%@", exception);
-        }
-    }
 }
 
 - (NSString *)testProbeInfo

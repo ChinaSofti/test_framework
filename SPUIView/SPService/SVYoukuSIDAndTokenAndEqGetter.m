@@ -16,6 +16,12 @@
 
 - (id)initWithEncrpytString:(NSString *)encryptString streamFileid:(NSString *)streamFileid
 {
+    self = [super init];
+    if (!self)
+    {
+        return nil;
+    }
+
     SVDebug (@"encryptString = %@,  streamFileid = %@ ", encryptString, streamFileid);
     // 计算 sid 和 token
     NSString *keyA = @"becaf9be";

@@ -96,7 +96,6 @@ static SVTestContextGetter *contextGetter = nil;
             serverURL = [NSString stringWithFormat:defaultServerURL, countryCode];
         }
     }
-    //    SVProbeInfo
 }
 
 /**
@@ -104,8 +103,15 @@ static SVTestContextGetter *contextGetter = nil;
  */
 - (void)requestContextDataFromServer
 {
-    SVHttpsGetter *getter = [[SVHttpsGetter alloc] initWithURLNSString:serverURL];
-    self.data = [getter getResponseData];
+    @try
+    {
+        SVHttpsGetter *getter = [[SVHttpsGetter alloc] initWithURLNSString:serverURL];
+        self.data = [getter getResponseData];
+    }
+    @catch (NSException *exception)
+    {
+        SVError (@"request test context information fail. exception:%@", exception);
+    }
 }
 
 /**
@@ -151,6 +157,16 @@ static SVTestContextGetter *contextGetter = nil;
  */
 - (SVVideoTestContext *)getVideoContext
 {
+    if (!videoContext)
+    {
+        return nil;
+    }
+
+    if (videoContext.videoSegementURL)
+    {
+        return videoContext;
+    }
+
     NSString *videoPathString = [videoContext videoURLString];
     SVVideoAnalyser *analyser = [SVVideoAnalyserFactory createAnalyser:videoPathString];
     SVVideoInfo *videoInfo = [analyser analyse];
@@ -163,9 +179,17 @@ static SVTestContextGetter *contextGetter = nil;
     [videoContext setVideoSegementDuration:segement.duration];
     [videoContext setVideoSegementBitrate:segement.bitrate];
     [videoContext setVideoSegementIP:url.host];
-    SVIPAndISP *ipAndISP = [SVIPAndISPGetter queryIPDetail:url.host];
-    [videoContext setVideoSegemnetLocation:ipAndISP.regionName];
-    [videoContext setVideoSegemnetISP:ipAndISP.isp];
+    @try
+    {
+        SVIPAndISP *ipAndISP = [SVIPAndISPGetter queryIPDetail:url.host];
+        [videoContext setVideoSegemnetLocation:ipAndISP.regionName];
+        [videoContext setVideoSegemnetISP:ipAndISP.isp];
+    }
+    @catch (NSException *exception)
+    {
+        SVError (@"query ip[%@] location fail %@", url.host, exception);
+    }
+
     return videoContext;
 }
 
