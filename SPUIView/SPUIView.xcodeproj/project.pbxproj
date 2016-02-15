@@ -121,6 +121,8 @@
 		B72A1D0E1C7192B600C3141A /* speed_pro.png in Resources */ = {isa = PBXBuildFile; fileRef = B72A1D0D1C7192B600C3141A /* speed_pro.png */; };
 		B72A1D161C71A1E300C3141A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B72A1D141C71A1E300C3141A /* icon.png */; };
 		B72A1D171C71A1E300C3141A /* starting_window.png in Resources */ = {isa = PBXBuildFile; fileRef = B72A1D151C71A1E300C3141A /* starting_window.png */; };
+		B72A1D1D1C71BBC500C3141A /* UUBar.h in Headers */ = {isa = PBXBuildFile; fileRef = B72A1D191C71BBC500C3141A /* UUBar.h */; };
+		B72A1D1E1C71BBC500C3141A /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B72A1D1A1C71BBC500C3141A /* UUBar.m */; };
 		B72DC85A1C6C0BF00046F174 /* SVProbeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */; };
 		B72DC85B1C6C0BF00046F174 /* SVProbeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */; };
 		B72DC85D1C6C0F4E0046F174 /* SVSystemUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */; };
@@ -416,6 +418,8 @@
 		B72A1D0D1C7192B600C3141A /* speed_pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speed_pro.png; sourceTree = "<group>"; };
 		B72A1D141C71A1E300C3141A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		B72A1D151C71A1E300C3141A /* starting_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starting_window.png; sourceTree = "<group>"; };
+		B72A1D191C71BBC500C3141A /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
+		B72A1D1A1C71BBC500C3141A /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
 		B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProbeInfo.h; sourceTree = "<group>"; };
 		B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProbeInfo.m; sourceTree = "<group>"; };
 		B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSystemUtilTest.m; sourceTree = "<group>"; };
@@ -966,6 +970,7 @@
 		B70FF45D1C66301D002D571B /* SPCommon */ = {
 			isa = PBXGroup;
 			children = (
+				B72A1D181C71BBC500C3141A /* Chart */,
 				B72EAEE51C6DB883000C96C1 /* DB */,
 				B75994FE1C6B8B06001C1D89 /* Utils */,
 				B75994F91C6B8AF2001C1D89 /* Log */,
@@ -1100,6 +1105,15 @@
 				B72DC85E1C6C1B930046F174 /* SystemConfiguration.framework */,
 			);
 			name = ThirdPart;
+			sourceTree = "<group>";
+		};
+		B72A1D181C71BBC500C3141A /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				B72A1D191C71BBC500C3141A /* UUBar.h */,
+				B72A1D1A1C71BBC500C3141A /* UUBar.m */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		B72EAEE51C6DB883000C96C1 /* DB */ = {
@@ -1339,6 +1353,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B72A1D1D1C71BBC500C3141A /* UUBar.h in Headers */,
 				B75995051C6B8B11001C1D89 /* SVTimeUtil.h in Headers */,
 				B72EAF1C1C6DC228000C96C1 /* FMResultSet.h in Headers */,
 				B75995031C6B8B11001C1D89 /* SVSystemUtil.h in Headers */,
@@ -1714,6 +1729,7 @@
 				B75995041C6B8B11001C1D89 /* SVSystemUtil.m in Sources */,
 				B72EAF191C6DC228000C96C1 /* FMDatabasePool.m in Sources */,
 				B72EAF1B1C6DC228000C96C1 /* FMDatabaseQueue.m in Sources */,
+				B72A1D1E1C71BBC500C3141A /* UUBar.m in Sources */,
 				B75994E51C6B8AAB001C1D89 /* GTMBase64.m in Sources */,
 				B75994F31C6B8ACD001C1D89 /* SVWebBrowser.m in Sources */,
 				B72EAEF11C6DB9FF000C96C1 /* SVDBManager.m in Sources */,

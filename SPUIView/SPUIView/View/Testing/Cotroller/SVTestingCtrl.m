@@ -12,6 +12,7 @@
 #import "SVTestingCtrl.h"
 #import "SVTimeUtil.h"
 #import "SVVideoTest.h"
+#import "UUBar.h"
 
 @interface SVTestingCtrl ()
 {
@@ -29,6 +30,20 @@
     SVPointView *_footerView;
 
     SVVideoTest *_videoTest;
+
+    NSTimer *_timer;
+
+    // 实际真实码率
+    float realBitrate;
+
+    // 实际真实UvMOS值
+    float realuvMOSSession;
+
+    // 是否时第一次上报结果
+    int _resultTimes;
+
+    // UvMOS柱状图 每一秒切换一次
+    int _UvMOSbarResultTimes;
 }
 
 @property (nonatomic, strong) SVBackView *backView;
@@ -93,17 +108,32 @@
     [self creatFooterView];
 }
 
-
-- (void)viewWillAppear:(BOOL)animated
+/**
+ *  初始化当前页面和全局变量
+ */
+- (void)initContext
 {
     [_footerView.placeLabel setText:@""];
     [_footerView.resolutionLabel setText:@""];
     [_footerView.bitLabel setText:@""];
     [_headerView.bufferLabel setText:@""];
     [_headerView.speedLabel setText:@""];
-    [_headerView.uvMosLabel setText:@""];
     [_testingView updateUvMOS:0];
+    for (UIView *view in [_headerView.uvMosBarView subviews])
+    {
+        [view removeFromSuperview];
+    }
 
+    realBitrate = 0.0;
+    realuvMOSSession = 0.0;
+    _resultTimes = 0;
+    _UvMOSbarResultTimes = 0;
+    _timer = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self initContext];
     // 当用户离开进入页面时，开始测试
     long testId = [SVTimeUtil currentMilliSecondStamp];
     _videoTest =
@@ -128,6 +158,14 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    //取消定时器
+    if (_timer)
+    {
+        //取消定时器
+        [_timer invalidate];
+        _timer = nil;
+    }
+
     dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
       // 当用户离开当前页面时，停止测试
       if (_videoTest)
@@ -146,7 +184,7 @@
     _headerView = [[SVPointView alloc] init];
 
     //把所有Label添加到View中
-    [self.view addSubview:_headerView.uvMosLabel];
+    [self.view addSubview:_headerView.uvMosBarView];
     [self.view addSubview:_headerView.speedLabel];
     [self.view addSubview:_headerView.bufferLabel];
     [self.view addSubview:_headerView.uvMosNumLabel];
@@ -328,10 +366,41 @@
       [_footerView.bitLabel setText:[NSString stringWithFormat:@"%.2fkpbs", bitrate]];
       [_headerView.bufferLabel setText:[NSString stringWithFormat:@"%d", cuttonTimes]];
       [_headerView.speedLabel setText:[NSString stringWithFormat:@"%ldms", firstBufferTime]];
-      [_headerView.uvMosLabel setText:[NSString stringWithFormat:@"%.2f", uvMOSSession]];
+
+      UUBar *bar = [[UUBar alloc] initWithFrame:CGRectMake (10, 0, 1, 30)];
+      [bar setBarValue:uvMOSSession];
+      [_headerView.uvMosBarView addSubview:bar];
+
+
+      //      [_headerView.uvMosLabel setText:[NSString stringWithFormat:@"%.2f", uvMOSSession]];
       [_testingView updateUvMOS:uvMOSSession];
+
+      realBitrate = bitrate;
+      realuvMOSSession = uvMOSSession;
+
+      if (!_resultTimes || _resultTimes == 0)
+      {
+          _resultTimes = 1;
+          //每一秒中改变一下界面显示的值
+          _timer = [NSTimer scheduledTimerWithTimeInterval:0.1
+                                                    target:self
+                                                  selector:@selector (changeValueUseFakeData)
+                                                  userInfo:nil
+                                                   repeats:YES];
+      }
+
+
       if (testContext.testStatus == TEST_FINISHED)
       {
+          //取消定时器
+          if (_timer)
+          {
+              //取消定时器
+              [_timer invalidate];
+              _timer = nil;
+          }
+
+
           [self initCurrentResultModel:testResult];
           SVCurrentResultViewCtrl *currentResultView = [[SVCurrentResultViewCtrl alloc] init];
           currentResultView.currentResultModel = currentResultModel;
@@ -354,4 +423,37 @@
     [currentResultModel setFirstBufferTime:testResult.firstBufferTime];
     [currentResultModel setCuttonTimes:testResult.videoCuttonTimes];
 }
+
+/**
+ *  每一秒钟使用假的数据改变界面显示，使仪表盘能够动起来。真实值每5秒推送一次
+ */
+- (void)changeValueUseFakeData
+{
+    int firstFakeBitrate = (arc4random () % 100 + realBitrate - 100);
+    int lastFakeBitrate = arc4random () % 100;
+    float fakeBitrate = [[NSString stringWithFormat:@"%d.%d", firstFakeBitrate, lastFakeBitrate] floatValue];
+    NSLog (@"fake bitrate:%f", fakeBitrate);
+    [_footerView.bitLabel setText:[NSString stringWithFormat:@"%.2fkpbs", fakeBitrate]];
+
+    int firstFakeUvMOSSession = (int)realuvMOSSession;
+    int lastFakeUvMOSSession = arc4random () % 50;
+    float fakeUvMOSSession =
+    [[NSString stringWithFormat:@"%d.%d", firstFakeUvMOSSession, lastFakeUvMOSSession] floatValue];
+    NSLog (@"fake UvMOS:%f", fakeUvMOSSession);
+    [_testingView updateUvMOS:fakeUvMOSSession];
+
+    _resultTimes += 1;
+    if (_resultTimes % 10 == 0)
+    {
+        _UvMOSbarResultTimes += 1;
+        if (_UvMOSbarResultTimes < 20)
+        {
+            // 如果显示柱子个数少于等于 20 个，添加新的柱子
+            UUBar *bar = [[UUBar alloc] initWithFrame:CGRectMake (10 + _UvMOSbarResultTimes * 3, 0, 1, 30)];
+            [bar setBarValue:fakeUvMOSSession];
+            [_headerView.uvMosBarView addSubview:bar];
+        }
+    }
+}
+
 @end
