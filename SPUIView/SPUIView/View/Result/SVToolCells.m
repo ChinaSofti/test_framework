@@ -36,14 +36,14 @@
 
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake (10, 0, kScreenW * 0.36, kScreenH * 0.07)];
         [_bgdBtn addSubview:_titleLabel];
-        _titleLabel.font = [UIFont systemFontOfSize:15.0f];
+        _titleLabel.font = [UIFont systemFontOfSize:12.0f];
 
 
         _titleLabel2 = [[UILabel alloc]
         initWithFrame:CGRectMake (kScreenW * 0.36, 0, kScreenW - kScreenW * 0.36 - 30, kScreenH * 0.07)];
         _titleLabel2.textAlignment = NSTextAlignmentRight;
         [_bgdBtn addSubview:_titleLabel2];
-        _titleLabel2.font = [UIFont systemFontOfSize:15.0f];
+        _titleLabel2.font = [UIFont systemFontOfSize:12.0f];
 
 
         //        _titleLabel.backgroundColor = [UIColor greenColor];

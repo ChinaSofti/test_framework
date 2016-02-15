@@ -50,7 +50,7 @@
     self.navigationItem.leftBarButtonItem = backButton;
 
     //为了保持平衡添加一个leftBtn
-    UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake (300, 0, 44, 44)];
+    UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake (300, 0, 23, 23)];
     [button1 setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
     UIBarButtonItem *backButton1 = [[UIBarButtonItem alloc] initWithCustomView:button1];
     self.navigationItem.rightBarButtonItem = backButton1;
@@ -223,7 +223,7 @@
         UILabel *label =
         [[UILabel alloc] initWithFrame:CGRectMake (kMargin + 33, 3, kScreenW - kMargin, kFirstHederH)];
         label.text = @"视频测试";
-        label.font = [UIFont systemFontOfSize:13.0f];
+        label.font = [UIFont systemFontOfSize:12.0f];
         [bgdView addSubview:label];
         return bgdView;
     }
