@@ -231,7 +231,6 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
 
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake (0, 0, 45, 23)];
-    //    button.backgroundColor = [UIColor redColor];
     [button setImage:[UIImage imageNamed:@"homeindicator"] forState:UIControlStateNormal];
     [button addTarget:self
                action:@selector (backBtnClik)
@@ -246,7 +245,7 @@
 - (void)testBtnClick
 {
     NSLog (@"back to testting view");
-    [navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 /**
@@ -255,7 +254,7 @@
 - (void)backBtnClik
 {
     NSLog (@"back to test view");
-    [navigationController popToRootViewControllerAnimated:NO];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 @end

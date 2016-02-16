@@ -172,51 +172,14 @@
     }
     return self;
 }
-
 //开始转动方法
 - (void)start
 {
 
     CADisplayLink *link = [CADisplayLink displayLinkWithTarget:self selector:@selector (rotate)];
     [link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-    //    [self suijishu];
 }
 
-//每3秒执行一次线程
-//- (void)suijishu
-//{
-//    //    NSLog (@"每3s将输出一个随机数");
-//    // 在子线程中做事情
-//    dispatch_async (dispatch_get_global_queue (0, 0), ^{
-//
-//      // 创建一个5s的定时器
-//      NSTimer *timer = [NSTimer timerWithTimeInterval:1
-//                                               target:self
-//                                             selector:@selector (test)
-//                                             userInfo:nil
-//                                              repeats:YES];
-//      // 需要将定时器添加到运行循环中
-//      [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
-//      // 在子线程中想要执行定时器,必须开启运行循环(这里就有一个死循环)
-//      [[NSRunLoop currentRunLoop] run];
-//      CFRunLoopRun ();
-//
-//    });
-//}
-////生成一个随机数
-//- (void)test
-//{
-//    //获取一个随机数范围在：[0,5）
-//    float abcd = (arc4random () % 501);
-//    self.num = M_PI * 4 * abcd / 1500;
-//    //    num =  pi *4*abcd/15*100
-//    //    NSLog (@"指针刻度:"
-//    //           @"%.2f",
-//    //           abcd / 100);
-//    CFRunLoopStop (CFRunLoopGetCurrent ());
-//}
-//
-//
 //转动角度,速度控制
 - (void)rotate
 {
@@ -231,44 +194,37 @@
  */
 - (void)updateUvMOS:(float)uvMOS
 {
-    self.num = uvMOS;
-    if (self.num < M_PI * 2 / 3)
+    _num = -1;
+    if (uvMOS != _num)
     {
-        [self.grayViewSuperView insertSubview:_grayView atIndex:self.grayViewIndexInSuperView];
-        [self.label2SuperView insertSubview:_label2 atIndex:self.label2IndexInSuperView];
+        if (uvMOS < 2.5)
+        {
+            self.grayView.transform = CGAffineTransformMakeRotation (0 / 1.2);
+        }
+        if (uvMOS >= 2.5)
+        {
+            self.grayView.transform = CGAffineTransformMakeRotation (uvMOS - 2.5 / 1.2);
+        }
+        _num = uvMOS;
+        _label2.text = [NSString stringWithFormat:@"%.2f", _num];
     }
-    if (self.num > M_PI * 2 / 3)
-    {
-        [_grayView removeFromSuperview];
-    }
-
-    _label2.text = [NSString stringWithFormat:@"%.2f", self.num];
-    [self rotate];
 }
-
-//重写了num的set方法
-//- (void)setNum:(float)num
+//通过grayView的有无来实现表盘更新
+//- (void)updateUvMOS:(float)uvMOS
 //{
-//    if (num != _num)
+//    self.num = uvMOS;
+//    if (self.num < M_PI * 2 / 3)
 //    {
-//
-//
-//        if (num < M_PI * 2 / 3)
-//        {
-//            [self.grayViewSuperView insertSubview:_grayView
-//            atIndex:self.grayViewIndexInSuperView];
-//            [self.label2SuperView insertSubview:_label2 atIndex:self.label2IndexInSuperView];
-//
-//
-//        }
-//        if (num > M_PI * 2 / 3)
-//        {
-//            [_grayView removeFromSuperview];
-//
-//        }
-//        _num = num;
-//        _label2.text = [NSString stringWithFormat:@"%.2f",_num*1.194];
+//        [self.grayViewSuperView insertSubview:_grayView atIndex:self.grayViewIndexInSuperView];
+//        [self.label2SuperView insertSubview:_label2 atIndex:self.label2IndexInSuperView];
 //    }
+//    if (self.num > M_PI * 2 / 3)
+//    {
+//        [_grayView removeFromSuperview];
+//    }
+//
+//    _label2.text = [NSString stringWithFormat:@"%.2f", self.num];
+//    [self rotate];
 //}
 
 @end

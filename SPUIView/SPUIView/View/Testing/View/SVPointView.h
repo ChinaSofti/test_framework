@@ -74,7 +74,7 @@
 //开始转动方法
 - (void)start;
 //转动角度,速度控制
-- (void)rotate;
+//- (void)rotate;
 //每5s产生一个随机数
 //- (void)suijishu;
 

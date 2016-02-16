@@ -119,6 +119,7 @@
     [_headerView.bufferLabel setText:@""];
     [_headerView.speedLabel setText:@""];
     [_testingView updateUvMOS:0];
+
     for (UIView *view in [_headerView.uvMosBarView subviews])
     {
         [view removeFromSuperview];
@@ -158,6 +159,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+
     //取消定时器
     if (_timer)
     {
@@ -179,7 +181,6 @@
 
 - (void)creatHeaderView
 {
-
     //初始化headerView
     _headerView = [[SVPointView alloc] init];
 
@@ -205,14 +206,16 @@
     [self.view addSubview:_testingView.pointView];
     [_testingView start];
     [self.view addSubview:_testingView.grayView];
-    _testingView.grayViewSuperView = _testingView.grayView.superview;
-    _testingView.grayViewIndexInSuperView = [self.view.subviews indexOfObject:_testingView.grayView];
+    //    _testingView.grayViewSuperView = _testingView.grayView.superview;
+    //    _testingView.grayViewIndexInSuperView = [self.view.subviews
+    //    indexOfObject:_testingView.grayView];
     [self.view addSubview:_testingView.panelView];
     [self.view addSubview:_testingView.middleView];
     [self.view addSubview:_testingView.label1];
     [self.view addSubview:_testingView.label2];
-    _testingView.label2SuperView = _testingView.label2.superview;
-    _testingView.label2IndexInSuperView = [self.view.subviews indexOfObject:_testingView.label2];
+    //    _testingView.label2SuperView = _testingView.label2.superview;
+    //    _testingView.label2IndexInSuperView = [self.view.subviews
+    //    indexOfObject:_testingView.label2];
 }
 
 
@@ -406,6 +409,7 @@
           currentResultView.currentResultModel = currentResultModel;
           currentResultView.navigationController = navigationController;
           //          [self presentViewController:currentResultView animated:YES completion:nil];
+
           [navigationController pushViewController:currentResultView animated:YES];
       }
     });

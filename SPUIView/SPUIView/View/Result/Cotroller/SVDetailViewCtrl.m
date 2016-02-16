@@ -175,10 +175,6 @@
     [self.view addSubview:_tableView];
 }
 
-- (void)backBtnClik
-{
-    [self.navigationController popViewControllerAnimated:NO];
-}
 
 
 //方法:
@@ -269,6 +265,13 @@
     }
     else
         return 0.05;
+}
+
+
+//返回到父控制器
+- (void)backBtnClik
+{
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void)didReceiveMemoryWarning
