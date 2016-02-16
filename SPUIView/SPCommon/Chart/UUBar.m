@@ -2,8 +2,8 @@
 //  UUBar.m
 //  UUChartDemo
 //
-//  Created by shake on 14-7-24.
-//  Copyright (c) 2014年 uyiuyao. All rights reserved.
+//  Created by Rain on 2/12/16.
+//  Copyright © 2016 chinasofti. All rights reserved.
 //
 
 #import "UUBar.h"

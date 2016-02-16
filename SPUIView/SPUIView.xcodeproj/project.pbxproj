@@ -150,7 +150,6 @@
 		B72EAF1F1C6E29F5000C96C1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B72EAF1E1C6E29F5000C96C1 /* libsqlite3.dylib */; };
 		B72EAF221C6E32E0000C96C1 /* SVJunitTestTable.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF201C6E32E0000C96C1 /* SVJunitTestTable.h */; };
 		B72EAF231C6E32E0000C96C1 /* SVJunitTestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF211C6E32E0000C96C1 /* SVJunitTestTable.m */; };
-		B73215881C70450300772092 /* SVResultDetailViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B73215871C70450300772092 /* SVResultDetailViewCtrl.m */; };
 		B732E61D1C6EBC1A000353B9 /* SVSummaryResultModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B732E61B1C6EBC1A000353B9 /* SVSummaryResultModel.h */; };
 		B732E61E1C6EBC1A000353B9 /* SVSummaryResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B732E61C1C6EBC1A000353B9 /* SVSummaryResultModel.m */; };
 		B732E6281C6EC365000353B9 /* SVResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B732E6271C6EC365000353B9 /* SVResultCell.m */; };
@@ -215,6 +214,9 @@
 		B75995581C6B8DBA001C1D89 /* SVVideoTestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */; };
 		B7CD574A1C705C8D00668E88 /* SVCurrentResultViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */; };
 		B7CD57521C70C7FB00668E88 /* SVCurrentResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CD57511C70C7FB00668E88 /* SVCurrentResultModel.m */; };
+		B7F3CA471C72C9B0009B087F /* SVToast.h in Headers */ = {isa = PBXBuildFile; fileRef = B7F3CA451C72C9B0009B087F /* SVToast.h */; };
+		B7F3CA481C72C9B0009B087F /* SVToast.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F3CA461C72C9B0009B087F /* SVToast.m */; };
+		B7F3CA4A1C72CA3F009B087F /* toast_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B7F3CA491C72CA3F009B087F /* toast_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -455,8 +457,6 @@
 		B72EAF1E1C6E29F5000C96C1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = /usr/lib/libsqlite3.dylib; sourceTree = "<absolute>"; };
 		B72EAF201C6E32E0000C96C1 /* SVJunitTestTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVJunitTestTable.h; sourceTree = "<group>"; };
 		B72EAF211C6E32E0000C96C1 /* SVJunitTestTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVJunitTestTable.m; sourceTree = "<group>"; };
-		B73215861C70450300772092 /* SVResultDetailViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVResultDetailViewCtrl.h; sourceTree = "<group>"; };
-		B73215871C70450300772092 /* SVResultDetailViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVResultDetailViewCtrl.m; sourceTree = "<group>"; };
 		B732158E1C70522600772092 /* SVNetworkConnectionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVNetworkConnectionDelegate.h; sourceTree = "<group>"; };
 		B732E61B1C6EBC1A000353B9 /* SVSummaryResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSummaryResultModel.h; sourceTree = "<group>"; };
 		B732E61C1C6EBC1A000353B9 /* SVSummaryResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSummaryResultModel.m; sourceTree = "<group>"; };
@@ -526,6 +526,9 @@
 		B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCurrentResultViewCtrl.m; sourceTree = "<group>"; };
 		B7CD57501C70C7FB00668E88 /* SVCurrentResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCurrentResultModel.h; sourceTree = "<group>"; };
 		B7CD57511C70C7FB00668E88 /* SVCurrentResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCurrentResultModel.m; sourceTree = "<group>"; };
+		B7F3CA451C72C9B0009B087F /* SVToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVToast.h; sourceTree = "<group>"; };
+		B7F3CA461C72C9B0009B087F /* SVToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVToast.m; sourceTree = "<group>"; };
+		B7F3CA491C72CA3F009B087F /* toast_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toast_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -736,8 +739,6 @@
 			children = (
 				4DD006131C609F7A007D4D2F /* SVResultViewCtrl.h */,
 				4DD006141C609F7A007D4D2F /* SVResultViewCtrl.m */,
-				B73215861C70450300772092 /* SVResultDetailViewCtrl.h */,
-				B73215871C70450300772092 /* SVResultDetailViewCtrl.m */,
 				B7CD57481C705C8D00668E88 /* SVCurrentResultViewCtrl.h */,
 				B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */,
 				4DD006151C609F7A007D4D2F /* SVSortTools.h */,
@@ -856,6 +857,7 @@
 		56EC8C631C4F45A500EBDA6C /* Resoruces */ = {
 			isa = PBXGroup;
 			children = (
+				B7F3CA491C72CA3F009B087F /* toast_icon.png */,
 				56587B8F1C722F0100AAA52A /* rt_detail_title_video_img.png */,
 				56587B8D1C722E9B00AAA52A /* share.png */,
 				563200551C7223560076A0FF /* homeindicator.png */,
@@ -1229,6 +1231,8 @@
 		B75994FE1C6B8B06001C1D89 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B7F3CA451C72C9B0009B087F /* SVToast.h */,
+				B7F3CA461C72C9B0009B087F /* SVToast.m */,
 				B72DC8601C6C1F6E0046F174 /* Reachability.h */,
 				B72DC8611C6C1F6E0046F174 /* Reachability.m */,
 				B75994FF1C6B8B11001C1D89 /* SVSystemUtil.h */,
@@ -1386,6 +1390,7 @@
 				B75994F71C6B8AE6001C1D89 /* SVI18N.h in Headers */,
 				B75994EE1C6B8ACD001C1D89 /* SVHttpGetter.h in Headers */,
 				B75994F21C6B8ACD001C1D89 /* SVWebBrowser.h in Headers */,
+				B7F3CA471C72C9B0009B087F /* SVToast.h in Headers */,
 				B75994F01C6B8ACD001C1D89 /* SVHttpsGetter.h in Headers */,
 				B72EAF221C6E32E0000C96C1 /* SVJunitTestTable.h in Headers */,
 				B72EAF181C6DC228000C96C1 /* FMDatabasePool.h in Headers */,
@@ -1618,6 +1623,7 @@
 				56EC8C941C4F467000EBDA6C /* tabbar_result_selected.png in Resources */,
 				565DFAE81C515BB10024FF45 /* ic_speed_check.png in Resources */,
 				56EC8C981C4F467000EBDA6C /* tabbar_test_selected.png in Resources */,
+				B7F3CA4A1C72CA3F009B087F /* toast_icon.png in Resources */,
 				56AA273B1C57122500FA5D0F /* Assets.xcassets in Resources */,
 				4DABA3681C5F50C10018EF57 /* clock_pointer_blue.png in Resources */,
 				4DD005FD1C609EDB007D4D2F /* ic_network_type_normal.png in Resources */,
@@ -1669,7 +1675,6 @@
 			files = (
 				56B518101C51271100AA76F1 /* CTYYLToolView.m in Sources */,
 				56BA8FDB1C561E9100886CAE /* AlertView.m in Sources */,
-				B73215881C70450300772092 /* SVResultDetailViewCtrl.m in Sources */,
 				56A919181C4F4BAB00E8BB72 /* ViewController.m in Sources */,
 				B7CD574A1C705C8D00668E88 /* SVCurrentResultViewCtrl.m in Sources */,
 				5661187C1C574BB500F64161 /* SVBackView.m in Sources */,
@@ -1757,6 +1762,7 @@
 				B72EAF1B1C6DC228000C96C1 /* FMDatabaseQueue.m in Sources */,
 				B72A1D1E1C71BBC500C3141A /* UUBar.m in Sources */,
 				B75994E51C6B8AAB001C1D89 /* GTMBase64.m in Sources */,
+				B7F3CA481C72C9B0009B087F /* SVToast.m in Sources */,
 				B75994F31C6B8ACD001C1D89 /* SVWebBrowser.m in Sources */,
 				B72EAEF11C6DB9FF000C96C1 /* SVDBManager.m in Sources */,
 				B75994F81C6B8AE6001C1D89 /* SVI18N.m in Sources */,

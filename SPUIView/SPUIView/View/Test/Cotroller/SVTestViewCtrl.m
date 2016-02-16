@@ -13,6 +13,7 @@
 #import "SVTestContextGetter.h"
 #import "SVTestViewCtrl.h"
 #import "SVTestingCtrl.h"
+#import "SVToast.h"
 #import "SVToolCell.h"
 #define kFirstHederH 40
 #define kLastFooterH 140
