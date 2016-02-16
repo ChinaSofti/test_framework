@@ -82,15 +82,15 @@
             @"title2": @"2.87",
         },
         @{
-            @"title": @"   视频播放得分",
+            @"title": @"      观看得分",
             @"title2": @"5.00",
         },
         @{
-            @"title": @"   视频质量得分",
+            @"title": @"      片源得分",
             @"title2": @"3.01",
         },
         @{
-            @"title": @"   视频初始缓冲得分",
+            @"title": @"      交互得分",
             @"title2": @"4.17",
         },
         @{
@@ -99,26 +99,16 @@
                        @"ms",
         },
         @{
-            @"title": @"缓冲时间",
-            @"title2": @"842"
+            @"title": @"卡顿总时长",
+            @"title2": @"0"
                        @"ms",
         },
+        @{ @"title": @"卡顿次数",
+           @"title2": @"0" },
         @{
             @"title": @"下载速度",
             @"title2": @"2427.72"
                        @"kbps",
-        },
-        @{
-            @"title": @"缓冲次数",
-            @"title2": @"0",
-        },
-        @{
-            @"title": @"视频地址",
-            @"title2": @"http://v.youku.com/v_show/i.",
-        },
-        @{
-            @"title": @"视频服务器位置",
-            @"title2": @"北京市",
         },
         @{
             @"title": @"码率",
@@ -135,14 +125,40 @@
             @"title2": @"1080×1920",
         },
         @{
-            @"title": @"所属运营商",
-            @"title2": @"中国联通"
-                       @"   北京",
-        },
-        @{
             @"title": @"屏幕尺寸",
             @"title2": @"5.2"
                        @"英寸",
+        },
+        @{
+            @"title": @"视频地址",
+            @"title2": @"http://v.youku.com/v_show/i.",
+        },
+        @{
+            @"title": @"视频服务器位置",
+            @"title2": @"北京市",
+        },
+
+        @{
+            @"title": @"所属运营商",
+            @"title2": @"中国联通"
+                       @" 北京市",
+        },
+
+        @{
+            @"title": @"采集器所属运营商",
+            @"title2": @"中国联通"
+                       @" 北京市"
+        },
+        @{ @"title": @"宽带套餐",
+           @"title2": @"未知" },
+        @{ @"title": @"网络类型",
+           @"title2": @"WIFI" },
+        @{ @"title": @"测试时间",
+           @"title2": @"2016年02月16日 09:15:10" },
+        @{
+            @"title": @"信号强度",
+            @"title2": @"-104"
+                       @"dBm"
         },
 
     ];
@@ -170,7 +186,7 @@
 //设置 tableView 的 numberOfSectionsInTableView(设置几个 section)
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 15;
+    return 20;
 }
 //设置 tableView的 numberOfRowsInSection(设置每个section中有几个cell)
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -200,7 +216,7 @@
 //设置 tableView的section 的Header的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0)
+    if (section == 0 || section == 15)
     {
         return 40;
     }
@@ -217,12 +233,27 @@
         UIView *bgdView = [[UIView alloc] init];
         UIImage *image = [UIImage imageNamed:@"rt_detail_title_video_img"];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.frame = CGRectMake (11, 11, 22, 22);
+        imageView.frame = CGRectMake (18, 15, 17, 17);
         [bgdView addSubview:imageView];
 
         UILabel *label =
         [[UILabel alloc] initWithFrame:CGRectMake (kMargin + 33, 3, kScreenW - kMargin, kFirstHederH)];
         label.text = @"视频测试";
+        label.font = [UIFont systemFontOfSize:12.0f];
+        [bgdView addSubview:label];
+        return bgdView;
+    }
+    if (section == 15)
+    {
+        UIView *bgdView = [[UIView alloc] init];
+        UIImage *image = [UIImage imageNamed:@"rt_detail_title_collector_img"];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        imageView.frame = CGRectMake (18, 15, 17, 17);
+        [bgdView addSubview:imageView];
+
+        UILabel *label =
+        [[UILabel alloc] initWithFrame:CGRectMake (kMargin + 33, 3, kScreenW - kMargin, kFirstHederH)];
+        label.text = @"采集器信息";
         label.font = [UIFont systemFontOfSize:12.0f];
         [bgdView addSubview:label];
         return bgdView;

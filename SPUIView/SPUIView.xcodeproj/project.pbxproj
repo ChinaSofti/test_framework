@@ -63,6 +63,9 @@
 		56BA8FDC1C561E9100886CAE /* SVToolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BA8FCF1C561E9100886CAE /* SVToolCell.m */; };
 		56BA8FDD1C561E9100886CAE /* SVTestingCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BA8FD31C561E9100886CAE /* SVTestingCtrl.m */; };
 		56D40F851C5CFFEC00455C7E /* SVPointView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D40F841C5CFFEC00455C7E /* SVPointView.xib */; };
+		56DC2FD31C72C77F0062A14A /* rt_detail_title_collector_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 56DC2FD01C72C77F0062A14A /* rt_detail_title_collector_img.png */; };
+		56DC2FD41C72C77F0062A14A /* rt_detail_title_ftp_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 56DC2FD11C72C77F0062A14A /* rt_detail_title_ftp_img.png */; };
+		56DC2FD51C72C77F0062A14A /* rt_detail_title_web_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 56DC2FD21C72C77F0062A14A /* rt_detail_title_web_img.png */; };
 		56EC8C811C4F45A500EBDA6C /* SVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC8C601C4F45A500EBDA6C /* SVTabBarController.m */; };
 		56EC8C931C4F467000EBDA6C /* tabbar_result.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC8C8C1C4F467000EBDA6C /* tabbar_result.png */; };
 		56EC8C941C4F467000EBDA6C /* tabbar_result_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC8C8D1C4F467000EBDA6C /* tabbar_result_selected.png */; };
@@ -365,6 +368,9 @@
 		56BA8FD21C561E9100886CAE /* SVTestingCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVTestingCtrl.h; sourceTree = "<group>"; };
 		56BA8FD31C561E9100886CAE /* SVTestingCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVTestingCtrl.m; sourceTree = "<group>"; };
 		56D40F841C5CFFEC00455C7E /* SVPointView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SVPointView.xib; sourceTree = "<group>"; };
+		56DC2FD01C72C77F0062A14A /* rt_detail_title_collector_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rt_detail_title_collector_img.png; sourceTree = "<group>"; };
+		56DC2FD11C72C77F0062A14A /* rt_detail_title_ftp_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rt_detail_title_ftp_img.png; sourceTree = "<group>"; };
+		56DC2FD21C72C77F0062A14A /* rt_detail_title_web_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rt_detail_title_web_img.png; sourceTree = "<group>"; };
 		56EC8C5F1C4F45A500EBDA6C /* SVTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVTabBarController.h; sourceTree = "<group>"; };
 		56EC8C601C4F45A500EBDA6C /* SVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVTabBarController.m; sourceTree = "<group>"; };
 		56EC8C8C1C4F467000EBDA6C /* tabbar_result.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_result.png; sourceTree = "<group>"; };
@@ -858,6 +864,9 @@
 			isa = PBXGroup;
 			children = (
 				B7F3CA491C72CA3F009B087F /* toast_icon.png */,
+				56DC2FD01C72C77F0062A14A /* rt_detail_title_collector_img.png */,
+				56DC2FD21C72C77F0062A14A /* rt_detail_title_web_img.png */,
+				56DC2FD11C72C77F0062A14A /* rt_detail_title_ftp_img.png */,
 				56587B8F1C722F0100AAA52A /* rt_detail_title_video_img.png */,
 				56587B8D1C722E9B00AAA52A /* share.png */,
 				563200551C7223560076A0FF /* homeindicator.png */,
@@ -1608,10 +1617,13 @@
 				4DD005FC1C609EDB007D4D2F /* ic_network_type_mobile.png in Resources */,
 				565DFAE91C515BB10024FF45 /* ic_speed_label.png in Resources */,
 				565DFAEC1C515BB10024FF45 /* ic_video_check.png in Resources */,
+				56DC2FD41C72C77F0062A14A /* rt_detail_title_ftp_img.png in Resources */,
 				B72A1D161C71A1E300C3141A /* icon.png in Resources */,
+				56DC2FD51C72C77F0062A14A /* rt_detail_title_web_img.png in Resources */,
 				56EC8C961C4F467000EBDA6C /* tabbar_settings_selected.png in Resources */,
 				B72A1D0E1C7192B600C3141A /* speed_pro.png in Resources */,
 				4DD005FF1C609EDB007D4D2F /* ic_sort.png in Resources */,
+				56DC2FD31C72C77F0062A14A /* rt_detail_title_collector_img.png in Resources */,
 				56A9191F1C4F4C2500E8BB72 /* Main.storyboard in Resources */,
 				56EC8C971C4F467000EBDA6C /* tabbar_test.png in Resources */,
 				4DD006001C609EDB007D4D2F /* ic_sort_asc.png in Resources */,
