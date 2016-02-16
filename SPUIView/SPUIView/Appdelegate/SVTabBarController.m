@@ -34,7 +34,30 @@
     //设置
     SVSettingsViewCtrl *settingsCtrl = [SVSettingsViewCtrl new];
     [self addChildViewController:settingsCtrl imageName:@"tabbar_settings" title:@"设置"];
+    //添加通知的监听
+    [self addNotificataion];
 }
+- (void)addNotificataion
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector (hideTabBar)
+                                                 name:@"HideTabBar"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector (showTabBar)
+                                                 name:@"ShowTabBar"
+                                               object:nil];
+}
+- (void)showTabBar
+{
+    self.tabBar.hidden = NO;
+}
+
+- (void)hideTabBar
+{
+    self.tabBar.hidden = YES;
+}
+
 
 //添加子控制器,设置标题与图片
 - (void)addChildViewController:(UIViewController *)childCtrl
