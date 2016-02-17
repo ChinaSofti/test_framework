@@ -42,7 +42,7 @@
 @property NSString *videoResolution;
 
 // 视频地址
-@property NSString *videoURLString;
+@property NSString *videoSegementURLString;
 
 // 视频分片位置
 @property NSString *videoSegemnetLocation;

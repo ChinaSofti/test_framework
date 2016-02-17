@@ -147,7 +147,7 @@
         },
         @{
             @"title": @"视频地址",
-            @"title2": [self formatValue:viewModel.videoURLString],
+            @"title2": [self formatValue:viewModel.videoSegementURLString],
         },
         @{
             @"title": @"视频服务器位置",
@@ -156,14 +156,12 @@
 
         @{
             @"title": @"所属运营商",
-            @"title2": @"中国联通"
-                       @" 北京市",
+            @"title2": [self formatValue:viewModel.videoSegemnetISP],
         },
 
         @{
             @"title": @"采集器所属运营商",
-            @"title2": @"中国联通"
-                       @" 北京市"
+            @"title2": [self formatValue:viewModel.isp],
         },
         @{ @"title": @"宽带套餐",
            @"title2": @"未知" },
@@ -253,7 +251,7 @@
 
     viewModel.videoSegemnetISP = [testContextJson valueForKey:@"videoSegemnetISP"];
     viewModel.videoSegemnetLocation = [testContextJson valueForKey:@"videoSegemnetLocation"];
-    viewModel.videoURLString = [testContextJson valueForKey:@"videoURLString"];
+    viewModel.videoSegementURLString = [testContextJson valueForKey:@"videoSegementURLString"];
 
     viewModel.isp = [probeInfoJson valueForKey:@"isp"];
     viewModel.location = [probeInfoJson valueForKey:@"location"];

@@ -268,6 +268,7 @@
     [dictionary setObject:[[NSNumber alloc] initWithFloat:testResult.bitrate] forKey:@"bitrate"];
     [dictionary setObject:[[NSNumber alloc] initWithFloat:testResult.screenSize]
                    forKey:@"screenSize"];
+    [dictionary setObject:testResult.videoResolution forKey:@"videoResolution"];
 
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
