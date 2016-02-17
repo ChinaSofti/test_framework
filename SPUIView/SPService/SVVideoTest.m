@@ -204,20 +204,16 @@
     SVDBManager *db = [SVDBManager sharedInstance];
     // 如果表不存在，则创建表
     [db executeUpdate:@"CREATE TABLE IF NOT EXISTS SVDetailResultModel(ID integer PRIMARY KEY "
-                      @"AUTOINCREMENT, testId integer, testType integer, resultJson text);"];
+                      @"AUTOINCREMENT, testId integer, testType integer, testResult text, "
+                      @"testContext text, probeInfo text);"];
 
-    NSMutableDictionary *resultDirectory = [[NSMutableDictionary alloc] init];
-    [resultDirectory setObject:[self testResultToJsonString] forKey:@"testResult"];
-    [resultDirectory setObject:[self testContextToJsonString] forKey:@"testContext"];
-    [resultDirectory setObject:[self testProbeInfo] forKey:@"probeInfo"];
-    NSError *error = nil;
-    NSData *data = [NSJSONSerialization dataWithJSONObject:resultDirectory options:0 error:&error];
-
-    NSString *resultJson = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSString *insertSVDetailResultModelSQL = [NSString
-    stringWithFormat:@"INSERT INTO "
-                     @"SVDetailResultModel (testId,testType,resultJson) VALUES(%ld, %d, '%@');",
-                     _testId, VIDEO, resultJson];
+    NSString *insertSVDetailResultModelSQL =
+    [NSString stringWithFormat:@"INSERT INTO "
+                               @"SVDetailResultModel (testId,testType,testResult, testContext, "
+                               @"probeInfo) VALUES(%ld, %d, "
+                               @"'%@', '%@', '%@');",
+                               _testId, VIDEO, [self testResultToJsonString],
+                               [self testContextToJsonString], [self testProbeInfo]];
     // 插入结果明细
     [db executeUpdate:insertSVDetailResultModelSQL];
 }

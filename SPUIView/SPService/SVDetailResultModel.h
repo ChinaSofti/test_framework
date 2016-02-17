@@ -24,6 +24,8 @@
 @property NSString *ID;
 @property NSString *testId;
 @property NSString *testType;
-@property NSString *resultJson;
+@property NSString *testResult;
+@property NSString *testContext;
+@property NSString *probeInfo;
 
 @end

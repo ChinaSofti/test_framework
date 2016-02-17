@@ -7,6 +7,7 @@
 //
 
 #import "SVCurrentResultViewCtrl.h"
+#import "SVDetailViewCtrl.h"
 #import "SVI18N.h"
 #import "SVSystemUtil.h"
 #import "SVTestContextGetter.h"
@@ -78,6 +79,10 @@
     _bgdBtn.layer.cornerRadius = kCornerRadius * 2;
     _bgdBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _bgdBtn.layer.borderWidth = 1;
+    [_bgdBtn addTarget:self
+                action:@selector (CellDetailClick:)
+      forControlEvents:UIControlEventTouchUpInside];
+
     [cell addSubview:_bgdBtn];
 
     CGFloat imgViewWAndH = kViewH (_bgdBtn) - 3 * kViewX (_bgdBtn);
@@ -182,6 +187,25 @@
 }
 
 /**
+ *cell的点击事件进入详情界面
+ **/
+
+- (void)CellDetailClick:(UIButton *)sender
+{
+    // cell被点击
+    NSLog (@"cell-------dianjile");
+    //按钮点击后alloc一个界面
+    SVDetailViewCtrl *detailViewCtrl = [[SVDetailViewCtrl alloc] init];
+    [detailViewCtrl setTestId:currentResultModel.testId];
+    //隐藏hidesBottomBarWhenPushed
+    self.hidesBottomBarWhenPushed = YES;
+    // push界面
+    [self.navigationController pushViewController:detailViewCtrl animated:YES];
+    //返回时显示hidesBottomBarWhenPushed
+    self.hidesBottomBarWhenPushed = NO;
+}
+
+/**
  *开始测试按钮初始化(按钮未被选中时的状态)
  **/
 
@@ -245,7 +269,7 @@
 - (void)testBtnClick
 {
     NSLog (@"back to testting view");
-    [self.navigationController popViewControllerAnimated:NO];
+    [navigationController popViewControllerAnimated:NO];
 }
 
 /**
@@ -254,7 +278,7 @@
 - (void)backBtnClik
 {
     NSLog (@"back to test view");
-    [self.navigationController popToRootViewControllerAnimated:NO];
+    [navigationController popToRootViewControllerAnimated:NO];
 }
 
 @end

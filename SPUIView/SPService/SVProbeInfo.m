@@ -10,7 +10,7 @@
 
 @implementation SVProbeInfo
 
-@synthesize signedBandwidth, singnal, isp, ip, networkType;
+@synthesize signedBandwidth, singnal, isp, ip, networkType, location;
 
 
 /**

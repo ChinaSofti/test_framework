@@ -436,14 +436,14 @@
     int firstFakeBitrate = (arc4random () % 100 + realBitrate - 100);
     int lastFakeBitrate = arc4random () % 100;
     float fakeBitrate = [[NSString stringWithFormat:@"%d.%d", firstFakeBitrate, lastFakeBitrate] floatValue];
-    NSLog (@"fake bitrate:%f", fakeBitrate);
+    //    NSLog (@"fake bitrate:%f", fakeBitrate);
     [_footerView.bitLabel setText:[NSString stringWithFormat:@"%.2fkpbs", fakeBitrate]];
 
     int firstFakeUvMOSSession = (int)realuvMOSSession;
     int lastFakeUvMOSSession = arc4random () % 50;
     float fakeUvMOSSession =
     [[NSString stringWithFormat:@"%d.%d", firstFakeUvMOSSession, lastFakeUvMOSSession] floatValue];
-    NSLog (@"fake UvMOS:%f", fakeUvMOSSession);
+    //    NSLog (@"fake UvMOS:%f", fakeUvMOSSession);
     [_testingView updateUvMOS:fakeUvMOSSession];
 
     _resultTimes += 1;

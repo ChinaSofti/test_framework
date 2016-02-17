@@ -10,6 +10,6 @@
 
 @implementation SVDetailResultModel
 
-@synthesize ID, testId, testType, resultJson;
+@synthesize ID, testId, testType, testContext, testResult, probeInfo;
 
 @end

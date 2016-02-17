@@ -148,15 +148,22 @@
                 NSObject *obj = [[clazz alloc] init];
                 for (int i = 0; i < set.columnCount; i++)
                 {
-                    NSString *columnName = [set columnNameForIndex:i];
-                    // NSLog (@"columnName:%@", columnName);
-                    // [columnName capitalizedString] 字符串首字母大写
-                    NSString *firstCharacter = [[columnName substringToIndex:1] uppercaseString];
-                    NSString *lastCharacter = [columnName substringFromIndex:1];
-                    SEL sel = NSSelectorFromString (
-                    [NSString stringWithFormat:@"set%@%@:", firstCharacter, lastCharacter]);
-                    NSString *value = [set stringForColumn:columnName];
-                    [obj performSelector:sel withObject:value];
+                    @try
+                    {
+                        NSString *columnName = [set columnNameForIndex:i];
+                        // NSLog (@"columnName:%@", columnName);
+                        // [columnName capitalizedString] 字符串首字母大写
+                        NSString *firstCharacter = [[columnName substringToIndex:1] uppercaseString];
+                        NSString *lastCharacter = [columnName substringFromIndex:1];
+                        SEL sel = NSSelectorFromString (
+                        [NSString stringWithFormat:@"set%@%@:", firstCharacter, lastCharacter]);
+                        NSString *value = [set stringForColumn:columnName];
+                        [obj performSelector:sel withObject:value];
+                    }
+                    @catch (NSException *exception)
+                    {
+                        SVError (@"%@", exception);
+                    }
                 }
 
                 [array addObject:obj];

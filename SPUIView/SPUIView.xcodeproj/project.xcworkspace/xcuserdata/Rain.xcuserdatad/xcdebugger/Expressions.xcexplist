@@ -3,6 +3,9 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[SVVideoTest persistSVSummaryResultModel]:SVVideoTest.m">
+      </ContextState>
+      <ContextState
          contextName = "-[SVVideoPlayer play]:SVVideoPlayer.m">
          <PersistentStrings>
             <PersistentString
@@ -11,7 +14,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[SVVideoTest persistSVSummaryResultModel]:SVVideoTest.m">
+         contextName = "-[SVCurrentResultViewCtrl CellDetailClick:]:SVCurrentResultViewCtrl.m">
       </ContextState>
       <ContextState
          contextName = "-[SVVideoPlayer mediaPlayer:bufferingEnd:]:SVVideoPlayer.m">
@@ -26,6 +29,14 @@
          <PersistentStrings>
             <PersistentString
                value = "self.navigationItem">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SVResultViewCtrl CellDetailClick:]:SVResultViewCtrl.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.tag">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

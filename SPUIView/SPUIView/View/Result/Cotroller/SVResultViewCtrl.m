@@ -33,6 +33,8 @@
 {
     UIView *_toolView;
     SVDBManager *_db;
+    int _selectedResultTestId;
+    NSMutableDictionary *buttonAndTest;
 }
 
 - (UIImageView *)bottomImageView
@@ -90,12 +92,6 @@
     //电池显示不了,设置样式让电池显示
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
 
-    //创建数据源
-    [self initDataSouce];
-
-    //从数据库中读取数据
-    [self readDataFromDB];
-
     //添加NavigationRightItem
     [self addNavigationRightItem];
 
@@ -107,15 +103,28 @@
     currentBtn = -1;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    //从数据库中读取数据
+    [self readDataFromDB];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+}
+
 - (void)readDataFromDB
 {
     // 1、添加数据之前 先清空数据源
-    [_dataSource removeAllObjects];
+    _selectedResultTestId = 0;
+    [buttonAndTest removeAllObjects];
+    [self.dataSource removeAllObjects];
     // 2、添加数据
     NSArray *array =
     [_db executeQuery:[SVSummaryResultModel class]
                   SQL:@"select * from SVSummaryResultModel order by id asc limit 100 offset 0;"];
-    [_dataSource addObjectsFromArray:array];
+    [self.dataSource addObjectsFromArray:array];
 
     // 3、刷新列表
     [_tableView reloadData];
@@ -127,15 +136,6 @@
 
     [self buttonClick:_typeButton];
 }
-
-//创建数据源
-- (void)initDataSouce
-{
-    NSArray *array = @[@"日期", @"时间", @"na", @"首次缓冲时间", @"速率"];
-
-    [self.dataSource addObject:array];
-}
-
 
 //添加NavigationRightItem
 - (void)addNavigationRightItem
@@ -452,11 +452,10 @@
         //取消cell 被点中的效果
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.resultModel = self.dataSource[indexPath.row];
 
-    cell.cellBlock = ^() {
-      NSLog (@"第%ld个cell 被点击", indexPath.row);
-    };
+    SVSummaryResultModel *summaryResultModel = self.dataSource[indexPath.row];
+    [cell setResultModel:summaryResultModel];
+
     // cell按钮点击事件
     // cellbutton
     UIButton *cellButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -466,7 +465,16 @@
     [cellButton addTarget:self
                    action:@selector (CellDetailClick:)
          forControlEvents:UIControlEventTouchUpInside];
-    cellButton.tag = indexPath.row;
+
+    _selectedResultTestId += 1;
+    if (!buttonAndTest)
+    {
+        buttonAndTest = [[NSMutableDictionary alloc] init];
+    }
+    [buttonAndTest setObject:summaryResultModel
+                      forKey:[NSString stringWithFormat:@"key_%d", _selectedResultTestId]];
+
+    [cellButton setTag:_selectedResultTestId];
     [cell.contentView addSubview:cellButton];
 
     return cell;
@@ -481,6 +489,10 @@
     NSLog (@"cell-------dianjile");
     //按钮点击后alloc一个界面
     SVDetailViewCtrl *detailViewCtrl = [[SVDetailViewCtrl alloc] init];
+    SVSummaryResultModel *summaryResultModel =
+    [buttonAndTest objectForKey:[NSString stringWithFormat:@"key_%ld", sender.tag]];
+    long testId = [summaryResultModel.testId longLongValue];
+    [detailViewCtrl setTestId:testId];
 
     //隐藏hidesBottomBarWhenPushed
     self.hidesBottomBarWhenPushed = YES;

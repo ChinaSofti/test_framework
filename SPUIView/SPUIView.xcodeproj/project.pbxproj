@@ -222,6 +222,7 @@
 		B75995541C6B8D71001C1D89 /* SVTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995481C6B8D71001C1D89 /* SVTestResult.m */; };
 		B75995571C6B8DBA001C1D89 /* SVVideoTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */; };
 		B75995581C6B8DBA001C1D89 /* SVVideoTestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */; };
+		B7CAB7C81C7416E100108B02 /* SVDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CAB7C71C7416E100108B02 /* SVDetailViewModel.m */; };
 		B7CD574A1C705C8D00668E88 /* SVCurrentResultViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */; };
 		B7CD57521C70C7FB00668E88 /* SVCurrentResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CD57511C70C7FB00668E88 /* SVCurrentResultModel.m */; };
 		B7F3CA471C72C9B0009B087F /* SVToast.h in Headers */ = {isa = PBXBuildFile; fileRef = B7F3CA451C72C9B0009B087F /* SVToast.h */; };
@@ -546,6 +547,8 @@
 		B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVVideoTestContext.h; sourceTree = "<group>"; };
 		B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVVideoTestContext.m; sourceTree = "<group>"; };
 		B77999801C6CD02700C1E511 /* SVVideoTestDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVVideoTestDelegate.h; sourceTree = "<group>"; };
+		B7CAB7C61C7416E100108B02 /* SVDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDetailViewModel.h; sourceTree = "<group>"; };
+		B7CAB7C71C7416E100108B02 /* SVDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDetailViewModel.m; sourceTree = "<group>"; };
 		B7CD57481C705C8D00668E88 /* SVCurrentResultViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCurrentResultViewCtrl.h; sourceTree = "<group>"; };
 		B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCurrentResultViewCtrl.m; sourceTree = "<group>"; };
 		B7CD57501C70C7FB00668E88 /* SVCurrentResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCurrentResultModel.h; sourceTree = "<group>"; };
@@ -787,6 +790,8 @@
 		56BA8FBA1C561E9100886CAE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B7CAB7C61C7416E100108B02 /* SVDetailViewModel.h */,
+				B7CAB7C71C7416E100108B02 /* SVDetailViewModel.m */,
 				56665D361C71F9E100A63D44 /* SVToolModels.h */,
 				56665D371C71F9E100A63D44 /* SVToolModels.m */,
 				B7CD57501C70C7FB00668E88 /* SVCurrentResultModel.h */,
@@ -1726,6 +1731,7 @@
 				56665D351C71F9C400A63D44 /* SVDetailViewCtrl.m in Sources */,
 				B732E6281C6EC365000353B9 /* SVResultCell.m in Sources */,
 				56BA8FDD1C561E9100886CAE /* SVTestingCtrl.m in Sources */,
+				B7CAB7C81C7416E100108B02 /* SVDetailViewModel.m in Sources */,
 				564435771C5216AD009B7024 /* CTViewTools.m in Sources */,
 				4DD006191C609F7A007D4D2F /* SVResultViewCtrl.m in Sources */,
 				56BA8FDA1C561E9100886CAE /* SVToolModel.m in Sources */,

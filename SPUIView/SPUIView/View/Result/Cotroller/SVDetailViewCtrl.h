@@ -12,4 +12,7 @@
 
 @interface SVDetailViewCtrl : UIViewController
 
+// 测试ID
+@property long testId;
+
 @end

@@ -27,6 +27,8 @@
 
 @implementation SVResultCell
 
+@synthesize resultModel;
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style
               reuseIdentifier:(NSString *)reuseIdentifier
 {
