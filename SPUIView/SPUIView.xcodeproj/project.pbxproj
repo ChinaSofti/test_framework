@@ -93,32 +93,32 @@
 		B70FF4711C66301D002D571B /* SPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF45C1C66301D002D571B /* SPCommon.framework */; };
 		B70FF4721C66301D002D571B /* SPCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF45C1C66301D002D571B /* SPCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B70FF4791C66302F002D571B /* SPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF45C1C66301D002D571B /* SPCommon.framework */; };
-		B70FF4B41C663388002D571B /* SVContentProviderGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4A81C663388002D571B /* SVContentProviderGetter.h */; };
+		B70FF4B41C663388002D571B /* SVContentProviderGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4A81C663388002D571B /* SVContentProviderGetter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B70FF4B51C663388002D571B /* SVContentProviderGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FF4A91C663388002D571B /* SVContentProviderGetter.m */; };
-		B70FF4B61C663388002D571B /* SVUvMOSVideoResolutionGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4AA1C663388002D571B /* SVUvMOSVideoResolutionGetter.h */; };
+		B70FF4B61C663388002D571B /* SVUvMOSVideoResolutionGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4AA1C663388002D571B /* SVUvMOSVideoResolutionGetter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B70FF4B71C663388002D571B /* SVUvMOSVideoResolutionGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FF4AB1C663388002D571B /* SVUvMOSVideoResolutionGetter.m */; };
-		B70FF4B81C663388002D571B /* SVVideoPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4AC1C663388002D571B /* SVVideoPlayer.h */; };
+		B70FF4B81C663388002D571B /* SVVideoPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4AC1C663388002D571B /* SVVideoPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B70FF4B91C663388002D571B /* SVVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FF4AD1C663388002D571B /* SVVideoPlayer.m */; };
-		B70FF4BA1C663388002D571B /* SVVideoTest.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4AE1C663388002D571B /* SVVideoTest.h */; };
+		B70FF4BA1C663388002D571B /* SVVideoTest.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4AE1C663388002D571B /* SVVideoTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B70FF4BB1C663388002D571B /* SVVideoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FF4AF1C663388002D571B /* SVVideoTest.m */; };
-		B70FF4BC1C663388002D571B /* SVVideoTestResult.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4B01C663388002D571B /* SVVideoTestResult.h */; };
+		B70FF4BC1C663388002D571B /* SVVideoTestResult.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4B01C663388002D571B /* SVVideoTestResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B70FF4BD1C663388002D571B /* SVVideoTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FF4B11C663388002D571B /* SVVideoTestResult.m */; };
-		B70FF4BE1C663388002D571B /* SVVideoTestSample.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4B21C663388002D571B /* SVVideoTestSample.h */; };
+		B70FF4BE1C663388002D571B /* SVVideoTestSample.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4B21C663388002D571B /* SVVideoTestSample.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B70FF4BF1C663388002D571B /* SVVideoTestSample.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FF4B31C663388002D571B /* SVVideoTestSample.m */; };
-		B70FF4D01C66343B002D571B /* VDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4C41C66343B002D571B /* VDefines.h */; };
-		B70FF4D11C66343B002D571B /* Vitamio.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4C51C66343B002D571B /* Vitamio.h */; };
-		B70FF4D21C66343B002D571B /* VMediaExtracter.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4C61C66343B002D571B /* VMediaExtracter.h */; };
-		B70FF4D31C66343B002D571B /* VMediaExtracterDef.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4C71C66343B002D571B /* VMediaExtracterDef.h */; };
-		B70FF4D41C66343B002D571B /* VMediaPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4C81C66343B002D571B /* VMediaPlayer.h */; };
-		B70FF4D51C66343B002D571B /* VMediaPlayerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4C91C66343B002D571B /* VMediaPlayerDelegate.h */; };
-		B70FF4D61C66343B002D571B /* VPlayerManageDef.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4CA1C66343B002D571B /* VPlayerManageDef.h */; };
-		B70FF4D71C66343B002D571B /* VSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4CB1C66343B002D571B /* VSingleton.h */; };
+		B70FF4D01C66343B002D571B /* VDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4C41C66343B002D571B /* VDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70FF4D11C66343B002D571B /* Vitamio.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4C51C66343B002D571B /* Vitamio.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70FF4D21C66343B002D571B /* VMediaExtracter.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4C61C66343B002D571B /* VMediaExtracter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70FF4D31C66343B002D571B /* VMediaExtracterDef.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4C71C66343B002D571B /* VMediaExtracterDef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70FF4D41C66343B002D571B /* VMediaPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4C81C66343B002D571B /* VMediaPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70FF4D51C66343B002D571B /* VMediaPlayerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4C91C66343B002D571B /* VMediaPlayerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70FF4D61C66343B002D571B /* VPlayerManageDef.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4CA1C66343B002D571B /* VPlayerManageDef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70FF4D71C66343B002D571B /* VSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4CB1C66343B002D571B /* VSingleton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B70FF4D81C66343B002D571B /* libffmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4CC1C66343B002D571B /* libffmpeg.a */; };
 		B70FF4D91C66343B002D571B /* libopenssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4CD1C66343B002D571B /* libopenssl.a */; };
 		B70FF4DA1C66343B002D571B /* libVitamio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4CE1C66343B002D571B /* libVitamio.a */; };
 		B70FF4DB1C66343B002D571B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B70FF4CF1C66343B002D571B /* LICENSE */; };
 		B70FF4DF1C663456002D571B /* UvMOS_C_for_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4DD1C663456002D571B /* UvMOS_C_for_iOS.a */; };
-		B70FF4E01C663456002D571B /* UvMOS_Outer_Api.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4DE1C663456002D571B /* UvMOS_Outer_Api.h */; };
+		B70FF4E01C663456002D571B /* UvMOS_Outer_Api.h in Headers */ = {isa = PBXBuildFile; fileRef = B70FF4DE1C663456002D571B /* UvMOS_Outer_Api.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B70FF4E21C6642C4002D571B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4E11C6642C4002D571B /* AVFoundation.framework */; };
 		B70FF4E41C6642DA002D571B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4E31C6642DA002D571B /* AudioToolbox.framework */; };
 		B70FF4E61C6642E7002D571B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4E51C6642E7002D571B /* CoreGraphics.framework */; };
@@ -133,99 +133,101 @@
 		B70FF4F81C66437D002D571B /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4F71C66437D002D571B /* libz.1.dylib */; };
 		B70FF4FA1C6643A5002D571B /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4F91C6643A5002D571B /* libstdc++.6.0.9.dylib */; };
 		B70FF4FC1C6643BF002D571B /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4FB1C6643BF002D571B /* libiconv.2.dylib */; };
+		B723CE591C7478F000B419E3 /* SVAdvancedSetting.h in Headers */ = {isa = PBXBuildFile; fileRef = B723CE571C7478F000B419E3 /* SVAdvancedSetting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B723CE5A1C7478F000B419E3 /* SVAdvancedSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = B723CE581C7478F000B419E3 /* SVAdvancedSetting.m */; };
 		B72A1D0E1C7192B600C3141A /* speed_pro.png in Resources */ = {isa = PBXBuildFile; fileRef = B72A1D0D1C7192B600C3141A /* speed_pro.png */; };
 		B72A1D161C71A1E300C3141A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B72A1D141C71A1E300C3141A /* icon.png */; };
 		B72A1D171C71A1E300C3141A /* starting_window.png in Resources */ = {isa = PBXBuildFile; fileRef = B72A1D151C71A1E300C3141A /* starting_window.png */; };
-		B72A1D1D1C71BBC500C3141A /* UUBar.h in Headers */ = {isa = PBXBuildFile; fileRef = B72A1D191C71BBC500C3141A /* UUBar.h */; };
+		B72A1D1D1C71BBC500C3141A /* UUBar.h in Headers */ = {isa = PBXBuildFile; fileRef = B72A1D191C71BBC500C3141A /* UUBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72A1D1E1C71BBC500C3141A /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B72A1D1A1C71BBC500C3141A /* UUBar.m */; };
-		B72DC85A1C6C0BF00046F174 /* SVProbeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */; };
+		B72DC85A1C6C0BF00046F174 /* SVProbeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72DC85B1C6C0BF00046F174 /* SVProbeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */; };
 		B72DC85D1C6C0F4E0046F174 /* SVSystemUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */; };
 		B72DC85F1C6C1B930046F174 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72DC85E1C6C1B930046F174 /* SystemConfiguration.framework */; };
-		B72DC8621C6C1F6E0046F174 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B72DC8601C6C1F6E0046F174 /* Reachability.h */; };
+		B72DC8621C6C1F6E0046F174 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B72DC8601C6C1F6E0046F174 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72DC8631C6C1F6E0046F174 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC8611C6C1F6E0046F174 /* Reachability.m */; };
-		B72EAEF01C6DB9FF000C96C1 /* SVDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAEEE1C6DB9FF000C96C1 /* SVDBManager.h */; };
+		B72EAEF01C6DB9FF000C96C1 /* SVDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAEEE1C6DB9FF000C96C1 /* SVDBManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72EAEF11C6DB9FF000C96C1 /* SVDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAEEF1C6DB9FF000C96C1 /* SVDBManager.m */; };
 		B72EAEF31C6DBC21000C96C1 /* SVDBManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAEF21C6DBC21000C96C1 /* SVDBManagerTest.m */; };
-		B72EAF141C6DC228000C96C1 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF0A1C6DC228000C96C1 /* FMDatabase.h */; };
+		B72EAF141C6DC228000C96C1 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF0A1C6DC228000C96C1 /* FMDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72EAF151C6DC228000C96C1 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF0B1C6DC228000C96C1 /* FMDatabase.m */; };
-		B72EAF161C6DC228000C96C1 /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF0C1C6DC228000C96C1 /* FMDatabaseAdditions.h */; };
+		B72EAF161C6DC228000C96C1 /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF0C1C6DC228000C96C1 /* FMDatabaseAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72EAF171C6DC228000C96C1 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF0D1C6DC228000C96C1 /* FMDatabaseAdditions.m */; };
 		B72EAF181C6DC228000C96C1 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF0E1C6DC228000C96C1 /* FMDatabasePool.h */; };
 		B72EAF191C6DC228000C96C1 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF0F1C6DC228000C96C1 /* FMDatabasePool.m */; };
-		B72EAF1A1C6DC228000C96C1 /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF101C6DC228000C96C1 /* FMDatabaseQueue.h */; };
+		B72EAF1A1C6DC228000C96C1 /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF101C6DC228000C96C1 /* FMDatabaseQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72EAF1B1C6DC228000C96C1 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF111C6DC228000C96C1 /* FMDatabaseQueue.m */; };
-		B72EAF1C1C6DC228000C96C1 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF121C6DC228000C96C1 /* FMResultSet.h */; };
+		B72EAF1C1C6DC228000C96C1 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF121C6DC228000C96C1 /* FMResultSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72EAF1D1C6DC228000C96C1 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF131C6DC228000C96C1 /* FMResultSet.m */; };
 		B72EAF1F1C6E29F5000C96C1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B72EAF1E1C6E29F5000C96C1 /* libsqlite3.dylib */; };
 		B72EAF221C6E32E0000C96C1 /* SVJunitTestTable.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF201C6E32E0000C96C1 /* SVJunitTestTable.h */; };
 		B72EAF231C6E32E0000C96C1 /* SVJunitTestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF211C6E32E0000C96C1 /* SVJunitTestTable.m */; };
-		B732E61D1C6EBC1A000353B9 /* SVSummaryResultModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B732E61B1C6EBC1A000353B9 /* SVSummaryResultModel.h */; };
+		B732E61D1C6EBC1A000353B9 /* SVSummaryResultModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B732E61B1C6EBC1A000353B9 /* SVSummaryResultModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B732E61E1C6EBC1A000353B9 /* SVSummaryResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B732E61C1C6EBC1A000353B9 /* SVSummaryResultModel.m */; };
 		B732E6281C6EC365000353B9 /* SVResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B732E6271C6EC365000353B9 /* SVResultCell.m */; };
-		B732E62C1C6ED225000353B9 /* SVDetailResultModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B732E62A1C6ED225000353B9 /* SVDetailResultModel.h */; };
+		B732E62C1C6ED225000353B9 /* SVDetailResultModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B732E62A1C6ED225000353B9 /* SVDetailResultModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B732E62D1C6ED225000353B9 /* SVDetailResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B732E62B1C6ED225000353B9 /* SVDetailResultModel.m */; };
-		B75994B21C6B7A93001C1D89 /* SVVideoUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994B01C6B7A93001C1D89 /* SVVideoUtil.h */; };
+		B75994B21C6B7A93001C1D89 /* SVVideoUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994B01C6B7A93001C1D89 /* SVVideoUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75994B31C6B7A93001C1D89 /* SVVideoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994B11C6B7A93001C1D89 /* SVVideoUtil.m */; };
-		B75994B61C6B8490001C1D89 /* SVUvMOSCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994B41C6B8490001C1D89 /* SVUvMOSCalculator.h */; };
+		B75994B61C6B8490001C1D89 /* SVUvMOSCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994B41C6B8490001C1D89 /* SVUvMOSCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75994B71C6B8490001C1D89 /* SVUvMOSCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994B51C6B8490001C1D89 /* SVUvMOSCalculator.m */; };
-		B75994E41C6B8AAB001C1D89 /* GTMBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994E11C6B8AAB001C1D89 /* GTMBase64.h */; };
+		B75994E41C6B8AAB001C1D89 /* GTMBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994E11C6B8AAB001C1D89 /* GTMBase64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75994E51C6B8AAB001C1D89 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994E21C6B8AAB001C1D89 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B75994E61C6B8AAB001C1D89 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994E31C6B8AAB001C1D89 /* GTMDefines.h */; };
-		B75994EE1C6B8ACD001C1D89 /* SVHttpGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994E81C6B8ACD001C1D89 /* SVHttpGetter.h */; };
+		B75994E61C6B8AAB001C1D89 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994E31C6B8AAB001C1D89 /* GTMDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B75994EE1C6B8ACD001C1D89 /* SVHttpGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994E81C6B8ACD001C1D89 /* SVHttpGetter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75994EF1C6B8ACD001C1D89 /* SVHttpGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994E91C6B8ACD001C1D89 /* SVHttpGetter.m */; };
-		B75994F01C6B8ACD001C1D89 /* SVHttpsGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994EA1C6B8ACD001C1D89 /* SVHttpsGetter.h */; };
+		B75994F01C6B8ACD001C1D89 /* SVHttpsGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994EA1C6B8ACD001C1D89 /* SVHttpsGetter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75994F11C6B8ACD001C1D89 /* SVHttpsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994EB1C6B8ACD001C1D89 /* SVHttpsGetter.m */; };
-		B75994F21C6B8ACD001C1D89 /* SVWebBrowser.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994EC1C6B8ACD001C1D89 /* SVWebBrowser.h */; };
+		B75994F21C6B8ACD001C1D89 /* SVWebBrowser.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994EC1C6B8ACD001C1D89 /* SVWebBrowser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75994F31C6B8ACD001C1D89 /* SVWebBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994ED1C6B8ACD001C1D89 /* SVWebBrowser.m */; };
-		B75994F71C6B8AE6001C1D89 /* SVI18N.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994F51C6B8AE6001C1D89 /* SVI18N.h */; };
+		B75994F71C6B8AE6001C1D89 /* SVI18N.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994F51C6B8AE6001C1D89 /* SVI18N.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75994F81C6B8AE6001C1D89 /* SVI18N.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994F61C6B8AE6001C1D89 /* SVI18N.m */; };
-		B75994FC1C6B8AFD001C1D89 /* SVLog.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994FA1C6B8AFD001C1D89 /* SVLog.h */; };
+		B75994FC1C6B8AFD001C1D89 /* SVLog.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994FA1C6B8AFD001C1D89 /* SVLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75994FD1C6B8AFD001C1D89 /* SVLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994FB1C6B8AFD001C1D89 /* SVLog.m */; };
-		B75995031C6B8B11001C1D89 /* SVSystemUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994FF1C6B8B11001C1D89 /* SVSystemUtil.h */; };
+		B75995031C6B8B11001C1D89 /* SVSystemUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994FF1C6B8B11001C1D89 /* SVSystemUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995041C6B8B11001C1D89 /* SVSystemUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995001C6B8B11001C1D89 /* SVSystemUtil.m */; };
-		B75995051C6B8B11001C1D89 /* SVTimeUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995011C6B8B11001C1D89 /* SVTimeUtil.h */; };
+		B75995051C6B8B11001C1D89 /* SVTimeUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995011C6B8B11001C1D89 /* SVTimeUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995061C6B8B11001C1D89 /* SVTimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995021C6B8B11001C1D89 /* SVTimeUtil.m */; };
-		B75995101C6B8C1A001C1D89 /* SVVideoSegement.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995081C6B8C1A001C1D89 /* SVVideoSegement.h */; };
+		B75995101C6B8C1A001C1D89 /* SVVideoSegement.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995081C6B8C1A001C1D89 /* SVVideoSegement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995111C6B8C1A001C1D89 /* SVVideoSegement.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995091C6B8C1A001C1D89 /* SVVideoSegement.m */; };
-		B75995121C6B8C1A001C1D89 /* SVVideoAnalyser.h in Headers */ = {isa = PBXBuildFile; fileRef = B759950A1C6B8C1A001C1D89 /* SVVideoAnalyser.h */; };
+		B75995121C6B8C1A001C1D89 /* SVVideoAnalyser.h in Headers */ = {isa = PBXBuildFile; fileRef = B759950A1C6B8C1A001C1D89 /* SVVideoAnalyser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995131C6B8C1A001C1D89 /* SVVideoAnalyser.m in Sources */ = {isa = PBXBuildFile; fileRef = B759950B1C6B8C1A001C1D89 /* SVVideoAnalyser.m */; };
-		B75995141C6B8C1A001C1D89 /* SVVideoAnalyserFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = B759950C1C6B8C1A001C1D89 /* SVVideoAnalyserFactory.h */; };
+		B75995141C6B8C1A001C1D89 /* SVVideoAnalyserFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = B759950C1C6B8C1A001C1D89 /* SVVideoAnalyserFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995151C6B8C1A001C1D89 /* SVVideoAnalyserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B759950D1C6B8C1A001C1D89 /* SVVideoAnalyserFactory.m */; };
-		B75995161C6B8C1A001C1D89 /* SVVideoInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B759950E1C6B8C1A001C1D89 /* SVVideoInfo.h */; };
+		B75995161C6B8C1A001C1D89 /* SVVideoInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B759950E1C6B8C1A001C1D89 /* SVVideoInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995171C6B8C1A001C1D89 /* SVVideoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B759950F1C6B8C1A001C1D89 /* SVVideoInfo.m */; };
 		B75995241C6B8C64001C1D89 /* SVVideoAnalyser_youku.m in Sources */ = {isa = PBXBuildFile; fileRef = B759951A1C6B8C64001C1D89 /* SVVideoAnalyser_youku.m */; };
-		B75995251C6B8C64001C1D89 /* SVDecode64.h in Headers */ = {isa = PBXBuildFile; fileRef = B759951B1C6B8C64001C1D89 /* SVDecode64.h */; };
+		B75995251C6B8C64001C1D89 /* SVDecode64.h in Headers */ = {isa = PBXBuildFile; fileRef = B759951B1C6B8C64001C1D89 /* SVDecode64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995261C6B8C64001C1D89 /* SVDecode64.m in Sources */ = {isa = PBXBuildFile; fileRef = B759951C1C6B8C64001C1D89 /* SVDecode64.m */; };
-		B75995271C6B8C64001C1D89 /* SVRc4.h in Headers */ = {isa = PBXBuildFile; fileRef = B759951D1C6B8C64001C1D89 /* SVRc4.h */; };
+		B75995271C6B8C64001C1D89 /* SVRc4.h in Headers */ = {isa = PBXBuildFile; fileRef = B759951D1C6B8C64001C1D89 /* SVRc4.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995281C6B8C64001C1D89 /* SVRc4.m in Sources */ = {isa = PBXBuildFile; fileRef = B759951E1C6B8C64001C1D89 /* SVRc4.m */; };
-		B75995291C6B8C64001C1D89 /* SVVideoAnalyser_youku.h in Headers */ = {isa = PBXBuildFile; fileRef = B759951F1C6B8C64001C1D89 /* SVVideoAnalyser_youku.h */; };
-		B759952A1C6B8C64001C1D89 /* SVYouKu__ysuid.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995201C6B8C64001C1D89 /* SVYouKu__ysuid.h */; };
+		B75995291C6B8C64001C1D89 /* SVVideoAnalyser_youku.h in Headers */ = {isa = PBXBuildFile; fileRef = B759951F1C6B8C64001C1D89 /* SVVideoAnalyser_youku.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B759952A1C6B8C64001C1D89 /* SVYouKu__ysuid.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995201C6B8C64001C1D89 /* SVYouKu__ysuid.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B759952B1C6B8C64001C1D89 /* SVYouKu__ysuid.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995211C6B8C64001C1D89 /* SVYouKu__ysuid.m */; };
-		B759952C1C6B8C64001C1D89 /* SVYoukuSIDAndTokenAndEqGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995221C6B8C64001C1D89 /* SVYoukuSIDAndTokenAndEqGetter.h */; };
+		B759952C1C6B8C64001C1D89 /* SVYoukuSIDAndTokenAndEqGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995221C6B8C64001C1D89 /* SVYoukuSIDAndTokenAndEqGetter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B759952D1C6B8C64001C1D89 /* SVYoukuSIDAndTokenAndEqGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995231C6B8C64001C1D89 /* SVYoukuSIDAndTokenAndEqGetter.m */; };
-		B75995301C6B8C7E001C1D89 /* SVVideoAnalyser_youtube.h in Headers */ = {isa = PBXBuildFile; fileRef = B759952E1C6B8C7E001C1D89 /* SVVideoAnalyser_youtube.h */; };
+		B75995301C6B8C7E001C1D89 /* SVVideoAnalyser_youtube.h in Headers */ = {isa = PBXBuildFile; fileRef = B759952E1C6B8C7E001C1D89 /* SVVideoAnalyser_youtube.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995311C6B8C7E001C1D89 /* SVVideoAnalyser_youtube.m in Sources */ = {isa = PBXBuildFile; fileRef = B759952F1C6B8C7E001C1D89 /* SVVideoAnalyser_youtube.m */; };
-		B75995351C6B8CC9001C1D89 /* SVBandwidthTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995331C6B8CC9001C1D89 /* SVBandwidthTestContext.h */; };
+		B75995351C6B8CC9001C1D89 /* SVBandwidthTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995331C6B8CC9001C1D89 /* SVBandwidthTestContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995361C6B8CC9001C1D89 /* SVBandwidthTestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995341C6B8CC9001C1D89 /* SVBandwidthTestContext.m */; };
-		B759953A1C6B8D1B001C1D89 /* SVWebTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995381C6B8D1B001C1D89 /* SVWebTestContext.h */; };
+		B759953A1C6B8D1B001C1D89 /* SVWebTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995381C6B8D1B001C1D89 /* SVWebTestContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B759953B1C6B8D1B001C1D89 /* SVWebTestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995391C6B8D1B001C1D89 /* SVWebTestContext.m */; };
-		B75995491C6B8D71001C1D89 /* SVIPAndISP.h in Headers */ = {isa = PBXBuildFile; fileRef = B759953D1C6B8D71001C1D89 /* SVIPAndISP.h */; };
+		B75995491C6B8D71001C1D89 /* SVIPAndISP.h in Headers */ = {isa = PBXBuildFile; fileRef = B759953D1C6B8D71001C1D89 /* SVIPAndISP.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B759954A1C6B8D71001C1D89 /* SVIPAndISP.m in Sources */ = {isa = PBXBuildFile; fileRef = B759953E1C6B8D71001C1D89 /* SVIPAndISP.m */; };
-		B759954B1C6B8D71001C1D89 /* SVIPAndISPGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B759953F1C6B8D71001C1D89 /* SVIPAndISPGetter.h */; };
+		B759954B1C6B8D71001C1D89 /* SVIPAndISPGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B759953F1C6B8D71001C1D89 /* SVIPAndISPGetter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B759954C1C6B8D71001C1D89 /* SVIPAndISPGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995401C6B8D71001C1D89 /* SVIPAndISPGetter.m */; };
-		B759954F1C6B8D71001C1D89 /* SVTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995431C6B8D71001C1D89 /* SVTestContext.h */; };
+		B759954F1C6B8D71001C1D89 /* SVTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995431C6B8D71001C1D89 /* SVTestContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995501C6B8D71001C1D89 /* SVTestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995441C6B8D71001C1D89 /* SVTestContext.m */; };
-		B75995511C6B8D71001C1D89 /* SVTestContextGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995451C6B8D71001C1D89 /* SVTestContextGetter.h */; };
+		B75995511C6B8D71001C1D89 /* SVTestContextGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995451C6B8D71001C1D89 /* SVTestContextGetter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995521C6B8D71001C1D89 /* SVTestContextGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995461C6B8D71001C1D89 /* SVTestContextGetter.m */; };
-		B75995531C6B8D71001C1D89 /* SVTestResult.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995471C6B8D71001C1D89 /* SVTestResult.h */; };
+		B75995531C6B8D71001C1D89 /* SVTestResult.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995471C6B8D71001C1D89 /* SVTestResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995541C6B8D71001C1D89 /* SVTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995481C6B8D71001C1D89 /* SVTestResult.m */; };
-		B75995571C6B8DBA001C1D89 /* SVVideoTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */; };
+		B75995571C6B8DBA001C1D89 /* SVVideoTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995581C6B8DBA001C1D89 /* SVVideoTestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */; };
 		B7CAB7C81C7416E100108B02 /* SVDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CAB7C71C7416E100108B02 /* SVDetailViewModel.m */; };
 		B7CD574A1C705C8D00668E88 /* SVCurrentResultViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */; };
 		B7CD57521C70C7FB00668E88 /* SVCurrentResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CD57511C70C7FB00668E88 /* SVCurrentResultModel.m */; };
-		B7F3CA471C72C9B0009B087F /* SVToast.h in Headers */ = {isa = PBXBuildFile; fileRef = B7F3CA451C72C9B0009B087F /* SVToast.h */; };
+		B7F3CA471C72C9B0009B087F /* SVToast.h in Headers */ = {isa = PBXBuildFile; fileRef = B7F3CA451C72C9B0009B087F /* SVToast.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7F3CA481C72C9B0009B087F /* SVToast.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F3CA461C72C9B0009B087F /* SVToast.m */; };
 		B7F3CA4A1C72CA3F009B087F /* toast_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B7F3CA491C72CA3F009B087F /* toast_icon.png */; };
 /* End PBXBuildFile section */
@@ -455,6 +457,8 @@
 		B70FF4F71C66437D002D571B /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = /usr/lib/libz.1.dylib; sourceTree = "<absolute>"; };
 		B70FF4F91C6643A5002D571B /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "/usr/lib/libstdc++.6.0.9.dylib"; sourceTree = "<absolute>"; };
 		B70FF4FB1C6643BF002D571B /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = /usr/lib/libiconv.2.dylib; sourceTree = "<absolute>"; };
+		B723CE571C7478F000B419E3 /* SVAdvancedSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAdvancedSetting.h; sourceTree = "<group>"; };
+		B723CE581C7478F000B419E3 /* SVAdvancedSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAdvancedSetting.m; sourceTree = "<group>"; };
 		B72A1D0D1C7192B600C3141A /* speed_pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speed_pro.png; sourceTree = "<group>"; };
 		B72A1D141C71A1E300C3141A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		B72A1D151C71A1E300C3141A /* starting_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starting_window.png; sourceTree = "<group>"; };
@@ -482,7 +486,6 @@
 		B72EAF1E1C6E29F5000C96C1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = /usr/lib/libsqlite3.dylib; sourceTree = "<absolute>"; };
 		B72EAF201C6E32E0000C96C1 /* SVJunitTestTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVJunitTestTable.h; sourceTree = "<group>"; };
 		B72EAF211C6E32E0000C96C1 /* SVJunitTestTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVJunitTestTable.m; sourceTree = "<group>"; };
-		B732158E1C70522600772092 /* SVNetworkConnectionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVNetworkConnectionDelegate.h; sourceTree = "<group>"; };
 		B732E61B1C6EBC1A000353B9 /* SVSummaryResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSummaryResultModel.h; sourceTree = "<group>"; };
 		B732E61C1C6EBC1A000353B9 /* SVSummaryResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSummaryResultModel.m; sourceTree = "<group>"; };
 		B732E6261C6EC365000353B9 /* SVResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVResultCell.h; sourceTree = "<group>"; };
@@ -546,7 +549,6 @@
 		B75995481C6B8D71001C1D89 /* SVTestResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVTestResult.m; sourceTree = "<group>"; };
 		B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVVideoTestContext.h; sourceTree = "<group>"; };
 		B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVVideoTestContext.m; sourceTree = "<group>"; };
-		B77999801C6CD02700C1E511 /* SVVideoTestDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVVideoTestDelegate.h; sourceTree = "<group>"; };
 		B7CAB7C61C7416E100108B02 /* SVDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDetailViewModel.h; sourceTree = "<group>"; };
 		B7CAB7C71C7416E100108B02 /* SVDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDetailViewModel.m; sourceTree = "<group>"; };
 		B7CD57481C705C8D00668E88 /* SVCurrentResultViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCurrentResultViewCtrl.h; sourceTree = "<group>"; };
@@ -1156,7 +1158,6 @@
 				B70FF4B11C663388002D571B /* SVVideoTestResult.m */,
 				B70FF4B21C663388002D571B /* SVVideoTestSample.h */,
 				B70FF4B31C663388002D571B /* SVVideoTestSample.m */,
-				B77999801C6CD02700C1E511 /* SVVideoTestDelegate.h */,
 			);
 			name = Test;
 			sourceTree = "<group>";
@@ -1282,7 +1283,6 @@
 				B75995001C6B8B11001C1D89 /* SVSystemUtil.m */,
 				B75995011C6B8B11001C1D89 /* SVTimeUtil.h */,
 				B75995021C6B8B11001C1D89 /* SVTimeUtil.m */,
-				B732158E1C70522600772092 /* SVNetworkConnectionDelegate.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1363,6 +1363,8 @@
 				B75995481C6B8D71001C1D89 /* SVTestResult.m */,
 				B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */,
 				B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */,
+				B723CE571C7478F000B419E3 /* SVAdvancedSetting.h */,
+				B723CE581C7478F000B419E3 /* SVAdvancedSetting.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -1374,8 +1376,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B70FF4D31C66343B002D571B /* VMediaExtracterDef.h in Headers */,
-				B70FF4BE1C663388002D571B /* SVVideoTestSample.h in Headers */,
 				B72DC85A1C6C0BF00046F174 /* SVProbeInfo.h in Headers */,
 				B732E61D1C6EBC1A000353B9 /* SVSummaryResultModel.h in Headers */,
 				B75995251C6B8C64001C1D89 /* SVDecode64.h in Headers */,
@@ -1393,7 +1393,8 @@
 				B70FF4D51C66343B002D571B /* VMediaPlayerDelegate.h in Headers */,
 				B759952A1C6B8C64001C1D89 /* SVYouKu__ysuid.h in Headers */,
 				B75995161C6B8C1A001C1D89 /* SVVideoInfo.h in Headers */,
-				B70FF45F1C66301D002D571B /* SPCommon.h in Headers */,
+				B70FF4D31C66343B002D571B /* VMediaExtracterDef.h in Headers */,
+				B70FF4BE1C663388002D571B /* SVVideoTestSample.h in Headers */,
 				B759953A1C6B8D1B001C1D89 /* SVWebTestContext.h in Headers */,
 				B759954F1C6B8D71001C1D89 /* SVTestContext.h in Headers */,
 				B70FF4B41C663388002D571B /* SVContentProviderGetter.h in Headers */,
@@ -1409,11 +1410,13 @@
 				B70FF4D11C66343B002D571B /* Vitamio.h in Headers */,
 				B70FF4D41C66343B002D571B /* VMediaPlayer.h in Headers */,
 				B75995101C6B8C1A001C1D89 /* SVVideoSegement.h in Headers */,
-				B70FF43C1C662FBE002D571B /* SPService.h in Headers */,
 				B75994B21C6B7A93001C1D89 /* SVVideoUtil.h in Headers */,
 				B70FF4E01C663456002D571B /* UvMOS_Outer_Api.h in Headers */,
 				B759954B1C6B8D71001C1D89 /* SVIPAndISPGetter.h in Headers */,
 				B75995271C6B8C64001C1D89 /* SVRc4.h in Headers */,
+				B70FF45F1C66301D002D571B /* SPCommon.h in Headers */,
+				B723CE591C7478F000B419E3 /* SVAdvancedSetting.h in Headers */,
+				B70FF43C1C662FBE002D571B /* SPService.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1435,11 +1438,11 @@
 				B75994F21C6B8ACD001C1D89 /* SVWebBrowser.h in Headers */,
 				B7F3CA471C72C9B0009B087F /* SVToast.h in Headers */,
 				B75994F01C6B8ACD001C1D89 /* SVHttpsGetter.h in Headers */,
-				B72EAF221C6E32E0000C96C1 /* SVJunitTestTable.h in Headers */,
-				B72EAF181C6DC228000C96C1 /* FMDatabasePool.h in Headers */,
 				B75994E61C6B8AAB001C1D89 /* GTMDefines.h in Headers */,
 				B75994E41C6B8AAB001C1D89 /* GTMBase64.h in Headers */,
 				B72DC8621C6C1F6E0046F174 /* Reachability.h in Headers */,
+				B72EAF181C6DC228000C96C1 /* FMDatabasePool.h in Headers */,
+				B72EAF221C6E32E0000C96C1 /* SVJunitTestTable.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1785,6 +1788,7 @@
 				B75995281C6B8C64001C1D89 /* SVRc4.m in Sources */,
 				B75995581C6B8DBA001C1D89 /* SVVideoTestContext.m in Sources */,
 				B75995311C6B8C7E001C1D89 /* SVVideoAnalyser_youtube.m in Sources */,
+				B723CE5A1C7478F000B419E3 /* SVAdvancedSetting.m in Sources */,
 				B72DC85B1C6C0BF00046F174 /* SVProbeInfo.m in Sources */,
 				B75995131C6B8C1A001C1D89 /* SVVideoAnalyser.m in Sources */,
 				B75995241C6B8C64001C1D89 /* SVVideoAnalyser_youku.m in Sources */,

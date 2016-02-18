@@ -342,10 +342,12 @@
 
 #pragma mark - 在这里对 数组 排序
     SVCurrentResultModel *currentResultModel = [[SVCurrentResultModel alloc] init];
+    UITabBarController *tabBarController = self.tabBarController;
     UINavigationController *navigationController = self.navigationController;
     //按钮点击后alloc一个界面
     SVTestingCtrl *testingCtrl = [[SVTestingCtrl alloc] init];
     [testingCtrl setNavigationController:navigationController];
+    [testingCtrl setTabBarController:tabBarController];
     [testingCtrl setCurrentResultModel:currentResultModel];
     testingCtrl.selectedA = _selectedMA;
 

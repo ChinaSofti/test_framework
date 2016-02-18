@@ -99,7 +99,15 @@
     // U-vMOS 值
     UILabel *uvMosLabelValue = [[UILabel alloc]
     initWithFrame:CGRectMake (kViewR (_imgView) + 15, kViewY (_imgView) - 10, 50, imgViewWAndH)];
-    [uvMosLabelValue setText:[NSString stringWithFormat:@"%.2f", currentResultModel.uvMOS]];
+    if (currentResultModel.uvMOS == -1)
+    {
+        [uvMosLabelValue setText:@"失败"];
+    }
+    else
+    {
+        [uvMosLabelValue setText:[NSString stringWithFormat:@"%.2f", currentResultModel.uvMOS]];
+    }
+
     [uvMosLabelValue setFont:[UIFont boldSystemFontOfSize:valueFontSize]];
     [uvMosLabelValue setTextAlignment:NSTextAlignmentCenter];
     [uvMosLabelValue setTextColor:[UIColor orangeColor]];
@@ -114,7 +122,15 @@
     // 首次缓冲时间
     UILabel *firstBufferTimeLabelValue = [[UILabel alloc]
     initWithFrame:CGRectMake (kViewR (uvMosLabelValue) + 15, kViewY (_imgView) - 10, 80, imgViewWAndH)];
-    [firstBufferTimeLabelValue setText:[NSString stringWithFormat:@"%dms", currentResultModel.firstBufferTime]];
+    if (currentResultModel.firstBufferTime == -1)
+    {
+        [firstBufferTimeLabelValue setText:@"失败"];
+    }
+    else
+    {
+        [firstBufferTimeLabelValue
+        setText:[NSString stringWithFormat:@"%dms", currentResultModel.firstBufferTime]];
+    }
     [firstBufferTimeLabelValue setFont:[UIFont boldSystemFontOfSize:valueFontSize]];
     [firstBufferTimeLabelValue setTextAlignment:NSTextAlignmentCenter];
     [firstBufferTimeLabelValue setTextColor:[UIColor orangeColor]];
@@ -129,7 +145,14 @@
     // 卡顿次数
     UILabel *cuttonTimesLabelValue = [[UILabel alloc]
     initWithFrame:CGRectMake (kViewR (firstBufferTimeLabelValue) + 15, kViewY (_imgView) - 10, 60, imgViewWAndH)];
-    [cuttonTimesLabelValue setText:[NSString stringWithFormat:@"%d", currentResultModel.cuttonTimes]];
+    if (currentResultModel.cuttonTimes == -1)
+    {
+        [cuttonTimesLabelValue setText:@"失败"];
+    }
+    else
+    {
+        [cuttonTimesLabelValue setText:[NSString stringWithFormat:@"%d", currentResultModel.cuttonTimes]];
+    }
     [cuttonTimesLabelValue setFont:[UIFont boldSystemFontOfSize:valueFontSize]];
     [cuttonTimesLabelValue setTextAlignment:NSTextAlignmentCenter];
     [cuttonTimesLabelValue setTextColor:[UIColor orangeColor]];

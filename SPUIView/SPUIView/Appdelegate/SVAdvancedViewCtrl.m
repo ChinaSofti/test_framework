@@ -6,6 +6,7 @@
 //  Copyright © 2016年 chinasofti. All rights reserved.
 //
 
+#import "SVAdvancedSetting.h"
 #import "SVAdvancedViewCtrl.h"
 
 @interface SVAdvancedViewCtrl ()
@@ -13,6 +14,9 @@
 @end
 
 @implementation SVAdvancedViewCtrl
+{
+    UITextField *_textField;
+}
 
 - (void)viewDidLoad
 {
@@ -52,6 +56,8 @@
 
 - (void)leftBackButtonClick
 {
+    SVAdvancedSetting *setting = [SVAdvancedSetting sharedInstance];
+    [setting setScreenSize:[_textField.text floatValue]];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -64,13 +70,15 @@
     lableScreenSize.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:lableScreenSize];
 
+    SVAdvancedSetting *setting = [SVAdvancedSetting sharedInstance];
+
     //文本框
-    UITextField *textField = [[UITextField alloc] init];
-    textField.frame = CGRectMake (85, 84, kScreenW - 84 - 30, 20);
-    textField.text = @"42.0";
-    textField.placeholder = @"请输入13英寸~100英寸的数字";
-    textField.font = [UIFont systemFontOfSize:14];
-    [self.view addSubview:textField];
+    _textField = [[UITextField alloc] init];
+    _textField.frame = CGRectMake (85, 84, kScreenW - 84 - 30, 20);
+    _textField.text = setting.getScreenSize;
+    _textField.placeholder = @"请输入13英寸~100英寸的数字";
+    _textField.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:_textField];
 
     //文本框下的细线
     UIView *viewLine = [[UIView alloc] init];

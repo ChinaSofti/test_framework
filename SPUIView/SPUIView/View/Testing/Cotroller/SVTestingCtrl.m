@@ -51,7 +51,7 @@
 
 @implementation SVTestingCtrl
 
-@synthesize navigationController, currentResultModel;
+@synthesize navigationController, tabBarController, currentResultModel;
 
 - (void)viewDidLoad
 {
@@ -130,10 +130,18 @@
     _resultTimes = 0;
     _UvMOSbarResultTimes = 0;
     _timer = nil;
+
+    // 初始化结果
+    currentResultModel = [[SVCurrentResultModel alloc] init];
+    [currentResultModel setTestId:-1];
+    [currentResultModel setUvMOS:-1];
+    [currentResultModel setFirstBufferTime:-1];
+    [currentResultModel setCuttonTimes:-1];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    //    tabBarController
     [self initContext];
     // 当用户离开进入页面时，开始测试
     long testId = [SVTimeUtil currentMilliSecondStamp];
@@ -144,6 +152,7 @@
       if (!isOK)
       {
           // TODO liuchengyu 初始化TestContext失败，提示用户
+          [self goToCurrentResultViewCtrl];
       }
       else
       {
@@ -151,6 +160,7 @@
           if (!isOK)
           {
               // TODO liuchengyu 启动测试失败，提示用户
+              [self goToCurrentResultViewCtrl];
           }
       }
     });
@@ -159,7 +169,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-
     //取消定时器
     if (_timer)
     {
@@ -168,7 +177,7 @@
         _timer = nil;
     }
 
-    dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async (dispatch_get_main_queue (), ^{
       // 当用户离开当前页面时，停止测试
       if (_videoTest)
       {
@@ -370,12 +379,10 @@
       [_headerView.bufferLabel setText:[NSString stringWithFormat:@"%d", cuttonTimes]];
       [_headerView.speedLabel setText:[NSString stringWithFormat:@"%ldms", firstBufferTime]];
 
-      UUBar *bar = [[UUBar alloc] initWithFrame:CGRectMake (10, 0, 1, 30)];
+      UUBar *bar = [[UUBar alloc] initWithFrame:CGRectMake (5, -10, 1, 30)];
       [bar setBarValue:uvMOSSession];
       [_headerView.uvMosBarView addSubview:bar];
 
-
-      //      [_headerView.uvMosLabel setText:[NSString stringWithFormat:@"%.2f", uvMOSSession]];
       [_testingView updateUvMOS:uvMOSSession];
 
       realBitrate = bitrate;
@@ -405,12 +412,7 @@
 
 
           [self initCurrentResultModel:testResult];
-          SVCurrentResultViewCtrl *currentResultView = [[SVCurrentResultViewCtrl alloc] init];
-          currentResultView.currentResultModel = currentResultModel;
-          currentResultView.navigationController = navigationController;
-          //          [self presentViewController:currentResultView animated:YES completion:nil];
-
-          [navigationController pushViewController:currentResultView animated:YES];
+          [self goToCurrentResultViewCtrl];
       }
     });
 }
@@ -453,11 +455,19 @@
         if (_UvMOSbarResultTimes < 20)
         {
             // 如果显示柱子个数少于等于 20 个，添加新的柱子
-            UUBar *bar = [[UUBar alloc] initWithFrame:CGRectMake (10 + _UvMOSbarResultTimes * 3, 0, 1, 30)];
+            UUBar *bar = [[UUBar alloc] initWithFrame:CGRectMake (5 + _UvMOSbarResultTimes * 3, -10, 1, 30)];
             [bar setBarValue:fakeUvMOSSession];
             [_headerView.uvMosBarView addSubview:bar];
         }
     }
+}
+
+- (void)goToCurrentResultViewCtrl
+{
+    SVCurrentResultViewCtrl *currentResultView = [[SVCurrentResultViewCtrl alloc] init];
+    currentResultView.currentResultModel = currentResultModel;
+    currentResultView.navigationController = navigationController;
+    [navigationController pushViewController:currentResultView animated:YES];
 }
 
 @end

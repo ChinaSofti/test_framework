@@ -7,8 +7,8 @@
 //
 
 #import "SVUvMOSCalculator.h"
+#import "SVVideoTest.h"
 #import "SVVideoTestContext.h"
-#import "SVVideoTestDelegate.h"
 #import "SVVideoTestResult.h"
 #import "Vitamio.h"
 #import <Foundation/Foundation.h>

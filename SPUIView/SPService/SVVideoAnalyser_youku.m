@@ -14,19 +14,45 @@
 #import "SVYouKu__ysuid.h"
 #import "SVYoukuSIDAndTokenAndEqGetter.h"
 
-@implementation SVVideoAnalyser_youku
-
 // 获取密文 ip等信息
-static NSString *_toGetSourceCode = @"http://play.youku.com/play/get.json?vid=%@&ct=12";
+#define ToGetSourceCodeURL "http://play.youku.com/play/get.json?vid=%@&ct=12"
+// 获取视频分片信息
+#define GetVideoFragmentInfoURL                                                                  \
+    "http://k.youku.com/player/getFlvPath/sid/%@_00/st/flv/fileid/"                              \
+    "%@?K=%@&ctype=12&ev=1&ts=%d&oip=%@&token=%@&ep=%@&yxon=1&special=true&hd=0&myp=0&ymovie=1&" \
+    "ypp=2"
+
+@implementation SVVideoAnalyser_youku
+{
+    // 获取密文 ip等信息
+    NSString *_toGetSourceCode;
+    // 获取视频分片信息
+    NSString *_getVideoFragmentInfoURL;
+}
 
 // 正则用于提取vid
 static NSString *_VID_REG = @"^http://v.youku.com/v_show/id_([0-9a-zA-Z=]+)([_a-z0-9]+)?\\.html";
 
-// 获取视频分片信息
-static NSString *_getVideoFragmentInfoURL =
-@"http://k.youku.com/player/getFlvPath/sid/%@_00/st/"
-@"flv/fileid/"
-@"%@?K=%@&ctype=12&ev=1&ts=%d&oip=%@&token=%@&ep=%@&yxon=1&special=true&hd=0&myp=0&ymovie=1&ypp=2";
+static NSString *_ykss;
+
+/**
+ *  根据视频URL初始化视频信息分析器
+ *
+ *  @param videoURL 视频URL
+ *
+ *  @return 视频分片分析器
+ */
+- (id)initWithURL:(NSString *)videoURL
+{
+    self = [super initWithURL:videoURL];
+    if (self)
+    {
+        _toGetSourceCode = @ToGetSourceCodeURL;
+        _getVideoFragmentInfoURL = @GetVideoFragmentInfoURL;
+    }
+
+    return self;
+}
 
 
 /**
@@ -40,7 +66,11 @@ static NSString *_getVideoFragmentInfoURL =
     [browser addHeader:@"Referer" value:@"http://www.youku.com"];
     [browser browser:_videoURL requestType:GET];
     NSString *ykss = [browser getReturnCookie:@"ykss"];
-    NSLog (@"ykss = %@", ykss);
+    if (!_ykss)
+    {
+        _ykss = ykss;
+    }
+    NSLog (@"ykss = %@", _ykss);
 
     // 请求/play/get.json?vid={vid}&ct=12 并在请求头中添加Referer, ykss, __ysuid。
     // Referer 头即为视频播放页面访问的URL
@@ -50,7 +80,7 @@ static NSString *_getVideoFragmentInfoURL =
     NSString *videoSourceCodeURL = [NSString stringWithFormat:_toGetSourceCode, vid];
     SVWebBrowser *browser2 = [[SVWebBrowser alloc] init];
     [browser2 addHeader:@"Referer" value:_videoURL];
-    [browser2 addCookies:@"ykss" value:ykss];
+    [browser2 addCookies:@"ykss" value:_ykss];
     [browser2 addCookies:@"__ysuid" value:[SVYouKu__ysuid getYsuid:1]];
     [browser2 browser:videoSourceCodeURL requestType:GET];
     NSData *jsonData = [browser2 getResponseData];

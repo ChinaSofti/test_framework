@@ -6,6 +6,7 @@
 //  Copyright © 2016年 HuaWei. All rights reserved.
 //
 
+#import "SVAdvancedSetting.h"
 #import "SVI18N.h"
 
 #define ENGLISH @"en"
@@ -14,8 +15,109 @@
 
 @implementation SVI18N
 
+
 //创建静态变量bundle，以及获取方法bundle
 static NSBundle *bundle = nil;
+
+// 语言设置
+static NSString *_language;
+
+/**
+ *  单例
+ *
+ *  @return 单例对象
+ */
++ (id)sharedInstance
+{
+    static SVI18N *i18n;
+    @synchronized (self)
+    {
+
+        if (i18n == nil)
+        {
+            i18n = [[super allocWithZone:NULL] init];
+
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            _language = [defaults objectForKey:@"language"];
+            if (!_language)
+            {
+                NSArray *languages = [NSLocale preferredLanguages];
+                _language = [languages objectAtIndex:0];
+                if ([_language containsString:@"zh"])
+                {
+                    _language = @"zh";
+                }
+                else
+                {
+                    _language = @"en";
+                }
+                [defaults setObject:_language forKey:@"language"];
+                [defaults synchronize];
+            }
+        }
+    }
+
+    return i18n;
+}
+
+/**
+ *  覆写allocWithZone方法
+ *
+ *  @param zone _NSZone
+ *
+ *  @return 单例对象
+ */
++ (id)allocWithZone:(struct _NSZone *)zone
+{
+    return [SVAdvancedSetting sharedInstance];
+}
+
+/**
+ *  覆写copyWithZone方法
+ *
+ *  @param zone _NSZone
+ *
+ *  @return 单例对象
+ */
+
++ (id)copyWithZone:(struct _NSZone *)zone
+{
+    return [SVAdvancedSetting sharedInstance];
+}
+
+
+/**
+ *  设置当前语言
+ *
+ *  @param langugae 设置当前语言
+ */
+- (void)setLanguage:(NSString *)langugae
+{
+    if ([langugae containsString:@"zh"])
+    {
+        langugae = @"zh";
+    }
+    else
+    {
+        langugae = @"en";
+    }
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _language = langugae;
+    [defaults setObject:_language forKey:@"langugae"];
+    [defaults synchronize];
+}
+
+/**
+ *  查询当前语言
+ *
+ *  @return 当前语言
+ */
+- (NSString *)getLanguage
+{
+    return _language;
+}
+
 
 //初始化语言文件
 + (void)initUserLanguage

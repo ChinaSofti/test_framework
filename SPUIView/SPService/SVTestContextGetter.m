@@ -23,7 +23,11 @@
 {
     SVVideoTestContext *videoContext;
 
+    NSString *videoURLS;
+
     SVWebTestContext *webContext;
+
+    NSString *webURLs;
 
     SVBandwidthTestContext *bandwidthContext;
 }
@@ -134,19 +138,12 @@ static SVTestContextGetter *contextGetter = nil;
         return;
     }
 
-    // 初始化VideoTestContext
-    videoContext = [[SVVideoTestContext alloc] initWithData:self.data];
-
     if (dictionay)
     {
-        NSString *videoURLS = [dictionay valueForKey:@"ottUrls"];
-        //        NSString *webURLs = [dictionay valueForKey:@"webUrls"];
+        videoURLS = [dictionay valueForKey:@"ottUrls"];
+        webURLs = [dictionay valueForKey:@"webUrls"];
         //        NSString *versionCode = [dictionay valueForKey:@"versionCode"];
         //        NSString *downloadUrl = [dictionay valueForKey:@"downloadUrl"];
-        // 设置视频测试URL
-        [videoContext setVideoURLsString:videoURLS];
-
-        // webContext = [[TSWebContext alloc] initWithWebURLs:webURLs];
     }
 }
 
@@ -157,19 +154,16 @@ static SVTestContextGetter *contextGetter = nil;
  */
 - (SVVideoTestContext *)getVideoContext
 {
-    if (!videoContext)
+    // 初始化VideoTestContext
+    videoContext = [[SVVideoTestContext alloc] initWithData:self.data];
+    [videoContext setVideoURLsString:videoURLS];
+    SVVideoAnalyser *analyser = [SVVideoAnalyserFactory createAnalyser:videoContext.videoURLString];
+    SVVideoInfo *videoInfo = [analyser analyse];
+    if (!videoInfo)
     {
+        SVError (@"analyse video fail. ");
         return nil;
     }
-
-    if (videoContext.videoSegementURL)
-    {
-        return videoContext;
-    }
-
-    NSString *videoPathString = [videoContext videoURLString];
-    SVVideoAnalyser *analyser = [SVVideoAnalyserFactory createAnalyser:videoPathString];
-    SVVideoInfo *videoInfo = [analyser analyse];
     int randomIndex = arc4random () % [[videoInfo getAllSegement] count];
     SVVideoSegement *segement = [videoInfo getAllSegement][randomIndex];
     [videoContext setVideoSegementURLString:segement.videoSegementURL];
@@ -200,6 +194,8 @@ static SVTestContextGetter *contextGetter = nil;
  */
 - (SVWebTestContext *)getWebContext
 {
+    webContext = [[SVWebTestContext alloc] initWithData:self.data];
+
     return webContext;
 }
 
@@ -210,6 +206,7 @@ static SVTestContextGetter *contextGetter = nil;
  */
 - (SVBandwidthTestContext *)getBandwidthContext
 {
+    bandwidthContext = [[SVBandwidthTestContext alloc] initWithData:self.data];
     return bandwidthContext;
 }
 

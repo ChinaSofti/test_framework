@@ -8,6 +8,7 @@
 
 #define Button_Tag 20
 
+#import "SVI18N.h"
 #import "SVLanguageSettingViewCtrl.h"
 
 @interface SVLanguageSettingViewCtrl ()
@@ -17,6 +18,9 @@
 @end
 
 @implementation SVLanguageSettingViewCtrl
+{
+    int _seletedIndex;
+}
 
 - (UIImageView *)imageView
 {
@@ -86,8 +90,21 @@
                    action:@selector (buttonClicked:)
          forControlEvents:UIControlEventTouchUpInside];
 
+
+        SVI18N *setting = [SVI18N sharedInstance];
+        NSString *language = [setting getLanguage];
+        if ([language containsString:@"zh"] && button.tag == 21)
+        {
+            // 简体中文
+            [self buttonClicked:button];
+        }
+        else
+        { // 简体中文
+            [self buttonClicked:button];
+        }
+
         //设置初始 默认选择位置
-        //        if (button.tag == 21)
+        //        if (button.tag == 20)
         //        {
         //            [self buttonClicked:button];
         //        }
@@ -139,18 +156,18 @@
         //跟随系统
         NSLog (@"跟随系统");
 
-
+        _seletedIndex = 0;
         break;
     case 1:
         //简体中文
         NSLog (@"简体中文");
-
+        _seletedIndex = 1;
 
         break;
     case 2:
         // English
         NSLog (@"English");
-
+        _seletedIndex = 2;
         break;
 
     default:
@@ -162,6 +179,19 @@
 - (void)saveBtnClicked:(UIButton *)button
 {
     [self.navigationController popViewControllerAnimated:YES];
+    SVI18N *setting = [SVI18N sharedInstance];
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *language = [languages objectAtIndex:0];
+    if (_seletedIndex == 1)
+    {
+        language = @"zh";
+    }
+    else if (_seletedIndex == 2)
+    {
+        language = @"en";
+    }
+
+    [setting setLanguage:language];
     NSLog (@"语言设置--保存");
 }
 

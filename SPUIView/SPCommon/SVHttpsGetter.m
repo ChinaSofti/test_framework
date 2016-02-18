@@ -52,7 +52,7 @@
 
     SVInfo (@"request URL:%@", url);
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url
-                                                  cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                  cachePolicy:NSURLRequestReloadIgnoringCacheData
                                               timeoutInterval:10];
     // NSURLRequest *request = [NSURLRequest requestWithURL:url];    NSURLConnection *conn =
     NSURLConnection *conn =

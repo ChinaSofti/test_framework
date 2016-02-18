@@ -40,8 +40,8 @@ static NSString *DEFAULT_EN_US_LANG = @"en";
 + (SVIPAndISP *)queryIPDetail:(NSString *)ip
 {
 
-    NSString *lang = [SVI18N currentLanguage];
-
+    SVI18N *i18n = [SVI18N sharedInstance];
+    NSString *lang = [i18n getLanguage];
     if ([lang containsString:@"en"])
     {
         lang = DEFAULT_EN_US_LANG;

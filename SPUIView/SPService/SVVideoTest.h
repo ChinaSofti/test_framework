@@ -8,9 +8,17 @@
 
 
 #import "SVVideoTestContext.h"
-#import "SVVideoTestDelegate.h"
 #import "SVVideoTestResult.h"
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+@protocol SVVideoTestDelegate <NSObject>
+
+@required
+- (void)updateTestResultDelegate:(SVVideoTestContext *)testContext
+                      testResult:(SVVideoTestResult *)testResult;
+
+@end
 
 @interface SVVideoTest : NSObject
 

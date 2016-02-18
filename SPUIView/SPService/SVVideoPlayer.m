@@ -38,12 +38,6 @@
     // 每5秒周期卡顿总时长
     int videoCuttonTotalTime;
 
-    // 总卡顿次数
-    int videoTotalCuttonTimes;
-    // 总卡顿总时长
-    int videoTotalCuttonTotalTime;
-
-
     // 缓冲时间集合
     NSMutableArray *bufferedTimeArray;
 
@@ -190,8 +184,6 @@ static const int execute_total_times = 4;
 
     [testResult setDownloadSize:downloadSize];
     [testResult setVideoEndPlayTime:[SVTimeUtil currentMilliSecondStamp]];
-    [testResult setVideoCuttonTimes:videoTotalCuttonTimes];
-    [testResult setVideoCuttonTotalTime:videoTotalCuttonTotalTime];
 
     // 取消 UvMOS 注册服务
     [uvMOSCalculator unRegisteService];
@@ -310,14 +302,15 @@ static const int execute_total_times = 4;
 - (void)mediaPlayer:(VMediaPlayer *)player bufferingEnd:(id)arg
 {
     long bufferedTime = [SVTimeUtil currentMilliSecondStamp] - bufferStartTime;
-    [self startCalculateUvMOS:player bufferedTime:bufferedTime];
 
     // 卡顿次数加一
     videoCuttonTimes += 1;
     videoCuttonTotalTime += bufferedTime;
-    videoTotalCuttonTimes += 1;
-    videoTotalCuttonTotalTime += bufferedTime;
+    [testResult setVideoCuttonTimes:(testResult.videoCuttonTimes + 1)];
+    [testResult setVideoCuttonTotalTime:(testResult.videoCuttonTotalTime + (int)bufferedTime)];
 
+
+    [self startCalculateUvMOS:player bufferedTime:bufferedTime];
 
     // 隐藏加载图标
     [activityView stopAnimating];
