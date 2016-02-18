@@ -35,7 +35,6 @@
 
 
 //#import <SPService/SPService.h>
-#import "UvMOS_Outer_Api.h"
 #import "UIView+Exten.h"
 #import "CTViewTools.h"
 #import "CTYYLToolView.h"

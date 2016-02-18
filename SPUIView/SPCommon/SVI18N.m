@@ -6,7 +6,6 @@
 //  Copyright © 2016年 HuaWei. All rights reserved.
 //
 
-#import "SVAdvancedSetting.h"
 #import "SVI18N.h"
 
 #define ENGLISH @"en"
@@ -69,7 +68,7 @@ static NSString *_language;
  */
 + (id)allocWithZone:(struct _NSZone *)zone
 {
-    return [SVAdvancedSetting sharedInstance];
+    return [SVI18N sharedInstance];
 }
 
 /**
@@ -82,7 +81,7 @@ static NSString *_language;
 
 + (id)copyWithZone:(struct _NSZone *)zone
 {
-    return [SVAdvancedSetting sharedInstance];
+    return [SVI18N sharedInstance];
 }
 
 
