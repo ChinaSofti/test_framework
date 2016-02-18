@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "56F523DE1C4DCF7F00E6472B"
-               BuildableName = "SPUIView.app"
-               BlueprintName = "SPUIView"
-               ReferencedContainer = "container:SPUIView.xcodeproj">
+               BuildableName = "SpeedPro.app"
+               BlueprintName = "SpeedPro"
+               ReferencedContainer = "container:SpeedPro.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B70FF3D21C6582AA002D571B"
-               BuildableName = "SPUIViewTests.xctest"
-               BlueprintName = "SPUIViewTests"
-               ReferencedContainer = "container:SPUIView.xcodeproj">
+               BuildableName = "SpeedPro.xctest"
+               BlueprintName = "SpeedProTests"
+               ReferencedContainer = "container:SpeedPro.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "B70FF41F1C65FB53002D571B"
                BuildableName = "Testtest2Tests.xctest"
                BlueprintName = "Testtest2Tests"
-               ReferencedContainer = "container:SPUIView.xcodeproj">
+               ReferencedContainer = "container:SpeedPro.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -55,7 +55,7 @@
                BlueprintIdentifier = "B70FF4411C662FBE002D571B"
                BuildableName = "SPServiceTests.xctest"
                BlueprintName = "SPServiceTests"
-               ReferencedContainer = "container:SPUIView.xcodeproj">
+               ReferencedContainer = "container:SpeedPro.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -65,7 +65,7 @@
                BlueprintIdentifier = "B70FF4641C66301D002D571B"
                BuildableName = "SPCommonTests.xctest"
                BlueprintName = "SPCommonTests"
-               ReferencedContainer = "container:SPUIView.xcodeproj">
+               ReferencedContainer = "container:SpeedPro.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -73,16 +73,16 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "56F523DE1C4DCF7F00E6472B"
-            BuildableName = "SPUIView.app"
-            BlueprintName = "SPUIView"
-            ReferencedContainer = "container:SPUIView.xcodeproj">
+            BuildableName = "SpeedPro.app"
+            BlueprintName = "SpeedPro"
+            ReferencedContainer = "container:SpeedPro.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "56F523DE1C4DCF7F00E6472B"
-            BuildableName = "SPUIView.app"
-            BlueprintName = "SPUIView"
-            ReferencedContainer = "container:SPUIView.xcodeproj">
+            BuildableName = "SpeedPro.app"
+            BlueprintName = "SpeedPro"
+            ReferencedContainer = "container:SpeedPro.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -115,9 +115,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "56F523DE1C4DCF7F00E6472B"
-            BuildableName = "SPUIView.app"
-            BlueprintName = "SPUIView"
-            ReferencedContainer = "container:SPUIView.xcodeproj">
+            BuildableName = "SpeedPro.app"
+            BlueprintName = "SpeedPro"
+            ReferencedContainer = "container:SpeedPro.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

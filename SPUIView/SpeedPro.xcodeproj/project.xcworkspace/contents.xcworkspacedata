@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SPUIView.xcodeproj">
+      location = "self:/Users/Rain/Workspace/SpeedPro/SpeedPro/SPUIView/SpeedPro.xcodeproj">
    </FileRef>
 </Workspace>

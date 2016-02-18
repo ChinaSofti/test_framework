@@ -167,6 +167,7 @@
 		B732E6281C6EC365000353B9 /* SVResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B732E6271C6EC365000353B9 /* SVResultCell.m */; };
 		B732E62C1C6ED225000353B9 /* SVDetailResultModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B732E62A1C6ED225000353B9 /* SVDetailResultModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B732E62D1C6ED225000353B9 /* SVDetailResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B732E62B1C6ED225000353B9 /* SVDetailResultModel.m */; };
+		B73D0B4B1C756AFF00E291C6 /* SVLogTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B73D0B4A1C756AFF00E291C6 /* SVLogTest.m */; };
 		B75994B21C6B7A93001C1D89 /* SVVideoUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994B01C6B7A93001C1D89 /* SVVideoUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75994B31C6B7A93001C1D89 /* SVVideoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994B11C6B7A93001C1D89 /* SVVideoUtil.m */; };
 		B75994B61C6B8490001C1D89 /* SVUvMOSCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994B41C6B8490001C1D89 /* SVUvMOSCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -400,9 +401,9 @@
 		56EC8C8F1C4F467000EBDA6C /* tabbar_settings_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_settings_selected.png; sourceTree = "<group>"; };
 		56EC8C901C4F467000EBDA6C /* tabbar_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_test.png; sourceTree = "<group>"; };
 		56EC8C911C4F467000EBDA6C /* tabbar_test_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_test_selected.png; sourceTree = "<group>"; };
-		56F523DF1C4DCF7F00E6472B /* SPUIView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPUIView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56F523DF1C4DCF7F00E6472B /* SpeedPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F523E31C4DCF7F00E6472B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B70FF3D31C6582AA002D571B /* SPUIViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPUIViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B70FF3D31C6582AA002D571B /* SpeedPro.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeedPro.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B70FF3D51C6582AA002D571B /* SPUIViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPUIViewTests.m; sourceTree = "<group>"; };
 		B70FF3D71C6582AA002D571B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B70FF4391C662FBE002D571B /* SPService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SPService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -492,6 +493,7 @@
 		B732E6271C6EC365000353B9 /* SVResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVResultCell.m; sourceTree = "<group>"; };
 		B732E62A1C6ED225000353B9 /* SVDetailResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDetailResultModel.h; sourceTree = "<group>"; };
 		B732E62B1C6ED225000353B9 /* SVDetailResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDetailResultModel.m; sourceTree = "<group>"; };
+		B73D0B4A1C756AFF00E291C6 /* SVLogTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLogTest.m; sourceTree = "<group>"; };
 		B75994B01C6B7A93001C1D89 /* SVVideoUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVVideoUtil.h; sourceTree = "<group>"; };
 		B75994B11C6B7A93001C1D89 /* SVVideoUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVVideoUtil.m; sourceTree = "<group>"; };
 		B75994B41C6B8490001C1D89 /* SVUvMOSCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVUvMOSCalculator.h; sourceTree = "<group>"; };
@@ -966,8 +968,8 @@
 		56F523E01C4DCF7F00E6472B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				56F523DF1C4DCF7F00E6472B /* SPUIView.app */,
-				B70FF3D31C6582AA002D571B /* SPUIViewTests.xctest */,
+				56F523DF1C4DCF7F00E6472B /* SpeedPro.app */,
+				B70FF3D31C6582AA002D571B /* SpeedPro.xctest */,
 				B70FF4391C662FBE002D571B /* SPService.framework */,
 				B70FF4421C662FBE002D571B /* SPServiceTests.xctest */,
 				B70FF45C1C66301D002D571B /* SPCommon.framework */,
@@ -1057,6 +1059,7 @@
 				B70FF46E1C66301D002D571B /* Info.plist */,
 				B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */,
 				B72EAEF21C6DBC21000C96C1 /* SVDBManagerTest.m */,
+				B73D0B4A1C756AFF00E291C6 /* SVLogTest.m */,
 			);
 			path = SPCommonTests;
 			sourceTree = "<group>";
@@ -1449,9 +1452,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		56F523DE1C4DCF7F00E6472B /* SPUIView */ = {
+		56F523DE1C4DCF7F00E6472B /* SpeedPro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56F523F61C4DCF8000E6472B /* Build configuration list for PBXNativeTarget "SPUIView" */;
+			buildConfigurationList = 56F523F61C4DCF8000E6472B /* Build configuration list for PBXNativeTarget "SpeedPro" */;
 			buildPhases = (
 				56F523DB1C4DCF7F00E6472B /* Sources */,
 				56F523DC1C4DCF7F00E6472B /* Frameworks */,
@@ -1464,14 +1467,14 @@
 				B70FF44D1C662FBE002D571B /* PBXTargetDependency */,
 				B70FF4701C66301D002D571B /* PBXTargetDependency */,
 			);
-			name = SPUIView;
+			name = SpeedPro;
 			productName = SPUIView;
-			productReference = 56F523DF1C4DCF7F00E6472B /* SPUIView.app */;
+			productReference = 56F523DF1C4DCF7F00E6472B /* SpeedPro.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B70FF3D21C6582AA002D571B /* SPUIViewTests */ = {
+		B70FF3D21C6582AA002D571B /* SpeedProTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B70FF3DA1C6582AA002D571B /* Build configuration list for PBXNativeTarget "SPUIViewTests" */;
+			buildConfigurationList = B70FF3DA1C6582AA002D571B /* Build configuration list for PBXNativeTarget "SpeedProTests" */;
 			buildPhases = (
 				B70FF3CF1C6582AA002D571B /* Sources */,
 				B70FF3D01C6582AA002D571B /* Frameworks */,
@@ -1482,9 +1485,9 @@
 			dependencies = (
 				B70FF3D91C6582AA002D571B /* PBXTargetDependency */,
 			);
-			name = SPUIViewTests;
+			name = SpeedProTests;
 			productName = SPUIViewTests;
-			productReference = B70FF3D31C6582AA002D571B /* SPUIViewTests.xctest */;
+			productReference = B70FF3D31C6582AA002D571B /* SpeedPro.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		B70FF4381C662FBE002D571B /* SPService */ = {
@@ -1597,7 +1600,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 56F523DA1C4DCF7F00E6472B /* Build configuration list for PBXProject "SPUIView" */;
+			buildConfigurationList = 56F523DA1C4DCF7F00E6472B /* Build configuration list for PBXProject "SpeedPro" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1611,8 +1614,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				56F523DE1C4DCF7F00E6472B /* SPUIView */,
-				B70FF3D21C6582AA002D571B /* SPUIViewTests */,
+				56F523DE1C4DCF7F00E6472B /* SpeedPro */,
+				B70FF3D21C6582AA002D571B /* SpeedProTests */,
 				B70FF4381C662FBE002D571B /* SPService */,
 				B70FF4411C662FBE002D571B /* SPServiceTests */,
 				B70FF45B1C66301D002D571B /* SPCommon */,
@@ -1840,6 +1843,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B70FF46D1C66301D002D571B /* SPCommonTests.m in Sources */,
+				B73D0B4B1C756AFF00E291C6 /* SVLogTest.m in Sources */,
 				B72EAEF31C6DBC21000C96C1 /* SVDBManagerTest.m in Sources */,
 				B72DC85D1C6C0F4E0046F174 /* SVSystemUtilTest.m in Sources */,
 			);
@@ -1850,7 +1854,7 @@
 /* Begin PBXTargetDependency section */
 		B70FF3D91C6582AA002D571B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56F523DE1C4DCF7F00E6472B /* SPUIView */;
+			target = 56F523DE1C4DCF7F00E6472B /* SpeedPro */;
 			targetProxy = B70FF3D81C6582AA002D571B /* PBXContainerItemProxy */;
 		};
 		B70FF4451C662FBE002D571B /* PBXTargetDependency */ = {
@@ -1860,7 +1864,7 @@
 		};
 		B70FF4471C662FBE002D571B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56F523DE1C4DCF7F00E6472B /* SPUIView */;
+			target = 56F523DE1C4DCF7F00E6472B /* SpeedPro */;
 			targetProxy = B70FF4461C662FBE002D571B /* PBXContainerItemProxy */;
 		};
 		B70FF44D1C662FBE002D571B /* PBXTargetDependency */ = {
@@ -1875,7 +1879,7 @@
 		};
 		B70FF46A1C66301D002D571B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56F523DE1C4DCF7F00E6472B /* SPUIView */;
+			target = 56F523DE1C4DCF7F00E6472B /* SpeedPro */;
 			targetProxy = B70FF4691C66301D002D571B /* PBXContainerItemProxy */;
 		};
 		B70FF4701C66301D002D571B /* PBXTargetDependency */ = {
@@ -2027,7 +2031,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.SPUIView;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SpeedPro;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -2056,7 +2060,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.SPUIView;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SpeedPro;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -2068,8 +2072,8 @@
 				INFOPLIST_FILE = SPUIViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.SPUIViewTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SPUIView.app/SPUIView";
+				PRODUCT_NAME = SpeedPro;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeedPro.app/SpeedPro";
 			};
 			name = Debug;
 		};
@@ -2080,8 +2084,8 @@
 				INFOPLIST_FILE = SPUIViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.SPUIViewTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SPUIView.app/SPUIView";
+				PRODUCT_NAME = SpeedPro;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeedPro.app/SpeedPro";
 			};
 			name = Release;
 		};
@@ -2162,7 +2166,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.SPServiceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SPUIView.app/SPUIView";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeedPro.app/SpeedPro";
 			};
 			name = Debug;
 		};
@@ -2173,7 +2177,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.SPServiceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SPUIView.app/SPUIView";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeedPro.app/SpeedPro";
 			};
 			name = Release;
 		};
@@ -2240,7 +2244,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.SPCommonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SPUIView.app/SPUIView";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeedPro.app/SpeedPro";
 			};
 			name = Debug;
 		};
@@ -2251,14 +2255,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.SPCommonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SPUIView.app/SPUIView";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeedPro.app/SpeedPro";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		56F523DA1C4DCF7F00E6472B /* Build configuration list for PBXProject "SPUIView" */ = {
+		56F523DA1C4DCF7F00E6472B /* Build configuration list for PBXProject "SpeedPro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56F523F41C4DCF8000E6472B /* Debug */,
@@ -2267,7 +2271,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56F523F61C4DCF8000E6472B /* Build configuration list for PBXNativeTarget "SPUIView" */ = {
+		56F523F61C4DCF8000E6472B /* Build configuration list for PBXNativeTarget "SpeedPro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56F523F71C4DCF8000E6472B /* Debug */,
@@ -2276,7 +2280,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B70FF3DA1C6582AA002D571B /* Build configuration list for PBXNativeTarget "SPUIViewTests" */ = {
+		B70FF3DA1C6582AA002D571B /* Build configuration list for PBXNativeTarget "SpeedProTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B70FF3DB1C6582AA002D571B /* Debug */,

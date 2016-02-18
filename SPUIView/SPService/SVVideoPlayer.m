@@ -160,26 +160,38 @@ static const int execute_total_times = 4;
  */
 - (void)stop
 {
-    //取消定时器
-    [timer invalidate];
-    timer = nil;
+    @try
+    {
+        //取消定时器
+        [timer invalidate];
+        timer = nil;
+    }
+    @catch (NSException *exception)
+    {
+    }
 
     // 隐藏加载图标
     [activityView stopAnimating];
 
-    BOOL isPlaying = [_VMpalyer isPlaying];
-    // 视频正在播放，则停止视频
-    if (_VMpalyer)
+    @try
     {
-        if (isPlaying)
+        BOOL isPlaying = [_VMpalyer isPlaying];
+        // 视频正在播放，则停止视频
+        if (_VMpalyer)
         {
-            NSLog (@"vmplayer pause");
-            [_VMpalyer pause];
-        }
+            if (isPlaying)
+            {
+                NSLog (@"vmplayer pause");
+                [_VMpalyer pause];
+            }
 
-        NSLog (@"vmplayer reset");
-        [_VMpalyer reset];
-        [_VMpalyer unSetupPlayer];
+            NSLog (@"vmplayer reset");
+            [_VMpalyer reset];
+            [_VMpalyer unSetupPlayer];
+        }
+    }
+    @catch (NSException *exception)
+    {
     }
 
     [testResult setDownloadSize:downloadSize];

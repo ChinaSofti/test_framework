@@ -17,7 +17,7 @@
                BlueprintIdentifier = "B70FF45B1C66301D002D571B"
                BuildableName = "SPCommon.framework"
                BlueprintName = "SPCommon"
-               ReferencedContainer = "container:SPUIView.xcodeproj">
+               ReferencedContainer = "container:SpeedPro.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -48,7 +48,7 @@
             BlueprintIdentifier = "B70FF45B1C66301D002D571B"
             BuildableName = "SPCommon.framework"
             BlueprintName = "SPCommon"
-            ReferencedContainer = "container:SPUIView.xcodeproj">
+            ReferencedContainer = "container:SpeedPro.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,7 +66,7 @@
             BlueprintIdentifier = "B70FF45B1C66301D002D571B"
             BuildableName = "SPCommon.framework"
             BlueprintName = "SPCommon"
-            ReferencedContainer = "container:SPUIView.xcodeproj">
+            ReferencedContainer = "container:SpeedPro.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
