@@ -12,7 +12,7 @@
 #define CornerRadius 5
 
 #import "SVResultCell.h"
-#import "SVSummaryResultModel.h"
+#import <SPService/SVSummaryResultModel.h>
 
 @interface SVResultCell ()
 

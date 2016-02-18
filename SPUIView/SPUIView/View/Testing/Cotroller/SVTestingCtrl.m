@@ -10,9 +10,9 @@
 #import "SVCurrentResultViewCtrl.h"
 #import "SVPointView.h"
 #import "SVTestingCtrl.h"
-#import "SVTimeUtil.h"
-#import "SVVideoTest.h"
-#import "UUBar.h"
+#import <SPCommon/SVTimeUtil.h>
+#import <SPCommon/UUBar.h>
+#import <SPService/SVVideoTest.h>
 
 @interface SVTestingCtrl ()
 {

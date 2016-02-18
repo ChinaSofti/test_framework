@@ -10,7 +10,7 @@
  *测试中界面
  **/
 #import "SVCurrentResultModel.h"
-#import "SVVideoTest.h"
+#import <SPService/SVVideoTest.h>
 #import <UIKit/UIKit.h>
 
 @interface SVTestingCtrl : UIViewController <SVVideoTestDelegate>
