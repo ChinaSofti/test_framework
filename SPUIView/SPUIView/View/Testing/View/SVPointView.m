@@ -131,7 +131,7 @@
         createLabelWithFrame:CGRectMake (FITWIDTH (170), FITWIDTH (425), FITWIDTH (150), FITWIDTH (20))
                     withFont:16
               withTitleColor:[UIColor blackColor]
-                   withTitle:@""];
+                   withTitle:@"计算中..."];
 
         _resolutionLabel = [CTWBViewTools
         createLabelWithFrame:CGRectMake (FITWIDTH (230), FITWIDTH (470), FITWIDTH (80), FITWIDTH (20))

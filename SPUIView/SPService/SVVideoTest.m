@@ -126,12 +126,6 @@
         }
 
         SVInfo (@"test[%ld] finished", _testId);
-
-        //        // 持久化结果和明细
-        [self persistSVSummaryResultModel];
-        [self persistSVDetailResultModel];
-        SVInfo (@"persist test[testId=%ld] result success", _testId);
-        return true;
     }
     @catch (NSException *exception)
     {
@@ -139,6 +133,12 @@
         testStatus = TEST_ERROR;
         return false;
     }
+
+    //        // 持久化结果和明细
+    [self persistSVSummaryResultModel];
+    [self persistSVDetailResultModel];
+    SVInfo (@"persist test[testId=%ld] result success", _testId);
+    return true;
 }
 
 /**

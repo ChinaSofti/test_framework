@@ -289,6 +289,14 @@
   UIBarButtonItem *backButton =
       [[UIBarButtonItem alloc] initWithCustomView:button];
   self.navigationItem.leftBarButtonItem = backButton;
+    
+    //为了保持平衡添加一个leftBtn
+    UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    UIBarButtonItem *backButton1 =
+    [[UIBarButtonItem alloc] initWithCustomView:button1];
+    self.navigationItem.rightBarButtonItem = backButton1;
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
 }
 
 /**

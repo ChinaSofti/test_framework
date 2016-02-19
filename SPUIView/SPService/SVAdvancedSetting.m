@@ -26,7 +26,6 @@ static NSString *_screenSize;
     static SVAdvancedSetting *advancedSetting;
     @synchronized (self)
     {
-
         if (advancedSetting == nil)
         {
             advancedSetting = [[super allocWithZone:NULL] init];
@@ -37,8 +36,8 @@ static NSString *_screenSize;
             {
                 _screenSize = @"42.00";
                 [defaults setObject:_screenSize forKey:@"screenSize"];
+                [defaults synchronize];
             }
-            [defaults synchronize];
         }
     }
 

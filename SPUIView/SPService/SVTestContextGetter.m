@@ -157,7 +157,17 @@ static SVTestContextGetter *contextGetter = nil;
     // 初始化VideoTestContext
     videoContext = [[SVVideoTestContext alloc] initWithData:self.data];
     [videoContext setVideoURLsString:videoURLS];
-    SVVideoAnalyser *analyser = [SVVideoAnalyserFactory createAnalyser:videoContext.videoURLString];
+    NSString *urlString = @"http://v.youku.com/v_show/id_XMTI0OTk4MDQ3Ng==.html";
+    if (videoContext.videoURLString)
+    {
+        urlString = videoContext.videoURLString;
+    }
+    else
+    {
+        SVWarn (@"video url request fail from our server. use default video url.");
+    }
+
+    SVVideoAnalyser *analyser = [SVVideoAnalyserFactory createAnalyser:urlString];
     SVVideoInfo *videoInfo = [analyser analyse];
     if (!videoInfo)
     {

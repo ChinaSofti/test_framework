@@ -97,14 +97,52 @@
         return;
     }
 
+    SVDebug (@"------sQualitySession: %.2f  sInteractionSession:%.2f sViewSession:%.2f  "
+             @"uvmosSession:%.2f",
+             stResult.sQualitySession, stResult.sInteractionSession, stResult.sViewSession,
+             stResult.uvmosSession);
+
     /* U-vMOS结果输出 */
-    [testSample setSQualitySession:stResult.sQualitySession];
-    [testSample setSInteractionSession:stResult.sInteractionSession];
-    [testSample setSViewSession:stResult.sViewSession];
-    [testSample setUvMOSSession:stResult.uvmosSession];
-    SVDebug (
-    @"sQualitySession: %.2f  sInteractionSession:%.2f sViewSession:%.2f  uvmosSession:%.2f",
-    stResult.sQualitySession, stResult.sInteractionSession, stResult.sViewSession, stResult.uvmosSession);
+    if (stResult.sQualitySession == NAN)
+    {
+        [testSample setSQualitySession:-1];
+    }
+    else
+    {
+        [testSample setSQualitySession:stResult.sQualitySession];
+    }
+
+    if (stResult.sInteractionSession == NAN)
+    {
+        [testSample setSInteractionSession:-1];
+    }
+    else
+    {
+        [testSample setSInteractionSession:stResult.sInteractionSession];
+    }
+
+    if (stResult.sViewSession == NAN)
+    {
+        [testSample setSViewSession:-1];
+    }
+    else
+    {
+        [testSample setSViewSession:stResult.sViewSession];
+    }
+
+    if (stResult.uvmosSession == NAN)
+    {
+        [testSample setUvMOSSession:-1];
+    }
+    else
+    {
+        [testSample setUvMOSSession:stResult.uvmosSession];
+    }
+
+    SVDebug (@"sQualitySession: %.2f  sInteractionSession:%.2f sViewSession:%.2f  "
+             @"uvmosSession:%.2f",
+             testSample.sQualitySession, testSample.sInteractionSession, testSample.sViewSession,
+             testSample.UvMOSSession);
 }
 
 - (void)unRegisteService

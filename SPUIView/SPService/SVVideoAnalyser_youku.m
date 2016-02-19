@@ -68,6 +68,10 @@ static NSString *_ykss;
     NSString *ykss = [browser getReturnCookie:@"ykss"];
     if (!_ykss)
     {
+        if (!ykss)
+        {
+            return nil;
+        }
         _ykss = ykss;
     }
     NSLog (@"ykss = %@", _ykss);
@@ -129,7 +133,9 @@ static NSString *_ykss;
             NSString *ep = [sidAndTokenAndEqGetter getEq];
 
             NSArray *segsArray = [streamObj valueForKey:@"segs"];
-            for (int i = 0; i < [segsArray count]; i++)
+            // 刘程雨 2016/02/18 目前只查询一个分片的视频地址
+            // for (int i = 0; i < [segsArray count]; i++)
+            for (int i = 0; i < 1; i++)
             {
                 NSDictionary *segementJson = segsArray[0];
                 NSString *segsKey = [segementJson valueForKey:@"key"];

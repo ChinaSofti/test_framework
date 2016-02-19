@@ -23,15 +23,15 @@
     VMediaPlayer *_VMpalyer;
 
     // 首次缓冲开始毫秒时间戳
-    long firstBufferTime;
+    long _firstBufferTime;
 
     // 开始缓冲时间
-    long bufferStartTime;
+    long _bufferStartTime;
 
     // 总下载大小
-    int downloadSize;
+    int _downloadSize;
     // 总下载时长
-    int downloadTime;
+    int _downloadTime;
 
     // 每5秒周期卡顿次数
     int videoCuttonTimes;
@@ -56,6 +56,8 @@
     BOOL isFinished;
 
     long startPlayTime;
+
+    BOOL _isSetup;
 }
 
 @synthesize showOnView, testResult, testContext, uvMOSCalculator;
@@ -82,7 +84,7 @@ static const int execute_total_times = 4;
     if (!_VMpalyer)
     {
         _VMpalyer = [VMediaPlayer sharedInstance];
-        [_VMpalyer setupPlayerWithCarrierView:showOnView withDelegate:self];
+        _isSetup = [_VMpalyer setupPlayerWithCarrierView:showOnView withDelegate:self];
     }
 
     return self;
@@ -102,6 +104,7 @@ static const int execute_total_times = 4;
     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [activityCarrier addSubview:activityView];
     [showOnView addSubview:activityCarrier];
+    [activityView startAnimating];
 }
 
 /**
@@ -165,36 +168,38 @@ static const int execute_total_times = 4;
         //取消定时器
         [timer invalidate];
         timer = nil;
-    }
-    @catch (NSException *exception)
-    {
-    }
 
-    // 隐藏加载图标
-    [activityView stopAnimating];
+        // 隐藏加载图标
+        [activityView stopAnimating];
 
-    @try
-    {
-        BOOL isPlaying = [_VMpalyer isPlaying];
         // 视频正在播放，则停止视频
         if (_VMpalyer)
         {
+            BOOL isPlaying = [_VMpalyer isPlaying];
             if (isPlaying)
             {
                 NSLog (@"vmplayer pause");
                 [_VMpalyer pause];
+                [_VMpalyer reset];
             }
 
-            NSLog (@"vmplayer reset");
-            [_VMpalyer reset];
-            [_VMpalyer unSetupPlayer];
+            if (_isSetup)
+            {
+                NSLog (@"vmplayer reset");
+                [_VMpalyer unSetupPlayer];
+            }
         }
     }
     @catch (NSException *exception)
     {
+        SVError (@"stop video fail. exception:%@", exception);
     }
 
-    [testResult setDownloadSize:downloadSize];
+    [testResult setDownloadSize:_downloadSize];
+    if (_downloadTime > 0)
+    {
+        [testResult setDownloadSpeed:(_downloadSize / _downloadTime)];
+    }
     [testResult setVideoEndPlayTime:[SVTimeUtil currentMilliSecondStamp]];
 
     // 取消 UvMOS 注册服务
@@ -285,10 +290,10 @@ static const int execute_total_times = 4;
  */
 - (void)mediaPlayer:(VMediaPlayer *)player downloadRate:(id)arg
 {
-    NSLog (@"downloadRate: %@", arg);
-    downloadSize += (int)arg;
-    downloadTime += 1;
-    [testResult setDownloadSpeed:(int)arg];
+
+    NSLog (@"downloadRate: %d", [arg intValue]);
+    _downloadSize += [arg intValue];
+    _downloadTime += 1;
     if ((int)arg >= testContext.videoSegementBitrate)
     {
         long bufferedTime = [SVTimeUtil currentMilliSecondStamp] - startPlayTime;
@@ -301,7 +306,7 @@ static const int execute_total_times = 4;
     // 显示加载图标
     [activityView startAnimating];
     NSLog (@"NAL 2HBT &&&&&&&&&&&&&&&&.......&&&&&&&&&&&&&&&&& bufferingStart");
-    bufferStartTime = [SVTimeUtil currentMilliSecondStamp];
+    _bufferStartTime = [SVTimeUtil currentMilliSecondStamp];
     [player pause];
 }
 
@@ -313,7 +318,7 @@ static const int execute_total_times = 4;
  */
 - (void)mediaPlayer:(VMediaPlayer *)player bufferingEnd:(id)arg
 {
-    long bufferedTime = [SVTimeUtil currentMilliSecondStamp] - bufferStartTime;
+    long bufferedTime = [SVTimeUtil currentMilliSecondStamp] - _bufferStartTime;
 
     // 卡顿次数加一
     videoCuttonTimes += 1;
@@ -334,9 +339,9 @@ static const int execute_total_times = 4;
 {
     // 注意：
     // 首次缓冲时长不计入卡顿时长，且第一次缓冲不算卡顿。首次缓冲时长只是首次缓冲时长
-    if (!firstBufferTime)
+    if (!_firstBufferTime || _firstBufferTime == 0)
     {
-        firstBufferTime = bufferedTime;
+        _firstBufferTime = bufferedTime;
         SVInfo (@"first buffer time(ms):%ld", bufferedTime);
         // 设置首次缓冲时间
         [testResult setFirstBufferTime:(int)bufferedTime];
@@ -352,7 +357,11 @@ static const int execute_total_times = 4;
 
         [testResult setVideoWidth:videoWidth];
         [testResult setVideoHeight:videoHeight];
-        [testResult setVideoResolution:[NSString stringWithFormat:@"%d*%d", videoWidth, videoHeight]];
+        if (videoHeight && videoWidth)
+        {
+            [testResult setVideoResolution:[NSString stringWithFormat:@"%d*%d", videoWidth, videoHeight]];
+        }
+
         [testResult setBitrate:(testContext.videoSegementBitrate)];
         [testResult setFrameRate:frame_rate];
 
