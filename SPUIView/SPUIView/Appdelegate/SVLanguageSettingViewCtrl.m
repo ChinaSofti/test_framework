@@ -13,7 +13,7 @@
 
 @interface SVLanguageSettingViewCtrl ()
 
-@property(nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIImageView *imageView;
 
 @end
 
@@ -35,12 +35,12 @@
 {
     [super viewDidLoad];
 
-  self.view.backgroundColor = [UIColor colorWithWhite:0.97 alpha:1];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.97 alpha:1];
 
-  //设置LeftBarButtonItem
-  [self createLeftBarButtonItem];
+    //设置LeftBarButtonItem
+    [self createLeftBarButtonItem];
 
-  [self createUI];
+    [self createUI];
 }
 
 //进去时 隐藏tabBar
@@ -191,8 +191,8 @@
         language = @"en";
     }
 
-  [setting setLanguage:language];
-  NSLog(@"语言设置--保存");
+    [setting setLanguage:language];
+    NSLog (@"语言设置--保存");
 }
 
 @end

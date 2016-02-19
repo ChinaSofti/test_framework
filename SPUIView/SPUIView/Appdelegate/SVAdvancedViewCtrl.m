@@ -22,12 +22,12 @@
 {
     [super viewDidLoad];
 
-  self.view.backgroundColor = [UIColor colorWithWhite:0.97 alpha:1];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.97 alpha:1];
 
-  //设置LeftBarButtonItem
-  [self createLeftBarButtonItem];
+    //设置LeftBarButtonItem
+    [self createLeftBarButtonItem];
 
-  [self createUI];
+    [self createUI];
 }
 
 //进去时 隐藏tabBar
@@ -72,28 +72,28 @@
     lableScreenSize.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:lableScreenSize];
 
-  SVAdvancedSetting *setting = [SVAdvancedSetting sharedInstance];
+    SVAdvancedSetting *setting = [SVAdvancedSetting sharedInstance];
 
-  //文本框
-  _textField = [[UITextField alloc] init];
-  _textField.frame = CGRectMake(85, 84, kScreenW - 84 - 30, 20);
-  _textField.text = setting.getScreenSize;
-  _textField.placeholder = @"请输入13英寸~100英寸的数字";
-  _textField.font = [UIFont systemFontOfSize:14];
-  [self.view addSubview:_textField];
+    //文本框
+    _textField = [[UITextField alloc] init];
+    _textField.frame = CGRectMake (85, 84, kScreenW - 84 - 30, 20);
+    _textField.text = setting.getScreenSize;
+    _textField.placeholder = @"请输入13英寸~100英寸的数字";
+    _textField.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:_textField];
 
-  //文本框下的细线
-  UIView *viewLine = [[UIView alloc] init];
-  viewLine.frame = CGRectMake(80, 104, kScreenW - 84 - 30, 1);
-  viewLine.backgroundColor = [UIColor grayColor];
-  [self.view addSubview:viewLine];
+    //文本框下的细线
+    UIView *viewLine = [[UIView alloc] init];
+    viewLine.frame = CGRectMake (80, 104, kScreenW - 84 - 30, 1);
+    viewLine.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:viewLine];
 
-  //英寸
-  UILabel *lableInch = [[UILabel alloc] init];
-  lableInch.frame = CGRectMake(kScreenW - 30, 84, 30, 20);
-  lableInch.text = @"英寸";
-  lableInch.font = [UIFont systemFontOfSize:14];
-  [self.view addSubview:lableInch];
+    //英寸
+    UILabel *lableInch = [[UILabel alloc] init];
+    lableInch.frame = CGRectMake (kScreenW - 30, 84, 30, 20);
+    lableInch.text = @"英寸";
+    lableInch.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:lableInch];
 }
 
 @end

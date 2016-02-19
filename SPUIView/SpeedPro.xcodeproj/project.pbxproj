@@ -138,27 +138,15 @@
 		B72A1D0E1C7192B600C3141A /* speed_pro.png in Resources */ = {isa = PBXBuildFile; fileRef = B72A1D0D1C7192B600C3141A /* speed_pro.png */; };
 		B72A1D161C71A1E300C3141A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B72A1D141C71A1E300C3141A /* icon.png */; };
 		B72A1D171C71A1E300C3141A /* starting_window.png in Resources */ = {isa = PBXBuildFile; fileRef = B72A1D151C71A1E300C3141A /* starting_window.png */; };
-		B72A1D1D1C71BBC500C3141A /* UUBar.h in Headers */ = {isa = PBXBuildFile; fileRef = B72A1D191C71BBC500C3141A /* UUBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B72A1D1E1C71BBC500C3141A /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B72A1D1A1C71BBC500C3141A /* UUBar.m */; };
 		B72DC85A1C6C0BF00046F174 /* SVProbeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72DC85B1C6C0BF00046F174 /* SVProbeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */; };
 		B72DC85D1C6C0F4E0046F174 /* SVSystemUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */; };
-		B72DC85F1C6C1B930046F174 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72DC85E1C6C1B930046F174 /* SystemConfiguration.framework */; };
+		B72DC85F1C6C1B930046F174 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72DC85E1C6C1B930046F174 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		B72DC8621C6C1F6E0046F174 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B72DC8601C6C1F6E0046F174 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72DC8631C6C1F6E0046F174 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC8611C6C1F6E0046F174 /* Reachability.m */; };
 		B72EAEF01C6DB9FF000C96C1 /* SVDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAEEE1C6DB9FF000C96C1 /* SVDBManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72EAEF11C6DB9FF000C96C1 /* SVDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAEEF1C6DB9FF000C96C1 /* SVDBManager.m */; };
 		B72EAEF31C6DBC21000C96C1 /* SVDBManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAEF21C6DBC21000C96C1 /* SVDBManagerTest.m */; };
-		B72EAF141C6DC228000C96C1 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF0A1C6DC228000C96C1 /* FMDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B72EAF151C6DC228000C96C1 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF0B1C6DC228000C96C1 /* FMDatabase.m */; };
-		B72EAF161C6DC228000C96C1 /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF0C1C6DC228000C96C1 /* FMDatabaseAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B72EAF171C6DC228000C96C1 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF0D1C6DC228000C96C1 /* FMDatabaseAdditions.m */; };
-		B72EAF181C6DC228000C96C1 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF0E1C6DC228000C96C1 /* FMDatabasePool.h */; };
-		B72EAF191C6DC228000C96C1 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF0F1C6DC228000C96C1 /* FMDatabasePool.m */; };
-		B72EAF1A1C6DC228000C96C1 /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF101C6DC228000C96C1 /* FMDatabaseQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B72EAF1B1C6DC228000C96C1 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF111C6DC228000C96C1 /* FMDatabaseQueue.m */; };
-		B72EAF1C1C6DC228000C96C1 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF121C6DC228000C96C1 /* FMResultSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B72EAF1D1C6DC228000C96C1 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF131C6DC228000C96C1 /* FMResultSet.m */; };
 		B72EAF1F1C6E29F5000C96C1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B72EAF1E1C6E29F5000C96C1 /* libsqlite3.dylib */; };
 		B72EAF221C6E32E0000C96C1 /* SVJunitTestTable.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAF201C6E32E0000C96C1 /* SVJunitTestTable.h */; };
 		B72EAF231C6E32E0000C96C1 /* SVJunitTestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAF211C6E32E0000C96C1 /* SVJunitTestTable.m */; };
@@ -225,6 +213,33 @@
 		B75995541C6B8D71001C1D89 /* SVTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995481C6B8D71001C1D89 /* SVTestResult.m */; };
 		B75995571C6B8DBA001C1D89 /* SVVideoTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995581C6B8DBA001C1D89 /* SVVideoTestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */; };
+		B79B3DB41C772C7F00471F12 /* UUBar.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3DA61C772C7F00471F12 /* UUBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B79B3DB51C772C7F00471F12 /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DA71C772C7F00471F12 /* UUBar.m */; };
+		B79B3DD41C772ECB00471F12 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3DC71C772ECB00471F12 /* FMDatabase.h */; };
+		B79B3DD51C772ECB00471F12 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DC81C772ECB00471F12 /* FMDatabase.m */; };
+		B79B3DD61C772ECB00471F12 /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3DC91C772ECB00471F12 /* FMDatabaseAdditions.h */; };
+		B79B3DD71C772ECB00471F12 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DCA1C772ECB00471F12 /* FMDatabaseAdditions.m */; };
+		B79B3DD81C772ECB00471F12 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3DCB1C772ECB00471F12 /* FMDatabasePool.h */; };
+		B79B3DD91C772ECB00471F12 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DCC1C772ECB00471F12 /* FMDatabasePool.m */; };
+		B79B3DDA1C772ECB00471F12 /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3DCD1C772ECB00471F12 /* FMDatabaseQueue.h */; };
+		B79B3DDB1C772ECB00471F12 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DCE1C772ECB00471F12 /* FMDatabaseQueue.m */; };
+		B79B3DDC1C772ECB00471F12 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3DCF1C772ECB00471F12 /* FMResultSet.h */; };
+		B79B3DDD1C772ECB00471F12 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DD01C772ECB00471F12 /* FMResultSet.m */; };
+		B79B3EA61C773D9B00471F12 /* CocoaLumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3E971C773D9B00471F12 /* CocoaLumberjack.h */; };
+		B79B3EA71C773D9B00471F12 /* DDAbstractDatabaseLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3E981C773D9B00471F12 /* DDAbstractDatabaseLogger.h */; };
+		B79B3EA81C773D9B00471F12 /* DDASLLogCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3E991C773D9B00471F12 /* DDASLLogCapture.h */; };
+		B79B3EA91C773D9B00471F12 /* DDASLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3E9A1C773D9B00471F12 /* DDASLLogger.h */; };
+		B79B3EAA1C773D9B00471F12 /* DDAssertMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3E9B1C773D9B00471F12 /* DDAssertMacros.h */; };
+		B79B3EAB1C773D9B00471F12 /* DDContextFilterLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3E9C1C773D9B00471F12 /* DDContextFilterLogFormatter.h */; };
+		B79B3EAC1C773D9B00471F12 /* DDDispatchQueueLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3E9D1C773D9B00471F12 /* DDDispatchQueueLogFormatter.h */; };
+		B79B3EAD1C773D9B00471F12 /* DDFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3E9E1C773D9B00471F12 /* DDFileLogger.h */; };
+		B79B3EAE1C773D9B00471F12 /* DDLegacyMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3E9F1C773D9B00471F12 /* DDLegacyMacros.h */; };
+		B79B3EAF1C773D9B00471F12 /* DDLog+LOGV.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3EA01C773D9B00471F12 /* DDLog+LOGV.h */; };
+		B79B3EB01C773D9B00471F12 /* DDLog.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3EA11C773D9B00471F12 /* DDLog.h */; };
+		B79B3EB11C773D9B00471F12 /* DDLogMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3EA21C773D9B00471F12 /* DDLogMacros.h */; };
+		B79B3EB21C773D9B00471F12 /* DDMultiFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3EA31C773D9B00471F12 /* DDMultiFormatter.h */; };
+		B79B3EB31C773D9B00471F12 /* DDTTYLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3EA41C773D9B00471F12 /* DDTTYLogger.h */; };
+		B79B3EB41C773D9B00471F12 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B79B3EA51C773D9B00471F12 /* libCocoaLumberjack.a */; };
 		B7CAB7C81C7416E100108B02 /* SVDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CAB7C71C7416E100108B02 /* SVDetailViewModel.m */; };
 		B7CD574A1C705C8D00668E88 /* SVCurrentResultViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CD57491C705C8D00668E88 /* SVCurrentResultViewCtrl.m */; };
 		B7CD57521C70C7FB00668E88 /* SVCurrentResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CD57511C70C7FB00668E88 /* SVCurrentResultModel.m */; };
@@ -463,8 +478,6 @@
 		B72A1D0D1C7192B600C3141A /* speed_pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speed_pro.png; sourceTree = "<group>"; };
 		B72A1D141C71A1E300C3141A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		B72A1D151C71A1E300C3141A /* starting_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starting_window.png; sourceTree = "<group>"; };
-		B72A1D191C71BBC500C3141A /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
-		B72A1D1A1C71BBC500C3141A /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
 		B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProbeInfo.h; sourceTree = "<group>"; };
 		B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProbeInfo.m; sourceTree = "<group>"; };
 		B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSystemUtilTest.m; sourceTree = "<group>"; };
@@ -474,16 +487,6 @@
 		B72EAEEE1C6DB9FF000C96C1 /* SVDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDBManager.h; sourceTree = "<group>"; };
 		B72EAEEF1C6DB9FF000C96C1 /* SVDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDBManager.m; sourceTree = "<group>"; };
 		B72EAEF21C6DBC21000C96C1 /* SVDBManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDBManagerTest.m; sourceTree = "<group>"; };
-		B72EAF0A1C6DC228000C96C1 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		B72EAF0B1C6DC228000C96C1 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		B72EAF0C1C6DC228000C96C1 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		B72EAF0D1C6DC228000C96C1 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		B72EAF0E1C6DC228000C96C1 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
-		B72EAF0F1C6DC228000C96C1 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
-		B72EAF101C6DC228000C96C1 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
-		B72EAF111C6DC228000C96C1 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
-		B72EAF121C6DC228000C96C1 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		B72EAF131C6DC228000C96C1 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		B72EAF1E1C6E29F5000C96C1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = /usr/lib/libsqlite3.dylib; sourceTree = "<absolute>"; };
 		B72EAF201C6E32E0000C96C1 /* SVJunitTestTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVJunitTestTable.h; sourceTree = "<group>"; };
 		B72EAF211C6E32E0000C96C1 /* SVJunitTestTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVJunitTestTable.m; sourceTree = "<group>"; };
@@ -551,6 +554,33 @@
 		B75995481C6B8D71001C1D89 /* SVTestResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVTestResult.m; sourceTree = "<group>"; };
 		B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVVideoTestContext.h; sourceTree = "<group>"; };
 		B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVVideoTestContext.m; sourceTree = "<group>"; };
+		B79B3DA61C772C7F00471F12 /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
+		B79B3DA71C772C7F00471F12 /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
+		B79B3DC71C772ECB00471F12 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		B79B3DC81C772ECB00471F12 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		B79B3DC91C772ECB00471F12 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		B79B3DCA1C772ECB00471F12 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		B79B3DCB1C772ECB00471F12 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		B79B3DCC1C772ECB00471F12 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		B79B3DCD1C772ECB00471F12 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		B79B3DCE1C772ECB00471F12 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		B79B3DCF1C772ECB00471F12 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		B79B3DD01C772ECB00471F12 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		B79B3E971C773D9B00471F12 /* CocoaLumberjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack.h; sourceTree = "<group>"; };
+		B79B3E981C773D9B00471F12 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		B79B3E991C773D9B00471F12 /* DDASLLogCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogCapture.h; sourceTree = "<group>"; };
+		B79B3E9A1C773D9B00471F12 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		B79B3E9B1C773D9B00471F12 /* DDAssertMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAssertMacros.h; sourceTree = "<group>"; };
+		B79B3E9C1C773D9B00471F12 /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		B79B3E9D1C773D9B00471F12 /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		B79B3E9E1C773D9B00471F12 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		B79B3E9F1C773D9B00471F12 /* DDLegacyMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLegacyMacros.h; sourceTree = "<group>"; };
+		B79B3EA01C773D9B00471F12 /* DDLog+LOGV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDLog+LOGV.h"; sourceTree = "<group>"; };
+		B79B3EA11C773D9B00471F12 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		B79B3EA21C773D9B00471F12 /* DDLogMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLogMacros.h; sourceTree = "<group>"; };
+		B79B3EA31C773D9B00471F12 /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
+		B79B3EA41C773D9B00471F12 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		B79B3EA51C773D9B00471F12 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCocoaLumberjack.a; sourceTree = "<group>"; };
 		B7CAB7C61C7416E100108B02 /* SVDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDetailViewModel.h; sourceTree = "<group>"; };
 		B7CAB7C71C7416E100108B02 /* SVDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDetailViewModel.m; sourceTree = "<group>"; };
 		B7CD57481C705C8D00668E88 /* SVCurrentResultViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCurrentResultViewCtrl.h; sourceTree = "<group>"; };
@@ -618,6 +648,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B72EAF1F1C6E29F5000C96C1 /* libsqlite3.dylib in Frameworks */,
+				B79B3EB41C773D9B00471F12 /* libCocoaLumberjack.a in Frameworks */,
 				B72DC85F1C6C1B930046F174 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1038,14 +1069,14 @@
 		B70FF45D1C66301D002D571B /* SPCommon */ = {
 			isa = PBXGroup;
 			children = (
-				B72A1D181C71BBC500C3141A /* Chart */,
+				B79B3DC11C772ECB00471F12 /* ThirdPart */,
+				B79B3DA51C772C7F00471F12 /* Chart */,
 				B72EAEE51C6DB883000C96C1 /* DB */,
 				B75994FE1C6B8B06001C1D89 /* Utils */,
 				B75994F91C6B8AF2001C1D89 /* Log */,
 				B75994F41C6B8ADA001C1D89 /* I18N */,
 				B75994E71C6B8ABC001C1D89 /* Http */,
 				B75994E01C6B8A98001C1D89 /* Base64 */,
-				B70FF5531C66560A002D571B /* ThirdPart */,
 				B70FF45E1C66301D002D571B /* SPCommon.h */,
 				B70FF4601C66301D002D571B /* Info.plist */,
 			);
@@ -1165,25 +1196,6 @@
 			name = Test;
 			sourceTree = "<group>";
 		};
-		B70FF5531C66560A002D571B /* ThirdPart */ = {
-			isa = PBXGroup;
-			children = (
-				B72EAF1E1C6E29F5000C96C1 /* libsqlite3.dylib */,
-				B72EAF091C6DC228000C96C1 /* fmdb */,
-				B72DC85E1C6C1B930046F174 /* SystemConfiguration.framework */,
-			);
-			name = ThirdPart;
-			sourceTree = "<group>";
-		};
-		B72A1D181C71BBC500C3141A /* Chart */ = {
-			isa = PBXGroup;
-			children = (
-				B72A1D191C71BBC500C3141A /* UUBar.h */,
-				B72A1D1A1C71BBC500C3141A /* UUBar.m */,
-			);
-			path = Chart;
-			sourceTree = "<group>";
-		};
 		B72EAEE51C6DB883000C96C1 /* DB */ = {
 			isa = PBXGroup;
 			children = (
@@ -1193,23 +1205,6 @@
 				B72EAF211C6E32E0000C96C1 /* SVJunitTestTable.m */,
 			);
 			name = DB;
-			sourceTree = "<group>";
-		};
-		B72EAF091C6DC228000C96C1 /* fmdb */ = {
-			isa = PBXGroup;
-			children = (
-				B72EAF0A1C6DC228000C96C1 /* FMDatabase.h */,
-				B72EAF0B1C6DC228000C96C1 /* FMDatabase.m */,
-				B72EAF0C1C6DC228000C96C1 /* FMDatabaseAdditions.h */,
-				B72EAF0D1C6DC228000C96C1 /* FMDatabaseAdditions.m */,
-				B72EAF0E1C6DC228000C96C1 /* FMDatabasePool.h */,
-				B72EAF0F1C6DC228000C96C1 /* FMDatabasePool.m */,
-				B72EAF101C6DC228000C96C1 /* FMDatabaseQueue.h */,
-				B72EAF111C6DC228000C96C1 /* FMDatabaseQueue.m */,
-				B72EAF121C6DC228000C96C1 /* FMResultSet.h */,
-				B72EAF131C6DC228000C96C1 /* FMResultSet.m */,
-			);
-			path = fmdb;
 			sourceTree = "<group>";
 		};
 		B732E6251C6EC33A000353B9 /* View */ = {
@@ -1372,6 +1367,74 @@
 			name = Setting;
 			sourceTree = "<group>";
 		};
+		B79B3DA51C772C7F00471F12 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				B79B3DA61C772C7F00471F12 /* UUBar.h */,
+				B79B3DA71C772C7F00471F12 /* UUBar.m */,
+			);
+			name = Chart;
+			path = Thirdpart/Chart;
+			sourceTree = "<group>";
+		};
+		B79B3DC11C772ECB00471F12 /* ThirdPart */ = {
+			isa = PBXGroup;
+			children = (
+				B79B3E951C773D9B00471F12 /* include */,
+				B79B3EA51C773D9B00471F12 /* libCocoaLumberjack.a */,
+				B72EAF1E1C6E29F5000C96C1 /* libsqlite3.dylib */,
+				B72DC85E1C6C1B930046F174 /* SystemConfiguration.framework */,
+				B79B3DC61C772ECB00471F12 /* fmdb */,
+			);
+			path = ThirdPart;
+			sourceTree = "<group>";
+		};
+		B79B3DC61C772ECB00471F12 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				B79B3DC71C772ECB00471F12 /* FMDatabase.h */,
+				B79B3DC81C772ECB00471F12 /* FMDatabase.m */,
+				B79B3DC91C772ECB00471F12 /* FMDatabaseAdditions.h */,
+				B79B3DCA1C772ECB00471F12 /* FMDatabaseAdditions.m */,
+				B79B3DCB1C772ECB00471F12 /* FMDatabasePool.h */,
+				B79B3DCC1C772ECB00471F12 /* FMDatabasePool.m */,
+				B79B3DCD1C772ECB00471F12 /* FMDatabaseQueue.h */,
+				B79B3DCE1C772ECB00471F12 /* FMDatabaseQueue.m */,
+				B79B3DCF1C772ECB00471F12 /* FMResultSet.h */,
+				B79B3DD01C772ECB00471F12 /* FMResultSet.m */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
+		B79B3E951C773D9B00471F12 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				B79B3E961C773D9B00471F12 /* CocoaLumberjack */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		B79B3E961C773D9B00471F12 /* CocoaLumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				B79B3E971C773D9B00471F12 /* CocoaLumberjack.h */,
+				B79B3E981C773D9B00471F12 /* DDAbstractDatabaseLogger.h */,
+				B79B3E991C773D9B00471F12 /* DDASLLogCapture.h */,
+				B79B3E9A1C773D9B00471F12 /* DDASLLogger.h */,
+				B79B3E9B1C773D9B00471F12 /* DDAssertMacros.h */,
+				B79B3E9C1C773D9B00471F12 /* DDContextFilterLogFormatter.h */,
+				B79B3E9D1C773D9B00471F12 /* DDDispatchQueueLogFormatter.h */,
+				B79B3E9E1C773D9B00471F12 /* DDFileLogger.h */,
+				B79B3E9F1C773D9B00471F12 /* DDLegacyMacros.h */,
+				B79B3EA01C773D9B00471F12 /* DDLog+LOGV.h */,
+				B79B3EA11C773D9B00471F12 /* DDLog.h */,
+				B79B3EA21C773D9B00471F12 /* DDLogMacros.h */,
+				B79B3EA31C773D9B00471F12 /* DDMultiFormatter.h */,
+				B79B3EA41C773D9B00471F12 /* DDTTYLogger.h */,
+			);
+			path = CocoaLumberjack;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1427,25 +1490,39 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B72A1D1D1C71BBC500C3141A /* UUBar.h in Headers */,
+				B79B3EAD1C773D9B00471F12 /* DDFileLogger.h in Headers */,
 				B75995051C6B8B11001C1D89 /* SVTimeUtil.h in Headers */,
-				B72EAF1C1C6DC228000C96C1 /* FMResultSet.h in Headers */,
 				B75995031C6B8B11001C1D89 /* SVSystemUtil.h in Headers */,
-				B72EAF141C6DC228000C96C1 /* FMDatabase.h in Headers */,
+				B79B3EB31C773D9B00471F12 /* DDTTYLogger.h in Headers */,
+				B79B3EB11C773D9B00471F12 /* DDLogMacros.h in Headers */,
 				B72EAEF01C6DB9FF000C96C1 /* SVDBManager.h in Headers */,
-				B72EAF161C6DC228000C96C1 /* FMDatabaseAdditions.h in Headers */,
-				B72EAF1A1C6DC228000C96C1 /* FMDatabaseQueue.h in Headers */,
+				B79B3DDC1C772ECB00471F12 /* FMResultSet.h in Headers */,
+				B79B3EA91C773D9B00471F12 /* DDASLLogger.h in Headers */,
 				B75994FC1C6B8AFD001C1D89 /* SVLog.h in Headers */,
 				B75994F71C6B8AE6001C1D89 /* SVI18N.h in Headers */,
 				B75994EE1C6B8ACD001C1D89 /* SVHttpGetter.h in Headers */,
+				B79B3EA71C773D9B00471F12 /* DDAbstractDatabaseLogger.h in Headers */,
 				B75994F21C6B8ACD001C1D89 /* SVWebBrowser.h in Headers */,
+				B79B3EAB1C773D9B00471F12 /* DDContextFilterLogFormatter.h in Headers */,
+				B79B3EA61C773D9B00471F12 /* CocoaLumberjack.h in Headers */,
 				B7F3CA471C72C9B0009B087F /* SVToast.h in Headers */,
+				B79B3EB21C773D9B00471F12 /* DDMultiFormatter.h in Headers */,
 				B75994F01C6B8ACD001C1D89 /* SVHttpsGetter.h in Headers */,
+				B79B3EB01C773D9B00471F12 /* DDLog.h in Headers */,
+				B79B3EAA1C773D9B00471F12 /* DDAssertMacros.h in Headers */,
+				B79B3DB41C772C7F00471F12 /* UUBar.h in Headers */,
 				B75994E61C6B8AAB001C1D89 /* GTMDefines.h in Headers */,
+				B79B3DD61C772ECB00471F12 /* FMDatabaseAdditions.h in Headers */,
+				B79B3EAC1C773D9B00471F12 /* DDDispatchQueueLogFormatter.h in Headers */,
+				B79B3EA81C773D9B00471F12 /* DDASLLogCapture.h in Headers */,
+				B79B3DD41C772ECB00471F12 /* FMDatabase.h in Headers */,
+				B79B3EAF1C773D9B00471F12 /* DDLog+LOGV.h in Headers */,
 				B75994E41C6B8AAB001C1D89 /* GTMBase64.h in Headers */,
 				B72DC8621C6C1F6E0046F174 /* Reachability.h in Headers */,
-				B72EAF181C6DC228000C96C1 /* FMDatabasePool.h in Headers */,
+				B79B3EAE1C773D9B00471F12 /* DDLegacyMacros.h in Headers */,
+				B79B3DDA1C772ECB00471F12 /* FMDatabaseQueue.h in Headers */,
 				B72EAF221C6E32E0000C96C1 /* SVJunitTestTable.h in Headers */,
+				B79B3DD81C772ECB00471F12 /* FMDatabasePool.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1819,22 +1896,22 @@
 			files = (
 				B75994F11C6B8ACD001C1D89 /* SVHttpsGetter.m in Sources */,
 				B75995041C6B8B11001C1D89 /* SVSystemUtil.m in Sources */,
-				B72EAF191C6DC228000C96C1 /* FMDatabasePool.m in Sources */,
-				B72EAF1B1C6DC228000C96C1 /* FMDatabaseQueue.m in Sources */,
-				B72A1D1E1C71BBC500C3141A /* UUBar.m in Sources */,
+				B79B3DD51C772ECB00471F12 /* FMDatabase.m in Sources */,
+				B79B3DD91C772ECB00471F12 /* FMDatabasePool.m in Sources */,
+				B79B3DDD1C772ECB00471F12 /* FMResultSet.m in Sources */,
+				B79B3DD71C772ECB00471F12 /* FMDatabaseAdditions.m in Sources */,
+				B79B3DB51C772C7F00471F12 /* UUBar.m in Sources */,
 				B75994E51C6B8AAB001C1D89 /* GTMBase64.m in Sources */,
+				B79B3DDB1C772ECB00471F12 /* FMDatabaseQueue.m in Sources */,
 				B7F3CA481C72C9B0009B087F /* SVToast.m in Sources */,
 				B75994F31C6B8ACD001C1D89 /* SVWebBrowser.m in Sources */,
 				B72EAEF11C6DB9FF000C96C1 /* SVDBManager.m in Sources */,
 				B75994F81C6B8AE6001C1D89 /* SVI18N.m in Sources */,
 				B75995061C6B8B11001C1D89 /* SVTimeUtil.m in Sources */,
 				B72EAF231C6E32E0000C96C1 /* SVJunitTestTable.m in Sources */,
-				B72EAF1D1C6DC228000C96C1 /* FMResultSet.m in Sources */,
 				B75994FD1C6B8AFD001C1D89 /* SVLog.m in Sources */,
 				B72DC8631C6C1F6E0046F174 /* Reachability.m in Sources */,
-				B72EAF151C6DC228000C96C1 /* FMDatabase.m in Sources */,
 				B75994EF1C6B8ACD001C1D89 /* SVHttpGetter.m in Sources */,
-				B72EAF171C6DC228000C96C1 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2192,6 +2269,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SPCommon/Thirdpart",
+					"$(PROJECT_DIR)/SPCommon/ThirdPart",
+				);
 				INFOPLIST_FILE = SPCommon/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -2199,6 +2281,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/Tcl/sqlite3",
+					"$(PROJECT_DIR)/SPCommon/ThirdPart",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.SPCommon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2220,6 +2303,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SPCommon/Thirdpart",
+					"$(PROJECT_DIR)/SPCommon/ThirdPart",
+				);
 				INFOPLIST_FILE = SPCommon/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -2227,6 +2315,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/Tcl/sqlite3",
+					"$(PROJECT_DIR)/SPCommon/ThirdPart",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.SPCommon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
