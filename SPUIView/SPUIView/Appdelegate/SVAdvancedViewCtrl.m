@@ -13,12 +13,14 @@
 
 @end
 
-@implementation SVAdvancedViewCtrl {
-  UITextField *_textField;
+@implementation SVAdvancedViewCtrl
+{
+    UITextField *_textField;
 }
 
-- (void)viewDidLoad {
-  [super viewDidLoad];
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
 
   self.view.backgroundColor = [UIColor colorWithWhite:0.97 alpha:1];
 
@@ -29,42 +31,46 @@
 }
 
 //进去时 隐藏tabBar
-- (void)viewWillAppear:(BOOL)animated {
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"HideTabBar"
-                                                      object:nil];
+- (void)viewWillAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HideTabBar" object:nil];
 }
 //出来时 显示tabBar
-- (void)viewWillDisappear:(BOOL)animated {
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowTabBar"
-                                                      object:nil];
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowTabBar" object:nil];
 }
 
-- (void)createLeftBarButtonItem {
-  UIButton *leftBack =
-      [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 25)];
-  [leftBack setBackgroundImage:[UIImage imageNamed:@"homeindicator"]
-                      forState:UIControlStateNormal];
-  [leftBack addTarget:self
-                action:@selector(leftBackButtonClick)
-      forControlEvents:UIControlEventTouchUpInside];
-
-  self.navigationItem.leftBarButtonItem =
-      [[UIBarButtonItem alloc] initWithCustomView:leftBack];
+- (void)createLeftBarButtonItem
+{
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake (0, 0, 45, 23)];
+    [button setImage:[UIImage imageNamed:@"homeindicator"] forState:UIControlStateNormal];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    UIBarButtonItem *back0 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                                                           target:nil
+                                                                           action:nil];
+    back0.width = -15;
+    self.navigationItem.leftBarButtonItems = @[back0, backButton];
+    [button addTarget:self
+               action:@selector (leftBackButtonClick)
+     forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)leftBackButtonClick {
-  SVAdvancedSetting *setting = [SVAdvancedSetting sharedInstance];
-  [setting setScreenSize:[_textField.text floatValue]];
-  [self.navigationController popViewControllerAnimated:YES];
+- (void)leftBackButtonClick
+{
+    SVAdvancedSetting *setting = [SVAdvancedSetting sharedInstance];
+    [setting setScreenSize:[_textField.text floatValue]];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)createUI {
-  //屏幕尺寸
-  UILabel *lableScreenSize = [[UILabel alloc] init];
-  lableScreenSize.frame = CGRectMake(10, 84, 70, 20);
-  lableScreenSize.text = @"屏幕尺寸：";
-  lableScreenSize.font = [UIFont systemFontOfSize:14];
-  [self.view addSubview:lableScreenSize];
+- (void)createUI
+{
+    //屏幕尺寸
+    UILabel *lableScreenSize = [[UILabel alloc] init];
+    lableScreenSize.frame = CGRectMake (10, 84, 70, 20);
+    lableScreenSize.text = @"屏幕尺寸：";
+    lableScreenSize.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:lableScreenSize];
 
   SVAdvancedSetting *setting = [SVAdvancedSetting sharedInstance];
 

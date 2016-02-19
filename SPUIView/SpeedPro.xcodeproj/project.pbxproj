@@ -2030,7 +2030,7 @@
 					"$(PROJECT_DIR)/SPUIView/ThirdPart/U-vMOS_SDK_for_iOS",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.SPUIView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro;
 				PRODUCT_NAME = SpeedPro;
 				PROVISIONING_PROFILE = "";
 			};
@@ -2059,7 +2059,7 @@
 					"$(PROJECT_DIR)/SPUIView/ThirdPart/U-vMOS_SDK_for_iOS",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro.SPUIView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.speedpro;
 				PRODUCT_NAME = SpeedPro;
 				PROVISIONING_PROFILE = "";
 			};

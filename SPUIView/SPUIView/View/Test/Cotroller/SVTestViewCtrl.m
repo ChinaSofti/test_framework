@@ -33,23 +33,23 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     //按钮文字和类型
-    BOOL isConnectionAvailable = [SVSystemUtil isConnectionAvailable];
-    if (isConnectionAvailable)
-    {
-        [_testBtn setTitle:@"开始测试" forState:UIControlStateNormal];
-        //按钮点击事件
-        [_testBtn addTarget:self
-                     action:@selector (testBtnClick)
-           forControlEvents:UIControlEventTouchUpInside];
-    }
-    else
-    {
-        [_testBtn setTitle:@"网络设置" forState:UIControlStateNormal];
-        //按钮点击事件
-        [_testBtn addTarget:self
-                     action:@selector (goNetworkSetting)
-           forControlEvents:UIControlEventTouchUpInside];
-    }
+    //    BOOL isConnectionAvailable = [SVSystemUtil isConnectionAvailable];
+    //    if (isConnectionAvailable)
+    //    {
+    //        [_testBtn setTitle:@"开始测试" forState:UIControlStateNormal];
+    //        //按钮点击事件
+    //        [_testBtn addTarget:self
+    //                     action:@selector (testBtnClick)
+    //           forControlEvents:UIControlEventTouchUpInside];
+    //    }
+    //    else
+    //    {
+    //        [_testBtn setTitle:@"网络设置" forState:UIControlStateNormal];
+    //        //按钮点击事件
+    //        [_testBtn addTarget:self
+    //                     action:@selector (goNetworkSetting)
+    //           forControlEvents:UIControlEventTouchUpInside];
+    //    }
 }
 
 - (void)viewDidLoad

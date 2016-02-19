@@ -27,7 +27,7 @@
 
         //设置Label
         _uvMosBarView = [[UIView alloc]
-        initWithFrame:CGRectMake (FITWIDTH (20), FITWIDTH (100), FITWIDTH (80), FITWIDTH (20))];
+        initWithFrame:CGRectMake (FITWIDTH (25), FITWIDTH (100), FITWIDTH (80), FITWIDTH (20))];
 
         _speedLabel =
         [CTWBViewTools createLabelWithFrame:CGRectMake (_uvMosBarView.rightX + FITWIDTH (25),
@@ -131,7 +131,7 @@
         createLabelWithFrame:CGRectMake (FITWIDTH (170), FITWIDTH (425), FITWIDTH (150), FITWIDTH (20))
                     withFont:16
               withTitleColor:[UIColor blackColor]
-                   withTitle:@"计算中..."];
+                   withTitle:@""];
 
         _resolutionLabel = [CTWBViewTools
         createLabelWithFrame:CGRectMake (FITWIDTH (230), FITWIDTH (470), FITWIDTH (80), FITWIDTH (20))

@@ -182,8 +182,14 @@
  */
 - (void)addHeadView
 {
-    NSArray *titles = @[@"类型    ", @"时间   ", @"U-vMOS", @"首次缓冲时间", @"速率  "
-                                                                                       @" "];
+    NSArray *titles = @[
+        @"类型    ",
+        @"时间   ",
+        @"U-vMOS",
+        @"首次缓冲时间",
+        @"速率  "
+        @" "
+    ];
     NSArray *images = @[
         @"ic_network_type_normal",
         @"ic_start_time_normal",
@@ -213,7 +219,7 @@
         initWithFrame:CGRectMake (BandGap + ButtonWidth * i, 0, ButtonWidth, ButtonWidth)];
 
         [_button setTitle:titles[i] forState:UIControlStateNormal];
-        _button.titleLabel.font = [UIFont systemFontOfSize:kScreenW / 30];
+        _button.titleLabel.font = [UIFont systemFontOfSize:12];
         // button普通状态下的字体颜色
         [_button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         // button选中状态下的字体颜色
@@ -227,9 +233,10 @@
                  forState:UIControlStateSelected | UIControlStateHighlighted];
         [_button setImage:[UIImage imageNamed:imagesSelected[i]] forState:UIControlStateSelected];
 
-        _button.titleEdgeInsets = UIEdgeInsetsMake (25, -33, 0, -5);
-        _button.imageEdgeInsets = UIEdgeInsetsMake (-25, 17, 0, 4);
+        _button.titleEdgeInsets = UIEdgeInsetsMake (25, -30, 0, -5);
+        _button.imageEdgeInsets = UIEdgeInsetsMake (-25, 20, 0, 4);
 
+        //      _button.titleLabel.backgroundColor = [UIColor redColor];
         [_button addTarget:self
                     action:@selector (buttonClick:)
           forControlEvents:UIControlEventTouchUpInside];
@@ -316,7 +323,7 @@
         {
         case 0:
             //类型
-            NSLog (@"类型--箭头向上");
+            //            NSLog (@"类型--箭头向上");
             [SVSortTools sortByType:_dataSource];
             [SVSortTools reverse:_dataSource];
             [_tableView reloadData];
@@ -366,7 +373,7 @@
         {
         case 0:
             //类型
-            NSLog (@"类型--箭头向下");
+            //            NSLog (@"类型--箭头向下");
             [SVSortTools sortByType:_dataSource];
 
             [_tableView reloadData];
