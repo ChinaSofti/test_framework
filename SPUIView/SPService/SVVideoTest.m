@@ -100,7 +100,7 @@
 {
     @try
     {
-        @synchronized (_videoPlayer)
+        @synchronized (_showVideoView)
         {
             if (testStatus == TEST_TESTING)
             {
@@ -146,7 +146,7 @@
  */
 - (BOOL)stopTest
 {
-    @synchronized (_videoPlayer)
+    @synchronized (_showVideoView)
     {
         if (testStatus == TEST_TESTING)
         {

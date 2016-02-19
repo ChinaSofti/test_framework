@@ -58,7 +58,6 @@
 
     [super viewDidLoad];
     NSLog (@"SVTestingCtrl");
-
     // 1.自定义navigationItem.titleView
     //设置图片大小
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake (0, 0, 100, 30)];

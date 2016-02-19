@@ -165,13 +165,11 @@ static const int execute_total_times = 4;
 {
     @try
     {
+        // 隐藏加载图标
+        [activityView stopAnimating];
         //取消定时器
         [timer invalidate];
         timer = nil;
-
-        // 隐藏加载图标
-        [activityView stopAnimating];
-
         // 视频正在播放，则停止视频
         if (_VMpalyer)
         {
@@ -180,14 +178,11 @@ static const int execute_total_times = 4;
             {
                 NSLog (@"vmplayer pause");
                 [_VMpalyer pause];
-                [_VMpalyer reset];
             }
 
-            if (_isSetup)
-            {
-                NSLog (@"vmplayer reset");
-                [_VMpalyer unSetupPlayer];
-            }
+            [_VMpalyer reset];
+            NSLog (@"vmplayer reset");
+            [_VMpalyer unSetupPlayer];
         }
     }
     @catch (NSException *exception)
@@ -230,7 +225,6 @@ static const int execute_total_times = 4;
         NSLog (@"prepareVideo");
         //播放时不要锁屏
         [UIApplication sharedApplication].idleTimerDisabled = YES;
-        //        [_VMpalyer setBufferSize:(512 * 1024)];
         [_VMpalyer setDataSource:testContext.videoSegementURL];
         [_VMpalyer prepareAsync];
     }
@@ -245,6 +239,11 @@ static const int execute_total_times = 4;
  */
 - (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
 {
+    // 隐藏加载图标
+    if ([activityView isAnimating])
+    {
+        [activityView stopAnimating];
+    }
     NSLog (@"didPrepared.......");
     _didPrepared = YES;
     [player start];
@@ -275,6 +274,7 @@ static const int execute_total_times = 4;
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
 {
     NSLog (@"VMediaPlayer Error: %@", arg);
+    [activityView stopAnimating];
     testContext.testStatus = TEST_ERROR;
     [self stop];
 }
@@ -290,7 +290,6 @@ static const int execute_total_times = 4;
  */
 - (void)mediaPlayer:(VMediaPlayer *)player downloadRate:(id)arg
 {
-
     NSLog (@"downloadRate: %d", [arg intValue]);
     _downloadSize += [arg intValue];
     _downloadTime += 1;
@@ -303,11 +302,14 @@ static const int execute_total_times = 4;
 
 - (void)mediaPlayer:(VMediaPlayer *)player bufferingStart:(id)arg
 {
-    // 显示加载图标
-    [activityView startAnimating];
     NSLog (@"NAL 2HBT &&&&&&&&&&&&&&&&.......&&&&&&&&&&&&&&&&& bufferingStart");
     _bufferStartTime = [SVTimeUtil currentMilliSecondStamp];
     [player pause];
+    // 显示加载图标
+    if (![activityView isAnimating])
+    {
+        [activityView startAnimating];
+    }
 }
 
 /**
@@ -318,19 +320,19 @@ static const int execute_total_times = 4;
  */
 - (void)mediaPlayer:(VMediaPlayer *)player bufferingEnd:(id)arg
 {
-    long bufferedTime = [SVTimeUtil currentMilliSecondStamp] - _bufferStartTime;
+    // 隐藏加载图标
+    if ([activityView isAnimating])
+    {
+        [activityView stopAnimating];
+    }
 
+    long bufferedTime = [SVTimeUtil currentMilliSecondStamp] - _bufferStartTime;
     // 卡顿次数加一
     videoCuttonTimes += 1;
     videoCuttonTotalTime += bufferedTime;
     [testResult setVideoCuttonTimes:(testResult.videoCuttonTimes + 1)];
     [testResult setVideoCuttonTotalTime:(testResult.videoCuttonTotalTime + (int)bufferedTime)];
-
-
     [self startCalculateUvMOS:player bufferedTime:bufferedTime];
-
-    // 隐藏加载图标
-    [activityView stopAnimating];
     [player start];
     NSLog (@"NAL 3HBT &&&&&&&&&&&&&&&&.......&&&&&&&&&&&&&&&&&  bufferingEnd");
 }
@@ -345,12 +347,10 @@ static const int execute_total_times = 4;
         SVInfo (@"first buffer time(ms):%ld", bufferedTime);
         // 设置首次缓冲时间
         [testResult setFirstBufferTime:(int)bufferedTime];
-
         // 视频宽度
         int videoWidth = [player getVideoWidth];
         // 视频高度
         int videoHeight = [player getVideoHeight];
-
         // 视频帧率
         NSDictionary *metaData = [player getMetadata];
         float frame_rate = [[metaData valueForKey:@"video_frame_rate"] floatValue];
