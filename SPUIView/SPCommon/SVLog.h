@@ -108,9 +108,23 @@
  *  @param line         <#line description#>
  *  @param message      <#message description#>
  */
-- (void)record:(int)level
-  functionName:(NSString *)functionName
-          line:(unsigned int)line
-       message:(NSString *)message;
+- (void)log:(int)level
+functionName:(NSString *)functionName
+        line:(unsigned int)line
+     message:(NSString *)message;
+
+/**
+ *  获取日志文件路径
+ *
+ *  @return 日志文件路径
+ */
+- (NSString *)getLogFilePath;
+
+/**
+ *  压缩日志文件，并返回日志文件路径
+ *
+ *  @return 压缩后文件路径
+ */
+- (NSString *)compressLogFiles;
 
 @end

@@ -8,11 +8,13 @@
 
 #import "CocoaLumberjack.h"
 #import "SVLog.h"
+#import "ZipArchive.h"
 
 @implementation SVLog
 
 static const NSUInteger ddLogLevel = DDLogLevelAll;
 
+static NSString *logFilePath;
 
 /**
  *  单例
@@ -29,17 +31,15 @@ static const NSUInteger ddLogLevel = DDLogLevelAll;
             log = [[super allocWithZone:NULL] init];
             // 初始化DDLog日志输出，在这里，我们仅仅希望在xCode控制台输出
             [DDLog addLogger:[DDTTYLogger sharedInstance]];
-            // 启用颜色区分
-            [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
-            [DDLog addLogger:[DDTTYLogger sharedInstance]];
 
             DDLogFileManagerDefault *logFileManager = [[DDLogFileManagerDefault alloc] init];
+            [logFileManager setMaximumNumberOfLogFiles:6];
             DDFileLogger *fileLogger = [[DDFileLogger alloc] initWithLogFileManager:logFileManager];
-            fileLogger.maximumFileSize = 10 * 1024 * 1024; // 10 MB
-            fileLogger.logFileManager.maximumNumberOfLogFiles = 5;
+            fileLogger.maximumFileSize = 5 * 1024 * 1024; // 5 MB
             [DDLog addLogger:fileLogger];
+            logFilePath = fileLogger.logFileManager.logsDirectory;
             // 2.2打印日志文件目录
-            NSLog (@"dir is %@", fileLogger.logFileManager.logsDirectory);
+            NSLog (@"dir of log file:%@", logFilePath);
         }
     }
 
@@ -90,7 +90,7 @@ static const NSUInteger ddLogLevel = DDLogLevelAll;
         NSString *functionName =
         [[NSString alloc] initWithCString:function encoding:NSUTF8StringEncoding];
         SVLog *log = [SVLog sharedInstance];
-        [log record:3 functionName:functionName line:line message:message];
+        [log log:3 functionName:functionName line:line message:message];
         va_end (args);
     }
 }
@@ -113,7 +113,7 @@ static const NSUInteger ddLogLevel = DDLogLevelAll;
         [[NSString alloc] initWithCString:function encoding:NSUTF8StringEncoding];
         //        [SVLog _log:functionName line:line message:message];
         SVLog *log = [SVLog sharedInstance];
-        [log record:2 functionName:functionName line:line message:message];
+        [log log:2 functionName:functionName line:line message:message];
         va_end (args);
     }
 }
@@ -136,7 +136,7 @@ static const NSUInteger ddLogLevel = DDLogLevelAll;
         NSString *functionName =
         [[NSString alloc] initWithCString:function encoding:NSUTF8StringEncoding];
         SVLog *log = [SVLog sharedInstance];
-        [log record:1 functionName:functionName line:line message:message];
+        [log log:1 functionName:functionName line:line message:message];
         va_end (args);
     }
 }
@@ -157,7 +157,7 @@ static const NSUInteger ddLogLevel = DDLogLevelAll;
         NSString *functionName =
         [[NSString alloc] initWithCString:function encoding:NSUTF8StringEncoding];
         SVLog *log = [SVLog sharedInstance];
-        [log record:0 functionName:functionName line:line message:message];
+        [log log:0 functionName:functionName line:line message:message];
         va_end (args);
     }
 }
@@ -171,30 +171,85 @@ static const NSUInteger ddLogLevel = DDLogLevelAll;
  *  @param line         行号
  *  @param message      消息
  */
-- (void)record:(int)level
-  functionName:(NSString *)functionName
-          line:(unsigned int)line
-       message:(NSString *)message
+- (void)log:(int)level
+functionName:(NSString *)functionName
+        line:(unsigned int)line
+     message:(NSString *)message
 {
     switch (level)
     {
     case 0:
-        DDLogVerbose (@"DEBUG  %@  %d  %@", functionName, line, message); // 默认是黑色
+        DDLogVerbose (@"DEBUG %d %@ %@", line, functionName, message);
         break;
     case 1:
-        DDLogInfo (@"INFO  %@  %d  %@", functionName, line, message); // 默认是黑色
+        DDLogInfo (@"INFO %d %@ %@", line, functionName, message);
         break;
     case 2:
-        DDLogWarn (@"WARN  %@  %d  %@", functionName, line, message); // 橙色
+        DDLogWarn (@"WARN %d %@ %@", line, functionName, message);
         break;
     case 3:
-        DDLogError (@"ERROR  %@  %d  %@", functionName, line, message); // 红色
+        DDLogError (@"ERROR %d %@ %@", line, functionName, message);
         break;
     default:
-        DDLogInfo (@"INFO  %@  %d  %@", functionName, line, message);
+        DDLogInfo (@"INFO %d %@ %@", line, functionName, message);
         break;
     }
 }
 
+
+/**
+ *  获取日志文件路径
+ *
+ *  @return 日志文件路径
+ */
+- (NSString *)getLogFilePath
+{
+    return logFilePath;
+}
+
+/**
+ *  压缩日志文件，并返回日志文件路径
+ *
+ *  @return 压缩后文件路径
+ */
+- (NSString *)compressLogFiles
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray<NSString *> *files = [fileManager subpathsAtPath:logFilePath];
+    ZipArchive *archive = [[ZipArchive alloc] init];
+    NSString *compressedLogFile = [logFilePath stringByAppendingPathComponent:@"speedpro_log.zip"];
+    BOOL isOK =
+    [archive CreateZipFile2:[logFilePath stringByAppendingPathComponent:@"speedpro_log.zip"]];
+    if (!isOK)
+    {
+        SVError (@"create log zip file fail.");
+        return nil;
+    }
+
+    for (NSString *fileName in files)
+    {
+        if (![fileName containsString:@"com.huawei.speedpro"])
+        {
+            continue;
+        }
+
+        //        NSLog (@"fileName:%@", fileName);
+        isOK = [archive addFileToZip:[logFilePath stringByAppendingPathComponent:fileName]
+                             newname:fileName];
+        if (!isOK)
+        {
+            SVError (@"add log file[file name:%@] to zip fail.", fileName);
+            continue;
+        }
+    }
+    isOK = [archive CloseZipFile2];
+    if (!isOK)
+    {
+        SVError (@"close log zip file fail.");
+        return nil;
+    }
+
+    return compressedLogFile;
+}
 
 @end
