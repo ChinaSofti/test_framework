@@ -13,6 +13,7 @@
 #import "SVResultViewCtrl.h"
 #import "SVSortTools.h"
 #import <SPCommon/SVDBManager.h>
+#import <SPCommon/SVI18N.h>
 #import <SPService/SVSummaryResultModel.h>
 
 @interface SVResultViewCtrl () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
@@ -92,6 +93,7 @@
     //电池显示不了,设置样式让电池显示
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
 
+
     //添加NavigationRightItem
     [self addNavigationRightItem];
 
@@ -109,6 +111,22 @@
     [self readDataFromDB];
 }
 
+- (void)readDataFromDB:(NSString *)type order:(NSString *)order
+{
+    // 1、添加数据之前 先清空数据源
+    _selectedResultTestId = 0;
+    [buttonAndTest removeAllObjects];
+    [self.dataSource removeAllObjects];
+    // 2、添加数据
+    NSString *SQL = @"select * from SVSummaryResultModel "
+                    @"order by %@ %@ limit 100 offset 0;";
+    NSArray *array = [_db executeQuery:[SVSummaryResultModel class]
+                                   SQL:[NSString stringWithFormat:SQL, type, order]];
+    [self.dataSource addObjectsFromArray:array];
+
+    // 3、刷新列表
+    [_tableView reloadData];
+}
 
 - (void)readDataFromDB
 {
@@ -119,7 +137,7 @@
     // 2、添加数据
     NSArray *array = [_db executeQuery:[SVSummaryResultModel class]
                                    SQL:@"select * from SVSummaryResultModel "
-                                       @"order by id asc limit 100 offset 0;"];
+                                       @"order by testTime desc limit 100 offset 0;"];
     [self.dataSource addObjectsFromArray:array];
 
     // 3、刷新列表
@@ -130,7 +148,7 @@
 {
     [super viewDidAppear:animated];
 
-    //每次界面加载按钮都别点击
+    //每次界面加载按钮都点击
     //    [self buttonClick:_typeButton];
 }
 
@@ -148,11 +166,15 @@
 
 - (void)removeButtonClicked:(UIButton *)button
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                    message:@"清空所有测试结果"
+    NSString *title1 = I18N (@"Prompt");
+    NSString *title2 = I18N (@"Clear all test results");
+    NSString *title3 = I18N (@"No");
+    NSString *title4 = I18N (@"Yes");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title1
+                                                    message:title2
                                                    delegate:self
-                                          cancelButtonTitle:@"否"
-                                          otherButtonTitles:@"是", nil];
+                                          cancelButtonTitle:title3
+                                          otherButtonTitles:title4, nil];
     [alert show];
 }
 /**
@@ -180,7 +202,13 @@
  */
 - (void)addHeadView
 {
-    NSArray *titles = @[@"类型    ", @"时间   ", @"U-vMOS", @"首次缓冲时间", @"速率  "];
+    NSString *title1 = I18N (@"Type");
+    NSString *title2 = I18N (@"Time");
+    NSString *title3 = I18N (@"U-vMOS");
+    NSString *title4 = I18N (@"Load Time");
+    NSString *title5 = I18N (@"Bandwidth");
+
+    NSArray *titles = @[title1, title2, title3, title4, title5];
     NSArray *images = @[
         @"ic_network_type_normal",
         @"ic_start_time_normal",
@@ -201,33 +229,38 @@
     [UIColor colorWithRed:69 / 255.0 green:84 / 255.0 blue:92 / 255.0 alpha:1.0];
 
     //设置左右边距
-    CGFloat BandGap = 13;
+    CGFloat BandGap = 10;
     //设置按钮宽度
     CGFloat ButtonWidth = (kScreenW - 2 * BandGap) / 5;
 
     for (int i = 0; i < 5; i++)
     {
         _button = [[UIButton alloc]
-        initWithFrame:CGRectMake (BandGap + ButtonWidth * i, 0, ButtonWidth, ButtonWidth)];
+        initWithFrame:CGRectMake (BandGap + ButtonWidth * i, 0, ButtonWidth - 5, ButtonWidth - 5)];
 
         [_button setTitle:titles[i] forState:UIControlStateNormal];
-        _button.titleLabel.font = [UIFont systemFontOfSize:12];
+        _button.titleLabel.font = [UIFont systemFontOfSize:11];
+
+        //        _button.titleLabel.backgroundColor = [UIColor yellowColor];
+        //        _button.imageView.backgroundColor = [UIColor blueColor];
+        //        _button.backgroundColor = [UIColor redColor];
         //设置文字居中
         _button.titleLabel.textAlignment = NSTextAlignmentCenter;
         // button普通状态下的字体颜色
-        [_button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         // button选中状态下的字体颜色
         [_button setTitleColor:[UIColor whiteColor]
                       forState:UIControlStateSelected | UIControlStateHighlighted];
         [_button setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         // button普通状态下的图片
-        [_button setImage:[UIImage imageNamed:images[i]] forState:UIControlStateNormal];
+        [_button setImage:[UIImage imageNamed:imagesSelected[i]] forState:UIControlStateNormal];
         // button选中状态下的图片
         [_button setImage:[UIImage imageNamed:imagesSelected[i]]
                  forState:UIControlStateSelected | UIControlStateHighlighted];
         [_button setImage:[UIImage imageNamed:imagesSelected[i]] forState:UIControlStateSelected];
-        _button.titleEdgeInsets = UIEdgeInsetsMake (25, -35, 0, -5);
-        _button.imageEdgeInsets = UIEdgeInsetsMake (-25, 20, 0, 4);
+        // _button.titleEdgeInsets = UIEdgeInsetsMake (上, 左, 下, 右);
+        _button.titleEdgeInsets = UIEdgeInsetsMake (30, -24, 0, 0);
+        _button.imageEdgeInsets = UIEdgeInsetsMake (-15, 17, 0, 0);
         //        [_button addTarget:self
         //                    action:@selector (buttonClick:)
         //          forControlEvents:UIControlEventTouchUpInside];
@@ -323,10 +356,10 @@
         case 1:
             //时间
             NSLog (@"时间--箭头向上");
-            [SVSortTools sortByTime:_dataSource];
-            [SVSortTools reverse:_dataSource];
-            [_tableView reloadData];
-
+            //            [SVSortTools sortByTime:_dataSource];
+            //            [SVSortTools reverse:_dataSource];
+            //            [_tableView reloadData];
+            [self readDataFromDB:@"testTime" order:@"asc"];
             break;
         case 2:
             // U-vMOS

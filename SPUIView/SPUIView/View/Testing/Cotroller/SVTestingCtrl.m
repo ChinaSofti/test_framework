@@ -10,6 +10,7 @@
 #import "SVCurrentResultViewCtrl.h"
 #import "SVPointView.h"
 #import "SVTestingCtrl.h"
+#import <SPCommon/SVI18N.h>
 #import <SPCommon/SVTimeUtil.h>
 #import <SPCommon/UUBar.h>
 #import <SPService/SVVideoTest.h>
@@ -106,25 +107,20 @@
     [self creatTestingView];
     [self creatVideoView];
     [self creatFooterView];
-
-    //添加覆盖grayview(为了防止用户在测试的过程中点击按钮)
-    //获取整个屏幕的window
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    //创建一个覆盖garyView
-    _grayview = [[UIView alloc] initWithFrame:CGRectMake (0, kScreenH - 50, kScreenW, 50)];
-    //设置透明度
-    _grayview.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.0];
-    //添加
-    [window addSubview:_grayview];
 }
 
 - (void)removeButtonClicked:(UIButton *)button
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                    message:@"是否结束本次测试"
+    NSString *title1 = I18N (@"Test stopped");
+    NSString *title2 = I18N (@"Are you sure you want to exit the test");
+    NSString *title3 = I18N (@"No");
+    NSString *title4 = I18N (@"Yes");
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title1
+                                                    message:title2
                                                    delegate:self
-                                          cancelButtonTitle:@"否"
-                                          otherButtonTitles:@"是", nil];
+                                          cancelButtonTitle:title3
+                                          otherButtonTitles:title4, nil];
     [alert show];
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -139,9 +135,10 @@
  */
 - (void)initContext
 {
-    [_footerView.placeLabel setText:@"计算中..."];
-    [_footerView.resolutionLabel setText:@"计算中..."];
-    [_footerView.bitLabel setText:@"计算中..."];
+    NSString *title5 = I18N (@"Loading...");
+    [_footerView.placeLabel setText:title5];
+    [_footerView.resolutionLabel setText:title5];
+    [_footerView.bitLabel setText:title5];
     [_headerView.bufferLabel setText:@""];
     [_headerView.speedLabel setText:@""];
     [_testingView updateUvMOS:0];
@@ -166,7 +163,17 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated
+
 {
+    //添加覆盖grayview(为了防止用户在测试的过程中点击按钮)
+    //获取整个屏幕的window
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    //创建一个覆盖garyView
+    _grayview = [[UIView alloc] initWithFrame:CGRectMake (0, kScreenH - 50, kScreenW, 50)];
+    //设置透明度
+        _grayview.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.0];
+    //添加
+    [window addSubview:_grayview];
     [self initContext];
     // 当用户离开进入页面时，开始测试
     long testId = [SVTimeUtil currentMilliSecondStamp];
@@ -182,6 +189,7 @@
       {
           dispatch_async (dispatch_get_main_queue (), ^{
             [self goToCurrentResultViewCtrl];
+
           });
       }
     });
@@ -205,10 +213,11 @@
       if (_videoTest)
       {
           [_videoTest stopTest];
+
+          //移除覆盖grayView
+          [_grayview removeFromSuperview];
       }
     });
-    //移除覆盖grayView
-    [_grayview removeFromSuperview];
 }
 
 #pragma mark - 创建头headerView

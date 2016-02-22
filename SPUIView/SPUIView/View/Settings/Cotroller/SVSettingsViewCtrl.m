@@ -6,13 +6,13 @@
 //  Copyright © 2016年 chinasofti. All rights reserved.
 //
 
-#import "SVSettingsViewCtrl.h"
-
 #import "SVAboutViewCtrl.h"
 #import "SVAdvancedViewCtrl.h"
 #import "SVBWSettingViewCtrl.h"
 #import "SVLanguageSettingViewCtrl.h"
-
+#import "SVLogsViewCtrl.h"
+#import "SVSettingsViewCtrl.h"
+#import <SPCommon/SVI18N.h>
 
 @interface SVSettingsViewCtrl () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -49,10 +49,24 @@
     //三.添加
     // 7.把tableView添加到 view
     [self.view addSubview:_tableView];
+    //    //在cell的imageview上加一圈白环
+    //    [self addView];
 }
 
-//方法:
+//- (void)addView
+//{
+//    UIView *imageView = [[UIView alloc] init];
+//    imageView.frame = CGRectMake (23.5, 84.5, 87.5, 79);
+//    imageView.layer.borderWidth = 10;
+//    imageView.layer.borderColor = [[UIColor whiteColor] CGColor];
+//    imageView.layer.masksToBounds = YES;
+//    imageView.layer.cornerRadius = 40;
+//
+//    [self.view addSubview:imageView];
+//}
 
+
+//方法:
 //设置 tableView 的 numberOfSectionsInTableView(设置几个 section)
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -66,7 +80,7 @@
         return 1;
     }
     else
-        return 3;
+        return 4;
 }
 
 // 设置 tableView 的行高
@@ -79,25 +93,19 @@
     else
         return 40;
 }
-//调整cell中线条的长度
-//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell
-//forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
-//    {
-//        [cell setLayoutMargins:UIEdgeInsetsMake(0, -50, 0, 0)];
-//
-//    }
-////    if ([cell respondsToSelector:@selector(setSeparatorInset:)])
-////    {
-//////    [cell setLayoutMargins:UIEdgeInsetsMake(0, -20, 0, 20)];
-////    //[cell setLayoutMargins:UIEdgeInsetsMake(0, 100, 0, 0)];
-////    }
-//}
+
 //设置 tableView的 cellForRowIndexPath(设置每个cell内的具体内容)
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *title1 = I18N (@"Current connection");
+    NSString *title2 = I18N (@"China Unicom Beijing");
+    NSString *title3 = I18N (@"About");
+    NSString *title4 = I18N (@"Language Setting");
+    NSString *title5 = I18N (@"Upload Logs");
+    NSString *title6 = I18N (@"Advanced setting");
+
+
     static NSString *cellId = @"cell";
 
     UITableViewCell *cell =
@@ -114,14 +122,14 @@
     //设置每个cell的内容
     if (indexPath.section == 0)
     {
+
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 
         if (indexPath.row == 0)
         {
             cell.imageView.image = [UIImage imageNamed:@"ic_settings_wifi"];
-            cell.textLabel.text = @"当前连接:WIFI";
-            cell.detailTextLabel.text =
-            @"\n所属运营商中国联通 北京市， 带宽类型未知， 带宽套餐未知";
+            cell.textLabel.text = title1;
+            cell.detailTextLabel.text = title2;
             cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
             [cell.detailTextLabel setNumberOfLines:0];
         }
@@ -130,46 +138,76 @@
     {
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 
-        //        if (indexPath.row == 0)
-        //        {
-        //            cell.textLabel.text = @"版本升级";
-        //        }
-        //        if (indexPath.row == 1)
-        //        {
-        //            cell.textLabel.text = @"分享";
-        //        }
         if (indexPath.row == 0)
         {
-            cell.textLabel.text = @"关于";
-            //   cell.frame = CGRectMake(10, 0, kScreenW-20, 40);
+            cell.textLabel.text = title3;
         }
-        //        if (indexPath.row == 3)
-        //        {
-        //            cell.textLabel.text = @"FAQ";
-        //        }
         if (indexPath.row == 1)
         {
-            cell.textLabel.text = @"语言设置";
+            cell.textLabel.text = title4;
         }
-        //        if (indexPath.row == 5)
-        //        {
-        //            cell.textLabel.text = @"上传日志";
-        //        }
         if (indexPath.row == 2)
         {
-            cell.textLabel.text = @"高级设置";
+            cell.textLabel.text = title5;
+
+            //添加上传日志的点击事件
+            UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake (0, 0, kScreenW, 40)];
+            //            button.backgroundColor = [UIColor redColor];
+            [button addTarget:self
+                       action:@selector (removeButtonClicked:)
+             forControlEvents:UIControlEventTouchUpInside];
+            [cell addSubview:button];
+        }
+        if (indexPath.row == 3)
+        {
+            cell.textLabel.text = title6;
         }
     }
     return cell;
 }
+//上传日志按钮的点击事件
+- (void)removeButtonClicked:(UIButton *)button
+
+{
+    NSString *title1 = I18N (@"Upload Logs");
+    NSString *title2 = I18N (@"Are you sure Upload logs");
+    NSString *title3 = I18N (@"No");
+    NSString *title4 = I18N (@"Yes");
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title1
+                                                    message:title2
+                                                   delegate:self
+                                          cancelButtonTitle:title3
+                                          otherButtonTitles:title4, nil];
+    [alert show];
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        //如果点击上传怎样,写在这里
+        /*
+
+
+         雨哥加代码处
+
+
+         */
+    }
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *title0 = I18N (@"Bandwidth Settings");
+    NSString *title3 = I18N (@"About");
+    NSString *title4 = I18N (@"Language Setting");
+    NSString *title5 = I18N (@"Upload logs");
+    NSString *title6 = I18N (@"Advanced setting");
     //当前连接
     if (indexPath.section == 0)
     {
         SVBWSettingViewCtrl *bandwidthSetting = [[SVBWSettingViewCtrl alloc] init];
-        bandwidthSetting.title = @"带宽设置";
+        bandwidthSetting.title = title0;
         [self.navigationController pushViewController:bandwidthSetting animated:YES];
     }
 
@@ -179,21 +217,27 @@
         if (indexPath.row == 0)
         {
             SVAboutViewCtrl *about = [[SVAboutViewCtrl alloc] init];
-            about.title = @"关于";
+            about.title = title3;
             [self.navigationController pushViewController:about animated:YES];
         }
         //语言设置
         if (indexPath.row == 1)
         {
             SVLanguageSettingViewCtrl *languageSetting = [[SVLanguageSettingViewCtrl alloc] init];
-            languageSetting.title = @"语言设置";
+            languageSetting.title = title4;
             [self.navigationController pushViewController:languageSetting animated:YES];
         }
-        //高级设置
+        //上传日志
         if (indexPath.row == 2)
         {
+            SVLogsViewCtrl *logs = [[SVLogsViewCtrl alloc] init];
+            logs.title = title5;
+        }
+        //高级设置
+        if (indexPath.row == 3)
+        {
             SVAdvancedViewCtrl *advanced = [[SVAdvancedViewCtrl alloc] init];
-            advanced.title = @"高级设置";
+            advanced.title = title6;
             [self.navigationController pushViewController:advanced animated:YES];
         }
     }
