@@ -11,11 +11,10 @@
 @implementation SVTimeUtil
 
 /**
- *  获取当前系统时间戳
+ *  获取当前系统秒级别时间戳
  *
- *  @return 当前系统时间戳
+ *  @return 当前系统秒级别时间戳
  */
-
 + (NSString *)currentTimeStamp
 {
     long time = (long)[[NSDate date] timeIntervalSince1970];

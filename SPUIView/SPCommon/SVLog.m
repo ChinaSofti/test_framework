@@ -8,6 +8,7 @@
 
 #import "CocoaLumberjack.h"
 #import "SVLog.h"
+#import "SVTimeUtil.h"
 #import "ZipArchive.h"
 
 @implementation SVLog
@@ -214,12 +215,12 @@ functionName:(NSString *)functionName
  */
 - (NSString *)compressLogFiles
 {
+    NSString *compressedFileName = [self getCompressLogFileName];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray<NSString *> *files = [fileManager subpathsAtPath:logFilePath];
     ZipArchive *archive = [[ZipArchive alloc] init];
-    NSString *compressedLogFile = [logFilePath stringByAppendingPathComponent:@"speedpro_log.zip"];
-    BOOL isOK =
-    [archive CreateZipFile2:[logFilePath stringByAppendingPathComponent:@"speedpro_log.zip"]];
+    NSString *compressedLogFile = [logFilePath stringByAppendingPathComponent:compressedFileName];
+    BOOL isOK = [archive CreateZipFile2:compressedLogFile];
     if (!isOK)
     {
         SVError (@"create log zip file fail.");
@@ -250,6 +251,14 @@ functionName:(NSString *)functionName
     }
 
     return compressedLogFile;
+}
+
+- (NSString *)getCompressLogFileName
+{
+
+    NSString *compressedLogFileName = [NSString
+    stringWithFormat:@"%@_%@_%@.zip", @"ios_speedpro", @"1.1.1.1", [SVTimeUtil currentTimeStamp]];
+    return compressedLogFileName;
 }
 
 @end

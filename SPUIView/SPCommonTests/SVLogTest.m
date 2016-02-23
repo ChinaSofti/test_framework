@@ -37,6 +37,7 @@
     NSString *compressedLogFile = [log compressLogFiles];
     NSAssert (compressedLogFile, @"compressed log file can't be null!");
     NSLog (@"compressed log file:%@", compressedLogFile);
+    NSLog (@"%@", compressedLogFile.lastPathComponent);
 }
 
 - (void)testLogAsync

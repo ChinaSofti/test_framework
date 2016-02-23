@@ -13,6 +13,8 @@
 #import "SVLogsViewCtrl.h"
 #import "SVSettingsViewCtrl.h"
 #import <SPCommon/SVI18N.h>
+#import <SPCommon/SVLog.h>
+#import <SPService/SVLogUploader.h>
 
 @interface SVSettingsViewCtrl () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -186,13 +188,8 @@
     if (buttonIndex == 1)
     {
         //如果点击上传怎样,写在这里
-        /*
-
-
-         雨哥加代码处
-
-
-         */
+        SVLogUploader *uploader = [[SVLogUploader alloc] init];
+        [uploader upload];
     }
 }
 
