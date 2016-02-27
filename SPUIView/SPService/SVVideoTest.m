@@ -222,8 +222,9 @@
 {
     SVProbeInfo *probeInfo = [SVProbeInfo sharedInstance];
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    [dictionary setObject:probeInfo.ip forKey:@"ip"];
-    [dictionary setObject:probeInfo.isp forKey:@"isp"];
+    SVInfo (@"SVProbeInfo ip:%@   isp:%@", probeInfo.ip, probeInfo.isp);
+    [dictionary setObject:!probeInfo.ip ? @"" : probeInfo.ip forKey:@"ip"];
+    [dictionary setObject:!probeInfo.isp ? @"" : probeInfo.isp forKey:@"isp"];
 
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
@@ -296,8 +297,10 @@
     [dictionary setObject:[[NSNumber alloc] initWithFloat:testContext.videoSegementBitrate]
                    forKey:@"videoSegementBitrate"];
     [dictionary setObject:testContext.videoSegementIP forKey:@"videoSegementIP"];
-    [dictionary setObject:testContext.videoSegemnetLocation forKey:@"videoSegemnetLocation"];
-    [dictionary setObject:testContext.videoSegemnetISP forKey:@"videoSegemnetISP"];
+    [dictionary setObject:!testContext.videoSegemnetLocation ? @"" : testContext.videoSegemnetLocation
+                   forKey:@"videoSegemnetLocation"];
+    [dictionary setObject:!testContext.videoSegemnetISP ? @"" : testContext.videoSegemnetISP
+                   forKey:@"videoSegemnetISP"];
 
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];

@@ -84,6 +84,7 @@ static const int execute_total_times = 4;
     if (!_VMpalyer)
     {
         _VMpalyer = [VMediaPlayer sharedInstance];
+        [_VMpalyer setVideoFillMode:VMVideoFillModeFit];
         _isSetup = [_VMpalyer setupPlayerWithCarrierView:showOnView withDelegate:self];
     }
 
@@ -99,7 +100,8 @@ static const int execute_total_times = 4;
 {
     // 视频播放缓冲进度
     UIView *activityCarrier = [[UIView alloc]
-    initWithFrame:CGRectMake (FITWIDTH (60), FITWIDTH (30), FITWIDTH (40), FITWIDTH (40))];
+    initWithFrame:CGRectMake ((showOnView.frame.size.width - 40) / 2,
+                              (showOnView.frame.size.height - 40) / 2, FITWIDTH (40), FITWIDTH (40))];
     activityView = [[UIActivityIndicatorView alloc]
     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [activityCarrier addSubview:activityView];
@@ -205,6 +207,7 @@ static const int execute_total_times = 4;
     }
 
     isFinished = TRUE;
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
 
 /**

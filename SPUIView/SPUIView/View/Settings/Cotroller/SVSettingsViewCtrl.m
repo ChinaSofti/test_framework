@@ -12,9 +12,8 @@
 #import "SVLanguageSettingViewCtrl.h"
 #import "SVLogsViewCtrl.h"
 #import "SVSettingsViewCtrl.h"
+#import "SVUploadFile.h"
 #import <SPCommon/SVI18N.h>
-#import <SPCommon/SVLog.h>
-#import <SPService/SVLogUploader.h>
 
 @interface SVSettingsViewCtrl () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -48,25 +47,12 @@
     _tableView.dataSource = self;
     _tableView.separatorColor = [UIColor colorWithWhite:0.8 alpha:0.3];
     //    _tableView.separatorInset = UIEdgeInsetsMake(0, -20, 0, 0);
+    // 6.设置tableView不可上下拖动
+    _tableView.bounces = NO;
     //三.添加
     // 7.把tableView添加到 view
     [self.view addSubview:_tableView];
-    //    //在cell的imageview上加一圈白环
-    //    [self addView];
 }
-
-//- (void)addView
-//{
-//    UIView *imageView = [[UIView alloc] init];
-//    imageView.frame = CGRectMake (23.5, 84.5, 87.5, 79);
-//    imageView.layer.borderWidth = 10;
-//    imageView.layer.borderColor = [[UIColor whiteColor] CGColor];
-//    imageView.layer.masksToBounds = YES;
-//    imageView.layer.cornerRadius = 40;
-//
-//    [self.view addSubview:imageView];
-//}
-
 
 //方法:
 //设置 tableView 的 numberOfSectionsInTableView(设置几个 section)
@@ -100,13 +86,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *title1 = I18N (@"Current connection");
+    NSString *title1 = I18N (@"Current:");
     NSString *title2 = I18N (@"China Unicom Beijing");
     NSString *title3 = I18N (@"About");
     NSString *title4 = I18N (@"Language Setting");
     NSString *title5 = I18N (@"Upload Logs");
     NSString *title6 = I18N (@"Advanced setting");
-
 
     static NSString *cellId = @"cell";
 
@@ -116,11 +101,6 @@
     //取消cell 被点中的效果
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-    // 设置cell的textLabel
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:14];
-
-
     //设置每个cell的内容
     if (indexPath.section == 0)
     {
@@ -129,16 +109,34 @@
 
         if (indexPath.row == 0)
         {
-            cell.imageView.image = [UIImage imageNamed:@"ic_settings_wifi"];
-            cell.textLabel.text = title1;
-            cell.detailTextLabel.text = title2;
-            cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
-            [cell.detailTextLabel setNumberOfLines:0];
+            UIImage *image1 = [UIImage imageNamed:@"ic_settings_wifi"];
+            UIImageView *imageView1 = [[UIImageView alloc] initWithImage:image1];
+            imageView1.frame = CGRectMake (10, 10, 60, 60);
+            [cell addSubview:imageView1];
+
+            UILabel *label11 = [[UILabel alloc] initWithFrame:CGRectMake (100, 15, 70, 20)];
+            label11.text = title1;
+            //设置字体和是否加粗
+            label11.font = [UIFont systemFontOfSize:16];
+            [cell addSubview:label11];
+
+            UILabel *label111 = [[UILabel alloc] initWithFrame:CGRectMake (170, 15, 50, 20)];
+            label111.text = @"WIFI";
+            //设置字体和是否加粗
+            label111.font = [UIFont systemFontOfSize:16];
+            [cell addSubview:label111];
+
+            UILabel *label22 = [[UILabel alloc] initWithFrame:CGRectMake (100, 45, 160, 20)];
+            label22.text = title2;
+            label22.font = [UIFont systemFontOfSize:13];
+            [cell addSubview:label22];
         }
     }
     else
     {
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        cell.textLabel.font = [UIFont systemFontOfSize:13];
+        ;
 
         if (indexPath.row == 0)
         {
@@ -187,9 +185,30 @@
 {
     if (buttonIndex == 1)
     {
-        //如果点击上传怎样,写在这里
-        SVLogUploader *uploader = [[SVLogUploader alloc] init];
-        [uploader upload];
+        //上传日志
+        NSLog (@"上传日志");
+        //获取文件沙盒路径
+        NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
+        //获取到的documents路径
+        NSString *string1 = [paths objectAtIndex:0];
+        //图片名称
+        NSString *string2 = @"1.png.zip";
+        //要拼接的总的字符串
+        NSString *string;
+        //拼接
+        /*
+                 1.stringByAppendingPathComponent:拼接的字符串之间加入一个"/"
+                 2.stringByAppending:直接拼接内容
+                 3.stringByAppendingFormat:直接拼接内容
+                 4.stringByAppendingPathExtension:拼接的字符串之间加入一个"."
+                 */
+        string = [string1 stringByAppendingPathComponent:string2];
+        //        NSLog(@"%@--------string", string);
+        NSData *data = [NSData dataWithContentsOfFile:string];
+
+        SVUploadFile *upload = [[SVUploadFile alloc] init];
+        NSString *urlString = @"https://58.60.106.188:12210/speedpro/log?op=list&begin=0&end=50";
+        [upload uploadFileWithURL:[NSURL URLWithString:urlString] data:data];
     }
 }
 
@@ -198,8 +217,8 @@
     NSString *title0 = I18N (@"Bandwidth Settings");
     NSString *title3 = I18N (@"About");
     NSString *title4 = I18N (@"Language Setting");
-    NSString *title5 = I18N (@"Upload logs");
-    NSString *title6 = I18N (@"Advanced setting");
+    NSString *title5 = I18N (@"Upload Logs");
+    NSString *title6 = I18N (@"Advanced");
     //当前连接
     if (indexPath.section == 0)
     {
@@ -239,7 +258,6 @@
         }
     }
 }
-
 
 //设置 tableView 的 sectionHeader蓝色 的header的有无
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

@@ -6,7 +6,6 @@
 //  Copyright © 2016年 chinasofti. All rights reserved.
 //
 
-#import "SVBackView.h"
 #import "SVCurrentResultViewCtrl.h"
 #import "SVPointView.h"
 #import "SVTestingCtrl.h"
@@ -14,6 +13,10 @@
 #import <SPCommon/SVTimeUtil.h>
 #import <SPCommon/UUBar.h>
 #import <SPService/SVVideoTest.h>
+
+
+#define kVideoViewDefaultRect \
+    CGRectMake (FITWIDTH (10), FITWIDTH (420), FITWIDTH (150), FITWIDTH (92))
 
 @interface SVTestingCtrl ()
 {
@@ -44,9 +47,18 @@
 
     // UvMOS柱状图 每一秒切换一次
     int _UvMOSbarResultTimes;
+
+    // 是否全屏
+    int _fullScreen;
+
+    UIView *_showCurrentResultInFullScreenMode;
+
+    UILabel *_UvMosInFullScreenValue;
+    UILabel *_bufferTimesInFullScreenValue;
+    UILabel *_bitRateInFullScreenValue;
+    UILabel *_resolutionInFullScreenValue;
 }
 
-@property (nonatomic, strong) SVBackView *backView;
 //定义gray遮挡View
 @property (nonatomic, strong) UIView *grayview;
 
@@ -105,8 +117,8 @@
     //添加方法
     [self creatHeaderView];
     [self creatTestingView];
-    [self creatVideoView];
     [self creatFooterView];
+    [self creatVideoView];
 }
 
 - (void)removeButtonClicked:(UIButton *)button
@@ -127,9 +139,12 @@
 {
     if (buttonIndex == 1)
     {
+        NSLog (@"取消了此次测试");
         [navigationController popToRootViewControllerAnimated:NO];
     }
+    NSLog (@"继续测试");
 }
+
 /**
  *  初始化当前页面和全局变量
  */
@@ -139,8 +154,8 @@
     [_footerView.placeLabel setText:title5];
     [_footerView.resolutionLabel setText:title5];
     [_footerView.bitLabel setText:title5];
-    [_headerView.bufferLabel setText:@""];
-    [_headerView.speedLabel setText:@""];
+    [_headerView.bufferLabel setText:@"0"];
+    [_headerView.speedLabel setText:@"0"];
     [_testingView updateUvMOS:0];
 
     for (UIView *view in [_headerView.uvMosBarView subviews])
@@ -163,19 +178,22 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated
-
 {
+    // 显示tabbar 和navigationbar
+    self.tabBarController.tabBar.hidden = NO;
+    self.navigationController.navigationBar.hidden = NO;
+
     //添加覆盖grayview(为了防止用户在测试的过程中点击按钮)
     //获取整个屏幕的window
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     //创建一个覆盖garyView
     _grayview = [[UIView alloc] initWithFrame:CGRectMake (0, kScreenH - 50, kScreenW, 50)];
     //设置透明度
-        _grayview.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.0];
+    _grayview.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.0];
     //添加
     [window addSubview:_grayview];
     [self initContext];
-    // 当用户离开进入页面时，开始测试
+    // 进入页面时，开始测试
     long testId = [SVTimeUtil currentMilliSecondStamp];
     _videoTest =
     [[SVVideoTest alloc] initWithView:testId showVideoView:_videoView testDelegate:self];
@@ -189,7 +207,6 @@
       {
           dispatch_async (dispatch_get_main_queue (), ^{
             [self goToCurrentResultViewCtrl];
-
           });
       }
     });
@@ -198,8 +215,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-
-
     //取消定时器
     if (_timer)
     {
@@ -230,6 +245,7 @@
     //把所有Label添加到View中
     [self.view addSubview:_headerView.uvMosBarView];
     [self.view addSubview:_headerView.speedLabel];
+    [self.view addSubview:_headerView.speedLabel1];
     [self.view addSubview:_headerView.bufferLabel];
     [self.view addSubview:_headerView.uvMosNumLabel];
     [self.view addSubview:_headerView.speedNumLabel];
@@ -242,7 +258,6 @@
 
 - (void)creatTestingView
 {
-
     //初始化整个testingView
     _testingView = [[SVPointView alloc] init];
     //添加到View中
@@ -257,29 +272,101 @@
 
 
 #pragma mark - 创建视频播放View
-
-
 - (void)creatVideoView
 {
-    //初始化
-    _videoView = [[SVPointView alloc]
-    initWithFrame:CGRectMake (FITWIDTH (10), FITWIDTH (420), FITWIDTH (150), FITWIDTH (92))];
-    [_videoView setBackgroundColor:[UIColor blackColor]];
-    //把panlView添加到中整个视图上
-    [self.view addSubview:_videoView];
+    CGSize size = self.view.bounds.size;
+    // 在全屏模式下，在_videoView上方显示测试指标
+    _showCurrentResultInFullScreenMode = [[UIView alloc] initWithFrame:CGRectMake (0, 0, size.height, 30)];
+    _showCurrentResultInFullScreenMode.alpha = 0.5;
+    [_showCurrentResultInFullScreenMode setBackgroundColor:[UIColor blackColor]];
 
-    //添加视频点击事件
-    UIButton *bgBtn = [[UIButton alloc]
-    initWithFrame:CGRectMake (FITWIDTH (10), FITWIDTH (420), FITWIDTH (150), FITWIDTH (92))];
-    [bgBtn addTarget:self
-              action:@selector (bgButtonClick:)
-    forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:bgBtn];
+    // U-vMOS 0.0
+    UILabel *UvMosInFullScreenLabel =
+    [[UILabel alloc] initWithFrame:CGRectMake (20, 5, FITWIDTH (45), FITHEIGHT (20))];
+    [UvMosInFullScreenLabel setText:@"U-vMOS"];
+    [UvMosInFullScreenLabel setTextColor:[UIColor whiteColor]];
+    [UvMosInFullScreenLabel setFont:[UIFont systemFontOfSize:[UIFont smallSystemFontSize]]];
+    [_showCurrentResultInFullScreenMode addSubview:UvMosInFullScreenLabel];
+    _UvMosInFullScreenValue = [[UILabel alloc]
+    initWithFrame:CGRectMake (UvMosInFullScreenLabel.rightX + 2, 5, FITWIDTH (35), FITHEIGHT (20))];
+    //    [_UvMosInFullScreenValue setText:@"2.2"];
+    [_UvMosInFullScreenValue setTextColor:[UIColor greenColor]];
+    [_UvMosInFullScreenValue setFont:[UIFont systemFontOfSize:[UIFont smallSystemFontSize]]];
+    [_showCurrentResultInFullScreenMode addSubview:_UvMosInFullScreenValue];
+
+    // Buffer times 0
+    UILabel *bufferTimesInFullScreenLabel = [[UILabel alloc]
+    initWithFrame:CGRectMake (_UvMosInFullScreenValue.rightX + 20, 5, FITWIDTH (62), FITHEIGHT (20))];
+    [bufferTimesInFullScreenLabel setText:@"Buffer times"];
+    [bufferTimesInFullScreenLabel setTextColor:[UIColor whiteColor]];
+    [bufferTimesInFullScreenLabel setFont:[UIFont systemFontOfSize:[UIFont smallSystemFontSize]]];
+    [_showCurrentResultInFullScreenMode addSubview:bufferTimesInFullScreenLabel];
+    _bufferTimesInFullScreenValue = [[UILabel alloc]
+    initWithFrame:CGRectMake (bufferTimesInFullScreenLabel.rightX + 2, 5, FITWIDTH (20), FITHEIGHT (20))];
+    //    [_bufferTimesInFullScreenValue setText:@"2"];
+    [_bufferTimesInFullScreenValue setTextColor:[UIColor greenColor]];
+    [_bufferTimesInFullScreenValue setFont:[UIFont systemFontOfSize:[UIFont smallSystemFontSize]]];
+    [_showCurrentResultInFullScreenMode addSubview:_bufferTimesInFullScreenValue];
+
+    // Bit rate 3002.23kbps
+    UILabel *bitRateInFullScreenLabel = [[UILabel alloc]
+    initWithFrame:CGRectMake (_bufferTimesInFullScreenValue.rightX + 20, 5, FITWIDTH (37), FITHEIGHT (20))];
+    [bitRateInFullScreenLabel setText:@"Bit rate"];
+    [bitRateInFullScreenLabel setTextColor:[UIColor whiteColor]];
+    [bitRateInFullScreenLabel setFont:[UIFont systemFontOfSize:[UIFont smallSystemFontSize]]];
+    [_showCurrentResultInFullScreenMode addSubview:bitRateInFullScreenLabel];
+    _bitRateInFullScreenValue = [[UILabel alloc]
+    initWithFrame:CGRectMake (bitRateInFullScreenLabel.rightX + 2, 5, FITWIDTH (80), FITHEIGHT (20))];
+    //    [_bitRateInFullScreenValue setText:@"3002.23kbps"];
+    [_bitRateInFullScreenValue setTextColor:[UIColor greenColor]];
+    [_bitRateInFullScreenValue setFont:[UIFont systemFontOfSize:[UIFont smallSystemFontSize]]];
+    [_showCurrentResultInFullScreenMode addSubview:_bitRateInFullScreenValue];
+
+    // Resolution  1920 * 1080
+    UILabel *resolutionInFullScreenLabel = [[UILabel alloc]
+    initWithFrame:CGRectMake (_bitRateInFullScreenValue.rightX + 20, 5, FITWIDTH (53), FITHEIGHT (20))];
+    [resolutionInFullScreenLabel setText:@"Resolution"];
+    [resolutionInFullScreenLabel setTextColor:[UIColor whiteColor]];
+    [resolutionInFullScreenLabel setFont:[UIFont systemFontOfSize:[UIFont smallSystemFontSize]]];
+    [_showCurrentResultInFullScreenMode addSubview:resolutionInFullScreenLabel];
+    _resolutionInFullScreenValue = [[UILabel alloc]
+    initWithFrame:CGRectMake (resolutionInFullScreenLabel.rightX + 2, 5, FITWIDTH (80), FITHEIGHT (20))];
+    //    [_resolutionInFullScreenValue setText:@"1920 * 1080"];
+    [_resolutionInFullScreenValue setTextColor:[UIColor greenColor]];
+    [_resolutionInFullScreenValue setFont:[UIFont systemFontOfSize:[UIFont smallSystemFontSize]]];
+    [_showCurrentResultInFullScreenMode addSubview:_resolutionInFullScreenValue];
+
+    //初始化
+    _videoView = [[SVPointView alloc] initWithFrame:kVideoViewDefaultRect];
+    [_videoView setBackgroundColor:[UIColor blackColor]];
+    [_videoView setContentMode:UIViewContentModeScaleToFill];
+    UITapGestureRecognizer *tapGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector (ClickVideoView:)];
+    [tapGesture setNumberOfTapsRequired:1];
+    [_videoView addGestureRecognizer:tapGesture];
+    [self.view addSubview:_videoView];
 }
-//点击事件
-- (void)bgButtonClick:(UIButton *)btn
+
+/**
+ *  点击视频切换全屏和退出全屏模式
+ *
+ *  @param gesture UITapGestureRecognizer
+ */
+- (void)ClickVideoView:(UITapGestureRecognizer *)gesture
 {
-    NSLog (@"点击了视频");
+    [UIView animateWithDuration:0.1
+                     animations:^{
+                       if (_fullScreen)
+                       {
+                           [self exitFullScreenMode];
+                           _fullScreen = 0;
+                       }
+                       else
+                       {
+                           [self enterFullScreenMode];
+                           _fullScreen = 1;
+                       }
+                     }];
 }
 
 #pragma mark - 创建尾footerView
@@ -299,73 +386,6 @@
     //把headerView添加到中整个视图上
     [self.view addSubview:_footerView];
 }
-
-#pragma mark - back弹框页
-
-//生命周期(点击按钮就创建)
-- (void)backBtnClik
-{
-    //    [self setShadowView];
-}
-/**
- *  创建阴影背景
- */
-
-//代理方法
-- (void)setShadowView
-{
-    //添加动画
-    [UIView
-    animateWithDuration:1
-             animations:^{
-               //黑色透明阴影
-               UIView *shadowView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-               shadowView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.8];
-
-               if (!_backView)
-               {
-                   _backView = [[SVBackView alloc]
-                   initWithFrame:CGRectMake (FITWIDTH (20), FITWIDTH (140),
-                                             shadowView.frame.size.width - FITWIDTH (40), FITWIDTH (220))
-                         bgColor:[UIColor whiteColor]];
-
-                   //                   _backView.delegate = self;
-               }
-
-               [shadowView addGestureRecognizer:[[UITapGestureRecognizer alloc]
-                                                initWithTarget:self
-                                                        action:@selector (dismissTextField:)]];
-
-               [shadowView addSubview:_backView];
-
-               [self.view.window addSubview:shadowView];
-             }];
-}
-//取消键盘
-- (void)dismissTextField:(UIGestureRecognizer *)tap
-{
-    UIView *view = tap.view;
-    [view endEditing:YES];
-}
-//代理方法-否
-- (void)backView:(SVBackView *)backView overLookBtnClick:(UIButton *)Btn
-{
-    NSLog (@"NO");
-    UIView *shadowView = [[[Btn superview] superview] superview];
-    [shadowView removeFromSuperview];
-    backView = nil;
-}
-//代理方法-是
-- (void)backView:(SVBackView *)backView saveBtnClick:(UIButton *)Btn
-{
-    NSLog (@"YES");
-    UIView *shadowView = [[[Btn superview] superview] superview];
-    [shadowView removeFromSuperview];
-    backView = nil;
-}
-/**
- ******************************以上弹框代码结束*****************************************
- **/
 
 - (void)didReceiveMemoryWarning
 {
@@ -404,7 +424,10 @@
       [_footerView.resolutionLabel setText:videoResolution];
       [_footerView.bitLabel setText:[NSString stringWithFormat:@"%.2fkpbs", bitrate]];
       [_headerView.bufferLabel setText:[NSString stringWithFormat:@"%d", cuttonTimes]];
-      [_headerView.speedLabel setText:[NSString stringWithFormat:@"%ldms", firstBufferTime]];
+      [_headerView.speedLabel setText:[NSString stringWithFormat:@"%ld", firstBufferTime]];
+
+      [_bufferTimesInFullScreenValue setText:[NSString stringWithFormat:@"%d", cuttonTimes]];
+      [_resolutionInFullScreenValue setText:videoResolution];
 
       UUBar *bar = [[UUBar alloc] initWithFrame:CGRectMake (5, -10, 1, 30)];
       [bar setBarValue:uvMOSSession];
@@ -473,6 +496,8 @@
         float fakeBitrate = [[NSString stringWithFormat:@"%d.%d", firstFakeBitrate, lastFakeBitrate] floatValue];
         //    NSLog (@"fake bitrate:%f", fakeBitrate);
         [_footerView.bitLabel setText:[NSString stringWithFormat:@"%.2fkpbs", fakeBitrate]];
+
+        [_bitRateInFullScreenValue setText:[NSString stringWithFormat:@"%.2fkpbs", fakeBitrate]];
     }
 
     if (realuvMOSSession > 0)
@@ -487,6 +512,7 @@
         [[NSString stringWithFormat:@"%d.%d", firstFakeUvMOSSession, lastFakeUvMOSSession] floatValue];
         //    NSLog (@"fake UvMOS:%f", fakeUvMOSSession);
         [_testingView updateUvMOS:fakeUvMOSSession];
+        [_UvMosInFullScreenValue setText:[NSString stringWithFormat:@"%.2f", fakeUvMOSSession]];
         _resultTimes += 1;
         if (_resultTimes % 10 == 0)
         {
@@ -505,10 +531,62 @@
 
 - (void)goToCurrentResultViewCtrl
 {
+    // 如果视频在全屏模式，则退出全屏模式
+    [self exitFullScreenMode];
+
     SVCurrentResultViewCtrl *currentResultView = [[SVCurrentResultViewCtrl alloc] init];
     currentResultView.currentResultModel = currentResultModel;
     currentResultView.navigationController = navigationController;
     [navigationController pushViewController:currentResultView animated:YES];
+}
+
+/**
+ *  退出全屏模式
+ */
+- (void)exitFullScreenMode
+{
+    // 显示状态栏
+    self.tabBarController.tabBar.hidden = NO;
+    self.navigationController.navigationBar.hidden = NO;
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+
+    CGAffineTransform at = CGAffineTransformMakeRotation (0);
+    [_videoView setTransform:at];
+    _videoView.frame = kVideoViewDefaultRect;
+
+    // 退出全屏模式时，隐藏_videoView上方显示测试指标
+    [_showCurrentResultInFullScreenMode removeFromSuperview];
+}
+
+
+/**
+ *  进入全屏模式
+ */
+- (void)enterFullScreenMode
+{
+    // 隐藏状态栏
+    self.tabBarController.tabBar.hidden = YES;
+    self.navigationController.navigationBar.hidden = YES;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+
+    CGSize videoViewSize = _videoView.frame.size;
+    _videoView.origin =
+    CGPointMake ((kScreenW - videoViewSize.width) / 2, (kScreenH - videoViewSize.height) / 2);
+
+    CGAffineTransform at = CGAffineTransformMakeRotation (M_PI / 2);
+    at = CGAffineTransformTranslate (at, 0, 0);
+    [_videoView setTransform:at];
+    _videoView.frame = CGRectMake (0, 0, kScreenW, kScreenH);
+
+
+    // 在全屏模式下，在_videoView上方显示测试指标
+    [_videoView addSubview:_showCurrentResultInFullScreenMode];
+    [_videoView setNeedsDisplay];
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 @end
