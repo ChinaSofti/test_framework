@@ -1,18 +1,18 @@
 {
   "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B2A9CF31F16024C1DDCACA77DA11431EC40827B8",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
-    "f396be06-b849-4151-b615-b2cd1a7402ca++7495" : {
+    "f396be06-b849-4151-b615-b2cd1a7402ca" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "f396be06-b849-4151-b615-b2cd1a7402ca++7495" : 0,
+    "f396be06-b849-4151-b615-b2cd1a7402ca" : 0,
     "35B5C9A93714EC9BEB56BAE809C5551E5C66E52D" : 0,
     "B2A9CF31F16024C1DDCACA77DA11431EC40827B8" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FF97F0D4-B606-4F92-80F6-8B950B824EAC",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "f396be06-b849-4151-b615-b2cd1a7402ca++7495" : "..",
+    "f396be06-b849-4151-b615-b2cd1a7402ca" : "..",
     "35B5C9A93714EC9BEB56BAE809C5551E5C66E52D" : "..\/ThirdPartProject\/CocoaLumberjack",
     "B2A9CF31F16024C1DDCACA77DA11431EC40827B8" : "SpeedPro\/"
   },
@@ -33,7 +33,7 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/127.0.0.1",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "f396be06-b849-4151-b615-b2cd1a7402ca++7495"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "f396be06-b849-4151-b615-b2cd1a7402ca"
     }
   ]
 }
