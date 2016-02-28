@@ -10,6 +10,7 @@
 
 #import "SVLanguageSettingViewCtrl.h"
 #import <SPCommon/SVI18N.h>
+#import <SPCommon/SVLog.h>
 
 @interface SVLanguageSettingViewCtrl ()
 
@@ -86,8 +87,10 @@ static NSString *userLanaguage;
 
     NSString *title1 = I18N (@"Auto      ");
     NSString *title2 = I18N (@"Save");
-
     NSArray *titlesArr = @[title1, @"简体中文", @"English  "];
+    SVI18N *setting = [SVI18N sharedInstance];
+    NSString *language = [setting getLanguage];
+    NSMutableArray *languageButtonArray = [[NSMutableArray alloc] init];
     for (int i = 0; i < 3; i++)
     {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake (10, 74 + i * 43, kScreenW - 20, 44)];
@@ -103,21 +106,32 @@ static NSString *userLanaguage;
         [button addTarget:self
                    action:@selector (buttonClicked:)
          forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:button];
+        [languageButtonArray addObject:button];
+    }
 
-        SVI18N *setting = [SVI18N sharedInstance];
-        NSString *language = [setting getLanguage];
-        if ([language containsString:@"zh"] && button.tag == 21)
+    UIButton *selectedButton;
+    if (language)
+    {
+        if ([language containsString:@"zh"])
         {
-            // 简体中文
-            [self buttonClicked:button];
+            selectedButton = [languageButtonArray objectAtIndex:1];
         }
         else
-        { // 简体中文
-            [self buttonClicked:button];
+        {
+            selectedButton = [languageButtonArray objectAtIndex:2];
         }
-
-        [self.view addSubview:button];
     }
+    else
+    {
+        selectedButton = [languageButtonArray objectAtIndex:0];
+    }
+
+    if (selectedButton)
+    {
+        [self buttonClicked:selectedButton];
+    }
+
 
     //保存按钮高度
     CGFloat saveBtnH = 44;
@@ -142,9 +156,6 @@ static NSString *userLanaguage;
     //保存按钮圆角
     _saveBtn.layer.cornerRadius = 5;
 
-    //保存按钮交互
-    //  saveBtn.userInteractionEnabled = YES;
-
     [self.view addSubview:_saveBtn];
 }
 
@@ -155,7 +166,7 @@ static NSString *userLanaguage;
  */
 - (void)buttonClicked:(UIButton *)button
 {
-    //按钮被点击后 右侧显示排序箭头
+    //按钮被点击后 右侧显示语言被选中
     UIImage *image = [UIImage imageNamed:@"ic_language_select"];
     self.imageView.frame = CGRectMake (kScreenW - 60, 17, 15, 10);
     self.imageView.image = image;
@@ -191,8 +202,38 @@ static NSString *userLanaguage;
  */
 - (void)saveBtnClicked:(UIButton *)button
 {
+    NSString *title1 = I18N (@"Success, restart the App effect");
     SVI18N *setting = [SVI18N sharedInstance];
     [setting setLanguage:userLanaguage];
+    SVInfo (@"%@", @"按钮被点击了");
+
+    //提示框
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIView *showview = [[UIView alloc] init];
+    showview.backgroundColor = [UIColor grayColor];
+    showview.frame = CGRectMake (kScreenW / 2 - FITHEIGHT (100), kScreenH / 2 + FITHEIGHT (170),
+                                 FITHEIGHT (200), FITHEIGHT (30));
+    showview.layer.cornerRadius = 19.0f;
+    showview.layer.masksToBounds = YES;
+    [window addSubview:showview];
+    UIImageView *imageView = [[UIImageView alloc]
+    initWithFrame:CGRectMake (FITHEIGHT (7), FITHEIGHT (5), FITHEIGHT (20), FITHEIGHT (20))];
+    imageView.image = [UIImage imageNamed:@"toast_icon"];
+    [showview addSubview:imageView];
+    UILabel *label = [[UILabel alloc] init];
+    label.text = title1;
+    label.font = [UIFont systemFontOfSize:12];
+    label.frame = CGRectMake (FITHEIGHT (15), FITHEIGHT (5), FITHEIGHT (180), FITHEIGHT (20));
+    label.textColor = [UIColor whiteColor];
+    label.textAlignment = 1;
+    [showview addSubview:label];
+    [UIView animateWithDuration:3.0
+    animations:^{
+      showview.alpha = 0;
+    }
+    completion:^(BOOL finished) {
+      [showview removeFromSuperview];
+    }];
 }
 
 @end

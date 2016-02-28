@@ -9,12 +9,14 @@
 #import "AlertView.h"
 #import "UIView+Exten.h"
 #import <SPCommon/SVI18N.h>
+#import <SPService/SVProbeInfo.h>
 
 static NSInteger BtnTag = 10086;
 @interface AlertView ()
 {
     UIView *_bgView;
     UIButton *_typeBtn;
+    int _bandwidthTypeIndex;
 }
 @property (nonatomic, strong) UIView *imageView;
 @property (nonatomic, strong) UIView *imageView2;
@@ -74,7 +76,9 @@ static NSInteger BtnTag = 10086;
     NSString *title5 = I18N (@"Copper");
     NSString *title6 = I18N (@"Package");
     NSString *title7 = I18N (@"Carrier");
-    NSString *title8 = I18N (@"China Unicom Beijing");
+    //    NSString *title8 = I18N (@"China Unicom Beijing");
+    SVProbeInfo *probeInfo = [SVProbeInfo sharedInstance];
+    NSString *title8 = probeInfo.isp;
     NSString *title9 = I18N (@"Ignore");
     NSString *title10 = I18N (@"Save");
     //标题
@@ -156,6 +160,8 @@ static NSInteger BtnTag = 10086;
                  placeholder:nil
                         Font:15
                    fontColor:[UIColor blackColor]];
+    _mealTextField.keyboardType = UIKeyboardTypeNumberPad;
+    _mealTextField.placeholder = @"请输入您的带宽";
     //所属运营商
     UILabel *internetCompanyLabel = [CTWBViewTools
     createLabelWithFrame:CGRectMake (FITWIDTH (15), internetMealLabel.bottomY + FITWIDTH (15),
@@ -184,6 +190,7 @@ static NSInteger BtnTag = 10086;
     initWithFrame:CGRectMake (FITWIDTH (15), internetCompanyLabel.bottomY + FITWIDTH (25),
                               FITWIDTH (115), FITWIDTH (40))];
     [overLookBtn setTitle:title9 forState:UIControlStateNormal];
+    overLookBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [overLookBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [overLookBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [overLookBtn setBackgroundImage:[CTWBViewTools imageWithColor:RGBACOLOR (35, 144, 222, 1)
@@ -200,6 +207,7 @@ static NSInteger BtnTag = 10086;
     initWithFrame:CGRectMake (FITWIDTH (150), internetCompanyLabel.bottomY + FITWIDTH (25),
                               FITWIDTH (115), FITWIDTH (40))];
     [saveBtn setTitle:title10 forState:UIControlStateNormal];
+    saveBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [saveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [saveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [saveBtn setBackgroundImage:[CTWBViewTools imageWithColor:RGBACOLOR (35, 144, 222, 1)
@@ -250,6 +258,7 @@ static NSInteger BtnTag = 10086;
 
             [self.imageView removeFromSuperview];
             [_bgView addSubview:self.imageView];
+            _bandwidthTypeIndex = 0;
         }
         if (sender.tag == BtnTag + 1)
         {
@@ -260,6 +269,7 @@ static NSInteger BtnTag = 10086;
 
             [self.imageView removeFromSuperview];
             [_bgView addSubview:self.imageView];
+            _bandwidthTypeIndex = 1;
         }
         if (sender.tag == BtnTag + 2)
         {
@@ -270,6 +280,7 @@ static NSInteger BtnTag = 10086;
 
             [self.imageView removeFromSuperview];
             [_bgView addSubview:self.imageView];
+            _bandwidthTypeIndex = 2;
         }
     }
 }
@@ -288,6 +299,20 @@ static NSInteger BtnTag = 10086;
     if ([self.delegate respondsToSelector:@selector (alertView:saveBtnClick:)])
     {
         [self.delegate alertView:self saveBtnClick:btn];
+    }
+
+    if (_mealTextField.text)
+    {
+        NSLog (@"%@", _mealTextField.text);
+        SVAdvancedSetting *setting = [SVAdvancedSetting sharedInstance];
+        [setting setBandwidth:_mealTextField.text];
+    }
+
+    if (_bandwidthTypeIndex > 0)
+    {
+        NSLog (@"%d", _bandwidthTypeIndex);
+        SVAdvancedSetting *setting = [SVAdvancedSetting sharedInstance];
+        [setting setBandwidthType:[NSString stringWithFormat:@"%d", _bandwidthTypeIndex]];
     }
 }
 

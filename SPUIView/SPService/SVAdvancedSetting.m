@@ -93,4 +93,50 @@ static NSString *_screenSize;
     return _screenSize;
 }
 
+/**
+ *  带宽类型
+ *
+ *  @param type 带宽类型
+ */
+- (void)setBandwidthType:(NSString *)type
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:type forKey:@"bandwidthType"];
+    [defaults synchronize];
+}
+
+/**
+ *  获取带宽类型
+ *
+ *  @return 带宽类型
+ */
+- (NSString *)getBandwidthType
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults valueForKey:@"bandwidthType"];
+}
+
+/**
+ *  设置带宽
+ *
+ *  @param bandwidth 带宽
+ */
+- (void)setBandwidth:(NSString *)bandwidth
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:bandwidth forKey:@"bandwidth"];
+    [defaults synchronize];
+}
+
+/**
+ *  获取带宽
+ *
+ *  @return 带宽
+ */
+- (NSString *)getBandwidth
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults valueForKey:@"bandwidth"];
+}
+
 @end
