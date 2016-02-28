@@ -13,13 +13,9 @@
 #define SYSTEM @"system"
 
 @implementation SVI18N
-
-
-//创建静态变量bundle，以及获取方法bundle
-static NSBundle *bundle = nil;
-
-// 语言设置
-static NSString *_language;
+{
+    NSBundle *_bundle;
+}
 
 /**
  *  单例
@@ -31,27 +27,21 @@ static NSString *_language;
     static SVI18N *i18n;
     @synchronized (self)
     {
-
         if (i18n == nil)
         {
             i18n = [[super allocWithZone:NULL] init];
-
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            _language = [defaults objectForKey:@"language"];
-            if (!_language)
+            NSString *language = [defaults objectForKey:@"language"];
+            if (!language)
             {
-                NSArray *languages = [NSLocale preferredLanguages];
-                _language = [languages objectAtIndex:0];
-                if ([_language containsString:@"zh"])
-                {
-                    _language = @"zh";
-                }
-                else
-                {
-                    _language = @"en";
-                }
-                [defaults setObject:_language forKey:@"language"];
+                language = [SVI18N getSystemLanguage];
+                [defaults setObject:language forKey:@"language"];
                 [defaults synchronize];
+
+                //获取文件路径
+                NSString *path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
+                //生成bundle
+                [i18n setBundle:[NSBundle bundleWithPath:path]];
             }
         }
     }
@@ -90,21 +80,21 @@ static NSString *_language;
  *
  *  @param langugae 设置当前语言
  */
-- (void)setLanguage:(NSString *)langugae
+- (void)setLanguage:(NSString *)language
 {
-    if ([langugae containsString:@"zh"])
-    {
-        langugae = @"zh";
-    }
-    else
-    {
-        langugae = @"en";
-    }
-
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    _language = langugae;
-    [defaults setObject:_language forKey:@"langugae"];
+    if ([[defaults valueForKey:@"language"] isEqualToString:language])
+    {
+        return;
+    };
+
+    [defaults setObject:language forKey:@"language"];
     [defaults synchronize];
+
+    //获取文件路径
+    NSString *path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
+    //生成bundle
+    _bundle = [NSBundle bundleWithPath:path];
 }
 
 /**
@@ -114,120 +104,71 @@ static NSString *_language;
  */
 - (NSString *)getLanguage
 {
-    return _language;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *language = [defaults valueForKey:@"language"];
+    return language;
 }
 
-
-//初始化语言文件
-+ (void)initUserLanguage
+/**
+ *  根据当前系统语言获得的NSBundle
+ *
+ *  @return NSBundle
+ */
+- (NSBundle *)getBundle
 {
-
-    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-
-    NSString *string = [def valueForKey:@"userLanguage"];
-    if (string.length == 0)
-    {
-        //获取系统当前语言版本(中文zh-Hans,英文en)
-        NSArray *languages = [def objectForKey:@"AppleLanguages"];
-
-        NSString *current = [languages objectAtIndex:0];
-
-        string = current;
-
-        [def setValue:current forKey:@"userLanguage"];
-        //持久化，不加的话不会保存
-        [def synchronize];
-    }
-    //    //获取文件路径
-    NSString *path = [[NSBundle mainBundle] pathForResource:string ofType:@"lproj"];
-    //生成bundle
-    bundle = [NSBundle bundleWithPath:path];
+    return _bundle;
 }
 
-//获取系统当前语言
-+ (NSString *)systemLanguage;
+/**
+ *  设置当前NSBundle
+ *
+ *  @param bundle NSBundle
+ */
+- (void)setBundle:(NSBundle *)bundle
 {
-    NSArray *languages = [NSLocale preferredLanguages];
-    NSString *currentLanguage = [languages objectAtIndex:0];
-
-    return currentLanguage;
+    _bundle = bundle;
 }
 
-//获取用户当前所设置的语言
-+ (NSString *)userLanguage
-{
-    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    return [user valueForKey:@"userLanguage"];
-}
-
-//获取当前语言
-+ (NSString *)currentLanguage
+/**
+ *  查询当前系统语言
+ *
+ *  @return 当前系统语言
+ */
++ (NSString *)getSystemLanguage
 {
     NSArray *languages = [NSLocale preferredLanguages];
-    NSString *currentLanguage = [languages objectAtIndex:0];
-
-    return currentLanguage;
+    return [languages objectAtIndex:0];
 }
 
-//设置当前语言
-+ (void)setUserlanguage:(Language)language
-{
-    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSString *lan;
-    switch (language)
-    {
-    case English:
-        lan = ENGLISH;
-        break;
-    case Chinese:
-        lan = CHINESE;
-        break;
-    case System:
-        lan = SYSTEM;
-        break;
-
-    default:
-        break;
-    }
-    // 1.第一步改变bundle的值
-
-    NSString *path = [[NSBundle mainBundle] pathForResource:lan ofType:@"lproj"];
-
-    if (language != System)
-    {
-        bundle = [NSBundle bundleWithPath:path];
-    }
-
-    // 2.持久化
-    [user setValue:lan forKey:@"userLanguage"];
-
-    [user synchronize];
-}
-
+/**
+ *  根据key查询国际化value
+ *
+ *  @param key key
+ *
+ *  @return 国际化value
+ */
 + (NSString *)valueForKey:(NSString *)key
 {
-    if (bundle == nil)
+    SVI18N *i18n = [SVI18N sharedInstance];
+    NSBundle *bundle = [i18n getBundle];
+    if (!bundle)
     {
-        [self initUserLanguage];
-    }
-    //    NSLog(@"用户设置语言%@",[self userLanguage] );
-    //    NSLog(@"当前系统语言%@",[self systemLanguage] );
-
-    NSString *path;
-    if (![[self userLanguage] isEqualToString:ENGLISH] && ![[self userLanguage] isEqualToString:CHINESE])
-    {
-
-        if ([[self systemLanguage] isEqualToString:@"zh-Hans-US"])
-        {
-            path = [[NSBundle mainBundle] pathForResource:CHINESE ofType:@"lproj"];
-        }
-        else
-        {
-            path = [[NSBundle mainBundle] pathForResource:ENGLISH ofType:@"lproj"];
-        }
+        //获取文件路径
+        NSString *path = [[NSBundle mainBundle] pathForResource:[i18n getLanguage] ofType:@"lproj"];
+        //生成bundle
         bundle = [NSBundle bundleWithPath:path];
+        [i18n setBundle:bundle];
     }
-    return [bundle localizedStringForKey:key value:nil table:@"i18n"];
+
+    NSString *value = [bundle localizedStringForKey:key value:nil table:@"i18n"];
+    if (value && value.length > 0)
+    {
+        return value;
+    }
+    else
+    {
+        return key;
+    }
 }
 
 @end

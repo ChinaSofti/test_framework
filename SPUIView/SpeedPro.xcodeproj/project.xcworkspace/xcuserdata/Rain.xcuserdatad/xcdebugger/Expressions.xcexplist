@@ -30,18 +30,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[SVVideoTest parseVideoSegement]:SVVideoTest.m">
-         <PersistentStrings>
-            <PersistentString
-               value = " [[videoInfo getAllSegement] count]">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "-[SVCurrentResultViewCtrl viewDidLoad]:SVCurrentResultViewCtrl.m">
          <PersistentStrings>
             <PersistentString
                value = "self.navigationItem">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SVVideoTest parseVideoSegement]:SVVideoTest.m">
+         <PersistentStrings>
+            <PersistentString
+               value = " [[videoInfo getAllSegement] count]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -55,6 +55,17 @@
       </ContextState>
       <ContextState
          contextName = "-[SVCurrentResultViewCtrl CellDetailClick:]:SVCurrentResultViewCtrl.m">
+      </ContextState>
+      <ContextState
+         contextName = "+[SVI18N sharedInstance]:SVI18N.m">
+      </ContextState>
+      <ContextState
+         contextName = "+[SVI18N valueForKey:]:SVI18N.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "value">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>
