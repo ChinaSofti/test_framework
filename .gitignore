@@ -1,4 +1,5 @@
 .DS_Store
-*.xcbkptlist
-*.xcsettings
-UserInterfaceState.xcuserstate
+xcuserdata
+project.xcworkspace
+
+
