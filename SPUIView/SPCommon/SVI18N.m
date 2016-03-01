@@ -13,9 +13,8 @@
 #define SYSTEM @"system"
 
 @implementation SVI18N
-{
-    NSBundle *_bundle;
-}
+
+static NSBundle *i18nBundle;
 
 /**
  *  单例
@@ -37,12 +36,12 @@
                 language = [SVI18N getSystemLanguage];
                 [defaults setObject:language forKey:@"language"];
                 [defaults synchronize];
-
-                //获取文件路径
-                NSString *path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
-                //生成bundle
-                [i18n setBundle:[NSBundle bundleWithPath:path]];
             }
+
+            //获取文件路径
+            NSString *path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
+            //生成bundle
+            i18nBundle = [NSBundle bundleWithPath:path];
         }
     }
 
@@ -94,7 +93,7 @@
     //获取文件路径
     NSString *path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
     //生成bundle
-    _bundle = [NSBundle bundleWithPath:path];
+    i18nBundle = [NSBundle bundleWithPath:path];
 }
 
 /**
@@ -116,7 +115,7 @@
  */
 - (NSBundle *)getBundle
 {
-    return _bundle;
+    return i18nBundle;
 }
 
 /**
@@ -126,7 +125,7 @@
  */
 - (void)setBundle:(NSBundle *)bundle
 {
-    _bundle = bundle;
+    i18nBundle = bundle;
 }
 
 /**
@@ -156,8 +155,8 @@
         //获取文件路径
         NSString *path = [[NSBundle mainBundle] pathForResource:[i18n getLanguage] ofType:@"lproj"];
         //生成bundle
-        bundle = [NSBundle bundleWithPath:path];
-        [i18n setBundle:bundle];
+        [i18n setBundle:[NSBundle bundleWithPath:path]];
+        bundle = [i18n getBundle];
     }
 
     NSString *value = [bundle localizedStringForKey:key value:nil table:@"i18n"];
