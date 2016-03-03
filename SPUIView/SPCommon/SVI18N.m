@@ -136,7 +136,19 @@ static NSBundle *i18nBundle;
 + (NSString *)getSystemLanguage
 {
     NSArray *languages = [NSLocale preferredLanguages];
-    return [languages objectAtIndex:0];
+    NSString *language = [languages objectAtIndex:0];
+    if ([language containsString:@"en"])
+    {
+        return @"en";
+    }
+    else if ([language containsString:@"zh"])
+    {
+        return @"zh";
+    }
+    else
+    {
+        return @"zh";
+    }
 }
 
 /**

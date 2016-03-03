@@ -139,4 +139,36 @@ static NSString *_screenSize;
     return [defaults valueForKey:@"bandwidth"];
 }
 
+
+/**
+ *  语言设置的索引
+ *
+ *  @param languageIndex 语言设置的索引
+ */
+- (void)setLanguageIndex:(int)languageIndex
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSString stringWithFormat:@"%d", languageIndex] forKey:@"languageIndex"];
+    [defaults synchronize];
+}
+
+/**
+ *  获取语言设置的索引
+ *
+ *  @return 语言设置的索引
+ */
+- (int)getLanguageIndex
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *languageIndex = [defaults valueForKey:@"languageIndex"];
+    if (languageIndex)
+    {
+        return [languageIndex intValue];
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 @end
