@@ -112,6 +112,31 @@
 		B73596A91C82986500F382A4 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B73596901C82986500F382A4 /* DDDispatchQueueLogFormatter.m */; };
 		B73596AA1C82986500F382A4 /* DDMultiFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B73596911C82986500F382A4 /* DDMultiFormatter.h */; };
 		B73596AB1C82986500F382A4 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B73596921C82986500F382A4 /* DDMultiFormatter.m */; };
+		B73CE8E51C896962006D43F8 /* LocalConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8CA1C896962006D43F8 /* LocalConnection.h */; };
+		B73CE8E61C896962006D43F8 /* LocalConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8CB1C896962006D43F8 /* LocalConnection.m */; };
+		B73CE8E71C896962006D43F8 /* FSMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8CD1C896962006D43F8 /* FSMDefines.h */; };
+		B73CE8E81C896962006D43F8 /* FSMEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8CE1C896962006D43F8 /* FSMEngine.h */; };
+		B73CE8E91C896962006D43F8 /* FSMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8CF1C896962006D43F8 /* FSMEngine.m */; };
+		B73CE8EA1C896962006D43F8 /* FSMStateUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8D01C896962006D43F8 /* FSMStateUtil.h */; };
+		B73CE8EB1C896962006D43F8 /* FSMStateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8D11C896962006D43F8 /* FSMStateUtil.m */; };
+		B73CE8EC1C896962006D43F8 /* ReachState.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8D21C896962006D43F8 /* ReachState.h */; };
+		B73CE8ED1C896962006D43F8 /* ReachState.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8D31C896962006D43F8 /* ReachState.m */; };
+		B73CE8EE1C896962006D43F8 /* ReachStateLoading.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8D41C896962006D43F8 /* ReachStateLoading.h */; };
+		B73CE8EF1C896962006D43F8 /* ReachStateLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8D51C896962006D43F8 /* ReachStateLoading.m */; };
+		B73CE8F01C896962006D43F8 /* ReachStateUnloaded.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8D61C896962006D43F8 /* ReachStateUnloaded.h */; };
+		B73CE8F11C896962006D43F8 /* ReachStateUnloaded.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8D71C896962006D43F8 /* ReachStateUnloaded.m */; };
+		B73CE8F21C896962006D43F8 /* ReachStateUnReachable.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8D81C896962006D43F8 /* ReachStateUnReachable.h */; };
+		B73CE8F31C896962006D43F8 /* ReachStateUnReachable.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8D91C896962006D43F8 /* ReachStateUnReachable.m */; };
+		B73CE8F41C896962006D43F8 /* ReachStateWIFI.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8DA1C896962006D43F8 /* ReachStateWIFI.h */; };
+		B73CE8F51C896962006D43F8 /* ReachStateWIFI.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8DB1C896962006D43F8 /* ReachStateWIFI.m */; };
+		B73CE8F61C896962006D43F8 /* ReachStateWWAN.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8DC1C896962006D43F8 /* ReachStateWWAN.h */; };
+		B73CE8F71C896962006D43F8 /* ReachStateWWAN.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8DD1C896962006D43F8 /* ReachStateWWAN.m */; };
+		B73CE8F81C896962006D43F8 /* PingFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8DF1C896962006D43F8 /* PingFoundation.h */; };
+		B73CE8F91C896962006D43F8 /* PingFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8E01C896962006D43F8 /* PingFoundation.m */; };
+		B73CE8FA1C896962006D43F8 /* PingHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8E11C896962006D43F8 /* PingHelper.h */; };
+		B73CE8FB1C896962006D43F8 /* PingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8E21C896962006D43F8 /* PingHelper.m */; };
+		B73CE8FC1C896962006D43F8 /* RealReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8E31C896962006D43F8 /* RealReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B73CE8FD1C896962006D43F8 /* RealReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8E41C896962006D43F8 /* RealReachability.m */; };
 		B73D0B4B1C756AFF00E291C6 /* SVLogTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B73D0B4A1C756AFF00E291C6 /* SVLogTest.m */; };
 		B75994B21C6B7A93001C1D89 /* SVVideoUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994B01C6B7A93001C1D89 /* SVVideoUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75994B31C6B7A93001C1D89 /* SVVideoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994B11C6B7A93001C1D89 /* SVVideoUtil.m */; };
@@ -182,8 +207,6 @@
 		B79B3DDB1C772ECB00471F12 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DCE1C772ECB00471F12 /* FMDatabaseQueue.m */; };
 		B79B3DDC1C772ECB00471F12 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3DCF1C772ECB00471F12 /* FMResultSet.h */; };
 		B79B3DDD1C772ECB00471F12 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DD01C772ECB00471F12 /* FMResultSet.m */; };
-		B7F3CA471C72C9B0009B087F /* SVToast.h in Headers */ = {isa = PBXBuildFile; fileRef = B7F3CA451C72C9B0009B087F /* SVToast.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B7F3CA481C72C9B0009B087F /* SVToast.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F3CA461C72C9B0009B087F /* SVToast.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -313,6 +336,31 @@
 		B73596901C82986500F382A4 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		B73596911C82986500F382A4 /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
 		B73596921C82986500F382A4 /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
+		B73CE8CA1C896962006D43F8 /* LocalConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalConnection.h; sourceTree = "<group>"; };
+		B73CE8CB1C896962006D43F8 /* LocalConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalConnection.m; sourceTree = "<group>"; };
+		B73CE8CD1C896962006D43F8 /* FSMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMDefines.h; sourceTree = "<group>"; };
+		B73CE8CE1C896962006D43F8 /* FSMEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMEngine.h; sourceTree = "<group>"; };
+		B73CE8CF1C896962006D43F8 /* FSMEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMEngine.m; sourceTree = "<group>"; };
+		B73CE8D01C896962006D43F8 /* FSMStateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMStateUtil.h; sourceTree = "<group>"; };
+		B73CE8D11C896962006D43F8 /* FSMStateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMStateUtil.m; sourceTree = "<group>"; };
+		B73CE8D21C896962006D43F8 /* ReachState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachState.h; sourceTree = "<group>"; };
+		B73CE8D31C896962006D43F8 /* ReachState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachState.m; sourceTree = "<group>"; };
+		B73CE8D41C896962006D43F8 /* ReachStateLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateLoading.h; sourceTree = "<group>"; };
+		B73CE8D51C896962006D43F8 /* ReachStateLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateLoading.m; sourceTree = "<group>"; };
+		B73CE8D61C896962006D43F8 /* ReachStateUnloaded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateUnloaded.h; sourceTree = "<group>"; };
+		B73CE8D71C896962006D43F8 /* ReachStateUnloaded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateUnloaded.m; sourceTree = "<group>"; };
+		B73CE8D81C896962006D43F8 /* ReachStateUnReachable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateUnReachable.h; sourceTree = "<group>"; };
+		B73CE8D91C896962006D43F8 /* ReachStateUnReachable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateUnReachable.m; sourceTree = "<group>"; };
+		B73CE8DA1C896962006D43F8 /* ReachStateWIFI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateWIFI.h; sourceTree = "<group>"; };
+		B73CE8DB1C896962006D43F8 /* ReachStateWIFI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateWIFI.m; sourceTree = "<group>"; };
+		B73CE8DC1C896962006D43F8 /* ReachStateWWAN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateWWAN.h; sourceTree = "<group>"; };
+		B73CE8DD1C896962006D43F8 /* ReachStateWWAN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateWWAN.m; sourceTree = "<group>"; };
+		B73CE8DF1C896962006D43F8 /* PingFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingFoundation.h; sourceTree = "<group>"; };
+		B73CE8E01C896962006D43F8 /* PingFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingFoundation.m; sourceTree = "<group>"; };
+		B73CE8E11C896962006D43F8 /* PingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingHelper.h; sourceTree = "<group>"; };
+		B73CE8E21C896962006D43F8 /* PingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingHelper.m; sourceTree = "<group>"; };
+		B73CE8E31C896962006D43F8 /* RealReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealReachability.h; sourceTree = "<group>"; };
+		B73CE8E41C896962006D43F8 /* RealReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealReachability.m; sourceTree = "<group>"; };
 		B73D0B4A1C756AFF00E291C6 /* SVLogTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLogTest.m; sourceTree = "<group>"; };
 		B75994B01C6B7A93001C1D89 /* SVVideoUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVVideoUtil.h; sourceTree = "<group>"; };
 		B75994B11C6B7A93001C1D89 /* SVVideoUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVVideoUtil.m; sourceTree = "<group>"; };
@@ -383,8 +431,6 @@
 		B79B3DCE1C772ECB00471F12 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		B79B3DCF1C772ECB00471F12 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		B79B3DD01C772ECB00471F12 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
-		B7F3CA451C72C9B0009B087F /* SVToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVToast.h; sourceTree = "<group>"; };
-		B7F3CA461C72C9B0009B087F /* SVToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVToast.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -716,6 +762,62 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		B73CE8C81C896962006D43F8 /* RealReachability */ = {
+			isa = PBXGroup;
+			children = (
+				B73CE8C91C896962006D43F8 /* Connection */,
+				B73CE8CC1C896962006D43F8 /* FSM */,
+				B73CE8DE1C896962006D43F8 /* Ping */,
+				B73CE8E31C896962006D43F8 /* RealReachability.h */,
+				B73CE8E41C896962006D43F8 /* RealReachability.m */,
+			);
+			path = RealReachability;
+			sourceTree = "<group>";
+		};
+		B73CE8C91C896962006D43F8 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				B73CE8CA1C896962006D43F8 /* LocalConnection.h */,
+				B73CE8CB1C896962006D43F8 /* LocalConnection.m */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		B73CE8CC1C896962006D43F8 /* FSM */ = {
+			isa = PBXGroup;
+			children = (
+				B73CE8CD1C896962006D43F8 /* FSMDefines.h */,
+				B73CE8CE1C896962006D43F8 /* FSMEngine.h */,
+				B73CE8CF1C896962006D43F8 /* FSMEngine.m */,
+				B73CE8D01C896962006D43F8 /* FSMStateUtil.h */,
+				B73CE8D11C896962006D43F8 /* FSMStateUtil.m */,
+				B73CE8D21C896962006D43F8 /* ReachState.h */,
+				B73CE8D31C896962006D43F8 /* ReachState.m */,
+				B73CE8D41C896962006D43F8 /* ReachStateLoading.h */,
+				B73CE8D51C896962006D43F8 /* ReachStateLoading.m */,
+				B73CE8D61C896962006D43F8 /* ReachStateUnloaded.h */,
+				B73CE8D71C896962006D43F8 /* ReachStateUnloaded.m */,
+				B73CE8D81C896962006D43F8 /* ReachStateUnReachable.h */,
+				B73CE8D91C896962006D43F8 /* ReachStateUnReachable.m */,
+				B73CE8DA1C896962006D43F8 /* ReachStateWIFI.h */,
+				B73CE8DB1C896962006D43F8 /* ReachStateWIFI.m */,
+				B73CE8DC1C896962006D43F8 /* ReachStateWWAN.h */,
+				B73CE8DD1C896962006D43F8 /* ReachStateWWAN.m */,
+			);
+			path = FSM;
+			sourceTree = "<group>";
+		};
+		B73CE8DE1C896962006D43F8 /* Ping */ = {
+			isa = PBXGroup;
+			children = (
+				B73CE8DF1C896962006D43F8 /* PingFoundation.h */,
+				B73CE8E01C896962006D43F8 /* PingFoundation.m */,
+				B73CE8E11C896962006D43F8 /* PingHelper.h */,
+				B73CE8E21C896962006D43F8 /* PingHelper.m */,
+			);
+			path = Ping;
+			sourceTree = "<group>";
+		};
 		B75994E01C6B8A98001C1D89 /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
@@ -760,8 +862,6 @@
 		B75994FE1C6B8B06001C1D89 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B7F3CA451C72C9B0009B087F /* SVToast.h */,
-				B7F3CA461C72C9B0009B087F /* SVToast.m */,
 				B72DC8601C6C1F6E0046F174 /* Reachability.h */,
 				B72DC8611C6C1F6E0046F174 /* Reachability.m */,
 				B75994FF1C6B8B11001C1D89 /* SVSystemUtil.h */,
@@ -869,6 +969,7 @@
 		B79B3DC11C772ECB00471F12 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				B73CE8C81C896962006D43F8 /* RealReachability */,
 				B72D36E11C7C70F6009AC3E4 /* Lumberjack */,
 				B708AF8E1C79E98B0052BFC8 /* ZipArchive */,
 				B72EAF1E1C6E29F5000C96C1 /* libsqlite3.dylib */,
@@ -951,17 +1052,24 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B73CE8FA1C896962006D43F8 /* PingHelper.h in Headers */,
+				B73CE8E71C896962006D43F8 /* FSMDefines.h in Headers */,
 				B708AFA31C79E98B0052BFC8 /* zip.h in Headers */,
+				B73CE8F81C896962006D43F8 /* PingFoundation.h in Headers */,
 				B75995051C6B8B11001C1D89 /* SVTimeUtil.h in Headers */,
 				B75995031C6B8B11001C1D89 /* SVSystemUtil.h in Headers */,
 				B735969F1C82986500F382A4 /* DDLegacyMacros.h in Headers */,
 				B73596A61C82986500F382A4 /* DDContextFilterLogFormatter.h in Headers */,
 				B73596A81C82986500F382A4 /* DDDispatchQueueLogFormatter.h in Headers */,
 				B73596931C82986500F382A4 /* CLIColor.h in Headers */,
+				B73CE8F01C896962006D43F8 /* ReachStateUnloaded.h in Headers */,
 				B72EAEF01C6DB9FF000C96C1 /* SVDBManager.h in Headers */,
+				B73CE8FC1C896962006D43F8 /* RealReachability.h in Headers */,
 				B708AF9B1C79E98B0052BFC8 /* crypt.h in Headers */,
+				B73CE8E81C896962006D43F8 /* FSMEngine.h in Headers */,
 				B73596A01C82986500F382A4 /* DDLog.h in Headers */,
 				B73596A21C82986500F382A4 /* DDLog+LOGV.h in Headers */,
+				B73CE8F41C896962006D43F8 /* ReachStateWIFI.h in Headers */,
 				B79B3DDC1C772ECB00471F12 /* FMResultSet.h in Headers */,
 				B75994FC1C6B8AFD001C1D89 /* SVLog.h in Headers */,
 				B75994F71C6B8AE6001C1D89 /* SVI18N.h in Headers */,
@@ -971,7 +1079,7 @@
 				B75994F21C6B8ACD001C1D89 /* SVWebBrowser.h in Headers */,
 				B735969D1C82986500F382A4 /* DDFileLogger.h in Headers */,
 				B708AF9D1C79E98B0052BFC8 /* ioapi.h in Headers */,
-				B7F3CA471C72C9B0009B087F /* SVToast.h in Headers */,
+				B73CE8F61C896962006D43F8 /* ReachStateWWAN.h in Headers */,
 				B75994F01C6B8ACD001C1D89 /* SVHttpsGetter.h in Headers */,
 				B708AFA41C79E98B0052BFC8 /* ZipArchive.h in Headers */,
 				B73596981C82986500F382A4 /* DDASLLogCapture.h in Headers */,
@@ -986,11 +1094,16 @@
 				B79B3DDA1C772ECB00471F12 /* FMDatabaseQueue.h in Headers */,
 				B73596951C82986500F382A4 /* CocoaLumberjack.h in Headers */,
 				B735969C1C82986500F382A4 /* DDAssertMacros.h in Headers */,
+				B73CE8EA1C896962006D43F8 /* FSMStateUtil.h in Headers */,
 				B72EAF221C6E32E0000C96C1 /* SVJunitTestTable.h in Headers */,
+				B73CE8EE1C896962006D43F8 /* ReachStateLoading.h in Headers */,
 				B708AFA11C79E98B0052BFC8 /* unzip.h in Headers */,
 				B79B3DD81C772ECB00471F12 /* FMDatabasePool.h in Headers */,
+				B73CE8F21C896962006D43F8 /* ReachStateUnReachable.h in Headers */,
 				B73596A31C82986500F382A4 /* DDLogMacros.h in Headers */,
+				B73CE8E51C896962006D43F8 /* LocalConnection.h in Headers */,
 				B735969A1C82986500F382A4 /* DDASLLogger.h in Headers */,
+				B73CE8EC1C896962006D43F8 /* ReachState.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1209,17 +1322,24 @@
 				B79B3DDD1C772ECB00471F12 /* FMResultSet.m in Sources */,
 				B79B3DD71C772ECB00471F12 /* FMDatabaseAdditions.m in Sources */,
 				B79B3DB51C772C7F00471F12 /* UUBar.m in Sources */,
+				B73CE8F31C896962006D43F8 /* ReachStateUnReachable.m in Sources */,
+				B73CE8F51C896962006D43F8 /* ReachStateWIFI.m in Sources */,
 				B75994E51C6B8AAB001C1D89 /* GTMBase64.m in Sources */,
 				B79B3DDB1C772ECB00471F12 /* FMDatabaseQueue.m in Sources */,
+				B73CE8EF1C896962006D43F8 /* ReachStateLoading.m in Sources */,
+				B73CE8F11C896962006D43F8 /* ReachStateUnloaded.m in Sources */,
+				B73CE8EB1C896962006D43F8 /* FSMStateUtil.m in Sources */,
 				B73596991C82986500F382A4 /* DDASLLogCapture.m in Sources */,
 				B73596A91C82986500F382A4 /* DDDispatchQueueLogFormatter.m in Sources */,
 				B708AFA51C79E98B0052BFC8 /* ZipArchive.mm in Sources */,
-				B7F3CA481C72C9B0009B087F /* SVToast.m in Sources */,
 				B708AFA21C79E98B0052BFC8 /* zip.c in Sources */,
+				B73CE8F71C896962006D43F8 /* ReachStateWWAN.m in Sources */,
 				B735969B1C82986500F382A4 /* DDASLLogger.m in Sources */,
 				B75994F31C6B8ACD001C1D89 /* SVWebBrowser.m in Sources */,
+				B73CE8FD1C896962006D43F8 /* RealReachability.m in Sources */,
 				B73596971C82986500F382A4 /* DDAbstractDatabaseLogger.m in Sources */,
 				B73596AB1C82986500F382A4 /* DDMultiFormatter.m in Sources */,
+				B73CE8FB1C896962006D43F8 /* PingHelper.m in Sources */,
 				B735969E1C82986500F382A4 /* DDFileLogger.m in Sources */,
 				B72EAEF11C6DB9FF000C96C1 /* SVDBManager.m in Sources */,
 				B73596A71C82986500F382A4 /* DDContextFilterLogFormatter.m in Sources */,
@@ -1230,10 +1350,14 @@
 				B708AFA01C79E98B0052BFC8 /* unzip.c in Sources */,
 				B75995061C6B8B11001C1D89 /* SVTimeUtil.m in Sources */,
 				B72EAF231C6E32E0000C96C1 /* SVJunitTestTable.m in Sources */,
+				B73CE8F91C896962006D43F8 /* PingFoundation.m in Sources */,
 				B73596941C82986500F382A4 /* CLIColor.m in Sources */,
 				B75994FD1C6B8AFD001C1D89 /* SVLog.m in Sources */,
+				B73CE8ED1C896962006D43F8 /* ReachState.m in Sources */,
+				B73CE8E61C896962006D43F8 /* LocalConnection.m in Sources */,
 				B72DC8631C6C1F6E0046F174 /* Reachability.m in Sources */,
 				B75994EF1C6B8ACD001C1D89 /* SVHttpGetter.m in Sources */,
+				B73CE8E91C896962006D43F8 /* FSMEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -261,4 +261,30 @@ functionName:(NSString *)functionName
     return compressedLogFileName;
 }
 
+/**
+ *  清除所有日志
+ */
++ (void)clearAllLog
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray<NSString *> *files = [fileManager subpathsAtPath:logFilePath];
+    for (NSString *fileName in files)
+    {
+        NSString *filePath = [logFilePath stringByAppendingPathComponent:fileName];
+        NSError *error;
+        [fileManager removeItemAtPath:filePath error:&error];
+        if (error)
+        {
+            SVError (@"delete log file fail. file path:%@,  error:%@", filePath, error);
+        }
+        else
+        {
+            SVInfo (@"delete log file success. file path:%@", filePath);
+        }
+    }
+
+    SVInfo (@"finish to clear log file.");
+}
+
+
 @end
