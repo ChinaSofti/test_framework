@@ -66,6 +66,8 @@
 		B70FF4F81C66437D002D571B /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4F71C66437D002D571B /* libz.1.dylib */; };
 		B70FF4FA1C6643A5002D571B /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4F91C6643A5002D571B /* libstdc++.6.0.9.dylib */; };
 		B70FF4FC1C6643BF002D571B /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4FB1C6643BF002D571B /* libiconv.2.dylib */; };
+		B71F89151C8D841A002E8375 /* SVRealReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B71F89131C8D841A002E8375 /* SVRealReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B71F89161C8D841A002E8375 /* SVRealReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B71F89141C8D841A002E8375 /* SVRealReachability.m */; };
 		B723CE591C7478F000B419E3 /* SVAdvancedSetting.h in Headers */ = {isa = PBXBuildFile; fileRef = B723CE571C7478F000B419E3 /* SVAdvancedSetting.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B723CE5A1C7478F000B419E3 /* SVAdvancedSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = B723CE581C7478F000B419E3 /* SVAdvancedSetting.m */; };
 		B72D21761C7ACC85009AC3E4 /* SVLogUploader.h in Headers */ = {isa = PBXBuildFile; fileRef = B72D21741C7ACC85009AC3E4 /* SVLogUploader.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -75,8 +77,6 @@
 		B72DC85B1C6C0BF00046F174 /* SVProbeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */; };
 		B72DC85D1C6C0F4E0046F174 /* SVSystemUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */; };
 		B72DC85F1C6C1B930046F174 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72DC85E1C6C1B930046F174 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		B72DC8621C6C1F6E0046F174 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B72DC8601C6C1F6E0046F174 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B72DC8631C6C1F6E0046F174 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC8611C6C1F6E0046F174 /* Reachability.m */; };
 		B72EAEF01C6DB9FF000C96C1 /* SVDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAEEE1C6DB9FF000C96C1 /* SVDBManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72EAEF11C6DB9FF000C96C1 /* SVDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAEEF1C6DB9FF000C96C1 /* SVDBManager.m */; };
 		B72EAEF31C6DBC21000C96C1 /* SVDBManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAEF21C6DBC21000C96C1 /* SVDBManagerTest.m */; };
@@ -135,7 +135,7 @@
 		B73CE8F91C896962006D43F8 /* PingFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8E01C896962006D43F8 /* PingFoundation.m */; };
 		B73CE8FA1C896962006D43F8 /* PingHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8E11C896962006D43F8 /* PingHelper.h */; };
 		B73CE8FB1C896962006D43F8 /* PingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8E21C896962006D43F8 /* PingHelper.m */; };
-		B73CE8FC1C896962006D43F8 /* RealReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8E31C896962006D43F8 /* RealReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B73CE8FC1C896962006D43F8 /* RealReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8E31C896962006D43F8 /* RealReachability.h */; };
 		B73CE8FD1C896962006D43F8 /* RealReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8E41C896962006D43F8 /* RealReachability.m */; };
 		B73D0B4B1C756AFF00E291C6 /* SVLogTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B73D0B4A1C756AFF00E291C6 /* SVLogTest.m */; };
 		B75994B21C6B7A93001C1D89 /* SVVideoUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994B01C6B7A93001C1D89 /* SVVideoUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -290,6 +290,8 @@
 		B70FF4F71C66437D002D571B /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = /usr/lib/libz.1.dylib; sourceTree = "<absolute>"; };
 		B70FF4F91C6643A5002D571B /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "/usr/lib/libstdc++.6.0.9.dylib"; sourceTree = "<absolute>"; };
 		B70FF4FB1C6643BF002D571B /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = /usr/lib/libiconv.2.dylib; sourceTree = "<absolute>"; };
+		B71F89131C8D841A002E8375 /* SVRealReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRealReachability.h; sourceTree = "<group>"; };
+		B71F89141C8D841A002E8375 /* SVRealReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRealReachability.m; sourceTree = "<group>"; };
 		B723CE571C7478F000B419E3 /* SVAdvancedSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAdvancedSetting.h; sourceTree = "<group>"; };
 		B723CE581C7478F000B419E3 /* SVAdvancedSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAdvancedSetting.m; sourceTree = "<group>"; };
 		B72D21741C7ACC85009AC3E4 /* SVLogUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVLogUploader.h; sourceTree = "<group>"; };
@@ -299,8 +301,6 @@
 		B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProbeInfo.m; sourceTree = "<group>"; };
 		B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSystemUtilTest.m; sourceTree = "<group>"; };
 		B72DC85E1C6C1B930046F174 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B72DC8601C6C1F6E0046F174 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		B72DC8611C6C1F6E0046F174 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		B72EAEEE1C6DB9FF000C96C1 /* SVDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDBManager.h; sourceTree = "<group>"; };
 		B72EAEEF1C6DB9FF000C96C1 /* SVDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDBManager.m; sourceTree = "<group>"; };
 		B72EAEF21C6DBC21000C96C1 /* SVDBManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDBManagerTest.m; sourceTree = "<group>"; };
@@ -862,12 +862,12 @@
 		B75994FE1C6B8B06001C1D89 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B72DC8601C6C1F6E0046F174 /* Reachability.h */,
-				B72DC8611C6C1F6E0046F174 /* Reachability.m */,
 				B75994FF1C6B8B11001C1D89 /* SVSystemUtil.h */,
 				B75995001C6B8B11001C1D89 /* SVSystemUtil.m */,
 				B75995011C6B8B11001C1D89 /* SVTimeUtil.h */,
 				B75995021C6B8B11001C1D89 /* SVTimeUtil.m */,
+				B71F89131C8D841A002E8375 /* SVRealReachability.h */,
+				B71F89141C8D841A002E8375 /* SVRealReachability.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1062,9 +1062,10 @@
 				B73596A61C82986500F382A4 /* DDContextFilterLogFormatter.h in Headers */,
 				B73596A81C82986500F382A4 /* DDDispatchQueueLogFormatter.h in Headers */,
 				B73596931C82986500F382A4 /* CLIColor.h in Headers */,
+				B71F89151C8D841A002E8375 /* SVRealReachability.h in Headers */,
 				B73CE8F01C896962006D43F8 /* ReachStateUnloaded.h in Headers */,
-				B72EAEF01C6DB9FF000C96C1 /* SVDBManager.h in Headers */,
 				B73CE8FC1C896962006D43F8 /* RealReachability.h in Headers */,
+				B72EAEF01C6DB9FF000C96C1 /* SVDBManager.h in Headers */,
 				B708AF9B1C79E98B0052BFC8 /* crypt.h in Headers */,
 				B73CE8E81C896962006D43F8 /* FSMEngine.h in Headers */,
 				B73596A01C82986500F382A4 /* DDLog.h in Headers */,
@@ -1090,7 +1091,6 @@
 				B79B3DD41C772ECB00471F12 /* FMDatabase.h in Headers */,
 				B75994E41C6B8AAB001C1D89 /* GTMBase64.h in Headers */,
 				B73596961C82986500F382A4 /* DDAbstractDatabaseLogger.h in Headers */,
-				B72DC8621C6C1F6E0046F174 /* Reachability.h in Headers */,
 				B79B3DDA1C772ECB00471F12 /* FMDatabaseQueue.h in Headers */,
 				B73596951C82986500F382A4 /* CocoaLumberjack.h in Headers */,
 				B735969C1C82986500F382A4 /* DDAssertMacros.h in Headers */,
@@ -1319,6 +1319,7 @@
 				B75995041C6B8B11001C1D89 /* SVSystemUtil.m in Sources */,
 				B79B3DD51C772ECB00471F12 /* FMDatabase.m in Sources */,
 				B79B3DD91C772ECB00471F12 /* FMDatabasePool.m in Sources */,
+				B71F89161C8D841A002E8375 /* SVRealReachability.m in Sources */,
 				B79B3DDD1C772ECB00471F12 /* FMResultSet.m in Sources */,
 				B79B3DD71C772ECB00471F12 /* FMDatabaseAdditions.m in Sources */,
 				B79B3DB51C772C7F00471F12 /* UUBar.m in Sources */,
@@ -1355,7 +1356,6 @@
 				B75994FD1C6B8AFD001C1D89 /* SVLog.m in Sources */,
 				B73CE8ED1C896962006D43F8 /* ReachState.m in Sources */,
 				B73CE8E61C896962006D43F8 /* LocalConnection.m in Sources */,
-				B72DC8631C6C1F6E0046F174 /* Reachability.m in Sources */,
 				B75994EF1C6B8ACD001C1D89 /* SVHttpGetter.m in Sources */,
 				B73CE8E91C896962006D43F8 /* FSMEngine.m in Sources */,
 			);
