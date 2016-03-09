@@ -206,6 +206,8 @@ static SVTestContextGetter *contextGetter = nil;
 {
     webContext = [[SVWebTestContext alloc] initWithData:self.data];
 
+    [webContext setUrlArray:[webURLs componentsSeparatedByString:@"\r\n"]];
+
     return webContext;
 }
 
