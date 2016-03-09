@@ -10,4 +10,5 @@
 
 @implementation SVWebTestContext
 
+@synthesize urlArray;
 @end
