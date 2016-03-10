@@ -30,7 +30,13 @@ static NSBundle *i18nBundle;
         {
             i18n = [[super allocWithZone:NULL] init];
 
-            NSString *language = [SVI18N getSystemLanguage];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSString *language = [defaults valueForKey:@"language"];
+            if (!language)
+            {
+                language = [SVI18N getSystemLanguage];
+            }
+
             //获取文件路径
             NSString *path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
             //生成bundle
