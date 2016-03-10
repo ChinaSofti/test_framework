@@ -70,6 +70,8 @@
 		B71F89161C8D841A002E8375 /* SVRealReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B71F89141C8D841A002E8375 /* SVRealReachability.m */; };
 		B723CE591C7478F000B419E3 /* SVAdvancedSetting.h in Headers */ = {isa = PBXBuildFile; fileRef = B723CE571C7478F000B419E3 /* SVAdvancedSetting.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B723CE5A1C7478F000B419E3 /* SVAdvancedSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = B723CE581C7478F000B419E3 /* SVAdvancedSetting.m */; };
+		B72AC6A81C8EC09B002C1AEC /* SVVideoAnalyserFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72AC6A71C8EC09B002C1AEC /* SVVideoAnalyserFactoryTest.m */; };
+		B72AC6AB1C8EC687002C1AEC /* SPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF45C1C66301D002D571B /* SPCommon.framework */; };
 		B72D21761C7ACC85009AC3E4 /* SVLogUploader.h in Headers */ = {isa = PBXBuildFile; fileRef = B72D21741C7ACC85009AC3E4 /* SVLogUploader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72D21771C7ACC85009AC3E4 /* SVLogUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B72D21751C7ACC85009AC3E4 /* SVLogUploader.m */; };
 		B72D21791C7BEEDA009AC3E4 /* SVLogUploaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72D21781C7BEEDA009AC3E4 /* SVLogUploaderTest.m */; };
@@ -224,6 +226,13 @@
 			remoteGlobalIDString = B70FF45B1C66301D002D571B;
 			remoteInfo = SPCommon;
 		};
+		B72AC6A91C8EC66C002C1AEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56F523D71C4DCF7F00E6472B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B70FF45B1C66301D002D571B;
+			remoteInfo = SPCommon;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -294,6 +303,7 @@
 		B71F89141C8D841A002E8375 /* SVRealReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRealReachability.m; sourceTree = "<group>"; };
 		B723CE571C7478F000B419E3 /* SVAdvancedSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAdvancedSetting.h; sourceTree = "<group>"; };
 		B723CE581C7478F000B419E3 /* SVAdvancedSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAdvancedSetting.m; sourceTree = "<group>"; };
+		B72AC6A71C8EC09B002C1AEC /* SVVideoAnalyserFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVVideoAnalyserFactoryTest.m; sourceTree = "<group>"; };
 		B72D21741C7ACC85009AC3E4 /* SVLogUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVLogUploader.h; sourceTree = "<group>"; };
 		B72D21751C7ACC85009AC3E4 /* SVLogUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLogUploader.m; sourceTree = "<group>"; };
 		B72D21781C7BEEDA009AC3E4 /* SVLogUploaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLogUploaderTest.m; sourceTree = "<group>"; };
@@ -464,6 +474,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B72AC6AB1C8EC687002C1AEC /* SPCommon.framework in Frameworks */,
 				B70FF4431C662FBE002D571B /* SPService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,6 +569,7 @@
 				B70FF4491C662FBE002D571B /* SPServiceTests.m */,
 				B70FF44B1C662FBE002D571B /* Info.plist */,
 				B72D21781C7BEEDA009AC3E4 /* SVLogUploaderTest.m */,
+				B72AC6A71C8EC09B002C1AEC /* SVVideoAnalyserFactoryTest.m */,
 			);
 			path = SPServiceTests;
 			sourceTree = "<group>";
@@ -1139,6 +1151,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B72AC6AA1C8EC66C002C1AEC /* PBXTargetDependency */,
 				B70FF4451C662FBE002D571B /* PBXTargetDependency */,
 			);
 			name = SPServiceTests;
@@ -1307,6 +1320,7 @@
 			files = (
 				B70FF44A1C662FBE002D571B /* SPServiceTests.m in Sources */,
 				B72D21791C7BEEDA009AC3E4 /* SVLogUploaderTest.m in Sources */,
+				B72AC6A81C8EC09B002C1AEC /* SVVideoAnalyserFactoryTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1384,6 +1398,11 @@
 			isa = PBXTargetDependency;
 			target = B70FF45B1C66301D002D571B /* SPCommon */;
 			targetProxy = B70FF4671C66301D002D571B /* PBXContainerItemProxy */;
+		};
+		B72AC6AA1C8EC66C002C1AEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B70FF45B1C66301D002D571B /* SPCommon */;
+			targetProxy = B72AC6A91C8EC66C002C1AEC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

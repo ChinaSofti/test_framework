@@ -29,15 +29,8 @@ static NSBundle *i18nBundle;
         if (i18n == nil)
         {
             i18n = [[super allocWithZone:NULL] init];
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            NSString *language = [defaults objectForKey:@"language"];
-            if (!language)
-            {
-                language = [SVI18N getSystemLanguage];
-                [defaults setObject:language forKey:@"language"];
-                [defaults synchronize];
-            }
 
+            NSString *language = [SVI18N getSystemLanguage];
             //获取文件路径
             NSString *path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
             //生成bundle
@@ -82,11 +75,6 @@ static NSBundle *i18nBundle;
 - (void)setLanguage:(NSString *)language
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([[defaults valueForKey:@"language"] isEqualToString:language])
-    {
-        return;
-    };
-
     [defaults setObject:language forKey:@"language"];
     [defaults synchronize];
 
@@ -162,15 +150,6 @@ static NSBundle *i18nBundle;
 {
     SVI18N *i18n = [SVI18N sharedInstance];
     NSBundle *bundle = [i18n getBundle];
-    if (!bundle)
-    {
-        //获取文件路径
-        NSString *path = [[NSBundle mainBundle] pathForResource:[i18n getLanguage] ofType:@"lproj"];
-        //生成bundle
-        [i18n setBundle:[NSBundle bundleWithPath:path]];
-        bundle = [i18n getBundle];
-    }
-
     NSString *value = [bundle localizedStringForKey:key value:nil table:@"i18n"];
     if (value && value.length > 0)
     {

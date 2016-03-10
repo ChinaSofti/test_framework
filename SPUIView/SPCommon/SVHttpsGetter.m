@@ -12,7 +12,8 @@
 
 @implementation SVHttpsGetter
 {
-    NSData *_data;
+    //    NSData *_data;
+    NSMutableData *_allData;
 
     NSString *_urlString;
 
@@ -54,16 +55,14 @@
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url
                                                   cachePolicy:NSURLRequestReloadIgnoringCacheData
                                               timeoutInterval:10];
-    // NSURLRequest *request = [NSURLRequest requestWithURL:url];    NSURLConnection *conn =
     NSURLConnection *conn =
     [[NSURLConnection alloc] initWithRequest:request delegate:(id)self startImmediately:NO];
     [conn scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [conn start];
-    // NSURLConnection connectionWithRequest:request delegate:self];
     while (!finished)
     {
         // spend 1 second processing events on each loop
-        NSDate *oneSecond = [NSDate dateWithTimeIntervalSinceNow:1];
+        NSDate *oneSecond = [NSDate dateWithTimeIntervalSinceNow:0.1];
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:oneSecond];
     }
 
@@ -77,7 +76,7 @@
  */
 - (NSData *)getResponseData
 {
-    return _data;
+    return _allData;
 }
 
 /**
@@ -87,7 +86,12 @@
  */
 - (NSString *)getResponseDataString
 {
-    NSString *dataString = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
+    if (!_allData)
+    {
+        return nil;
+    }
+
+    NSString *dataString = [[NSString alloc] initWithData:_allData encoding:NSUTF8StringEncoding];
     return dataString;
 }
 
@@ -107,15 +111,28 @@
 {
     if (data)
     {
-        _data = data;
-        SVInfo (@"request URL:%@ success", _urlString);
-        NSString *dataString = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-        SVInfo (@"request URL:%@  reponse data length:%lu", _urlString, dataString.length);
-        //        TSDebug (@"response data:%@", dataString);
-        finished = true;
+        if (!_allData)
+        {
+            _allData = [[NSMutableData alloc] init];
+        }
+
+        [_allData appendData:data];
     }
 }
 
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    if (_allData)
+    {
+        NSLog (@"request finished. data length:%ld", _allData.length);
+    }
+    else
+    {
+        NSLog (@"request finished. data length:0");
+    }
+
+    finished = true;
+}
 
 - (void)connection:(NSURLConnection *)connection
 didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge

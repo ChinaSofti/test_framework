@@ -222,6 +222,7 @@ static NSString *useragent = @"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_1 like Mac
         NSDictionary *dictionary = [httpResponse allHeaderFields];
         [dictionary enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL *_Nonnull stop) {
 
+          NSLog (@"%@  =  %@", key, obj);
           [_returnHeader setObject:obj forKey:key];
 
           if ([@"Set-Cookie" isEqualToString:key])
@@ -233,8 +234,11 @@ static NSString *useragent = @"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_1 like Mac
               for (NSString *cookie in cookiesArray)
               {
                   // ykss=aa21ae5604c6a4561bdab054
-                  NSArray *cookieArray = [cookie componentsSeparatedByString:@"="];
-                  [_returnCookies setObject:cookieArray[1] forKey:cookieArray[0]];
+                  if ([cookie containsString:@"="])
+                  {
+                      NSArray *cookieArray = [cookie componentsSeparatedByString:@"="];
+                      [_returnCookies setObject:cookieArray[1] forKey:cookieArray[0]];
+                  }
               }
           }
         }];
@@ -265,5 +269,20 @@ static NSString *useragent = @"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_1 like Mac
 {
     finished = true;
 }
+
+
+- (void)connection:(NSURLConnection *)connection
+didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust]
+         forAuthenticationChallenge:challenge];
+}
+
+- (BOOL)connection:(NSURLConnection *)connection
+canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+{
+    return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
+}
+
 
 @end

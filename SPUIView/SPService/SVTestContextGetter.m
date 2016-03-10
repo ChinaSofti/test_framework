@@ -30,11 +30,16 @@
     NSString *webURLs;
 
     SVBandwidthTestContext *bandwidthContext;
+
+    NSString *_serverURL;
+
+    // 是否初始化完成
+    BOOL isInitSuccess;
 }
 
-static NSString *defaultServerURL = @"https://58.60.106.188:12210/speedpro/configapi?lang=%@";
+static NSString *inChinaURL = @"https://58.60.106.188:12210/speedpro/configapi?lang=CN";
 
-static NSString *serverURL = @"https://58.60.106.188:12210/speedpro/configapi?lang=CN";
+static NSString *overseaURL = @"https://58.60.106.188:12210/speedpro/configapi?lang=EN";
 
 static SVTestContextGetter *contextGetter = nil;
 
@@ -94,10 +99,14 @@ static SVTestContextGetter *contextGetter = nil;
         [probeInfo setIp:ipAndISP.query];
         [probeInfo setIsp:ipAndISP.isp];
         NSString *countryCode = ipAndISP.countryCode;
-        if (countryCode)
+        if (countryCode && [countryCode isEqualToString:@"CN"])
         {
             // 修改URL参数
-            serverURL = [NSString stringWithFormat:defaultServerURL, countryCode];
+            _serverURL = inChinaURL;
+        }
+        else
+        {
+            _serverURL = overseaURL;
         }
     }
 }
@@ -109,8 +118,9 @@ static SVTestContextGetter *contextGetter = nil;
 {
     @try
     {
-        SVHttpsGetter *getter = [[SVHttpsGetter alloc] initWithURLNSString:serverURL];
+        SVHttpsGetter *getter = [[SVHttpsGetter alloc] initWithURLNSString:_serverURL];
         self.data = [getter getResponseData];
+        SVInfo (@"%@", [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]);
     }
     @catch (NSException *exception)
     {
@@ -145,6 +155,13 @@ static SVTestContextGetter *contextGetter = nil;
         //        NSString *versionCode = [dictionay valueForKey:@"versionCode"];
         //        NSString *downloadUrl = [dictionay valueForKey:@"downloadUrl"];
     }
+
+    isInitSuccess = TRUE;
+}
+
+- (BOOL)isInitSuccess
+{
+    return isInitSuccess;
 }
 
 /**
@@ -157,24 +174,27 @@ static SVTestContextGetter *contextGetter = nil;
     // 初始化VideoTestContext
     videoContext = [[SVVideoTestContext alloc] initWithData:self.data];
     [videoContext setVideoURLsString:videoURLS];
-    NSString *urlString = @"http://v.youku.com/v_show/id_XMTI0OTk4MDQ3Ng==.html";
-    if (videoContext.videoURLString)
-    {
-        urlString = videoContext.videoURLString;
-    }
-    else
+    if (!videoContext.videoURLString)
     {
         SVWarn (@"video url request fail from our server. use default video url.");
+        return nil;
     }
 
-    SVVideoAnalyser *analyser = [SVVideoAnalyserFactory createAnalyser:urlString];
+    SVVideoAnalyser *analyser = [SVVideoAnalyserFactory createAnalyser:videoContext.videoURLString];
     SVVideoInfo *videoInfo = [analyser analyse];
     if (!videoInfo)
     {
         SVError (@"analyse video fail. ");
         return nil;
     }
-    int randomIndex = arc4random () % [[videoInfo getAllSegement] count];
+
+    NSArray *allSegement = [videoInfo getAllSegement];
+    if (!allSegement)
+    {
+        return nil;
+    }
+
+    int randomIndex = arc4random () % [allSegement count];
     SVVideoSegement *segement = [videoInfo getAllSegement][randomIndex];
     [videoContext setVideoSegementURLString:segement.videoSegementURL];
     NSURL *url = [NSURL URLWithString:segement.videoSegementURL];
