@@ -289,6 +289,7 @@
 {
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     [dictionary setObject:testContext.videoSegementURLString forKey:@"videoSegementURLString"];
+    [dictionary setObject:testContext.videoURLString forKey:@"videoURL"];
     //    [dictionary setObject:testContext.videoSegementURL forKey:@"videoSegementURL"];
     [dictionary setObject:[[NSNumber alloc] initWithInt:testContext.videoSegementSize]
                    forKey:@"videoSegementSize"];

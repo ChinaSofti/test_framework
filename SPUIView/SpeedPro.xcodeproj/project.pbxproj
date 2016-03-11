@@ -197,6 +197,13 @@
 		B75995541C6B8D71001C1D89 /* SVTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995481C6B8D71001C1D89 /* SVTestResult.m */; };
 		B75995571C6B8DBA001C1D89 /* SVVideoTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995581C6B8DBA001C1D89 /* SVVideoTestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */; };
+		B792528A1C91780300A9F702 /* SVSpeedTestServer.h in Headers */ = {isa = PBXBuildFile; fileRef = B79252881C91780300A9F702 /* SVSpeedTestServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B792528B1C91780300A9F702 /* SVSpeedTestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = B79252891C91780300A9F702 /* SVSpeedTestServer.m */; };
+		B792528E1C9178BF00A9F702 /* SVSpeedTestServers.h in Headers */ = {isa = PBXBuildFile; fileRef = B792528C1C9178BF00A9F702 /* SVSpeedTestServers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B792528F1C9178BF00A9F702 /* SVSpeedTestServers.m in Sources */ = {isa = PBXBuildFile; fileRef = B792528D1C9178BF00A9F702 /* SVSpeedTestServers.m */; };
+		B79252DB1C9270CB00A9F702 /* SVSpeedTestServerParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B79252DA1C9270CB00A9F702 /* SVSpeedTestServerParserTest.m */; };
+		B79252DE1C92866600A9F702 /* SVSpeedTestServersParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B79252DC1C92866600A9F702 /* SVSpeedTestServersParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B79252DF1C92866600A9F702 /* SVSpeedTestServersParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B79252DD1C92866600A9F702 /* SVSpeedTestServersParser.m */; };
 		B79B3DB41C772C7F00471F12 /* UUBar.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3DA61C772C7F00471F12 /* UUBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B79B3DB51C772C7F00471F12 /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DA71C772C7F00471F12 /* UUBar.m */; };
 		B79B3DD41C772ECB00471F12 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3DC71C772ECB00471F12 /* FMDatabase.h */; };
@@ -429,6 +436,13 @@
 		B75995481C6B8D71001C1D89 /* SVTestResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVTestResult.m; sourceTree = "<group>"; };
 		B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVVideoTestContext.h; sourceTree = "<group>"; };
 		B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVVideoTestContext.m; sourceTree = "<group>"; };
+		B79252881C91780300A9F702 /* SVSpeedTestServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSpeedTestServer.h; sourceTree = "<group>"; };
+		B79252891C91780300A9F702 /* SVSpeedTestServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSpeedTestServer.m; sourceTree = "<group>"; };
+		B792528C1C9178BF00A9F702 /* SVSpeedTestServers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSpeedTestServers.h; sourceTree = "<group>"; };
+		B792528D1C9178BF00A9F702 /* SVSpeedTestServers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSpeedTestServers.m; sourceTree = "<group>"; };
+		B79252DA1C9270CB00A9F702 /* SVSpeedTestServerParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSpeedTestServerParserTest.m; sourceTree = "<group>"; };
+		B79252DC1C92866600A9F702 /* SVSpeedTestServersParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSpeedTestServersParser.h; sourceTree = "<group>"; };
+		B79252DD1C92866600A9F702 /* SVSpeedTestServersParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSpeedTestServersParser.m; sourceTree = "<group>"; };
 		B79B3DA61C772C7F00471F12 /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
 		B79B3DA71C772C7F00471F12 /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
 		B79B3DC71C772ECB00471F12 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -551,6 +565,7 @@
 		B70FF43A1C662FBE002D571B /* SPService */ = {
 			isa = PBXGroup;
 			children = (
+				B79252D11C925C5B00A9F702 /* SpeedTest */,
 				B732E6291C6ED1FF000353B9 /* Common */,
 				B759953C1C6B8D45001C1D89 /* Setting */,
 				B75995371C6B8CE4001C1D89 /* Web */,
@@ -570,6 +585,7 @@
 				B70FF44B1C662FBE002D571B /* Info.plist */,
 				B72D21781C7BEEDA009AC3E4 /* SVLogUploaderTest.m */,
 				B72AC6A71C8EC09B002C1AEC /* SVVideoAnalyserFactoryTest.m */,
+				B79252DA1C9270CB00A9F702 /* SVSpeedTestServerParserTest.m */,
 			);
 			path = SPServiceTests;
 			sourceTree = "<group>";
@@ -968,6 +984,19 @@
 			name = Setting;
 			sourceTree = "<group>";
 		};
+		B79252D11C925C5B00A9F702 /* SpeedTest */ = {
+			isa = PBXGroup;
+			children = (
+				B79252881C91780300A9F702 /* SVSpeedTestServer.h */,
+				B79252891C91780300A9F702 /* SVSpeedTestServer.m */,
+				B792528C1C9178BF00A9F702 /* SVSpeedTestServers.h */,
+				B792528D1C9178BF00A9F702 /* SVSpeedTestServers.m */,
+				B79252DC1C92866600A9F702 /* SVSpeedTestServersParser.h */,
+				B79252DD1C92866600A9F702 /* SVSpeedTestServersParser.m */,
+			);
+			name = SpeedTest;
+			sourceTree = "<group>";
+		};
 		B79B3DA51C772C7F00471F12 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
@@ -1054,6 +1083,9 @@
 				B759954B1C6B8D71001C1D89 /* SVIPAndISPGetter.h in Headers */,
 				B75995271C6B8C64001C1D89 /* SVRc4.h in Headers */,
 				B70FF45F1C66301D002D571B /* SPCommon.h in Headers */,
+				B792528A1C91780300A9F702 /* SVSpeedTestServer.h in Headers */,
+				B79252DE1C92866600A9F702 /* SVSpeedTestServersParser.h in Headers */,
+				B792528E1C9178BF00A9F702 /* SVSpeedTestServers.h in Headers */,
 				B723CE591C7478F000B419E3 /* SVAdvancedSetting.h in Headers */,
 				B72D21761C7ACC85009AC3E4 /* SVLogUploader.h in Headers */,
 				B70FF43C1C662FBE002D571B /* SPService.h in Headers */,
@@ -1284,6 +1316,7 @@
 				B75995541C6B8D71001C1D89 /* SVTestResult.m in Sources */,
 				B72D21771C7ACC85009AC3E4 /* SVLogUploader.m in Sources */,
 				B75995501C6B8D71001C1D89 /* SVTestContext.m in Sources */,
+				B792528F1C9178BF00A9F702 /* SVSpeedTestServers.m in Sources */,
 				B75995151C6B8C1A001C1D89 /* SVVideoAnalyserFactory.m in Sources */,
 				B70FF4B51C663388002D571B /* SVContentProviderGetter.m in Sources */,
 				B75995521C6B8D71001C1D89 /* SVTestContextGetter.m in Sources */,
@@ -1294,6 +1327,7 @@
 				B759952D1C6B8C64001C1D89 /* SVYoukuSIDAndTokenAndEqGetter.m in Sources */,
 				B75994B31C6B7A93001C1D89 /* SVVideoUtil.m in Sources */,
 				B759954A1C6B8D71001C1D89 /* SVIPAndISP.m in Sources */,
+				B79252DF1C92866600A9F702 /* SVSpeedTestServersParser.m in Sources */,
 				B732E61E1C6EBC1A000353B9 /* SVSummaryResultModel.m in Sources */,
 				B70FF4B71C663388002D571B /* SVUvMOSVideoResolutionGetter.m in Sources */,
 				B75995111C6B8C1A001C1D89 /* SVVideoSegement.m in Sources */,
@@ -1311,6 +1345,7 @@
 				B70FF4B91C663388002D571B /* SVVideoPlayer.m in Sources */,
 				B70FF4BF1C663388002D571B /* SVVideoTestSample.m in Sources */,
 				B70FF4BD1C663388002D571B /* SVVideoTestResult.m in Sources */,
+				B792528B1C91780300A9F702 /* SVSpeedTestServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1320,6 +1355,7 @@
 			files = (
 				B70FF44A1C662FBE002D571B /* SPServiceTests.m in Sources */,
 				B72D21791C7BEEDA009AC3E4 /* SVLogUploaderTest.m in Sources */,
+				B79252DB1C9270CB00A9F702 /* SVSpeedTestServerParserTest.m in Sources */,
 				B72AC6A81C8EC09B002C1AEC /* SVVideoAnalyserFactoryTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
