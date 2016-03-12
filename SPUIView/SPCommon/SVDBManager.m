@@ -85,33 +85,36 @@
  */
 - (void)executeUpdate:(NSString *)sql, ...
 {
-    @try
+    @synchronized (self)
     {
-        if ([_dataBase open])
+        @try
         {
-            va_list args;
-
-            if (sql)
+            if ([_dataBase open])
             {
-                va_start (args, sql);
-                NSString *formatedSQL = [[NSString alloc] initWithFormat:sql arguments:args];
-                NSLog (@"sql:%@", formatedSQL);
-                BOOL isSuccess = [_dataBase executeUpdate:formatedSQL];
-                if (!isSuccess)
+                va_list args;
+
+                if (sql)
                 {
-                    SVError (@"sql execute fail.");
+                    va_start (args, sql);
+                    NSString *formatedSQL = [[NSString alloc] initWithFormat:sql arguments:args];
+                    NSLog (@"sql:%@", formatedSQL);
+                    BOOL isSuccess = [_dataBase executeUpdate:formatedSQL];
+                    if (!isSuccess)
+                    {
+                        SVError (@"sql execute fail.");
+                    }
+                    va_end (args);
                 }
-                va_end (args);
             }
         }
-    }
-    @catch (NSException *exception)
-    {
-        SVError (@"%@", exception);
-    }
-    @finally
-    {
-        [_dataBase close];
+        @catch (NSException *exception)
+        {
+            SVError (@"%@", exception);
+        }
+        @finally
+        {
+            [_dataBase close];
+        }
     }
 }
 
@@ -131,52 +134,55 @@
         return array;
     }
 
-    // TODO liuchengyu 研究内省，支持非NSString 类型
-    @try
+    @synchronized (self)
     {
-        if ([_dataBase open])
+        // TODO liuchengyu 研究内省，支持非NSString 类型
+        @try
         {
-            va_list args;
-            va_start (args, sql);
-            NSString *formatedSQL = [[NSString alloc] initWithFormat:sql arguments:args];
-            va_end (args);
-
-            NSLog (@"sql:%@", formatedSQL);
-            FMResultSet *set = [_dataBase executeQuery:formatedSQL];
-            while ([set next])
+            if ([_dataBase open])
             {
-                NSObject *obj = [[clazz alloc] init];
-                for (int i = 0; i < set.columnCount; i++)
-                {
-                    @try
-                    {
-                        NSString *columnName = [set columnNameForIndex:i];
-                        // NSLog (@"columnName:%@", columnName);
-                        // [columnName capitalizedString] 字符串首字母大写
-                        NSString *firstCharacter = [[columnName substringToIndex:1] uppercaseString];
-                        NSString *lastCharacter = [columnName substringFromIndex:1];
-                        SEL sel = NSSelectorFromString (
-                        [NSString stringWithFormat:@"set%@%@:", firstCharacter, lastCharacter]);
-                        NSString *value = [set stringForColumn:columnName];
-                        [obj performSelector:sel withObject:value];
-                    }
-                    @catch (NSException *exception)
-                    {
-                        SVError (@"%@", exception);
-                    }
-                }
+                va_list args;
+                va_start (args, sql);
+                NSString *formatedSQL = [[NSString alloc] initWithFormat:sql arguments:args];
+                va_end (args);
 
-                [array addObject:obj];
+                NSLog (@"sql:%@", formatedSQL);
+                FMResultSet *set = [_dataBase executeQuery:formatedSQL];
+                while ([set next])
+                {
+                    NSObject *obj = [[clazz alloc] init];
+                    for (int i = 0; i < set.columnCount; i++)
+                    {
+                        @try
+                        {
+                            NSString *columnName = [set columnNameForIndex:i];
+                            // NSLog (@"columnName:%@", columnName);
+                            // [columnName capitalizedString] 字符串首字母大写
+                            NSString *firstCharacter = [[columnName substringToIndex:1] uppercaseString];
+                            NSString *lastCharacter = [columnName substringFromIndex:1];
+                            SEL sel = NSSelectorFromString (
+                            [NSString stringWithFormat:@"set%@%@:", firstCharacter, lastCharacter]);
+                            NSString *value = [set stringForColumn:columnName];
+                            [obj performSelector:sel withObject:value];
+                        }
+                        @catch (NSException *exception)
+                        {
+                            SVError (@"%@", exception);
+                        }
+                    }
+
+                    [array addObject:obj];
+                }
             }
         }
-    }
-    @catch (NSException *exception)
-    {
-        SVError (@"%@", exception);
-    }
-    @finally
-    {
-        [_dataBase close];
+        @catch (NSException *exception)
+        {
+            SVError (@"%@", exception);
+        }
+        @finally
+        {
+            [_dataBase close];
+        }
     }
 
     return array;

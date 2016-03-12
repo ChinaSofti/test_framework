@@ -134,8 +134,7 @@
         return false;
     }
 
-    //        // 持久化结果和明细
-    [self persistSVSummaryResultModel];
+    // 持久化结果明细
     [self persistSVDetailResultModel];
     SVInfo (@"persist test[testId=%ld] result success", _testId);
     return true;
@@ -170,29 +169,6 @@
     }
 
     return true;
-}
-
-
-/**
- *  持久化汇总结果
- */
-- (void)persistSVSummaryResultModel
-{
-    // 结果持久化
-    SVDBManager *db = [SVDBManager sharedInstance];
-    // 如果表不存在，则创建表
-    [db executeUpdate:@"CREATE TABLE IF NOT EXISTS SVSummaryResultModel(ID integer PRIMARY KEY "
-                      @"AUTOINCREMENT, testId integer, type integer, testTime integer, UvMOS "
-                      @"real, loadTime integer, bandwidth real);"];
-
-    NSString *insertSVSummaryResultModelSQL =
-    [NSString stringWithFormat:@"INSERT INTO "
-                               @"SVSummaryResultModel(testId,type,testTime,UvMOS,loadTime,"
-                               @"bandwidth)VALUES(%ld, 0, %ld, %lf, %d, %lf);",
-                               _testId, testResult.testTime, testResult.UvMOSSession,
-                               testResult.firstBufferTime, testResult.downloadSpeed];
-    // 插入汇总结果
-    [db executeUpdate:insertSVSummaryResultModelSQL];
 }
 
 
