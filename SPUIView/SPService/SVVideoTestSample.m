@@ -11,6 +11,7 @@
 @implementation SVVideoTestSample
 
 @synthesize sQualitySession, sInteractionSession, sViewSession, UvMOSSession, periodLength,
-initBufferLatency, avgKeyFrameSize, avgVideoBitrate, stallingDuration, stallingFrequency, stallingTotalTime;
+initBufferLatency, avgKeyFrameSize, avgVideoBitrate, stallingDuration, stallingFrequency,
+stallingTotalTime, videoStartPlayTime;
 
 @end

@@ -375,10 +375,11 @@ static const int execute_total_times = 4;
         [sample setPeriodLength:0];
         [sample setInitBufferLatency:(int)bufferedTime];
         [sample setAvgVideoBitrate:testResult.bitrate];
-        // 孙海龙 2016/02/14 帧率字节目前暂不支持,设置默认值0
-        [sample setAvgKeyFrameSize:0];
+        //         孙海龙 2016/02/14 帧率字节目前暂不支持,设置默认值0
+        [sample setAvgKeyFrameSize:testResult.frameRate];
         [sample setStallingFrequency:20];
         [sample setStallingDuration:0];
+        [sample setVideoStartPlayTime:[testResult videoStartPlayTime]];
         [uvMOSCalculator calculateTestSample:sample];
         if (!testResult.videoTestSamples)
         {
@@ -403,7 +404,8 @@ static const int execute_total_times = 4;
         [sample setInitBufferLatency:0];
         [sample setAvgVideoBitrate:testResult.bitrate];
         // 孙海龙 2016/02/14 帧率字节目前暂不支持,设置默认值0
-        [sample setAvgKeyFrameSize:0];
+        [sample setAvgKeyFrameSize:testResult.frameRate];
+        [sample setVideoStartPlayTime:[testResult videoStartPlayTime]];
         if (videoCuttonTimes <= 0)
         {
             [sample setStallingFrequency:0];

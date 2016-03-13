@@ -90,7 +90,7 @@ static NSString *SPEEDTEST_SERVER_QUERY_URL = @"https://www.speedtest.net/api/an
  *
  *  @param serverURL SpeedTestServer
  */
-- (void)setDefaultServerURL:(SVSpeedTestServer *)server
+- (void)setDefaultServer:(SVSpeedTestServer *)server
 {
     _server = server;
 }

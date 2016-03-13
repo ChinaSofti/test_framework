@@ -28,11 +28,12 @@
  *
  *  @return 屏幕分辨率
  */
-+ (CGFloat)getScreenScale
++ (CGSize)getScreenScale
 {
-    //分辨率
-    CGFloat scale_screen = [UIScreen mainScreen].scale;
-    return scale_screen;
+    UIScreen *MainScreen = [UIScreen mainScreen];
+    CGSize Size = [MainScreen bounds].size;
+    CGFloat scale = [MainScreen scale];
+    return CGSizeMake (Size.width * scale, Size.height * scale);
 }
 
 @end
