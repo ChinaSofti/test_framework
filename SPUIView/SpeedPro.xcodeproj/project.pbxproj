@@ -137,6 +137,7 @@
 		B73CE8FC1C896962006D43F8 /* RealReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8E31C896962006D43F8 /* RealReachability.h */; };
 		B73CE8FD1C896962006D43F8 /* RealReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8E41C896962006D43F8 /* RealReachability.m */; };
 		B73D0B4B1C756AFF00E291C6 /* SVLogTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B73D0B4A1C756AFF00E291C6 /* SVLogTest.m */; };
+		B743CFE91C9554EF00E18410 /* UvMosiOSLib_3.13.v4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B743CFE81C9554EF00E18410 /* UvMosiOSLib_3.13.v4.a */; };
 		B75994B21C6B7A93001C1D89 /* SVVideoUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994B01C6B7A93001C1D89 /* SVVideoUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75994B31C6B7A93001C1D89 /* SVVideoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994B11C6B7A93001C1D89 /* SVVideoUtil.m */; };
 		B75994B61C6B8490001C1D89 /* SVUvMOSCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994B41C6B8490001C1D89 /* SVUvMOSCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -213,7 +214,6 @@
 		B79B3DDB1C772ECB00471F12 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DCE1C772ECB00471F12 /* FMDatabaseQueue.m */; };
 		B79B3DDC1C772ECB00471F12 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3DCF1C772ECB00471F12 /* FMResultSet.h */; };
 		B79B3DDD1C772ECB00471F12 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DD01C772ECB00471F12 /* FMResultSet.m */; };
-		B7E849101C9430BD00619030 /* UvMosiOSLibv1.1.0.v4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E8490F1C9430BD00619030 /* UvMosiOSLibv1.1.0.v4.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -374,6 +374,7 @@
 		B73CE8E31C896962006D43F8 /* RealReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealReachability.h; sourceTree = "<group>"; };
 		B73CE8E41C896962006D43F8 /* RealReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealReachability.m; sourceTree = "<group>"; };
 		B73D0B4A1C756AFF00E291C6 /* SVLogTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLogTest.m; sourceTree = "<group>"; };
+		B743CFE81C9554EF00E18410 /* UvMosiOSLib_3.13.v4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = UvMosiOSLib_3.13.v4.a; sourceTree = "<group>"; };
 		B75994B01C6B7A93001C1D89 /* SVVideoUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVVideoUtil.h; sourceTree = "<group>"; };
 		B75994B11C6B7A93001C1D89 /* SVVideoUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVVideoUtil.m; sourceTree = "<group>"; };
 		B75994B41C6B8490001C1D89 /* SVUvMOSCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVUvMOSCalculator.h; sourceTree = "<group>"; };
@@ -450,7 +451,6 @@
 		B79B3DCE1C772ECB00471F12 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		B79B3DCF1C772ECB00471F12 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		B79B3DD01C772ECB00471F12 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
-		B7E8490F1C9430BD00619030 /* UvMosiOSLibv1.1.0.v4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = UvMosiOSLibv1.1.0.v4.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,9 +463,9 @@
 				B70FF4F81C66437D002D571B /* libz.1.dylib in Frameworks */,
 				B70FF4F61C664367002D571B /* libbz2.1.0.dylib in Frameworks */,
 				B70FF4F41C664346002D571B /* UIKit.framework in Frameworks */,
+				B743CFE91C9554EF00E18410 /* UvMosiOSLib_3.13.v4.a in Frameworks */,
 				B70FF4F21C66433B002D571B /* QuartzCore.framework in Frameworks */,
 				B70FF4F01C66432F002D571B /* OpenGLES.framework in Frameworks */,
-				B7E849101C9430BD00619030 /* UvMosiOSLibv1.1.0.v4.a in Frameworks */,
 				B70FF4EE1C664323002D571B /* MediaPlayer.framework in Frameworks */,
 				B70FF4EC1C664317002D571B /* Foundation.framework in Frameworks */,
 				B70FF4EA1C66430B002D571B /* CoreVideo.framework in Frameworks */,
@@ -685,7 +685,7 @@
 		B70FF4DC1C663456002D571B /* U-vMOS_SDK_for_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				B7E8490F1C9430BD00619030 /* UvMosiOSLibv1.1.0.v4.a */,
+				B743CFE81C9554EF00E18410 /* UvMosiOSLib_3.13.v4.a */,
 				B70FF4DE1C663456002D571B /* UvMOS_Outer_Api.h */,
 			);
 			path = "U-vMOS_SDK_for_iOS";
