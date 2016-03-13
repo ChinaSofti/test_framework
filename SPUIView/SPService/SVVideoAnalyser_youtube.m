@@ -53,22 +53,10 @@
     NSMutableString *videoParamString;
     for (int i = 0; i < arrays3.count; i++)
     {
-        if ([arrays3[i] containsString:VIDEO_4K])
+        if ([arrays3[i] containsString:VIDEO_4K] || [arrays3[i] containsString:VIDEO_1K])
         {
             videoParamString = arrays3[i];
             break;
-        }
-    }
-
-    if (!videoParamString)
-    {
-        for (int i = 0; i < arrays3.count; i++)
-        {
-            if ([arrays3[i] containsString:VIDEO_1K])
-            {
-                videoParamString = arrays3[i];
-                break;
-            }
         }
     }
 
