@@ -10,6 +10,7 @@
 #import "SVI18N.h"
 #import "SVIPAndISPGetter.h"
 #import "SVLog.h"
+#import "SVSpeedTestServers.h"
 
 @implementation SVIPAndISPGetter
 {
@@ -47,7 +48,6 @@ static SVIPAndISP *localIPAndISP;
  */
 + (SVIPAndISP *)queryIPDetail:(NSString *)ip
 {
-
     SVI18N *i18n = [SVI18N sharedInstance];
     NSString *lang = [i18n getLanguage];
     if ([lang containsString:@"en"])
@@ -100,7 +100,7 @@ static SVIPAndISP *localIPAndISP;
     [ipAndISP setAs:[dictionay valueForKey:@"as"]];
     [ipAndISP setZip:[dictionay valueForKey:@"zip"]];
     [ipAndISP setQuery:[dictionay valueForKey:@"query"]];
-    [ipAndISP setLat:[dictionay valueForKey:@"lon"]];
+    [ipAndISP setLat:[dictionay valueForKey:@"lat"]];
     [ipAndISP setLon:[dictionay valueForKey:@"lon"]];
     [ipAndISP setCountry:[dictionay valueForKey:@"country"]];
     [ipAndISP setCountryCode:[dictionay valueForKey:@"countryCode"]];
@@ -118,6 +118,17 @@ static SVIPAndISP *localIPAndISP;
              ipAndISP.as, ipAndISP.zip, ipAndISP.query, ipAndISP.lat, ipAndISP.lon,
              ipAndISP.country, ipAndISP.countryCode, ipAndISP.isp, ipAndISP.city, ipAndISP.region,
              ipAndISP.timezone, ipAndISP.org, ipAndISP.regionName, ipAndISP.status);
+
+    if (!localIPAndISP)
+    {
+        SVSpeedTestServers *servers = [SVSpeedTestServers sharedInstance];
+        NSString *localIP = servers.clientIP;
+        if ([ip isEqualToString:localIP])
+        {
+            localIPAndISP = ipAndISP;
+        }
+    }
+
     return ipAndISP;
 }
 

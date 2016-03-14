@@ -16,6 +16,8 @@
     NSMutableArray *_array;
 }
 
+@synthesize clientIP, isp, lat, lon;
+
 - (id)initWithData:(NSData *)data
 {
     self = [super init];
@@ -31,7 +33,6 @@
 
 - (NSArray *)parse
 {
-
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:_data];
     parser.delegate = self;
     [parser parse];
@@ -53,27 +54,31 @@ didStartElement:(NSString *)elementName
   qualifiedName:(nullable NSString *)qName
      attributes:(NSDictionary<NSString *, NSString *> *)attributeDict
 {
-    //    NSLog (@"elementName:%@", elementName);
-    if (![elementName isEqualToString:@"server"])
+    if ([elementName isEqualToString:@"client"])
     {
-        return;
+        clientIP = [attributeDict objectForKey:@"ip"];
+        isp = [attributeDict objectForKey:@"isp"];
+        lat = [attributeDict objectForKey:@"lat"];
+        lon = [attributeDict objectForKey:@"lon"];
     }
+    if ([elementName isEqualToString:@"server"])
+    {
+        NSString *url = [attributeDict objectForKey:@"url"];
+        NSString *lat = [attributeDict objectForKey:@"lat"];
+        NSString *lon = [attributeDict objectForKey:@"lon"];
+        NSString *name = [attributeDict objectForKey:@"name"];
+        NSString *sponsor = [attributeDict objectForKey:@"sponsor"];
+        NSString *serverId = [attributeDict objectForKey:@"id"];
 
-    NSString *url = [attributeDict objectForKey:@"url"];
-    NSString *lat = [attributeDict objectForKey:@"lat"];
-    NSString *lon = [attributeDict objectForKey:@"lon"];
-    NSString *name = [attributeDict objectForKey:@"name"];
-    NSString *sponsor = [attributeDict objectForKey:@"sponsor"];
-    NSString *serverId = [attributeDict objectForKey:@"id"];
-
-    SVSpeedTestServer *server = [[SVSpeedTestServer alloc] init];
-    [server setServerId:[serverId intValue]];
-    [server setServerURL:url];
-    [server setLat:[lat floatValue]];
-    [server setLon:[lon floatValue]];
-    [server setName:name];
-    [server setSponsor:sponsor];
-    [_array addObject:server];
+        SVSpeedTestServer *server = [[SVSpeedTestServer alloc] init];
+        [server setServerId:[serverId intValue]];
+        [server setServerURL:url];
+        [server setLat:[lat floatValue]];
+        [server setLon:[lon floatValue]];
+        [server setName:name];
+        [server setSponsor:sponsor];
+        [_array addObject:server];
+    }
 }
 
 //解析结束

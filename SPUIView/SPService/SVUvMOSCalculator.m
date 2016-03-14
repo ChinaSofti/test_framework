@@ -5,9 +5,10 @@
 //  Created by Rain on 2/10/16.
 //  Copyright © 2016 chinasofti. All rights reserved.
 //
-#import "SVAdvancedSetting.h"
+
 #import "SVContentProviderGetter.h"
 #import "SVLog.h"
+#import "SVProbeInfo.h"
 #import "SVUvMOSCalculator.h"
 #import "SVVideoUtil.h"
 #import "UvMOS_Outer_Api.h"
@@ -52,8 +53,8 @@
     // 屏幕尺寸，单位英寸，输入为0时，屏幕映射默认为42寸TV
     //    stMediaInfo.fScreenSize = [SVVideoUtil getScreenScale];
     // 孙海龙 2016/02/13  屏幕尺寸 固定为42寸
-    SVAdvancedSetting *setting = [SVAdvancedSetting sharedInstance];
-    float screenSize = [[setting getScreenSize] floatValue];
+    SVProbeInfo *probeInfo = [[SVProbeInfo alloc] init];
+    float screenSize = [[probeInfo getScreenSize] floatValue];
     stMediaInfo.fScreenSize = screenSize;
     [_testResult setScreenSize:screenSize];
 

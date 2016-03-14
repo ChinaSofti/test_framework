@@ -10,6 +10,7 @@
 #import "SVLog.h"
 #import "SVProbeInfo.h"
 #import "SVProbeInfo.h"
+#import "SVSpeedTestServers.h"
 #import "SVTestContextGetter.h"
 #import "SVVideoAnalyser.h"
 #import "SVVideoAnalyserFactory.h"
@@ -92,7 +93,9 @@ static SVTestContextGetter *contextGetter = nil;
  */
 - (void)initIPAndISP
 {
-    SVIPAndISP *ipAndISP = [SVIPAndISPGetter getIPAndISP];
+    SVSpeedTestServers *servers = [SVSpeedTestServers sharedInstance];
+    NSString *localIP = servers.clientIP;
+    SVIPAndISP *ipAndISP = [SVIPAndISPGetter queryIPDetail:localIP];
     if (ipAndISP)
     {
         SVProbeInfo *probeInfo = [SVProbeInfo sharedInstance];

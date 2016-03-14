@@ -6,8 +6,8 @@
 //  Copyright © 2016 Huawei. All rights reserved.
 //
 
-#import "SVAdvancedSetting.h"
 #import "SVLog.h"
+#import "SVProbeInfo.h"
 #import "SVTimeUtil.h"
 #import "SVVideoPlayer.h"
 #import "SVVideoUtil.h"
@@ -91,8 +91,8 @@ static int execute_total_times = 4;
         _isSetup = [_VMpalyer setupPlayerWithCarrierView:showOnView withDelegate:self];
     }
 
-    SVAdvancedSetting *setting = [SVAdvancedSetting sharedInstance];
-    _videoPlayTime = [setting getVideoPlayTime];
+    SVProbeInfo *probeInfo = [SVProbeInfo sharedInstance];
+    _videoPlayTime = [probeInfo getVideoPlayTime];
     execute_total_times = _videoPlayTime / test_period;
     SVInfo (@"video play time is:%d", _videoPlayTime);
     return self;
@@ -203,7 +203,7 @@ static int execute_total_times = 4;
     [testResult setDownloadSize:_downloadSize];
     if (_downloadTime > 0)
     {
-        [testResult setDownloadSpeed:(_downloadSize / _downloadTime)];
+        [testResult setDownloadSpeed:(_downloadSize * 8 / _downloadTime)];
     }
     [testResult setVideoEndPlayTime:[SVTimeUtil currentMilliSecondStamp]];
 

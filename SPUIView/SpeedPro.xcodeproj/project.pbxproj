@@ -65,8 +65,6 @@
 		B70FF4FC1C6643BF002D571B /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF4FB1C6643BF002D571B /* libiconv.2.dylib */; };
 		B71F89151C8D841A002E8375 /* SVRealReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B71F89131C8D841A002E8375 /* SVRealReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B71F89161C8D841A002E8375 /* SVRealReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B71F89141C8D841A002E8375 /* SVRealReachability.m */; };
-		B723CE591C7478F000B419E3 /* SVAdvancedSetting.h in Headers */ = {isa = PBXBuildFile; fileRef = B723CE571C7478F000B419E3 /* SVAdvancedSetting.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B723CE5A1C7478F000B419E3 /* SVAdvancedSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = B723CE581C7478F000B419E3 /* SVAdvancedSetting.m */; };
 		B72AC6A81C8EC09B002C1AEC /* SVVideoAnalyserFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72AC6A71C8EC09B002C1AEC /* SVVideoAnalyserFactoryTest.m */; };
 		B72AC6AB1C8EC687002C1AEC /* SPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FF45C1C66301D002D571B /* SPCommon.framework */; };
 		B72D21761C7ACC85009AC3E4 /* SVLogUploader.h in Headers */ = {isa = PBXBuildFile; fileRef = B72D21741C7ACC85009AC3E4 /* SVLogUploader.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -303,8 +301,6 @@
 		B70FF4FB1C6643BF002D571B /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = /usr/lib/libiconv.2.dylib; sourceTree = "<absolute>"; };
 		B71F89131C8D841A002E8375 /* SVRealReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRealReachability.h; sourceTree = "<group>"; };
 		B71F89141C8D841A002E8375 /* SVRealReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRealReachability.m; sourceTree = "<group>"; };
-		B723CE571C7478F000B419E3 /* SVAdvancedSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAdvancedSetting.h; sourceTree = "<group>"; };
-		B723CE581C7478F000B419E3 /* SVAdvancedSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAdvancedSetting.m; sourceTree = "<group>"; };
 		B72AC6A71C8EC09B002C1AEC /* SVVideoAnalyserFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVVideoAnalyserFactoryTest.m; sourceTree = "<group>"; };
 		B72D21741C7ACC85009AC3E4 /* SVLogUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVLogUploader.h; sourceTree = "<group>"; };
 		B72D21751C7ACC85009AC3E4 /* SVLogUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLogUploader.m; sourceTree = "<group>"; };
@@ -970,8 +966,6 @@
 				B75995481C6B8D71001C1D89 /* SVTestResult.m */,
 				B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */,
 				B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */,
-				B723CE571C7478F000B419E3 /* SVAdvancedSetting.h */,
-				B723CE581C7478F000B419E3 /* SVAdvancedSetting.m */,
 				B72D21741C7ACC85009AC3E4 /* SVLogUploader.h */,
 				B72D21751C7ACC85009AC3E4 /* SVLogUploader.m */,
 			);
@@ -1079,7 +1073,6 @@
 				B792528A1C91780300A9F702 /* SVSpeedTestServer.h in Headers */,
 				B79252DE1C92866600A9F702 /* SVSpeedTestServersParser.h in Headers */,
 				B792528E1C9178BF00A9F702 /* SVSpeedTestServers.h in Headers */,
-				B723CE591C7478F000B419E3 /* SVAdvancedSetting.h in Headers */,
 				B72D21761C7ACC85009AC3E4 /* SVLogUploader.h in Headers */,
 				B70FF43C1C662FBE002D571B /* SPService.h in Headers */,
 			);
@@ -1326,7 +1319,6 @@
 				B75995281C6B8C64001C1D89 /* SVRc4.m in Sources */,
 				B75995581C6B8DBA001C1D89 /* SVVideoTestContext.m in Sources */,
 				B75995311C6B8C7E001C1D89 /* SVVideoAnalyser_youtube.m in Sources */,
-				B723CE5A1C7478F000B419E3 /* SVAdvancedSetting.m in Sources */,
 				B72DC85B1C6C0BF00046F174 /* SVProbeInfo.m in Sources */,
 				B75995131C6B8C1A001C1D89 /* SVVideoAnalyser.m in Sources */,
 				B75995241C6B8C64001C1D89 /* SVVideoAnalyser_youku.m in Sources */,

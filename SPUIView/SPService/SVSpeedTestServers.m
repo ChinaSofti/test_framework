@@ -31,9 +31,10 @@ static NSString *SPEEDTEST_SERVER_QUERY_URL = @"https://www.speedtest.net/api/an
         if (servers == nil)
         {
             servers = [[super allocWithZone:NULL] init];
-            dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-              [servers initSpeedTestServer];
-            });
+            //            dispatch_async (dispatch_get_global_queue
+            //            (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            //              [servers initSpeedTestServer];
+            //            });
         }
     }
 
@@ -75,6 +76,9 @@ static NSString *SPEEDTEST_SERVER_QUERY_URL = @"https://www.speedtest.net/api/an
         return;
     }
 
+    // 记录日志
+    SVInfo (@"%@", [[NSString alloc] initWithData:reponseData encoding:NSUTF8StringEncoding]);
+
     SVSpeedTestServersParser *parser = [[SVSpeedTestServersParser alloc] initWithData:reponseData];
     NSArray *array = [parser parse];
 
@@ -82,6 +86,11 @@ static NSString *SPEEDTEST_SERVER_QUERY_URL = @"https://www.speedtest.net/api/an
     _serverArray = [[NSMutableArray alloc] initWithArray:array];
     SVSpeedTestServer *server = [_serverArray objectAtIndex:0];
     _server = server;
+
+    _clientIP = parser.clientIP;
+    _isp = parser.isp;
+    _lat = parser.lat;
+    _lon = parser.lon;
 }
 
 
