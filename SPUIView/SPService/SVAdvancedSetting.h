@@ -92,4 +92,20 @@
  */
 - (int)getLanguageIndex;
 
+
+/**
+ *  设置视频播放时长, 时间单位全部转换为秒
+ *  包含：20s,3min,5min,10min,30min
+ *
+ *  @param languageIndex 视频播放时长
+ */
+- (void)setVideoPlayTime:(int)videoPlayTime;
+
+/**
+ *  获取视频播放时长, 时间单位全部转换为秒
+ *
+ *  @return 视频播放时长
+ */
+- (int)getVideoPlayTime;
+
 @end

@@ -24,9 +24,17 @@ static NSString *DEFAULT_ZH_CN_LANG = @"zh-CN";
 
 static NSString *DEFAULT_EN_US_LANG = @"en";
 
+static SVIPAndISP *localIPAndISP;
+
 + (SVIPAndISP *)getIPAndISP
 {
-    return [SVIPAndISPGetter queryIPDetail:nil];
+    if (localIPAndISP)
+    {
+        return localIPAndISP;
+    }
+
+    localIPAndISP = [SVIPAndISPGetter queryIPDetail:nil];
+    return localIPAndISP;
 }
 
 

@@ -6,6 +6,7 @@
 //  Copyright © 2016 Huawei. All rights reserved.
 //
 
+#import "SVAdvancedSetting.h"
 #import "SVLog.h"
 #import "SVTimeUtil.h"
 #import "SVVideoPlayer.h"
@@ -58,6 +59,8 @@
     long startPlayTime;
 
     BOOL _isSetup;
+
+    int _videoPlayTime;
 }
 
 @synthesize showOnView, testResult, testContext, uvMOSCalculator;
@@ -66,7 +69,7 @@
 static const int test_period = 5;
 
 // 计算UvMOS总次数
-static const int execute_total_times = 4;
+static int execute_total_times = 4;
 
 /**
  *  初始化视频播放器对象
@@ -88,6 +91,10 @@ static const int execute_total_times = 4;
         _isSetup = [_VMpalyer setupPlayerWithCarrierView:showOnView withDelegate:self];
     }
 
+    SVAdvancedSetting *setting = [SVAdvancedSetting sharedInstance];
+    _videoPlayTime = [setting getVideoPlayTime];
+    execute_total_times = _videoPlayTime / test_period;
+    SVInfo (@"video play time is:%d", _videoPlayTime);
     return self;
 }
 
@@ -114,6 +121,7 @@ static const int execute_total_times = 4;
  */
 - (void)play
 {
+
     if (!testContext || !testResult)
     {
         SVError (@"test context or test result is null. so refuse play video.");
@@ -330,14 +338,21 @@ static const int execute_total_times = 4;
     }
 
     long bufferedTime = [SVTimeUtil currentMilliSecondStamp] - _bufferStartTime;
-    // 卡顿次数加一
-    videoCuttonTimes += 1;
-    videoCuttonTotalTime += bufferedTime;
-    [testResult setVideoCuttonTimes:(testResult.videoCuttonTimes + 1)];
-    [testResult setVideoCuttonTotalTime:(testResult.videoCuttonTotalTime + (int)bufferedTime)];
+
+    // 注意：
+    // 首次缓冲时长不计入卡顿时长，且第一次缓冲不算卡顿。首次缓冲时长只是首次缓冲时长
+    if (_firstBufferTime > 0)
+    {
+        // 卡顿次数加一
+        videoCuttonTimes += 1;
+        videoCuttonTotalTime += bufferedTime;
+        [testResult setVideoCuttonTimes:(testResult.videoCuttonTimes + 1)];
+        [testResult setVideoCuttonTotalTime:(testResult.videoCuttonTotalTime + (int)bufferedTime)];
+    }
+
+    NSLog (@"NAL 3HBT &&&&&&&&&&&&&&&&.......&&&&&&&&&&&&&&&&&  bufferingEnd");
     [self startCalculateUvMOS:player bufferedTime:bufferedTime];
     [player start];
-    NSLog (@"NAL 3HBT &&&&&&&&&&&&&&&&.......&&&&&&&&&&&&&&&&&  bufferingEnd");
 }
 
 - (void)startCalculateUvMOS:(VMediaPlayer *)player bufferedTime:(long)bufferedTime
@@ -380,6 +395,7 @@ static const int execute_total_times = 4;
         [sample setStallingFrequency:20];
         [sample setStallingDuration:0];
         [sample setVideoStartPlayTime:[testResult videoStartPlayTime]];
+        [sample setVideoTotalCuttonTime:0];
         [uvMOSCalculator calculateTestSample:sample];
         if (!testResult.videoTestSamples)
         {
@@ -406,6 +422,7 @@ static const int execute_total_times = 4;
         // 孙海龙 2016/02/14 帧率字节目前暂不支持,设置默认值0
         [sample setAvgKeyFrameSize:testResult.frameRate];
         [sample setVideoStartPlayTime:[testResult videoStartPlayTime]];
+        [sample setVideoTotalCuttonTime:testResult.videoCuttonTotalTime];
         if (videoCuttonTimes <= 0)
         {
             [sample setStallingFrequency:0];

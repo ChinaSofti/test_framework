@@ -97,9 +97,9 @@
     stSegmentInfo.iAvgVideoBitrate = testSample.avgVideoBitrate;
     stSegmentInfo.iVideoFrameRate = testSample.avgKeyFrameSize;
     stSegmentInfo.iAvgKeyFrameSize = 0;
-    stSegmentInfo.iImpairmentDegree = 0;
-    NSLog (@"--------------------videoStartPlayTime:%ld", testSample.videoStartPlayTime);
     long interval = ([SVTimeUtil currentMilliSecondStamp] - testSample.videoStartPlayTime);
+    long cuttonScale = testSample.videoTotalCuttonTime * 100 / interval;
+    stSegmentInfo.iImpairmentDegree = [[NSNumber numberWithLong:cuttonScale] intValue];
     stSegmentInfo.iTimeStamp = [[NSString stringWithFormat:@"%ld", interval] intValue];
 
     if (!isFirstTime)

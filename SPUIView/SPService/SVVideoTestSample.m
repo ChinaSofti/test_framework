@@ -12,6 +12,6 @@
 
 @synthesize sQualitySession, sInteractionSession, sViewSession, UvMOSSession, periodLength,
 initBufferLatency, avgKeyFrameSize, avgVideoBitrate, stallingDuration, stallingFrequency,
-stallingTotalTime, videoStartPlayTime;
+stallingTotalTime, videoStartPlayTime, videoTotalCuttonTime;
 
 @end

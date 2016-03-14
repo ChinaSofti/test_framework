@@ -80,8 +80,23 @@ static NSBundle *i18nBundle;
  */
 - (void)setLanguage:(NSString *)language
 {
+    NSString *userLanguage;
+    if ([language containsString:@"en"])
+    {
+        userLanguage = @"en";
+    }
+    else if ([language containsString:@"zh"])
+    {
+        userLanguage = @"zh";
+    }
+    else
+    {
+        userLanguage = @"en";
+    }
+
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:language forKey:@"language"];
+    [defaults setObject:userLanguage forKey:@"language"];
     [defaults synchronize];
 
     //获取文件路径
@@ -130,7 +145,8 @@ static NSBundle *i18nBundle;
 + (NSString *)getSystemLanguage
 {
     NSArray *languages = [NSLocale preferredLanguages];
-    NSString *language = [languages objectAtIndex:0];
+    NSString *language = [[languages objectAtIndex:0] lowercaseString];
+
     if ([language containsString:@"en"])
     {
         return @"en";
@@ -141,7 +157,7 @@ static NSBundle *i18nBundle;
     }
     else
     {
-        return @"zh";
+        return @"en";
     }
 }
 

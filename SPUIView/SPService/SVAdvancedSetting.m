@@ -7,8 +7,11 @@
 //
 
 #import "SVAdvancedSetting.h"
+#import "SVLog.h"
 
 #define default_screenSize 42;
+#define VIDEO_PLAY_TIME_KEY @"videoPlayTime"
+#define LANGUAGE_INDEX_KEY @"languageIndex"
 
 @implementation SVAdvancedSetting
 
@@ -36,6 +39,14 @@ static NSString *_screenSize;
             {
                 _screenSize = @"42.00";
                 [defaults setObject:_screenSize forKey:@"screenSize"];
+                [defaults synchronize];
+            }
+
+            NSString *videoPlayTime = [defaults objectForKey:VIDEO_PLAY_TIME_KEY];
+            if (!videoPlayTime)
+            {
+                [defaults setObject:[NSString stringWithFormat:@"%d", 20]
+                             forKey:VIDEO_PLAY_TIME_KEY];
                 [defaults synchronize];
             }
         }
@@ -77,6 +88,7 @@ static NSString *_screenSize;
  */
 - (void)setScreenSize:(float)screenSize
 {
+    SVInfo (@"Advanced Setting[screenSize=%.2f]", screenSize);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _screenSize = [NSString stringWithFormat:@"%.2f", screenSize];
     [defaults setObject:_screenSize forKey:@"screenSize"];
@@ -100,6 +112,7 @@ static NSString *_screenSize;
  */
 - (void)setBandwidthType:(NSString *)type
 {
+    SVInfo (@"Advanced Setting[bandwidth type=%@]", type);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:type forKey:@"bandwidthType"];
     [defaults synchronize];
@@ -123,6 +136,7 @@ static NSString *_screenSize;
  */
 - (void)setBandwidth:(NSString *)bandwidth
 {
+    SVInfo (@"Advanced Setting[bandwidth=%@]", bandwidth);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:bandwidth forKey:@"bandwidth"];
     [defaults synchronize];
@@ -147,8 +161,9 @@ static NSString *_screenSize;
  */
 - (void)setLanguageIndex:(int)languageIndex
 {
+    SVInfo (@"Advanced Setting[languageIndex=%d]", languageIndex);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSString stringWithFormat:@"%d", languageIndex] forKey:@"languageIndex"];
+    [defaults setObject:[NSString stringWithFormat:@"%d", languageIndex] forKey:LANGUAGE_INDEX_KEY];
     [defaults synchronize];
 }
 
@@ -160,7 +175,7 @@ static NSString *_screenSize;
 - (int)getLanguageIndex
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *languageIndex = [defaults valueForKey:@"languageIndex"];
+    NSString *languageIndex = [defaults valueForKey:LANGUAGE_INDEX_KEY];
     if (languageIndex)
     {
         return [languageIndex intValue];
@@ -168,6 +183,40 @@ static NSString *_screenSize;
     else
     {
         return 0;
+    }
+}
+
+/**
+ *  设置视频播放时长, 时间单位全部转换为秒
+ *  包含：20s,3min,5min,10min,30min
+ *
+ *  @param languageIndex 视频播放时长
+ */
+- (void)setVideoPlayTime:(int)videoPlayTime
+{
+    SVInfo (@"Advanced Setting[videoPlayTime=%d]", videoPlayTime);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSString stringWithFormat:@"%d", videoPlayTime]
+                 forKey:VIDEO_PLAY_TIME_KEY];
+    [defaults synchronize];
+}
+
+/**
+ *  获取视频播放时长, 时间单位全部转换为秒
+ *
+ *  @return 视频播放时长
+ */
+- (int)getVideoPlayTime
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *videoPlayTime = [defaults valueForKey:VIDEO_PLAY_TIME_KEY];
+    if (videoPlayTime)
+    {
+        return [videoPlayTime intValue];
+    }
+    else
+    {
+        return 20;
     }
 }
 
