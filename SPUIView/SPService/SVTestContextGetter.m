@@ -100,7 +100,6 @@ static SVTestContextGetter *contextGetter = nil;
     {
         SVProbeInfo *probeInfo = [SVProbeInfo sharedInstance];
         [probeInfo setIp:ipAndISP.query];
-        [probeInfo setIsp:ipAndISP.isp];
         NSString *countryCode = ipAndISP.countryCode;
         if (countryCode && [countryCode isEqualToString:@"CN"])
         {

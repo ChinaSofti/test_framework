@@ -197,14 +197,14 @@
 - (NSString *)testProbeInfo
 {
     SVProbeInfo *probeInfo = [SVProbeInfo sharedInstance];
+
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    SVInfo (@"SVProbeInfo ip:%@   isp:%@", probeInfo.ip, probeInfo.isp);
+
     [dictionary setObject:!probeInfo.ip ? @"" : probeInfo.ip forKey:@"ip"];
-    [dictionary setObject:!probeInfo.isp ? @"" : probeInfo.isp forKey:@"isp"];
     [dictionary setObject:!probeInfo.networkType ? @"" : probeInfo.networkType
                    forKey:@"netWorkType"];
-    [dictionary setObject:!probeInfo.signedBandwidth ? @"" : probeInfo.signedBandwidth
-                   forKey:@"signedBandwidth"];
+    NSString *bandwidth = [probeInfo getBandwidth];
+    [dictionary setObject:!bandwidth ? @"" : bandwidth forKey:@"signedBandwidth"];
 
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];

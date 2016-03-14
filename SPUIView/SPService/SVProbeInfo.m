@@ -16,7 +16,7 @@
 
 @implementation SVProbeInfo
 
-@synthesize signedBandwidth, singnal, isp, ip, networkType, location;
+@synthesize singnal, ip, networkType, location;
 
 // 屏幕尺寸
 static NSString *_screenSize;
@@ -32,26 +32,15 @@ static NSString *_screenSize;
     static SVProbeInfo *probeInfo;
     @synchronized (self)
     {
-
         if (probeInfo == nil)
         {
             probeInfo = [[super allocWithZone:NULL] init];
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            _screenSize = [defaults objectForKey:@"screenSize"];
-            if (!_screenSize)
-            {
-                _screenSize = @"42.00";
-                [defaults setObject:_screenSize forKey:@"screenSize"];
-                [defaults synchronize];
-            }
-
-            NSString *videoPlayTime = [defaults objectForKey:VIDEO_PLAY_TIME_KEY];
-            if (!videoPlayTime)
-            {
-                [defaults setObject:[NSString stringWithFormat:@"%d", 60]
-                             forKey:VIDEO_PLAY_TIME_KEY];
-                [defaults synchronize];
-            }
+            [probeInfo setVideoPlayTime:60];
+            [probeInfo setScreenSize:42.00];
+            [probeInfo setBandwidthType:0];
+            probeInfo.networkType = @"";
+            probeInfo.location = @"";
+            probeInfo.ip = @"";
         }
     }
 
