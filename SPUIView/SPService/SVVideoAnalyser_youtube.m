@@ -50,14 +50,23 @@
         return _videoInfo;
     }
 
-    NSMutableString *videoParamString;
+    NSMutableArray *videoParamStringArrays = [[NSMutableArray alloc] init];
+
     for (int i = 0; i < arrays3.count; i++)
     {
         if ([arrays3[i] containsString:VIDEO_4K] || [arrays3[i] containsString:VIDEO_1K])
         {
-            videoParamString = arrays3[i];
-            break;
+            //            videoParamString = arrays3[i];
+            [videoParamStringArrays addObject:arrays3[i]];
         }
+    }
+
+    NSMutableString *videoParamString;
+    long count = videoParamStringArrays.count;
+    if (count > 0)
+    {
+        int i = arc4random () % count;
+        videoParamString = videoParamStringArrays[i];
     }
 
     if (!videoParamString)

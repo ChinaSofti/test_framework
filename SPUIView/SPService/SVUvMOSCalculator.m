@@ -11,7 +11,6 @@
 #import "SVProbeInfo.h"
 #import "SVUvMOSCalculator.h"
 #import "SVVideoUtil.h"
-#import "UvMOS_Outer_Api.h"
 #import <SPCommon/SVTimeUtil.h>
 
 @implementation SVUvMOSCalculator
@@ -20,6 +19,10 @@
     SVVideoTestResult *_testResult;
     void *hServiceHandle;
     int isFirstTime;
+    double _iVideoFrameRate;
+    unsigned int _iAvgVideoBitrate;
+    long _videoPlayTime;
+    UvMOSPlayStatus _lastePlayStatus;
 }
 
 /**
@@ -83,6 +86,28 @@
     {
         NSLog (@"registe UvMOS calculate service.  iResult:%d", iResult);
     }
+
+
+    /* 赋值周期性采样参数 */
+    UvMOSSegmentInfo stSegmentInfo = { 0 };
+    UvMOSResult stResult = { 0 };
+    stSegmentInfo.iAvgVideoBitrate = 0;
+    stSegmentInfo.iVideoFrameRate = 0;
+    stSegmentInfo.iAvgKeyFrameSize = 0;
+    stSegmentInfo.ePlayStatus = STATUS_INIT_BUFFERING;
+    stSegmentInfo.iImpairmentDegree = 50;
+    stSegmentInfo.iTimeStamp = 0;
+    /* 第二步：每个周期调用计算(携带周期性参数) */
+    SVInfo (@"-----UvMOSSegmentInfo[iAvgVideoBitrate:%d  iVideoFrameRate:%.2f  iAvgKeyFrameSize:%d "
+            @"iImpairmentDegree:%d   ePlayStatus:%d  iTimeStamp:%d] ",
+            stSegmentInfo.iAvgVideoBitrate, stSegmentInfo.iVideoFrameRate, stSegmentInfo.iAvgKeyFrameSize,
+            stSegmentInfo.iImpairmentDegree, stSegmentInfo.ePlayStatus, stSegmentInfo.iTimeStamp);
+    int iResult1 = calculateUvMOSSegment (hServiceHandle, &stSegmentInfo, &stResult);
+    if (iResult1 < 0)
+    {
+        SVInfo (@"calculate UvMOS fail.  iResult:%d", iResult);
+        return;
+    }
 }
 
 /**
@@ -95,23 +120,33 @@
     /* 赋值周期性采样参数 */
     UvMOSSegmentInfo stSegmentInfo = { 0 };
     UvMOSResult stResult = { 0 };
-    stSegmentInfo.iAvgVideoBitrate = testSample.avgVideoBitrate;
-    stSegmentInfo.iVideoFrameRate = testSample.avgKeyFrameSize;
-    stSegmentInfo.iAvgKeyFrameSize = 0;
-    long interval = ([SVTimeUtil currentMilliSecondStamp] - testSample.videoStartPlayTime);
-    long cuttonScale = testSample.videoTotalCuttonTime * 100 / interval;
-    stSegmentInfo.iImpairmentDegree = [[NSNumber numberWithLong:cuttonScale] intValue];
-    stSegmentInfo.iTimeStamp = [[NSString stringWithFormat:@"%ld", interval] intValue];
 
     if (!isFirstTime)
     {
+        _iVideoFrameRate = testSample.avgVideoBitrate;
+        _iAvgVideoBitrate = testSample.avgKeyFrameSize;
+        _videoPlayTime = testSample.videoStartPlayTime;
         stSegmentInfo.ePlayStatus = STATUS_BUFFERING_END;
         isFirstTime = 1;
     }
     else
     {
-        stSegmentInfo.ePlayStatus = STATUS_PLAYING;
+        if (!_lastePlayStatus || _lastePlayStatus == STATUS_IMPAIR_END)
+        {
+            stSegmentInfo.ePlayStatus = STATUS_PLAYING;
+        }
+        else
+        {
+            stSegmentInfo.ePlayStatus = STATUS_IMPAIRING;
+        }
     }
+
+    stSegmentInfo.iAvgVideoBitrate = _iVideoFrameRate;
+    stSegmentInfo.iVideoFrameRate = _iAvgVideoBitrate;
+    stSegmentInfo.iAvgKeyFrameSize = 0;
+    long interval = ([SVTimeUtil currentMilliSecondStamp] - _videoPlayTime);
+    stSegmentInfo.iTimeStamp = [[NSString stringWithFormat:@"%ld", interval] intValue];
+    stSegmentInfo.iImpairmentDegree = 50;
 
     /* 第二步：每个周期调用计算(携带周期性参数) */
     if (!hServiceHandle)
@@ -140,46 +175,59 @@
     stResult.sQualityInstant, stResult.sInteractionInstant, stResult.sViewInstant, stResult.uvmosInstant);
 
     /* U-vMOS结果输出 */
-    if (stResult.sQualitySession == NAN)
-    {
-        [testSample setSQualitySession:-1];
-    }
-    else
-    {
-        [testSample setSQualitySession:stResult.sQualitySession];
-    }
-
-    if (stResult.sInteractionSession == NAN)
-    {
-        [testSample setSInteractionSession:-1];
-    }
-    else
-    {
-        [testSample setSInteractionSession:stResult.sInteractionSession];
-    }
-
-    if (stResult.sViewSession == NAN)
-    {
-        [testSample setSViewSession:-1];
-    }
-    else
-    {
-        [testSample setSViewSession:stResult.sViewSession];
-    }
-
-    if (stResult.uvmosSession == NAN)
-    {
-        [testSample setUvMOSSession:-1];
-    }
-    else
-    {
-        [testSample setUvMOSSession:stResult.uvmosSession];
-    }
+    [testSample setSQualitySession:stResult.sQualitySession];
+    [testSample setSInteractionSession:stResult.sInteractionSession];
+    [testSample setSViewSession:stResult.sViewSession];
+    [testSample setUvMOSSession:stResult.uvmosSession];
 }
+
+
+- (void)calculateUvMOS:(UvMOSPlayStatus)status
+{
+    _lastePlayStatus = status;
+    /* 赋值周期性采样参数 */
+    UvMOSSegmentInfo stSegmentInfo = { 0 };
+    UvMOSResult stResult = { 0 };
+
+    stSegmentInfo.iAvgVideoBitrate = _iVideoFrameRate;
+    stSegmentInfo.iVideoFrameRate = _iAvgVideoBitrate;
+    stSegmentInfo.iAvgKeyFrameSize = 0;
+    stSegmentInfo.ePlayStatus = status;
+    stSegmentInfo.iImpairmentDegree = 50;
+    long interval = ([SVTimeUtil currentMilliSecondStamp] - _videoPlayTime);
+    stSegmentInfo.iTimeStamp = [[NSString stringWithFormat:@"%ld", interval] intValue];
+    /* 第二步：每个周期调用计算(携带周期性参数) */
+    if (!hServiceHandle)
+    {
+        SVError (@"calculate UvMOS fail. hServiceHandle is null");
+        return;
+    }
+
+    SVInfo (@"-----UvMOSSegmentInfo[iAvgVideoBitrate:%d  iVideoFrameRate:%.2f  iAvgKeyFrameSize:%d "
+            @" "
+            @"iImpairmentDegree:%d   ePlayStatus:%d   "
+            @"iTimeStamp:%d] ",
+            stSegmentInfo.iAvgVideoBitrate, stSegmentInfo.iVideoFrameRate, stSegmentInfo.iAvgKeyFrameSize,
+            stSegmentInfo.iImpairmentDegree, stSegmentInfo.ePlayStatus, stSegmentInfo.iTimeStamp);
+    int iResult = calculateUvMOSSegment (hServiceHandle, &stSegmentInfo, &stResult);
+    if (iResult < 0)
+    {
+        SVInfo (@"calculate UvMOS fail.  iResult:%d", iResult);
+        return;
+    }
+
+    SVInfo (
+    @"----- UvMOSResult[sQualitySession:%.2f  sInteractionSession:%.2f  sViewSession:%.2f  "
+    @"uvmosSession:%.2f  sQualityInstant:%.2f  sInteractionInstant:%.2f  sViewInstant:%.2f  "
+    @"uvmosInstant:%.2f  ] ",
+    stResult.sQualitySession, stResult.sInteractionSession, stResult.sViewSession, stResult.uvmosSession,
+    stResult.sQualityInstant, stResult.sInteractionInstant, stResult.sViewInstant, stResult.uvmosInstant);
+    //
+}
+
 
 - (void)unRegisteService
 {
-
     /* 第三步：去注册服务 */
     int iResult = unregisterUvMOSService (hServiceHandle);
     if (iResult < 0)

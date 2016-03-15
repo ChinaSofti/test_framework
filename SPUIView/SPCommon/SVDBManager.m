@@ -85,25 +85,26 @@
  */
 - (void)executeUpdate:(NSString *)sql, ...
 {
+    va_list args;
+    NSString *formatedSQL;
+    if (sql)
+    {
+        va_start (args, sql);
+        formatedSQL = [[NSString alloc] initWithFormat:sql arguments:args];
+        SVInfo (@"sql:%@", formatedSQL);
+        va_end (args);
+    }
+
     @synchronized (self)
     {
         @try
         {
             if ([_dataBase open])
             {
-                va_list args;
-
-                if (sql)
+                BOOL isSuccess = [_dataBase executeUpdate:formatedSQL];
+                if (!isSuccess)
                 {
-                    va_start (args, sql);
-                    NSString *formatedSQL = [[NSString alloc] initWithFormat:sql arguments:args];
-                    NSLog (@"sql:%@", formatedSQL);
-                    BOOL isSuccess = [_dataBase executeUpdate:formatedSQL];
-                    if (!isSuccess)
-                    {
-                        SVError (@"sql execute fail.");
-                    }
-                    va_end (args);
+                    SVError (@"sql execute fail.");
                 }
             }
         }
@@ -134,6 +135,12 @@
         return array;
     }
 
+    va_list args;
+    va_start (args, sql);
+    NSString *formatedSQL = [[NSString alloc] initWithFormat:sql arguments:args];
+    va_end (args);
+    SVInfo (@"sql:%@", formatedSQL);
+
     @synchronized (self)
     {
         // TODO liuchengyu 研究内省，支持非NSString 类型
@@ -141,12 +148,6 @@
         {
             if ([_dataBase open])
             {
-                va_list args;
-                va_start (args, sql);
-                NSString *formatedSQL = [[NSString alloc] initWithFormat:sql arguments:args];
-                va_end (args);
-
-                NSLog (@"sql:%@", formatedSQL);
                 FMResultSet *set = [_dataBase executeQuery:formatedSQL];
                 while ([set next])
                 {

@@ -193,6 +193,7 @@
 		B75995541C6B8D71001C1D89 /* SVTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995481C6B8D71001C1D89 /* SVTestResult.m */; };
 		B75995571C6B8DBA001C1D89 /* SVVideoTestContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995581C6B8DBA001C1D89 /* SVVideoTestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */; };
+		B78E5B351C97A6490007A8C6 /* SVVideoAnalyser_youtubeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B78E5B341C97A6490007A8C6 /* SVVideoAnalyser_youtubeTest.m */; };
 		B792528A1C91780300A9F702 /* SVSpeedTestServer.h in Headers */ = {isa = PBXBuildFile; fileRef = B79252881C91780300A9F702 /* SVSpeedTestServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B792528B1C91780300A9F702 /* SVSpeedTestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = B79252891C91780300A9F702 /* SVSpeedTestServer.m */; };
 		B792528E1C9178BF00A9F702 /* SVSpeedTestServers.h in Headers */ = {isa = PBXBuildFile; fileRef = B792528C1C9178BF00A9F702 /* SVSpeedTestServers.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -428,6 +429,7 @@
 		B75995481C6B8D71001C1D89 /* SVTestResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVTestResult.m; sourceTree = "<group>"; };
 		B75995551C6B8DBA001C1D89 /* SVVideoTestContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVVideoTestContext.h; sourceTree = "<group>"; };
 		B75995561C6B8DBA001C1D89 /* SVVideoTestContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVVideoTestContext.m; sourceTree = "<group>"; };
+		B78E5B341C97A6490007A8C6 /* SVVideoAnalyser_youtubeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVVideoAnalyser_youtubeTest.m; sourceTree = "<group>"; };
 		B79252881C91780300A9F702 /* SVSpeedTestServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSpeedTestServer.h; sourceTree = "<group>"; };
 		B79252891C91780300A9F702 /* SVSpeedTestServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSpeedTestServer.m; sourceTree = "<group>"; };
 		B792528C1C9178BF00A9F702 /* SVSpeedTestServers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSpeedTestServers.h; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 				B72D21781C7BEEDA009AC3E4 /* SVLogUploaderTest.m */,
 				B72AC6A71C8EC09B002C1AEC /* SVVideoAnalyserFactoryTest.m */,
 				B79252DA1C9270CB00A9F702 /* SVSpeedTestServerParserTest.m */,
+				B78E5B341C97A6490007A8C6 /* SVVideoAnalyser_youtubeTest.m */,
 			);
 			path = SPServiceTests;
 			sourceTree = "<group>";
@@ -1341,6 +1344,7 @@
 				B72D21791C7BEEDA009AC3E4 /* SVLogUploaderTest.m in Sources */,
 				B79252DB1C9270CB00A9F702 /* SVSpeedTestServerParserTest.m in Sources */,
 				B72AC6A81C8EC09B002C1AEC /* SVVideoAnalyserFactoryTest.m in Sources */,
+				B78E5B351C97A6490007A8C6 /* SVVideoAnalyser_youtubeTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

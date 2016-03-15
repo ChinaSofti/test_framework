@@ -176,7 +176,7 @@ static NSString *_ykss;
                 [segement setSize:size];
                 [segement setDuration:(millisecondVideo / 1000)];
                 [segement setVideoSegementURL:videoRealURL];
-                [segement setBitrate:((size * 8 / 1000) / (millisecondVideo / 1000))];
+                [segement setBitrate:((size * 8 / 1024) / (millisecondVideo / 1000))];
                 [_videoInfo addSegement:segement];
             }
         }

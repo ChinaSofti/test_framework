@@ -178,20 +178,29 @@
 - (void)persistSVDetailResultModel
 {
     SVDBManager *db = [SVDBManager sharedInstance];
-    // 如果表不存在，则创建表
-    [db executeUpdate:@"CREATE TABLE IF NOT EXISTS SVDetailResultModel(ID integer PRIMARY KEY "
-                      @"AUTOINCREMENT, testId integer, testType integer, testResult text, "
-                      @"testContext text, probeInfo text);"];
+    NSString *insertSVDetailResultModelSQL;
+    @try
+    {
+        // 如果表不存在，则创建表
+        [db executeUpdate:@"CREATE TABLE IF NOT EXISTS SVDetailResultModel(ID integer PRIMARY KEY "
+                          @"AUTOINCREMENT, testId integer, testType integer, testResult text, "
+                          @"testContext text, probeInfo text);"];
 
-    NSString *insertSVDetailResultModelSQL =
-    [NSString stringWithFormat:@"INSERT INTO "
-                               @"SVDetailResultModel (testId,testType,testResult, testContext, "
-                               @"probeInfo) VALUES(%ld, %d, "
-                               @"'%@', '%@', '%@');",
-                               _testId, VIDEO, [self testResultToJsonString],
-                               [self testContextToJsonString], [self testProbeInfo]];
-    // 插入结果明细
-    [db executeUpdate:insertSVDetailResultModelSQL];
+        insertSVDetailResultModelSQL =
+        [NSString stringWithFormat:@"INSERT INTO "
+                                   @"SVDetailResultModel (testId,testType,testResult, testContext, "
+                                   @"probeInfo) VALUES(%ld, %d, "
+                                   @"'%@', '%@', '%@');",
+                                   _testId, VIDEO, [self testResultToJsonString],
+                                   [self testContextToJsonString], [self testProbeInfo]];
+        // 插入结果明细
+        [db executeUpdate:insertSVDetailResultModelSQL];
+    }
+    @catch (NSException *exception)
+    {
+        SVError (@"execute insert SVDetailResultModel SQL[%@] fail. Exception:  %@",
+                 insertSVDetailResultModelSQL, exception);
+    }
 }
 
 - (NSString *)testProbeInfo
@@ -223,34 +232,42 @@
 
 - (NSString *)testResultToJsonString
 {
+
+    float sQualitySession = !testResult.sQualitySession ? 0 : testResult.sQualitySession;
+    float sInteractionSession = !testResult.sInteractionSession ? 0 : testResult.sInteractionSession;
+    float sViewSession = !testResult.sViewSession ? 0 : testResult.sViewSession;
+    float UvMOSSession = !testResult.UvMOSSession ? 0 : testResult.UvMOSSession;
+    float firstBufferTime = !testResult.firstBufferTime ? 0 : testResult.firstBufferTime;
+    int videoCuttonTimes = !testResult.videoCuttonTimes ? 0 : testResult.videoCuttonTimes;
+    int videoCuttonTotalTime = !testResult.videoCuttonTotalTime ? 0 : testResult.videoCuttonTotalTime;
+    float downloadSpeed = !testResult.downloadSpeed ? 0 : testResult.downloadSpeed;
+    int videoWidth = !testResult.videoWidth ? 0 : testResult.videoWidth;
+    int videoHeight = !testResult.videoHeight ? 0 : testResult.videoHeight;
+    float frameRate = !testResult.frameRate ? 0 : testResult.frameRate;
+    float bitrate = !testResult.bitrate ? 0 : testResult.bitrate;
+    float screenSize = !testResult.screenSize ? 0 : testResult.screenSize;
+    NSString *videoResolution = !testResult.videoResolution ? @"" : testResult.videoResolution;
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     [dictionary setObject:[[NSNumber alloc] initWithLong:testResult.testTime] forKey:@"testTime"];
-    [dictionary setObject:[[NSNumber alloc] initWithFloat:testResult.sQualitySession]
+    [dictionary setObject:[[NSNumber alloc] initWithFloat:sQualitySession]
                    forKey:@"sQualitySession"];
-    [dictionary setObject:[[NSNumber alloc] initWithFloat:testResult.sInteractionSession]
+    [dictionary setObject:[[NSNumber alloc] initWithFloat:sInteractionSession]
                    forKey:@"sInteractionSession"];
-    [dictionary setObject:[[NSNumber alloc] initWithFloat:testResult.sViewSession]
-                   forKey:@"sViewSession"];
-    [dictionary setObject:[[NSNumber alloc] initWithFloat:testResult.UvMOSSession]
-                   forKey:@"UvMOSSession"];
-    [dictionary setObject:[[NSNumber alloc] initWithLong:testResult.firstBufferTime]
+    [dictionary setObject:[[NSNumber alloc] initWithFloat:sViewSession] forKey:@"sViewSession"];
+    [dictionary setObject:[[NSNumber alloc] initWithFloat:UvMOSSession] forKey:@"UvMOSSession"];
+    [dictionary setObject:[[NSNumber alloc] initWithLong:firstBufferTime]
                    forKey:@"firstBufferTime"];
-    [dictionary setObject:[[NSNumber alloc] initWithInt:testResult.videoCuttonTimes]
+    [dictionary setObject:[[NSNumber alloc] initWithInt:videoCuttonTimes]
                    forKey:@"videoCuttonTimes"];
-    [dictionary setObject:[[NSNumber alloc] initWithInt:testResult.videoCuttonTotalTime]
+    [dictionary setObject:[[NSNumber alloc] initWithInt:videoCuttonTotalTime]
                    forKey:@"videoCuttonTotalTime"];
-    [dictionary setObject:[[NSNumber alloc] initWithFloat:testResult.downloadSpeed]
-                   forKey:@"downloadSpeed"];
-    [dictionary setObject:[[NSNumber alloc] initWithInt:testResult.videoWidth]
-                   forKey:@"videoWidth"];
-    [dictionary setObject:[[NSNumber alloc] initWithInt:testResult.videoHeight]
-                   forKey:@"videoHeight"];
-    [dictionary setObject:[[NSNumber alloc] initWithFloat:testResult.frameRate]
-                   forKey:@"frameRate"];
-    [dictionary setObject:[[NSNumber alloc] initWithFloat:testResult.bitrate] forKey:@"bitrate"];
-    [dictionary setObject:[[NSNumber alloc] initWithFloat:testResult.screenSize]
-                   forKey:@"screenSize"];
-    [dictionary setObject:testResult.videoResolution forKey:@"videoResolution"];
+    [dictionary setObject:[[NSNumber alloc] initWithFloat:downloadSpeed] forKey:@"downloadSpeed"];
+    [dictionary setObject:[[NSNumber alloc] initWithInt:videoWidth] forKey:@"videoWidth"];
+    [dictionary setObject:[[NSNumber alloc] initWithInt:videoHeight] forKey:@"videoHeight"];
+    [dictionary setObject:[[NSNumber alloc] initWithFloat:frameRate] forKey:@"frameRate"];
+    [dictionary setObject:[[NSNumber alloc] initWithFloat:bitrate] forKey:@"bitrate"];
+    [dictionary setObject:[[NSNumber alloc] initWithFloat:screenSize] forKey:@"screenSize"];
+    [dictionary setObject:videoResolution forKey:@"videoResolution"];
 
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
@@ -268,21 +285,29 @@
 
 - (NSString *)testContextToJsonString
 {
+    //    NSString *videoSegementURLString = !testContext.videoSegementURLString ? @"" :
+    //    testContext.videoSegementURLString;
+    NSString *videoURLString = !testContext.videoURLString ? @"" : testContext.videoURLString;
+    int videoSegementURL = !testContext.videoSegementSize ? 0 : testContext.videoSegementSize;
+    long videoSegementDuration = !testContext.videoSegementDuration ? 0 : testContext.videoSegementDuration;
+    float videoSegementBitrate = !testContext.videoSegementBitrate ? 0 : testContext.videoSegementBitrate;
+    NSString *videoSegementIP = !testContext.videoSegementIP ? @"" : testContext.videoSegementIP;
+    NSString *videoSegemnetLocation = !testContext.videoSegemnetLocation ? @"" : testContext.videoSegemnetLocation;
+    NSString *videoSegemnetISP = !testContext.videoSegemnetISP ? @"" : testContext.videoSegemnetISP;
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    [dictionary setObject:testContext.videoSegementURLString forKey:@"videoSegementURLString"];
-    [dictionary setObject:testContext.videoURLString forKey:@"videoURL"];
+
+    //    [dictionary setObject:videoSegementURLString forKey:@"videoSegementURLString"];
+    [dictionary setObject:videoURLString forKey:@"videoURL"];
     //    [dictionary setObject:testContext.videoSegementURL forKey:@"videoSegementURL"];
-    [dictionary setObject:[[NSNumber alloc] initWithInt:testContext.videoSegementSize]
+    [dictionary setObject:[[NSNumber alloc] initWithInt:videoSegementURL]
                    forKey:@"videoSegementSize"];
-    [dictionary setObject:[[NSNumber alloc] initWithLong:testContext.videoSegementDuration]
+    [dictionary setObject:[[NSNumber alloc] initWithLong:videoSegementDuration]
                    forKey:@"videoSegementDuration"];
-    [dictionary setObject:[[NSNumber alloc] initWithFloat:testContext.videoSegementBitrate]
+    [dictionary setObject:[[NSNumber alloc] initWithFloat:videoSegementBitrate]
                    forKey:@"videoSegementBitrate"];
-    [dictionary setObject:testContext.videoSegementIP forKey:@"videoSegementIP"];
-    [dictionary setObject:!testContext.videoSegemnetLocation ? @"" : testContext.videoSegemnetLocation
-                   forKey:@"videoSegemnetLocation"];
-    [dictionary setObject:!testContext.videoSegemnetISP ? @"" : testContext.videoSegemnetISP
-                   forKey:@"videoSegemnetISP"];
+    [dictionary setObject:videoSegementIP forKey:@"videoSegementIP"];
+    [dictionary setObject:videoSegemnetLocation forKey:@"videoSegemnetLocation"];
+    [dictionary setObject:videoSegemnetISP forKey:@"videoSegemnetISP"];
 
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
