@@ -83,7 +83,7 @@
     SVVideoSegement *segement = [[SVVideoSegement alloc] init];
     for (NSString *item in arrays4)
     {
-        NSLog (@"%@", item);
+        SVInfo (@"%@", item);
         NSArray *arrays5 = [item componentsSeparatedByString:@"="];
         NSString *key = arrays5[0];
         NSString *value = [self decodeFromPercentEscapeString:arrays5[1]];

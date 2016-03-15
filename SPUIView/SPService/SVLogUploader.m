@@ -86,7 +86,7 @@ static NSString *uploadID; // 上传(php)脚本中，接收文件字段
             }
 
             NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            NSLog (@"%@", result);
+            SVInfo (@"%@", result);
           }];
 }
 
@@ -99,7 +99,7 @@ static NSString *uploadID; // 上传(php)脚本中，接收文件字段
     [strM appendFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\n", uploadID, uploadFile];
     [strM appendFormat:@"Content-Type: %@\n\n", mimeType];
 
-    NSLog (@"%@", strM);
+    SVInfo (@"%@", strM);
     return [strM copy];
 }
 
@@ -112,7 +112,7 @@ static NSString *uploadID; // 上传(php)脚本中，接收文件字段
     [strM appendString:@"Submit\n"];
     [strM appendFormat:@"%@%@--\n", boundaryStr, randomIDStr];
 
-    NSLog (@"%@", strM);
+    SVInfo (@"%@", strM);
     return [strM copy];
 }
 

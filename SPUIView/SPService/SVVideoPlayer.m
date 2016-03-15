@@ -84,7 +84,7 @@ static int execute_total_times = 4;
     showOnView = _showOnView;
     [self addLoadingUIView:showOnView];
     _testDelegate = testDelegate;
-    NSLog (@"init player view:%@", _showOnView);
+    SVInfo (@"init player view:%@", _showOnView);
     if (!_VMpalyer)
     {
         _VMpalyer = [VMediaPlayer sharedInstance];
@@ -129,31 +129,33 @@ static int execute_total_times = 4;
         return;
     }
 
+    startPlayTime = [SVTimeUtil currentMilliSecondStamp];
+    [testResult setVideoStartPlayTime:startPlayTime];
+    [testContext setTestStatus:TEST_TESTING];
+
     // 初始化UvMOS组件
     [self initUvMOSCompent];
 
-    testContext.testStatus = TEST_TESTING;
     if (testContext.videoSegementURL)
     {
         BOOL isPlaying = [_VMpalyer isPlaying];
         if (isPlaying)
         {
             // 如果视频正在播放，不做任何处理
-            NSLog (@"have been playing");
+            SVInfo (@"have been playing");
             return;
         }
         else
         {
-            [testResult setVideoStartPlayTime:[SVTimeUtil currentMilliSecondStamp]];
             if (_didPrepared)
             {
                 // 开始播放视频
-                NSLog (@"start play");
+                SVInfo (@"start play");
                 [_VMpalyer start];
             }
             else
             {
-                NSLog (@"paly prepareVideo");
+                SVInfo (@"paly prepareVideo");
                 [self prepareVideo];
             }
         }
@@ -167,6 +169,9 @@ static int execute_total_times = 4;
 {
     uvMOSCalculator =
     [[SVUvMOSCalculator alloc] initWithTestContextAndResult:testContext testResult:testResult];
+
+    //    // 注册UvMOS计算服务
+    //    [uvMOSCalculator registeService];
 }
 
 /**
@@ -181,7 +186,6 @@ static int execute_total_times = 4;
             return;
         }
 
-        NSLog (@"------------------------------stop------------------------------");
         @try
         {
             // 隐藏加载图标
@@ -195,12 +199,12 @@ static int execute_total_times = 4;
                 BOOL isPlaying = [_VMpalyer isPlaying];
                 if (isPlaying)
                 {
-                    NSLog (@"vmplayer pause");
+                    SVInfo (@"vmplayer pause");
                     [_VMpalyer pause];
                 }
 
                 [_VMpalyer reset];
-                NSLog (@"vmplayer reset");
+                SVInfo (@"vmplayer reset");
                 [_VMpalyer unSetupPlayer];
             }
         }
@@ -243,9 +247,7 @@ static int execute_total_times = 4;
 {
     if (testContext.videoSegementURL)
     {
-        // 注册UvMOS计算服务
-        [uvMOSCalculator registeService];
-        NSLog (@"prepareVideo");
+        SVInfo (@"prepareVideo");
         //播放时不要锁屏
         [UIApplication sharedApplication].idleTimerDisabled = YES;
         // 设置缓冲大小为2倍码率
@@ -269,10 +271,13 @@ static int execute_total_times = 4;
     {
         [activityView stopAnimating];
     }
-    NSLog (@"didPrepared.......");
+
+    long firstBufferedTime = [SVTimeUtil currentMilliSecondStamp] - startPlayTime;
+    [testResult setFirstBufferTime:(int)firstBufferedTime];
+
+    SVInfo (@"------------------------------didPrepared------------------------------");
     _didPrepared = YES;
     [player start];
-    startPlayTime = [SVTimeUtil currentMilliSecondStamp];
 }
 
 /**
@@ -286,7 +291,9 @@ static int execute_total_times = 4;
 - (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
 {
     _didPrepared = NO;
-    NSLog (@"playbackComplete: %@", arg);
+    execute_times = execute_total_times;
+    [self pushTestSample];
+    SVInfo (@"------------------------------playbackComplete------------------------------");
 }
 
 /**
@@ -298,10 +305,9 @@ static int execute_total_times = 4;
  */
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
 {
-    NSLog (@"VMediaPlayer Error: %@", arg);
+    SVInfo (@"------------------------------VMediaPlayer Error------------------------------");
     [activityView stopAnimating];
     testContext.testStatus = TEST_ERROR;
-    [self stop];
 }
 
 
@@ -315,7 +321,7 @@ static int execute_total_times = 4;
  */
 - (void)mediaPlayer:(VMediaPlayer *)player downloadRate:(id)arg
 {
-    NSLog (@"downloadRate: %d", [arg intValue]);
+    SVInfo (@"------------------------------downloadRate: %d", [arg intValue]);
     _downloadSize += [arg intValue];
     _downloadTime += 1;
     if ((int)arg >= testContext.videoSegementBitrate)
@@ -327,7 +333,7 @@ static int execute_total_times = 4;
 
 - (void)mediaPlayer:(VMediaPlayer *)player bufferingStart:(id)arg
 {
-    NSLog (@"NAL 2HBT &&&&&&&&&&&&&&&&.......&&&&&&&&&&&&&&&&& bufferingStart");
+    SVInfo (@"NAL 2HBT &&&&&&&&&&&&&&&&.......&&&&&&&&&&&&&&&&& bufferingStart");
     _bufferStartTime = [SVTimeUtil currentMilliSecondStamp];
     [player pause];
     // 显示加载图标
@@ -338,8 +344,9 @@ static int execute_total_times = 4;
 
     if (_firstBufferTime > 0)
     {
-        // 非首次开始缓存
-        [uvMOSCalculator calculateUvMOS:STATUS_IMPAIR_START];
+        // 卡顿开始
+        long interval = [SVTimeUtil currentMilliSecondStamp] - [testResult videoStartPlayTime];
+        [uvMOSCalculator update:STATUS_IMPAIR_START time:(int)interval];
     }
 }
 
@@ -369,11 +376,12 @@ static int execute_total_times = 4;
         [testResult setVideoCuttonTimes:(testResult.videoCuttonTimes + 1)];
         [testResult setVideoCuttonTotalTime:(testResult.videoCuttonTotalTime + (int)bufferedTime)];
 
-        // 非首次缓存结束
-        [uvMOSCalculator calculateUvMOS:STATUS_IMPAIR_END];
+        // 卡顿结束
+        long interval = [SVTimeUtil currentMilliSecondStamp] - [testResult videoStartPlayTime];
+        [uvMOSCalculator update:STATUS_IMPAIR_END time:(int)interval];
     }
 
-    NSLog (@"NAL 3HBT &&&&&&&&&&&&&&&&.......&&&&&&&&&&&&&&&&&  bufferingEnd");
+    SVInfo (@"NAL 3HBT &&&&&&&&&&&&&&&&.......&&&&&&&&&&&&&&&&&  bufferingEnd");
     [self startCalculateUvMOS:player bufferedTime:bufferedTime];
     [player start];
 }
@@ -385,9 +393,6 @@ static int execute_total_times = 4;
     if (!_firstBufferTime || _firstBufferTime == 0)
     {
         _firstBufferTime = bufferedTime;
-        SVInfo (@"first buffer time(ms):%ld", bufferedTime);
-        // 设置首次缓冲时间
-        [testResult setFirstBufferTime:(int)bufferedTime];
         // 视频宽度
         int videoWidth = [player getVideoWidth];
         // 视频高度
@@ -408,15 +413,17 @@ static int execute_total_times = 4;
 
         SVVideoTestSample *sample = [[SVVideoTestSample alloc] init];
         [sample setPeriodLength:0];
-        [sample setInitBufferLatency:(int)bufferedTime];
+        [sample setInitBufferLatency:testResult.firstBufferTime];
         [sample setAvgVideoBitrate:testResult.bitrate];
-        //         孙海龙 2016/02/14 帧率字节目前暂不支持,设置默认值0
         [sample setAvgKeyFrameSize:testResult.frameRate];
         [sample setStallingFrequency:20];
         [sample setStallingDuration:0];
         [sample setVideoStartPlayTime:[testResult videoStartPlayTime]];
         [sample setVideoTotalCuttonTime:0];
-        [uvMOSCalculator calculateTestSample:sample];
+
+        long interval = [SVTimeUtil currentMilliSecondStamp] - [testResult videoStartPlayTime];
+        [uvMOSCalculator calculateUvMOS:sample time:(int)interval];
+
         if (!testResult.videoTestSamples)
         {
             testResult.videoTestSamples = [[NSMutableArray alloc] init];
@@ -454,7 +461,9 @@ static int execute_total_times = 4;
             [sample setStallingDuration:(videoCuttonTotalTime / videoCuttonTimes)];
         }
 
-        [uvMOSCalculator calculateTestSample:sample];
+        long interval = [SVTimeUtil currentMilliSecondStamp] - [testResult videoStartPlayTime];
+        [uvMOSCalculator calculateUvMOS:sample time:(int)interval];
+
         [testResult.videoTestSamples addObject:sample];
         videoCuttonTimes = 0;
         videoCuttonTotalTime = 0;

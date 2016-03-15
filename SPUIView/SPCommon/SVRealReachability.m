@@ -7,6 +7,7 @@
 //
 
 #import "RealReachability.h"
+#import "SVLog.h"
 #import "SVRealReachability.h"
 
 @implementation SVRealReachability
@@ -112,7 +113,7 @@ static NSMutableArray *delegates;
     ReachabilityStatus status = [reachability currentReachabilityStatus];
 
     SVRealReachabilityStatus realStatus = SV_RealStatusNotReachable;
-    NSLog (@"currentStatus:%@", @(status));
+    SVInfo (@"currentStatus:%@", @(status));
     if (status == RealStatusNotReachable)
     {
         realStatus = SV_RealStatusNotReachable;

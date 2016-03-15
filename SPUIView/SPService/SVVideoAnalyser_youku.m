@@ -74,7 +74,7 @@ static NSString *_ykss;
         }
         _ykss = ykss;
     }
-    NSLog (@"ykss = %@", _ykss);
+    SVInfo (@"ykss = %@", _ykss);
 
     // 请求/play/get.json?vid={vid}&ct=12 并在请求头中添加Referer, ykss, __ysuid。
     // Referer 头即为视频播放页面访问的URL

@@ -124,11 +124,11 @@
 {
     if (_allData)
     {
-        NSLog (@"request finished. data length:%ld", _allData.length);
+        SVInfo (@"request finished. data length:%ld", _allData.length);
     }
     else
     {
-        NSLog (@"request finished. data length:0");
+        SVInfo (@"request finished. data length:0");
     }
 
     finished = true;

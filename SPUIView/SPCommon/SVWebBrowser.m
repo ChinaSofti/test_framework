@@ -222,7 +222,7 @@ static NSString *useragent = @"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_1 like Mac
         NSDictionary *dictionary = [httpResponse allHeaderFields];
         [dictionary enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL *_Nonnull stop) {
 
-          NSLog (@"%@  =  %@", key, obj);
+          SVInfo (@"%@  =  %@", key, obj);
           [_returnHeader setObject:obj forKey:key];
 
           if ([@"Set-Cookie" isEqualToString:key])
