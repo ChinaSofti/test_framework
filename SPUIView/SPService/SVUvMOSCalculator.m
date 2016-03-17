@@ -179,9 +179,10 @@
 
 - (void)calculateUvMOS:(SVVideoTestSample *)sample time:(int)iTimeStamp
 {
-    if (!_lastePlayStatus)
+    if (!isFirstTime)
     {
         [self setFirstBufferStatus];
+        isFirstTime += 1;
     }
 
     /* 第二步：每个周期调用计算(携带周期性参数) */

@@ -390,8 +390,9 @@ static int execute_total_times = 4;
 {
     // 注意：
     // 首次缓冲时长不计入卡顿时长，且第一次缓冲不算卡顿。首次缓冲时长只是首次缓冲时长
-    if (!_firstBufferTime || _firstBufferTime == 0)
+    if (!_firstBufferTime)
     {
+        NSLog (@"first calculate uvmos, registe and calcuate U-vMOS");
         _firstBufferTime = bufferedTime;
         // 视频宽度
         int videoWidth = [player getVideoWidth];
@@ -446,7 +447,6 @@ static int execute_total_times = 4;
         [sample setPeriodLength:5];
         [sample setInitBufferLatency:0];
         [sample setAvgVideoBitrate:testResult.bitrate];
-        // 孙海龙 2016/02/14 帧率字节目前暂不支持,设置默认值0
         [sample setAvgKeyFrameSize:testResult.frameRate];
         [sample setVideoStartPlayTime:[testResult videoStartPlayTime]];
         [sample setVideoTotalCuttonTime:testResult.videoCuttonTotalTime];
