@@ -77,7 +77,7 @@ static NSString *SPEEDTEST_SERVER_QUERY_URL = @"https://www.speedtest.net/api/an
     }
 
     // 记录日志
-    SVInfo (@"%@", [[NSString alloc] initWithData:reponseData encoding:NSUTF8StringEncoding]);
+    //    SVInfo (@"%@", [[NSString alloc] initWithData:reponseData encoding:NSUTF8StringEncoding]);
 
     SVSpeedTestServersParser *parser = [[SVSpeedTestServersParser alloc] initWithData:reponseData];
     NSArray *array = [parser parse];
