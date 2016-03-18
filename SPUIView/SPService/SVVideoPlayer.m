@@ -342,7 +342,7 @@ static int execute_total_times = 4;
         [activityView startAnimating];
     }
 
-    if (_firstBufferTime > 0)
+    if (_firstBufferTime)
     {
         // 卡顿开始
         long interval = [SVTimeUtil currentMilliSecondStamp] - [testResult videoStartPlayTime];
@@ -368,7 +368,7 @@ static int execute_total_times = 4;
 
     // 注意：
     // 首次缓冲时长不计入卡顿时长，且第一次缓冲不算卡顿。首次缓冲时长只是首次缓冲时长
-    if (_firstBufferTime > 0)
+    if (_firstBufferTime)
     {
         // 卡顿次数加一
         videoCuttonTimes += 1;
