@@ -92,10 +92,6 @@ static int execute_total_times = 4;
         _isSetup = [_VMpalyer setupPlayerWithCarrierView:showOnView withDelegate:self];
     }
 
-    SVProbeInfo *probeInfo = [SVProbeInfo sharedInstance];
-    _videoPlayTime = [probeInfo getVideoPlayTime];
-    execute_total_times = _videoPlayTime / test_period;
-    SVInfo (@"video play time is:%d", _videoPlayTime);
     return self;
 }
 
@@ -132,6 +128,9 @@ static int execute_total_times = 4;
     startPlayTime = [SVTimeUtil currentMilliSecondStamp];
     [testResult setVideoStartPlayTime:startPlayTime];
     [testContext setTestStatus:TEST_TESTING];
+
+    SVInfo (@"video play time is:%d", testContext.videoPlayDuration);
+    execute_total_times = testContext.videoPlayDuration / test_period;
 
     // 初始化UvMOS组件
     [self initUvMOSCompent];

@@ -16,8 +16,9 @@
 
 @implementation SVVideoTestContext
 
-@synthesize urlArray, videoURLString, videoSegementURLString, videoSegementDuration, videoSegementSize,
-videoSegementIP, videoSegemnetLocation, videoSegementBitrate, videoSegementURL, videoSegemnetISP;
+@synthesize urlArray, videoURLString, videoSegementURLString, videoSegementDuration,
+videoSegementSize, videoSegementIP, videoSegemnetLocation, videoSegementBitrate, videoSegementURL,
+videoSegemnetISP, videoPlayDuration;
 
 /**
  *  初始化后做一下操作。用于子类进行重写

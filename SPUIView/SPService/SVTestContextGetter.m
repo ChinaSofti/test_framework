@@ -216,6 +216,9 @@ static SVTestContextGetter *contextGetter = nil;
         SVError (@"query ip[%@] location fail %@", url.host, exception);
     }
 
+    SVProbeInfo *probeInfo = [SVProbeInfo sharedInstance];
+    int videoPlayDuration = [probeInfo getVideoPlayTime];
+    [videoContext setVideoPlayDuration:videoPlayDuration];
     return videoContext;
 }
 

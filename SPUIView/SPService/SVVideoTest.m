@@ -294,11 +294,11 @@
     NSString *videoSegementIP = !testContext.videoSegementIP ? @"" : testContext.videoSegementIP;
     NSString *videoSegemnetLocation = !testContext.videoSegemnetLocation ? @"" : testContext.videoSegemnetLocation;
     NSString *videoSegemnetISP = !testContext.videoSegemnetISP ? @"" : testContext.videoSegemnetISP;
+    int videoPlayDuration = !testContext.videoPlayDuration ? 60 : testContext.videoPlayDuration;
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
 
-    //    [dictionary setObject:videoSegementURLString forKey:@"videoSegementURLString"];
+    [dictionary setObject:[NSNumber numberWithInt:videoPlayDuration] forKey:@"videoPlayDuration"];
     [dictionary setObject:videoURLString forKey:@"videoURL"];
-    //    [dictionary setObject:testContext.videoSegementURL forKey:@"videoSegementURL"];
     [dictionary setObject:[[NSNumber alloc] initWithInt:videoSegementURL]
                    forKey:@"videoSegementSize"];
     [dictionary setObject:[[NSNumber alloc] initWithLong:videoSegementDuration]
