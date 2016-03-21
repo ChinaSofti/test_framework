@@ -210,7 +210,7 @@ static SVTestContextGetter *contextGetter = nil;
         SVIPAndISP *ipAndISP = [SVIPAndISPGetter queryIPDetail:url.host];
         if (ipAndISP)
         {
-            [videoContext setVideoSegemnetLocation:ipAndISP.regionName];
+            [videoContext setVideoSegemnetLocation:ipAndISP.city];
             [videoContext setVideoSegemnetISP:ipAndISP.isp];
         }
     }
