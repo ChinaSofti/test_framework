@@ -13,6 +13,7 @@
 @implementation SVRealReachability
 {
     BOOL _isStartMonitor;
+    SVRealReachabilityStatus _realStatus;
 }
 
 static NSMutableArray *delegates;
@@ -31,10 +32,20 @@ static NSMutableArray *delegates;
         {
             reachability = [[super allocWithZone:NULL] init];
             delegates = [[NSMutableArray alloc] init];
+            [reachability registerMonitory];
         }
     }
 
     return reachability;
+}
+
+- (void)registerMonitory
+{
+    [GLobalRealReachability startNotifier];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector (networkChanged:)
+                                                 name:@"kRealReachabilityChangedNotification"
+                                               object:nil];
 }
 
 /**
@@ -87,46 +98,26 @@ static NSMutableArray *delegates;
     }
 }
 
-/**
- *  开始监听网络状态
- */
-- (void)startMonitorNetworkStatus
-{
-    @synchronized (self)
-    {
-        if (!_isStartMonitor)
-        {
-            [GLobalRealReachability startNotifier];
-            [[NSNotificationCenter defaultCenter]
-            addObserver:self
-               selector:@selector (networkChanged:)
-                   name:@"kRealReachabilityChangedNotification"
-                 object:nil];
-            _isStartMonitor = TRUE;
-        }
-    }
-}
-
 - (void)networkChanged:(NSNotification *)notification
 {
     RealReachability *reachability = (RealReachability *)notification.object;
     ReachabilityStatus status = [reachability currentReachabilityStatus];
 
-    SVRealReachabilityStatus realStatus = SV_RealStatusNotReachable;
+    _realStatus = SV_RealStatusNotReachable;
     SVInfo (@"currentStatus:%@", @(status));
     if (status == RealStatusNotReachable)
     {
-        realStatus = SV_RealStatusNotReachable;
+        _realStatus = SV_RealStatusNotReachable;
     }
 
     if (status == RealStatusViaWiFi)
     {
-        realStatus = SV_RealStatusViaWiFi;
+        _realStatus = SV_RealStatusViaWiFi;
     }
 
     if (status == RealStatusViaWWAN)
     {
-        realStatus = SV_RealStatusViaWWAN;
+        _realStatus = SV_RealStatusViaWWAN;
     }
 
     WWANAccessType accessType = [GLobalRealReachability currentWWANtype];
@@ -134,19 +125,19 @@ static NSMutableArray *delegates;
     {
         if (accessType == WWANType2G)
         {
-            realStatus = SV_WWANType2G;
+            _realStatus = SV_WWANType2G;
         }
         else if (accessType == WWANType3G)
         {
-            realStatus = SV_WWANType3G;
+            _realStatus = SV_WWANType3G;
         }
         else if (accessType == WWANType4G)
         {
-            realStatus = SV_WWANType4G;
+            _realStatus = SV_WWANType4G;
         }
         else
         {
-            realStatus = SV_WWANTypeUnknown;
+            _realStatus = SV_WWANTypeUnknown;
         }
     }
 
@@ -154,10 +145,20 @@ static NSMutableArray *delegates;
     {
         for (id<SVRealReachabilityDelegate> delegate in delegates)
         {
-            [delegate networkStatusChange:realStatus];
+            [delegate networkStatusChange:_realStatus];
         }
     }
 }
 
+
+- (SVRealReachabilityStatus)getNetworkStatus
+{
+    if (!_realStatus)
+    {
+        return SV_WWANTypeUnknown;
+    }
+
+    return _realStatus;
+}
 
 @end

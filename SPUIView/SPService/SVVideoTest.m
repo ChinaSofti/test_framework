@@ -209,6 +209,11 @@
 
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     SVIPAndISP *ipAndISP = [SVIPAndISPGetter getIPAndISP];
+    if (!ipAndISP)
+    {
+        return @"";
+    }
+
     [dictionary setObject:!ipAndISP.isp ? @"" : ipAndISP.isp forKey:@"isp"];
     [dictionary setObject:!probeInfo.ip ? @"" : probeInfo.ip forKey:@"ip"];
     [dictionary setObject:!probeInfo.networkType ? @"" : probeInfo.networkType

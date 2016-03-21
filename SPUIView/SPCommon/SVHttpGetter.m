@@ -18,9 +18,14 @@
  *
  *  @return 服务器返回数据
  */
-+ (id)requestWithoutParameter:(NSString *)urlString
++ (NSString *)requestWithoutParameter:(NSString *)urlString
 {
     NSData *data = [SVHttpGetter requestDataWithoutParameter:urlString];
+    if (!data)
+    {
+        return nil;
+    }
+
     NSString *responseData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     return responseData;
 }
