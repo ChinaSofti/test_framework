@@ -8,7 +8,7 @@ PRODUCTS_DIR=$BUILD_OUT_DIR/Build/Products
 PROJECT_NAME=SpeedPro.xcodeproj
 SCHEME_NAME=SPService
 # configuration: Release , Debug
-CONFIGURATION_TYPE=Release
+CONFIGURATION_TYPE=Debug
 
 echo CURDIR:$CURDIR
 echo BUILD_DIR:$BUILD_DIR
@@ -30,9 +30,9 @@ mkdir -p $BUILD_OUT_DIR
 # param2 用于设置 -arch (armv7, arm64, i386, x86_64)
 function exec_xcodebuild() 
 {
-	echo xcodebuild -project $PROJECT_NAME -scheme $SCHEME_NAME  -configuration $CONFIGURATION_TYPE -sdk $1  -arch $2 -derivedDataPath ./build clean build
+	echo xcodebuild -project $PROJECT_NAME -scheme $SCHEME_NAME  -configuration $CONFIGURATION_TYPE -sdk $1  -arch $2 -derivedDataPath ./build clean build CODE_SIGNING_ALLOWED=NO
 	# 执行build
-	xcodebuild -project $PROJECT_NAME -scheme $SCHEME_NAME  -configuration $CONFIGURATION_TYPE -sdk $1  -arch $2  -derivedDataPath ./build clean build &> $BUILD_DIR/build.log
+	xcodebuild -project $PROJECT_NAME -scheme $SCHEME_NAME  -configuration $CONFIGURATION_TYPE -sdk $1  -arch $2  -derivedDataPath ./build clean build CODE_SIGNING_ALLOWED=NO &> $BUILD_DIR/build.log
 	status=$?
 	if [ $status -gt  0 ]; then
 		echo build fail. status:$status
@@ -48,7 +48,7 @@ echo ---------------------------------------------------------------------------
 exec_xcodebuild iphoneos9.2 armv7;
 
 # 拷贝编译文件到$BUILD_OUT_DIR/out目录下
-cp -R  $BUILD_DIR/Build/Products/Release-iphoneos/ $BUILD_OUT_DIR/
+cp -R  $BUILD_DIR/Build/Products/$CONFIGURATION_TYPE-iphoneos/ $BUILD_OUT_DIR/
 
 
 echo -----------------------------------------------------------------------------
@@ -56,8 +56,8 @@ echo ---------------------------------------------------------------------------
 exec_xcodebuild iphoneos9.2 arm64;
 
 # 合并两个不同architecture文件
-lipo -create $BUILD_DIR/Build/Products/Release-iphoneos/SPService.framework/SPService $BUILD_OUT_DIR/SPService.framework/SPService -output $BUILD_OUT_DIR/SPService
-lipo -create $BUILD_DIR/Build/Products/Release-iphoneos/SPCommon.framework/SPCommon $BUILD_OUT_DIR/SPCommon.framework/SPCommon -output $BUILD_OUT_DIR/SPCommon
+lipo -create $BUILD_DIR/Build/Products/$CONFIGURATION_TYPE-iphoneos/SPService.framework/SPService $BUILD_OUT_DIR/SPService.framework/SPService -output $BUILD_OUT_DIR/SPService
+lipo -create $BUILD_DIR/Build/Products/$CONFIGURATION_TYPE-iphoneos/SPCommon.framework/SPCommon $BUILD_OUT_DIR/SPCommon.framework/SPCommon -output $BUILD_OUT_DIR/SPCommon
 
 
 echo -----------------------------------------------------------------------------
@@ -65,9 +65,9 @@ echo ---------------------------------------------------------------------------
 exec_xcodebuild iphonesimulator9.2 i386;
 
 # 合并两个不同architecture文件
-lipo -create $BUILD_DIR/Build/Products/Release-iphoneos/SPService.framework/SPService $BUILD_OUT_DIR/SPService -output $BUILD_OUT_DIR/SPService2
+lipo -create $BUILD_DIR/Build/Products/$CONFIGURATION_TYPE-iphoneos/SPService.framework/SPService $BUILD_OUT_DIR/SPService -output $BUILD_OUT_DIR/SPService2
 
-lipo -create $BUILD_DIR/Build/Products/Release-iphoneos/SPCommon.framework/SPCommon $BUILD_OUT_DIR/SPCommon -output $BUILD_OUT_DIR/SPCommon2
+lipo -create $BUILD_DIR/Build/Products/$CONFIGURATION_TYPE-iphoneos/SPCommon.framework/SPCommon $BUILD_OUT_DIR/SPCommon -output $BUILD_OUT_DIR/SPCommon2
 
 rm $BUILD_OUT_DIR/SPService
 rm $BUILD_OUT_DIR/SPCommon
@@ -77,9 +77,9 @@ echo ---------------------------------------------------------------------------
 exec_xcodebuild iphonesimulator9.2 x86_64;
 
 # 合并两个不同architecture文件
-lipo -create $BUILD_DIR/Build/Products/Release-iphoneos/SPService.framework/SPService $BUILD_OUT_DIR/SPService2 -output $BUILD_OUT_DIR/SPService
+lipo -create $BUILD_DIR/Build/Products/$CONFIGURATION_TYPE-iphoneos/SPService.framework/SPService $BUILD_OUT_DIR/SPService2 -output $BUILD_OUT_DIR/SPService
 
-lipo -create $BUILD_DIR/Build/Products/Release-iphoneos/SPCommon.framework/SPCommon $BUILD_OUT_DIR/SPCommon2 -output $BUILD_OUT_DIR/SPCommon
+lipo -create $BUILD_DIR/Build/Products/$CONFIGURATION_TYPE-iphoneos/SPCommon.framework/SPCommon $BUILD_OUT_DIR/SPCommon2 -output $BUILD_OUT_DIR/SPCommon
 
 rm $BUILD_OUT_DIR/SPService2
 rm $BUILD_OUT_DIR/SPCommon2
