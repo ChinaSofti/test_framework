@@ -14,6 +14,7 @@
 {
     NSMutableArray *_serverArray;
     SVSpeedTestServer *_server;
+    BOOL _auto;
 }
 
 static NSString *SPEEDTEST_SERVER_QUERY_URL = @"https://www.speedtest.net/api/android/config.php";
@@ -86,6 +87,7 @@ static NSString *SPEEDTEST_SERVER_QUERY_URL = @"https://www.speedtest.net/api/an
     _serverArray = [[NSMutableArray alloc] initWithArray:array];
     SVSpeedTestServer *server = [_serverArray objectAtIndex:0];
     _server = server;
+    _auto = YES;
 
     _clientIP = parser.clientIP;
     _isp = parser.isp;
@@ -112,6 +114,26 @@ static NSString *SPEEDTEST_SERVER_QUERY_URL = @"https://www.speedtest.net/api/an
 - (SVSpeedTestServer *)getDefaultServer
 {
     return _server;
+}
+
+/**
+ *  设置是否是自动模式
+ *
+ *  @param isAuto 是否是自动模式
+ */
+- (void)setAuto:(BOOL)isAuto
+{
+    _auto = isAuto;
+}
+
+/**
+ *  是否是自动模式
+ *
+ *  @return 是否是自动模式
+ */
+- (BOOL)isAuto
+{
+    return _auto;
 }
 
 /**
