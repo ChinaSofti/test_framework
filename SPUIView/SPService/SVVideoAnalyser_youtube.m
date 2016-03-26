@@ -133,21 +133,22 @@
     if (![videoURLString containsString:@"signature"])
     {
         //
-        NSString *signature = [self extractSignature:videoURLString];
-        if (!signature)
-        {
-            SVError (@"extract signature fail.");
-            return _videoInfo;
-        }
-
-        SVInfo (@"modify before signature:%@", signature);
-        NSString *newSignature = [self modifySignarture:signature];
-        SVInfo (@"modify after signature:%@", newSignature);
-
-        NSArray *arrays6 = [videoURLString componentsSeparatedByString:signature];
-        NSString *videoURL =
-        [[NSString alloc] initWithFormat:@"%@%@%@%@", arrays6[0], newSignature, arrays6[1],
-                                         @"&alr=yes&ratebypass=yes&c=WEB&cver=html5"];
+        //        NSString *signature = [self extractSignature:videoURLString];
+        //        if (!signature)
+        //        {
+        //            SVError (@"extract signature fail.");
+        //            return _videoInfo;
+        //        }
+        //
+        //        SVInfo (@"modify before signature:%@", signature);
+        //        NSString *newSignature = [self modifySignarture:signature];
+        //        SVInfo (@"modify after signature:%@", newSignature);
+        //
+        //        NSArray *arrays6 = [videoURLString componentsSeparatedByString:signature];
+        //        NSString *videoURL =
+        //        [[NSString alloc] initWithFormat:@"%@%@%@%@", arrays6[0], newSignature,
+        //        arrays6[1],
+        //                                         @"&alr=yes&ratebypass=yes&c=WEB&cver=html5"];
     }
 
 

@@ -64,8 +64,8 @@ didStartElement:(NSString *)elementName
     if ([elementName isEqualToString:@"server"])
     {
         NSString *url = [attributeDict objectForKey:@"url"];
-        NSString *lat = [attributeDict objectForKey:@"lat"];
-        NSString *lon = [attributeDict objectForKey:@"lon"];
+        NSString *lat1 = [attributeDict objectForKey:@"lat"];
+        NSString *lon1 = [attributeDict objectForKey:@"lon"];
         NSString *name = [attributeDict objectForKey:@"name"];
         NSString *sponsor = [attributeDict objectForKey:@"sponsor"];
         NSString *serverId = [attributeDict objectForKey:@"id"];
@@ -73,8 +73,8 @@ didStartElement:(NSString *)elementName
         SVSpeedTestServer *server = [[SVSpeedTestServer alloc] init];
         [server setServerId:[serverId intValue]];
         [server setServerURL:url];
-        [server setLat:[lat floatValue]];
-        [server setLon:[lon floatValue]];
+        [server setLat:[lat1 floatValue]];
+        [server setLon:[lon1 floatValue]];
         [server setName:name];
         [server setSponsor:sponsor];
         [_array addObject:server];

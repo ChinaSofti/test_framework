@@ -66,8 +66,8 @@
 
 @synthesize showOnView, testResult, testContext, uvMOSCalculator;
 
-// 样本时长5秒
-static const int test_period = 5;
+// 样本时长200毫秒
+static const int test_period = 0.2;
 
 // 计算UvMOS总次数
 static int execute_total_times = 4;
@@ -130,7 +130,7 @@ static int execute_total_times = 4;
     [testContext setTestStatus:TEST_TESTING];
 
     SVInfo (@"video play time is:%d", testContext.videoPlayDuration);
-    execute_total_times = testContext.videoPlayDuration / test_period;
+    execute_total_times = testContext.videoPlayDuration * 5;
 
     // 初始化UvMOS组件
     [self initUvMOSCompent];
@@ -430,7 +430,7 @@ static int execute_total_times = 4;
         }
         [testResult.videoTestSamples addObject:sample];
         [_testDelegate updateTestResultDelegate:testContext testResult:testResult];
-        timer = [NSTimer scheduledTimerWithTimeInterval:test_period
+        timer = [NSTimer scheduledTimerWithTimeInterval:0.2
                                                  target:self
                                                selector:@selector (pushTestSample)
                                                userInfo:nil

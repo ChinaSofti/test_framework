@@ -72,7 +72,6 @@
 		B72D21791C7BEEDA009AC3E4 /* SVLogUploaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72D21781C7BEEDA009AC3E4 /* SVLogUploaderTest.m */; };
 		B72DC85A1C6C0BF00046F174 /* SVProbeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72DC85B1C6C0BF00046F174 /* SVProbeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */; };
-		B72DC85D1C6C0F4E0046F174 /* SVSystemUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */; };
 		B72DC85F1C6C1B930046F174 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72DC85E1C6C1B930046F174 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		B72EAEF01C6DB9FF000C96C1 /* SVDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B72EAEEE1C6DB9FF000C96C1 /* SVDBManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72EAEF11C6DB9FF000C96C1 /* SVDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B72EAEEF1C6DB9FF000C96C1 /* SVDBManager.m */; };
@@ -135,7 +134,6 @@
 		B73CE8FC1C896962006D43F8 /* RealReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8E31C896962006D43F8 /* RealReachability.h */; };
 		B73CE8FD1C896962006D43F8 /* RealReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8E41C896962006D43F8 /* RealReachability.m */; };
 		B73D0B4B1C756AFF00E291C6 /* SVLogTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B73D0B4A1C756AFF00E291C6 /* SVLogTest.m */; };
-		B743CFE91C9554EF00E18410 /* UvMosiOSLib_3.13.v4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B743CFE81C9554EF00E18410 /* UvMosiOSLib_3.13.v4.a */; };
 		B75994B21C6B7A93001C1D89 /* SVVideoUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994B01C6B7A93001C1D89 /* SVVideoUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75994B31C6B7A93001C1D89 /* SVVideoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994B11C6B7A93001C1D89 /* SVVideoUtil.m */; };
 		B75994B61C6B8490001C1D89 /* SVUvMOSCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994B41C6B8490001C1D89 /* SVUvMOSCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -153,8 +151,6 @@
 		B75994F81C6B8AE6001C1D89 /* SVI18N.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994F61C6B8AE6001C1D89 /* SVI18N.m */; };
 		B75994FC1C6B8AFD001C1D89 /* SVLog.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994FA1C6B8AFD001C1D89 /* SVLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75994FD1C6B8AFD001C1D89 /* SVLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B75994FB1C6B8AFD001C1D89 /* SVLog.m */; };
-		B75995031C6B8B11001C1D89 /* SVSystemUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B75994FF1C6B8B11001C1D89 /* SVSystemUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B75995041C6B8B11001C1D89 /* SVSystemUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995001C6B8B11001C1D89 /* SVSystemUtil.m */; };
 		B75995051C6B8B11001C1D89 /* SVTimeUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995011C6B8B11001C1D89 /* SVTimeUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B75995061C6B8B11001C1D89 /* SVTimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B75995021C6B8B11001C1D89 /* SVTimeUtil.m */; };
 		B75995101C6B8C1A001C1D89 /* SVVideoSegement.h in Headers */ = {isa = PBXBuildFile; fileRef = B75995081C6B8C1A001C1D89 /* SVVideoSegement.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -213,6 +209,10 @@
 		B79B3DDB1C772ECB00471F12 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DCE1C772ECB00471F12 /* FMDatabaseQueue.m */; };
 		B79B3DDC1C772ECB00471F12 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3DCF1C772ECB00471F12 /* FMResultSet.h */; };
 		B79B3DDD1C772ECB00471F12 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DD01C772ECB00471F12 /* FMResultSet.m */; };
+		B7B5D9221CA6281900DFEEBA /* UvMosiOSLibv1.1.0.v4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B5D9211CA6281900DFEEBA /* UvMosiOSLibv1.1.0.v4.a */; };
+		B7B5D9241CA639F900DFEEBA /* SVCurrentDeviceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B5D9231CA639F900DFEEBA /* SVCurrentDeviceTest.m */; };
+		B7B5D9271CA63A2000DFEEBA /* SVCurrentDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B5D9251CA63A2000DFEEBA /* SVCurrentDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7B5D9281CA63A2000DFEEBA /* SVCurrentDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B5D9261CA63A2000DFEEBA /* SVCurrentDevice.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -308,7 +308,6 @@
 		B72D21781C7BEEDA009AC3E4 /* SVLogUploaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLogUploaderTest.m; sourceTree = "<group>"; };
 		B72DC8581C6C0BF00046F174 /* SVProbeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProbeInfo.h; sourceTree = "<group>"; };
 		B72DC8591C6C0BF00046F174 /* SVProbeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProbeInfo.m; sourceTree = "<group>"; };
-		B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSystemUtilTest.m; sourceTree = "<group>"; };
 		B72DC85E1C6C1B930046F174 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B72EAEEE1C6DB9FF000C96C1 /* SVDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDBManager.h; sourceTree = "<group>"; };
 		B72EAEEF1C6DB9FF000C96C1 /* SVDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDBManager.m; sourceTree = "<group>"; };
@@ -371,7 +370,6 @@
 		B73CE8E31C896962006D43F8 /* RealReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealReachability.h; sourceTree = "<group>"; };
 		B73CE8E41C896962006D43F8 /* RealReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealReachability.m; sourceTree = "<group>"; };
 		B73D0B4A1C756AFF00E291C6 /* SVLogTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLogTest.m; sourceTree = "<group>"; };
-		B743CFE81C9554EF00E18410 /* UvMosiOSLib_3.13.v4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = UvMosiOSLib_3.13.v4.a; sourceTree = "<group>"; };
 		B75994B01C6B7A93001C1D89 /* SVVideoUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVVideoUtil.h; sourceTree = "<group>"; };
 		B75994B11C6B7A93001C1D89 /* SVVideoUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVVideoUtil.m; sourceTree = "<group>"; };
 		B75994B41C6B8490001C1D89 /* SVUvMOSCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVUvMOSCalculator.h; sourceTree = "<group>"; };
@@ -389,8 +387,6 @@
 		B75994F61C6B8AE6001C1D89 /* SVI18N.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVI18N.m; sourceTree = "<group>"; };
 		B75994FA1C6B8AFD001C1D89 /* SVLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVLog.h; sourceTree = "<group>"; };
 		B75994FB1C6B8AFD001C1D89 /* SVLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLog.m; sourceTree = "<group>"; };
-		B75994FF1C6B8B11001C1D89 /* SVSystemUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSystemUtil.h; sourceTree = "<group>"; };
-		B75995001C6B8B11001C1D89 /* SVSystemUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSystemUtil.m; sourceTree = "<group>"; };
 		B75995011C6B8B11001C1D89 /* SVTimeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVTimeUtil.h; sourceTree = "<group>"; };
 		B75995021C6B8B11001C1D89 /* SVTimeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVTimeUtil.m; sourceTree = "<group>"; };
 		B75995081C6B8C1A001C1D89 /* SVVideoSegement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVVideoSegement.h; sourceTree = "<group>"; };
@@ -449,6 +445,10 @@
 		B79B3DCE1C772ECB00471F12 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		B79B3DCF1C772ECB00471F12 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		B79B3DD01C772ECB00471F12 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		B7B5D9211CA6281900DFEEBA /* UvMosiOSLibv1.1.0.v4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = UvMosiOSLibv1.1.0.v4.a; sourceTree = "<group>"; };
+		B7B5D9231CA639F900DFEEBA /* SVCurrentDeviceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCurrentDeviceTest.m; sourceTree = "<group>"; };
+		B7B5D9251CA63A2000DFEEBA /* SVCurrentDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCurrentDevice.h; sourceTree = "<group>"; };
+		B7B5D9261CA63A2000DFEEBA /* SVCurrentDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCurrentDevice.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -461,7 +461,6 @@
 				B70FF4F81C66437D002D571B /* libz.1.dylib in Frameworks */,
 				B70FF4F61C664367002D571B /* libbz2.1.0.dylib in Frameworks */,
 				B70FF4F41C664346002D571B /* UIKit.framework in Frameworks */,
-				B743CFE91C9554EF00E18410 /* UvMosiOSLib_3.13.v4.a in Frameworks */,
 				B70FF4F21C66433B002D571B /* QuartzCore.framework in Frameworks */,
 				B70FF4F01C66432F002D571B /* OpenGLES.framework in Frameworks */,
 				B70FF4EE1C664323002D571B /* MediaPlayer.framework in Frameworks */,
@@ -473,6 +472,7 @@
 				B70FF4E21C6642C4002D571B /* AVFoundation.framework in Frameworks */,
 				B70FF4D91C66343B002D571B /* libopenssl.a in Frameworks */,
 				B70FF4D81C66343B002D571B /* libffmpeg.a in Frameworks */,
+				B7B5D9221CA6281900DFEEBA /* UvMosiOSLibv1.1.0.v4.a in Frameworks */,
 				B70FF4791C66302F002D571B /* SPCommon.framework in Frameworks */,
 				B70FF4DA1C66343B002D571B /* libVitamio.a in Frameworks */,
 			);
@@ -607,9 +607,9 @@
 			children = (
 				B70FF46C1C66301D002D571B /* SPCommonTests.m */,
 				B70FF46E1C66301D002D571B /* Info.plist */,
-				B72DC85C1C6C0F4E0046F174 /* SVSystemUtilTest.m */,
 				B72EAEF21C6DBC21000C96C1 /* SVDBManagerTest.m */,
 				B73D0B4A1C756AFF00E291C6 /* SVLogTest.m */,
+				B7B5D9231CA639F900DFEEBA /* SVCurrentDeviceTest.m */,
 			);
 			path = SPCommonTests;
 			sourceTree = "<group>";
@@ -684,7 +684,7 @@
 		B70FF4DC1C663456002D571B /* U-vMOS_SDK_for_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				B743CFE81C9554EF00E18410 /* UvMosiOSLib_3.13.v4.a */,
+				B7B5D9211CA6281900DFEEBA /* UvMosiOSLibv1.1.0.v4.a */,
 				B70FF4DE1C663456002D571B /* UvMOS_Outer_Api.h */,
 			);
 			path = "U-vMOS_SDK_for_iOS";
@@ -695,8 +695,8 @@
 			children = (
 				B70FF4A81C663388002D571B /* SVContentProviderGetter.h */,
 				B70FF4A91C663388002D571B /* SVContentProviderGetter.m */,
-				B75994B01C6B7A93001C1D89 /* SVVideoUtil.h */,
 				B75994B11C6B7A93001C1D89 /* SVVideoUtil.m */,
+				B75994B01C6B7A93001C1D89 /* SVVideoUtil.h */,
 				B75994B41C6B8490001C1D89 /* SVUvMOSCalculator.h */,
 				B75994B51C6B8490001C1D89 /* SVUvMOSCalculator.m */,
 				B70FF4AC1C663388002D571B /* SVVideoPlayer.h */,
@@ -883,12 +883,12 @@
 		B75994FE1C6B8B06001C1D89 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B75994FF1C6B8B11001C1D89 /* SVSystemUtil.h */,
-				B75995001C6B8B11001C1D89 /* SVSystemUtil.m */,
 				B75995011C6B8B11001C1D89 /* SVTimeUtil.h */,
 				B75995021C6B8B11001C1D89 /* SVTimeUtil.m */,
 				B71F89131C8D841A002E8375 /* SVRealReachability.h */,
 				B71F89141C8D841A002E8375 /* SVRealReachability.m */,
+				B7B5D9251CA63A2000DFEEBA /* SVCurrentDevice.h */,
+				B7B5D9261CA63A2000DFEEBA /* SVCurrentDevice.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1090,12 +1090,12 @@
 				B708AFA31C79E98B0052BFC8 /* zip.h in Headers */,
 				B73CE8F81C896962006D43F8 /* PingFoundation.h in Headers */,
 				B75995051C6B8B11001C1D89 /* SVTimeUtil.h in Headers */,
-				B75995031C6B8B11001C1D89 /* SVSystemUtil.h in Headers */,
 				B735969F1C82986500F382A4 /* DDLegacyMacros.h in Headers */,
 				B73596A61C82986500F382A4 /* DDContextFilterLogFormatter.h in Headers */,
 				B73596A81C82986500F382A4 /* DDDispatchQueueLogFormatter.h in Headers */,
 				B73596931C82986500F382A4 /* CLIColor.h in Headers */,
 				B71F89151C8D841A002E8375 /* SVRealReachability.h in Headers */,
+				B7B5D9271CA63A2000DFEEBA /* SVCurrentDevice.h in Headers */,
 				B73CE8F01C896962006D43F8 /* ReachStateUnloaded.h in Headers */,
 				B73CE8FC1C896962006D43F8 /* RealReachability.h in Headers */,
 				B72EAEF01C6DB9FF000C96C1 /* SVDBManager.h in Headers */,
@@ -1354,7 +1354,6 @@
 			files = (
 				B75994F11C6B8ACD001C1D89 /* SVHttpsGetter.m in Sources */,
 				B708AF9C1C79E98B0052BFC8 /* ioapi.c in Sources */,
-				B75995041C6B8B11001C1D89 /* SVSystemUtil.m in Sources */,
 				B79B3DD51C772ECB00471F12 /* FMDatabase.m in Sources */,
 				B79B3DD91C772ECB00471F12 /* FMDatabasePool.m in Sources */,
 				B71F89161C8D841A002E8375 /* SVRealReachability.m in Sources */,
@@ -1396,6 +1395,7 @@
 				B73CE8E61C896962006D43F8 /* LocalConnection.m in Sources */,
 				B75994EF1C6B8ACD001C1D89 /* SVHttpGetter.m in Sources */,
 				B73CE8E91C896962006D43F8 /* FSMEngine.m in Sources */,
+				B7B5D9281CA63A2000DFEEBA /* SVCurrentDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1406,7 +1406,7 @@
 				B70FF46D1C66301D002D571B /* SPCommonTests.m in Sources */,
 				B73D0B4B1C756AFF00E291C6 /* SVLogTest.m in Sources */,
 				B72EAEF31C6DBC21000C96C1 /* SVDBManagerTest.m in Sources */,
-				B72DC85D1C6C0F4E0046F174 /* SVSystemUtilTest.m in Sources */,
+				B7B5D9241CA639F900DFEEBA /* SVCurrentDeviceTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

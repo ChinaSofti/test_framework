@@ -217,7 +217,7 @@
     [dictionary setObject:!ipAndISP.isp ? @"" : ipAndISP.isp forKey:@"isp"];
     [dictionary setObject:!probeInfo.ip ? @"" : probeInfo.ip forKey:@"ip"];
     [dictionary setObject:!probeInfo.networkType ? @"" : probeInfo.networkType
-                   forKey:@"netWorkType"];
+                   forKey:@"networkType"];
     NSString *bandwidth = [probeInfo getBandwidth];
     [dictionary setObject:!bandwidth ? @"" : bandwidth forKey:@"signedBandwidth"];
 
