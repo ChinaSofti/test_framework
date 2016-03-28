@@ -108,6 +108,10 @@
 		B73596A91C82986500F382A4 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B73596901C82986500F382A4 /* DDDispatchQueueLogFormatter.m */; };
 		B73596AA1C82986500F382A4 /* DDMultiFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B73596911C82986500F382A4 /* DDMultiFormatter.h */; };
 		B73596AB1C82986500F382A4 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B73596921C82986500F382A4 /* DDMultiFormatter.m */; };
+		B73AF37D1CA8CED200706F55 /* SVIPAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = B73AF37B1CA8CED200706F55 /* SVIPAddress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B73AF37E1CA8CED200706F55 /* SVIPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = B73AF37C1CA8CED200706F55 /* SVIPAddress.m */; };
+		B73AF3801CA8D15200706F55 /* SVIPAddressTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B73AF37F1CA8D15200706F55 /* SVIPAddressTest.m */; };
+		B73AF3831CA8D46000706F55 /* UvMOS_C_for_iOS_v1.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B73AF3821CA8D46000706F55 /* UvMOS_C_for_iOS_v1.1.0.a */; };
 		B73CE8E51C896962006D43F8 /* LocalConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8CA1C896962006D43F8 /* LocalConnection.h */; };
 		B73CE8E61C896962006D43F8 /* LocalConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CE8CB1C896962006D43F8 /* LocalConnection.m */; };
 		B73CE8E71C896962006D43F8 /* FSMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CE8CD1C896962006D43F8 /* FSMDefines.h */; };
@@ -209,7 +213,6 @@
 		B79B3DDB1C772ECB00471F12 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DCE1C772ECB00471F12 /* FMDatabaseQueue.m */; };
 		B79B3DDC1C772ECB00471F12 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = B79B3DCF1C772ECB00471F12 /* FMResultSet.h */; };
 		B79B3DDD1C772ECB00471F12 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B3DD01C772ECB00471F12 /* FMResultSet.m */; };
-		B7B5D9221CA6281900DFEEBA /* UvMosiOSLibv1.1.0.v4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B5D9211CA6281900DFEEBA /* UvMosiOSLibv1.1.0.v4.a */; };
 		B7B5D9241CA639F900DFEEBA /* SVCurrentDeviceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B5D9231CA639F900DFEEBA /* SVCurrentDeviceTest.m */; };
 		B7B5D9271CA63A2000DFEEBA /* SVCurrentDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B5D9251CA63A2000DFEEBA /* SVCurrentDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7B5D9281CA63A2000DFEEBA /* SVCurrentDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B5D9261CA63A2000DFEEBA /* SVCurrentDevice.m */; };
@@ -344,6 +347,10 @@
 		B73596901C82986500F382A4 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		B73596911C82986500F382A4 /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
 		B73596921C82986500F382A4 /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
+		B73AF37B1CA8CED200706F55 /* SVIPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIPAddress.h; sourceTree = "<group>"; };
+		B73AF37C1CA8CED200706F55 /* SVIPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIPAddress.m; sourceTree = "<group>"; };
+		B73AF37F1CA8D15200706F55 /* SVIPAddressTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIPAddressTest.m; sourceTree = "<group>"; };
+		B73AF3821CA8D46000706F55 /* UvMOS_C_for_iOS_v1.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = UvMOS_C_for_iOS_v1.1.0.a; sourceTree = "<group>"; };
 		B73CE8CA1C896962006D43F8 /* LocalConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalConnection.h; sourceTree = "<group>"; };
 		B73CE8CB1C896962006D43F8 /* LocalConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalConnection.m; sourceTree = "<group>"; };
 		B73CE8CD1C896962006D43F8 /* FSMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMDefines.h; sourceTree = "<group>"; };
@@ -445,7 +452,6 @@
 		B79B3DCE1C772ECB00471F12 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		B79B3DCF1C772ECB00471F12 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		B79B3DD01C772ECB00471F12 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
-		B7B5D9211CA6281900DFEEBA /* UvMosiOSLibv1.1.0.v4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = UvMosiOSLibv1.1.0.v4.a; sourceTree = "<group>"; };
 		B7B5D9231CA639F900DFEEBA /* SVCurrentDeviceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCurrentDeviceTest.m; sourceTree = "<group>"; };
 		B7B5D9251CA63A2000DFEEBA /* SVCurrentDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCurrentDevice.h; sourceTree = "<group>"; };
 		B7B5D9261CA63A2000DFEEBA /* SVCurrentDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCurrentDevice.m; sourceTree = "<group>"; };
@@ -460,6 +466,7 @@
 				B70FF4FA1C6643A5002D571B /* libstdc++.6.0.9.dylib in Frameworks */,
 				B70FF4F81C66437D002D571B /* libz.1.dylib in Frameworks */,
 				B70FF4F61C664367002D571B /* libbz2.1.0.dylib in Frameworks */,
+				B73AF3831CA8D46000706F55 /* UvMOS_C_for_iOS_v1.1.0.a in Frameworks */,
 				B70FF4F41C664346002D571B /* UIKit.framework in Frameworks */,
 				B70FF4F21C66433B002D571B /* QuartzCore.framework in Frameworks */,
 				B70FF4F01C66432F002D571B /* OpenGLES.framework in Frameworks */,
@@ -472,7 +479,6 @@
 				B70FF4E21C6642C4002D571B /* AVFoundation.framework in Frameworks */,
 				B70FF4D91C66343B002D571B /* libopenssl.a in Frameworks */,
 				B70FF4D81C66343B002D571B /* libffmpeg.a in Frameworks */,
-				B7B5D9221CA6281900DFEEBA /* UvMosiOSLibv1.1.0.v4.a in Frameworks */,
 				B70FF4791C66302F002D571B /* SPCommon.framework in Frameworks */,
 				B70FF4DA1C66343B002D571B /* libVitamio.a in Frameworks */,
 			);
@@ -610,6 +616,7 @@
 				B72EAEF21C6DBC21000C96C1 /* SVDBManagerTest.m */,
 				B73D0B4A1C756AFF00E291C6 /* SVLogTest.m */,
 				B7B5D9231CA639F900DFEEBA /* SVCurrentDeviceTest.m */,
+				B73AF37F1CA8D15200706F55 /* SVIPAddressTest.m */,
 			);
 			path = SPCommonTests;
 			sourceTree = "<group>";
@@ -684,7 +691,7 @@
 		B70FF4DC1C663456002D571B /* U-vMOS_SDK_for_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				B7B5D9211CA6281900DFEEBA /* UvMosiOSLibv1.1.0.v4.a */,
+				B73AF3821CA8D46000706F55 /* UvMOS_C_for_iOS_v1.1.0.a */,
 				B70FF4DE1C663456002D571B /* UvMOS_Outer_Api.h */,
 			);
 			path = "U-vMOS_SDK_for_iOS";
@@ -889,6 +896,8 @@
 				B71F89141C8D841A002E8375 /* SVRealReachability.m */,
 				B7B5D9251CA63A2000DFEEBA /* SVCurrentDevice.h */,
 				B7B5D9261CA63A2000DFEEBA /* SVCurrentDevice.m */,
+				B73AF37B1CA8CED200706F55 /* SVIPAddress.h */,
+				B73AF37C1CA8CED200706F55 /* SVIPAddress.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1095,6 +1104,7 @@
 				B73596A81C82986500F382A4 /* DDDispatchQueueLogFormatter.h in Headers */,
 				B73596931C82986500F382A4 /* CLIColor.h in Headers */,
 				B71F89151C8D841A002E8375 /* SVRealReachability.h in Headers */,
+				B73AF37D1CA8CED200706F55 /* SVIPAddress.h in Headers */,
 				B7B5D9271CA63A2000DFEEBA /* SVCurrentDevice.h in Headers */,
 				B73CE8F01C896962006D43F8 /* ReachStateUnloaded.h in Headers */,
 				B73CE8FC1C896962006D43F8 /* RealReachability.h in Headers */,
@@ -1389,6 +1399,7 @@
 				B75995061C6B8B11001C1D89 /* SVTimeUtil.m in Sources */,
 				B72EAF231C6E32E0000C96C1 /* SVJunitTestTable.m in Sources */,
 				B73CE8F91C896962006D43F8 /* PingFoundation.m in Sources */,
+				B73AF37E1CA8CED200706F55 /* SVIPAddress.m in Sources */,
 				B73596941C82986500F382A4 /* CLIColor.m in Sources */,
 				B75994FD1C6B8AFD001C1D89 /* SVLog.m in Sources */,
 				B73CE8ED1C896962006D43F8 /* ReachState.m in Sources */,
@@ -1405,6 +1416,7 @@
 			files = (
 				B70FF46D1C66301D002D571B /* SPCommonTests.m in Sources */,
 				B73D0B4B1C756AFF00E291C6 /* SVLogTest.m in Sources */,
+				B73AF3801CA8D15200706F55 /* SVIPAddressTest.m in Sources */,
 				B72EAEF31C6DBC21000C96C1 /* SVDBManagerTest.m in Sources */,
 				B7B5D9241CA639F900DFEEBA /* SVCurrentDeviceTest.m in Sources */,
 			);

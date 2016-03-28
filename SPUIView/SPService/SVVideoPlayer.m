@@ -66,9 +66,6 @@
 
 @synthesize showOnView, testResult, testContext, uvMOSCalculator;
 
-// 样本时长200毫秒
-static const int test_period = 0.2;
-
 // 计算UvMOS总次数
 static int execute_total_times = 4;
 

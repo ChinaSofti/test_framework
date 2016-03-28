@@ -96,7 +96,7 @@
     // 孙海龙 2016/02/13  屏幕尺寸 固定为42寸
     SVProbeInfo *probeInfo = [[SVProbeInfo alloc] init];
     float screenSize = [[probeInfo getScreenSize] floatValue];
-    stMediaInfo.fScreenSize = screenSize;
+    stMediaInfo.dScreenSize = screenSize;
     [_testResult setScreenSize:screenSize];
 
     // 视频分辨率
@@ -113,7 +113,7 @@
             @"iVideoResolutionWidth:%d  iVideoResolutionHeigth:%d  iScreenResolutionWidth:%d   "
             @"iScreenResolutionHeight:%d]",
             stMediaInfo.eMediaType, stMediaInfo.eContentProvider, stMediaInfo.eVideoCodec,
-            stMediaInfo.fScreenSize, stMediaInfo.iVideoResolutionWidth, stMediaInfo.iVideoResolutionHeigth,
+            stMediaInfo.dScreenSize, stMediaInfo.iVideoResolutionWidth, stMediaInfo.iVideoResolutionHeigth,
             stMediaInfo.iScreenResolutionWidth, stMediaInfo.iScreenResolutionHeight);
     int iResult = registerUvMOSService (&stMediaInfo, &hServiceHandle);
     if (iResult < 0)
@@ -147,7 +147,7 @@
     UvMOSResult stResult = { 0 };
 
     stSegmentInfo.iAvgVideoBitrate = _testResult.bitrate;
-    stSegmentInfo.iVideoFrameRate = _testResult.frameRate;
+    stSegmentInfo.dVideoFrameRate = _testResult.frameRate;
     stSegmentInfo.iAvgKeyFrameSize = 0;
     stSegmentInfo.ePlayStatus = status;
     stSegmentInfo.iImpairmentDegree = 50;
@@ -159,7 +159,7 @@
             @" "
             @"iImpairmentDegree:%d   ePlayStatus:%d   "
             @"iTimeStamp:%d] ",
-            stSegmentInfo.iAvgVideoBitrate, stSegmentInfo.iVideoFrameRate, stSegmentInfo.iAvgKeyFrameSize,
+            stSegmentInfo.iAvgVideoBitrate, stSegmentInfo.dVideoFrameRate, stSegmentInfo.iAvgKeyFrameSize,
             stSegmentInfo.iImpairmentDegree, stSegmentInfo.ePlayStatus, stSegmentInfo.iTimeStamp);
 
     int iResult = calculateUvMOSSegment (hServiceHandle, &stSegmentInfo, &stResult);
@@ -197,7 +197,7 @@
     UvMOSResult stResult = { 0 };
 
     stSegmentInfo.iAvgVideoBitrate = _testResult.bitrate;
-    stSegmentInfo.iVideoFrameRate = _testResult.frameRate;
+    stSegmentInfo.dVideoFrameRate = _testResult.frameRate;
     stSegmentInfo.iAvgKeyFrameSize = 0;
 
     if (_lastePlayStatus == STATUS_IMPAIR_END || _lastePlayStatus == STATUS_BUFFERING_END)
@@ -217,7 +217,7 @@
             @" "
             @"iImpairmentDegree:%d   ePlayStatus:%d   "
             @"iTimeStamp:%d] ",
-            stSegmentInfo.iAvgVideoBitrate, stSegmentInfo.iVideoFrameRate, stSegmentInfo.iAvgKeyFrameSize,
+            stSegmentInfo.iAvgVideoBitrate, stSegmentInfo.dVideoFrameRate, stSegmentInfo.iAvgKeyFrameSize,
             stSegmentInfo.iImpairmentDegree, stSegmentInfo.ePlayStatus, stSegmentInfo.iTimeStamp);
 
     int iResult = calculateUvMOSSegment (hServiceHandle, &stSegmentInfo, &stResult);
