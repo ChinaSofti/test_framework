@@ -17,8 +17,9 @@
  */
 + (NSString *)currentTimeStamp
 {
-    long time = (long)[[NSDate date] timeIntervalSince1970];
-    return [NSString stringWithFormat:@"%ld", time];
+    double time = [[NSDate date] timeIntervalSince1970];
+    NSNumber *timeNum = [NSNumber numberWithDouble:time];
+    return [NSString stringWithFormat:@"%zd", [timeNum longLongValue]];
 }
 
 /**
@@ -26,9 +27,12 @@
  *
  *  @return 毫秒时间戳
  */
-+ (long)currentMilliSecondStamp
++ (long long)currentMilliSecondStamp
 {
-    return [[NSDate date] timeIntervalSince1970] * 1000;
+
+    double time = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSNumber *timeNum = [NSNumber numberWithDouble:time];
+    return [timeNum longLongValue];
 }
 
 /**
@@ -37,9 +41,10 @@
  *  @param formatStr 日期格式
  *  @return 日期字符串
  */
-+ (NSString *)formatDateByMilliSecond:(long)timeNum formatStr:(NSString *)formatStr
++ (NSString *)formatDateByMilliSecond:(long long)timeNum formatStr:(NSString *)formatStr
 {
-    NSDate *nd = [NSDate dateWithTimeIntervalSince1970:timeNum];
+    NSNumber *time = [NSNumber numberWithLongLong:(timeNum / 1000)];
+    NSDate *nd = [NSDate dateWithTimeIntervalSince1970:[time doubleValue]];
 
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:formatStr];

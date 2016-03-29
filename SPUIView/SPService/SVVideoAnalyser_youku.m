@@ -139,7 +139,7 @@ static NSString *_ykss;
             {
                 NSDictionary *segementJson = segsArray[0];
                 NSString *segsKey = [segementJson valueForKey:@"key"];
-                long millisecondVideo = [[segementJson valueForKey:@"total_milliseconds_video"] longLongValue];
+                int millisecondVideo = [[segementJson valueForKey:@"total_milliseconds_video"] intValue];
                 segUrl = [NSString stringWithFormat:_getVideoFragmentInfoURL, sid, streamFileid,
                                                     segsKey, (millisecondVideo / 1000), oip, token, ep];
 

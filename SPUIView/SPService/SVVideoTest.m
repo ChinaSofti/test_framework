@@ -19,7 +19,7 @@
     @private
 
     // 测试ID
-    long _testId;
+    long long _testId;
 
     //播放视频的 UIView 组建
     UIView *_showVideoView;
@@ -44,7 +44,7 @@
  *
  *  @return 视频测试对象
  */
-- (id)initWithView:(long)testId
+- (id)initWithView:(long long)testId
      showVideoView:(UIView *)showVideoView
       testDelegate:(id<SVVideoTestDelegate>)testDelegate
 {
@@ -64,7 +64,7 @@
         _videoPlayer =
         [[SVVideoPlayer alloc] initWithView:_showVideoView testDelegate:testDelegate];
     }
-    SVInfo (@"SVVideoTest testID:%ld  showVideoView:%@", testId, showVideoView);
+    SVInfo (@"SVVideoTest testID:%lld  showVideoView:%@", testId, showVideoView);
     return self;
 }
 
@@ -80,7 +80,7 @@
         testContext = [contextGetter getVideoContext];
         if (!testContext)
         {
-            SVError (@"test[testId=%ld] fail. there is no test context", _testId);
+            SVError (@"test[testId=%lld] fail. there is no test context", _testId);
             return false;
         }
         return true;
@@ -125,7 +125,7 @@
             [NSThread sleepForTimeInterval:1];
         }
 
-        SVInfo (@"test[%ld] finished", _testId);
+        SVInfo (@"test[%lld] finished", _testId);
     }
     @catch (NSException *exception)
     {
@@ -136,7 +136,7 @@
 
     // 持久化结果明细
     [self persistSVDetailResultModel];
-    SVInfo (@"persist test[testId=%ld] result success", _testId);
+    SVInfo (@"persist test[testId=%lld] result success", _testId);
     return true;
 }
 
@@ -158,7 +158,7 @@
             {
                 //初始化播放器
                 [_videoPlayer stop];
-                SVInfo (@"stop test [testId=%ld]", _testId);
+                SVInfo (@"stop test [testId=%lld]", _testId);
             }
             @catch (NSException *exception)
             {
@@ -189,7 +189,7 @@
         insertSVDetailResultModelSQL =
         [NSString stringWithFormat:@"INSERT INTO "
                                    @"SVDetailResultModel (testId,testType,testResult, testContext, "
-                                   @"probeInfo) VALUES(%ld, %d, "
+                                   @"probeInfo) VALUES(%lld, %d, "
                                    @"'%@', '%@', '%@');",
                                    _testId, VIDEO, [self testResultToJsonString],
                                    [self testContextToJsonString], [self testProbeInfo]];
@@ -253,7 +253,8 @@
     float screenSize = !testResult.screenSize ? 0 : testResult.screenSize;
     NSString *videoResolution = !testResult.videoResolution ? @"" : testResult.videoResolution;
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    [dictionary setObject:[[NSNumber alloc] initWithLong:testResult.testTime] forKey:@"testTime"];
+    [dictionary setObject:[[NSNumber alloc] initWithLongLong:testResult.testTime]
+                   forKey:@"testTime"];
     [dictionary setObject:[[NSNumber alloc] initWithFloat:sQualitySession]
                    forKey:@"sQualitySession"];
     [dictionary setObject:[[NSNumber alloc] initWithFloat:sInteractionSession]
@@ -294,7 +295,7 @@
     //    testContext.videoSegementURLString;
     NSString *videoURLString = !testContext.videoURLString ? @"" : testContext.videoURLString;
     int videoSegementURL = !testContext.videoSegementSize ? 0 : testContext.videoSegementSize;
-    long videoSegementDuration = !testContext.videoSegementDuration ? 0 : testContext.videoSegementDuration;
+    int videoSegementDuration = !testContext.videoSegementDuration ? 0 : testContext.videoSegementDuration;
     float videoSegementBitrate = !testContext.videoSegementBitrate ? 0 : testContext.videoSegementBitrate;
     NSString *videoSegementIP = !testContext.videoSegementIP ? @"" : testContext.videoSegementIP;
     NSString *videoSegemnetLocation = !testContext.videoSegemnetLocation ? @"" : testContext.videoSegemnetLocation;

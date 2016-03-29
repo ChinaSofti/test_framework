@@ -124,7 +124,7 @@
 {
     if (_allData)
     {
-        SVInfo (@"request finished. data length:%ld", _allData.length);
+        SVInfo (@"request finished. data length:%zd", _allData.length);
     }
     else
     {

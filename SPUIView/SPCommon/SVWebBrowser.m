@@ -214,7 +214,7 @@ static NSString *useragent = @"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_1 like Mac
     NSInteger statusCode = [httpResponse statusCode];
     if (statusCode != 200)
     {
-        SVWarn (@"reponse status code:%ld", statusCode);
+        SVWarn (@"reponse status code:%zd", statusCode);
     }
 
     if ([response respondsToSelector:@selector (allHeaderFields)])

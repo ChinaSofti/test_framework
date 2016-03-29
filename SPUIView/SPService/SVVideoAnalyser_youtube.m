@@ -43,7 +43,7 @@
 
     //    SVInfo (@"videoUrlSource = %@", arrays2[2]);
     NSArray *arrays3 = [arrays2[2] componentsSeparatedByString:@","];
-    SVInfo (@"videoUrlList size = %ld", arrays3.count);
+    SVInfo (@"videoUrlList size = %zd", arrays3.count);
     if (arrays3.count < 1)
     {
         SVError (@"illeagle videoUrlList info content");

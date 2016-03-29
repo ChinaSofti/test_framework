@@ -28,7 +28,7 @@
     long _firstBufferTime;
 
     // 开始缓冲时间
-    long _bufferStartTime;
+    long long _bufferStartTime;
 
     // 总下载大小
     int _downloadSize;
@@ -57,7 +57,7 @@
 
     BOOL isFinished;
 
-    long startPlayTime;
+    long long startPlayTime;
 
     BOOL _isSetup;
 
@@ -268,8 +268,8 @@ static int execute_total_times = 4;
         [activityView stopAnimating];
     }
 
-    long firstBufferedTime = [SVTimeUtil currentMilliSecondStamp] - startPlayTime;
-    [testResult setFirstBufferTime:(int)firstBufferedTime];
+    int firstBufferedTime = (int)([SVTimeUtil currentMilliSecondStamp] - startPlayTime);
+    [testResult setFirstBufferTime:firstBufferedTime];
 
     SVInfo (@"------------------------------didPrepared------------------------------");
     _didPrepared = YES;
@@ -322,7 +322,7 @@ static int execute_total_times = 4;
     _downloadTime += 1;
     if ((int)arg >= testContext.videoSegementBitrate)
     {
-        long bufferedTime = [SVTimeUtil currentMilliSecondStamp] - startPlayTime;
+        int bufferedTime = (int)([SVTimeUtil currentMilliSecondStamp] - startPlayTime);
         [self startCalculateUvMOS:player bufferedTime:bufferedTime];
     }
 }
@@ -341,8 +341,8 @@ static int execute_total_times = 4;
     if (_firstBufferTime)
     {
         // 卡顿开始
-        long interval = [SVTimeUtil currentMilliSecondStamp] - [testResult videoStartPlayTime];
-        [uvMOSCalculator update:STATUS_IMPAIR_START time:(int)interval];
+        int interval = (int)([SVTimeUtil currentMilliSecondStamp] - [testResult videoStartPlayTime]);
+        [uvMOSCalculator update:STATUS_IMPAIR_START time:interval];
     }
 }
 
@@ -360,7 +360,7 @@ static int execute_total_times = 4;
         [activityView stopAnimating];
     }
 
-    long bufferedTime = [SVTimeUtil currentMilliSecondStamp] - _bufferStartTime;
+    int bufferedTime = (int)([SVTimeUtil currentMilliSecondStamp] - _bufferStartTime);
 
     // 注意：
     // 首次缓冲时长不计入卡顿时长，且第一次缓冲不算卡顿。首次缓冲时长只是首次缓冲时长
@@ -370,11 +370,11 @@ static int execute_total_times = 4;
         videoCuttonTimes += 1;
         videoCuttonTotalTime += bufferedTime;
         [testResult setVideoCuttonTimes:(testResult.videoCuttonTimes + 1)];
-        [testResult setVideoCuttonTotalTime:(testResult.videoCuttonTotalTime + (int)bufferedTime)];
+        [testResult setVideoCuttonTotalTime:(testResult.videoCuttonTotalTime + bufferedTime)];
 
         // 卡顿结束
-        long interval = [SVTimeUtil currentMilliSecondStamp] - [testResult videoStartPlayTime];
-        [uvMOSCalculator update:STATUS_IMPAIR_END time:(int)interval];
+        int interval = (int)([SVTimeUtil currentMilliSecondStamp] - [testResult videoStartPlayTime]);
+        [uvMOSCalculator update:STATUS_IMPAIR_END time:interval];
     }
 
     SVInfo (@"NAL 3HBT &&&&&&&&&&&&&&&&.......&&&&&&&&&&&&&&&&&  bufferingEnd");
@@ -418,8 +418,9 @@ static int execute_total_times = 4;
         [sample setVideoStartPlayTime:[testResult videoStartPlayTime]];
         [sample setVideoTotalCuttonTime:0];
 
-        long interval = [SVTimeUtil currentMilliSecondStamp] - [testResult videoStartPlayTime];
-        [uvMOSCalculator calculateUvMOS:sample time:(int)interval];
+        long long endTime = [SVTimeUtil currentMilliSecondStamp];
+        int interval = (int)(endTime - [testResult videoStartPlayTime]);
+        [uvMOSCalculator calculateUvMOS:sample time:interval];
 
         if (!testResult.videoTestSamples)
         {
@@ -457,8 +458,8 @@ static int execute_total_times = 4;
             [sample setStallingDuration:(videoCuttonTotalTime / videoCuttonTimes)];
         }
 
-        long interval = [SVTimeUtil currentMilliSecondStamp] - [testResult videoStartPlayTime];
-        [uvMOSCalculator calculateUvMOS:sample time:(int)interval];
+        int interval = (int)([SVTimeUtil currentMilliSecondStamp] - [testResult videoStartPlayTime]);
+        [uvMOSCalculator calculateUvMOS:sample time:interval];
 
         [testResult.videoTestSamples addObject:sample];
         videoCuttonTimes = 0;

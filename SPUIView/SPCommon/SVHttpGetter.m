@@ -55,7 +55,7 @@
         return nil;
     }
 
-    SVDebug (@"request URL:%@  response data length:%lu", urlString, data.length);
+    SVDebug (@"request URL:%@  response data length:%zd", urlString, data.length);
     return data;
 }
 
